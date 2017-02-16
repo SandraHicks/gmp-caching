@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configurationDescriptor version="100">
+  <logicalFolder name="root" displayName="root" projectFiles="true" kind="ROOT">
+    <logicalFolder name="HeaderFiles"
+                   displayName="Header Files"
+                   projectFiles="true">
+      <logicalFolder name="gmp-caching" displayName="gmp-caching" projectFiles="true">
+        <itemPath>Makefile</itemPath>
+      </logicalFolder>
+      <logicalFolder name="src" displayName="src" projectFiles="true">
+        <logicalFolder name="gmp-caching" displayName="gmp-caching" projectFiles="true">
+        </logicalFolder>
+        <itemPath>../config.h</itemPath>
+        <itemPath>../defines.h</itemPath>
+        <itemPath>../hash_table_array.h</itemPath>
+        <itemPath>../hash_table_double_linked_sorted.h</itemPath>
+        <itemPath>../hash_table_linked.h</itemPath>
+        <itemPath>../hash_table_linked_sorted.h</itemPath>
+        <itemPath>../hash_table_memory_alloc.h</itemPath>
+        <itemPath>../master_cache_integer.h</itemPath>
+        <itemPath>../master_cache_rational.h</itemPath>
+      </logicalFolder>
+    </logicalFolder>
+    <logicalFolder name="ResourceFiles"
+                   displayName="Resource Files"
+                   projectFiles="true">
+    </logicalFolder>
+    <logicalFolder name="SourceFiles"
+                   displayName="Source Files"
+                   projectFiles="true">
+      <itemPath>../hash_table_array.c</itemPath>
+      <itemPath>../hash_table_double_linked_sorted.c</itemPath>
+      <itemPath>../hash_table_linked.c</itemPath>
+      <itemPath>../hash_table_linked_sorted.c</itemPath>
+      <itemPath>../hash_table_memory_alloc.c</itemPath>
+      <itemPath>../master_cache_integer.c</itemPath>
+      <itemPath>../master_cache_rational.c</itemPath>
+    </logicalFolder>
+    <logicalFolder name="TestFiles"
+                   displayName="Test Files"
+                   projectFiles="false"
+                   kind="TEST_LOGICAL_FOLDER">
+    </logicalFolder>
+    <logicalFolder name="ExternalFiles"
+                   displayName="Important Files"
+                   projectFiles="false"
+                   kind="IMPORTANT_FILES_FOLDER">
+      <itemPath>Makefile</itemPath>
+    </logicalFolder>
+  </logicalFolder>
+  <sourceRootList>
+    <Elem>..</Elem>
+  </sourceRootList>
+  <projectmakefile>Makefile</projectmakefile>
+  <confs>
+    <conf name="Debug" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="../config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../defines.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../hash_table_array.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hash_table_array.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../hash_table_double_linked_sorted.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../hash_table_double_linked_sorted.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../hash_table_linked.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hash_table_linked.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../hash_table_linked_sorted.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hash_table_linked_sorted.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../hash_table_memory_alloc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hash_table_memory_alloc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../master_cache_integer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../master_cache_integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../master_cache_rational.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../master_cache_rational.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+    <conf name="Release" type="3">
+      <toolsSet>
+        <compilerSet>default</compilerSet>
+        <dependencyChecking>true</dependencyChecking>
+        <rebuildPropChanged>false</rebuildPropChanged>
+      </toolsSet>
+      <compileType>
+        <cTool>
+          <developmentMode>5</developmentMode>
+        </cTool>
+        <ccTool>
+          <developmentMode>5</developmentMode>
+        </ccTool>
+        <fortranCompilerTool>
+          <developmentMode>5</developmentMode>
+        </fortranCompilerTool>
+        <asmTool>
+          <developmentMode>5</developmentMode>
+        </asmTool>
+        <archiverTool>
+        </archiverTool>
+      </compileType>
+      <item path="../config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../defines.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../hash_table_array.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hash_table_array.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../hash_table_double_linked_sorted.c"
+            ex="false"
+            tool="0"
+            flavor2="0">
+      </item>
+      <item path="../hash_table_double_linked_sorted.h"
+            ex="false"
+            tool="3"
+            flavor2="0">
+      </item>
+      <item path="../hash_table_linked.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hash_table_linked.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../hash_table_linked_sorted.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hash_table_linked_sorted.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../hash_table_memory_alloc.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hash_table_memory_alloc.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../master_cache_integer.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../master_cache_integer.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../master_cache_rational.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../master_cache_rational.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="Makefile" ex="false" tool="3" flavor2="0">
+      </item>
+    </conf>
+  </confs>
+</configurationDescriptor>
