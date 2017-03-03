@@ -40,6 +40,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/5c0/hash_table_linked.o \
 	${OBJECTDIR}/_ext/5c0/hash_table_linked_sorted.o \
 	${OBJECTDIR}/_ext/5c0/hash_table_memory_alloc.o \
+	${OBJECTDIR}/_ext/5c0/hashing.o \
 	${OBJECTDIR}/_ext/5c0/master_cache_integer.o \
 	${OBJECTDIR}/_ext/5c0/master_cache_rational.o
 
@@ -94,6 +95,11 @@ ${OBJECTDIR}/_ext/5c0/hash_table_memory_alloc.o: ../hash_table_memory_alloc.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/hash_table_memory_alloc.o ../hash_table_memory_alloc.c
+
+${OBJECTDIR}/_ext/5c0/hashing.o: ../hashing.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/hashing.o ../hashing.c
 
 ${OBJECTDIR}/_ext/5c0/master_cache_integer.o: ../master_cache_integer.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0

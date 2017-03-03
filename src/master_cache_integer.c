@@ -1,10 +1,13 @@
 /*
- *
+ * Master Cache for caching Integer values in mpz
  *
  */
 #include <stdint.h> //always include first
-#include "defines.h"
 #include <gmp.h>
+#include <limits.h>
+
+#include "defines.h"
+#include "hash_table_double_linked_sorted.h"
 
 
 //Master Cache typedef and instance
@@ -13,18 +16,24 @@ struct MasterCacheInteger {
 };
 
 //Master Cache bit mask version
-typedef long cache_mpz; //max: 1073741823 (2^30 - 1)
+typedef long cache_mpz; //max: 1073741823 (2^30 - 2)
 
-#define cache_mpzMAX 1073741823
-#define cache_mpzMIN -1073741823
-#define SIGN 0b10000000000000000000000000000000
-#define INDEX 0b01000000000000000000000000000000
+
+#define SIGN (1 << 31)
+#define INDEX (1 << 30)
 
 //Master Cache struct version
 typedef unsigned long u_cache_mpz;
 
 struct cache_mpz_ {
     u_cache_mpz number;
+    bool sign;
+    bool isIndex;
+};
+
+struct cache_rational {
+    u_cache_mpz counter;
+    u_cache_mpz denominator;
     bool sign;
     bool isIndex;
 };

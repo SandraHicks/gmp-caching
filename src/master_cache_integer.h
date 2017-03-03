@@ -1,0 +1,6 @@
+#ifndef MASTER_CACHE_INTEGER_H
+#define MASTER_CACHE_INTEGER_H
+
+
+
+#endif /* MASTER_CACHE_INTEGER_H */
