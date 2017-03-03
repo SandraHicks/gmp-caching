@@ -15,6 +15,9 @@
 #ifndef HASH_TABLE_DOUBLE_LINKED_SORTED_H
 #define HASH_TABLE_DOUBLE_LINKED_SORTED_H
 
+enum Operator {addition, substraction, multiplication, division, gcd, inverse, factional, absolute};
+
+
 void init(hash_table& table);
 long insert_single_value(hash_table& table, mpz_t value);
 mpz_t* lookup_mpz(hash_table& table, long hash);
