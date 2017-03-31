@@ -12,14 +12,13 @@
         </logicalFolder>
         <itemPath>../config.h</itemPath>
         <itemPath>../defines.h</itemPath>
-        <itemPath>../hash_table_array.h</itemPath>
-        <itemPath>../hash_table_double_linked_sorted.h</itemPath>
-        <itemPath>../hash_table_linked.h</itemPath>
-        <itemPath>../hash_table_linked_sorted.h</itemPath>
-        <itemPath>../hash_table_memory_alloc.h</itemPath>
         <itemPath>../hashing.h</itemPath>
+        <itemPath>../hashtable.h</itemPath>
         <itemPath>../master_cache_integer.h</itemPath>
         <itemPath>../master_cache_rational.h</itemPath>
+        <itemPath>../mastercache.h</itemPath>
+        <itemPath>../mpz_caching.h</itemPath>
+        <itemPath>../overflow_detection.h</itemPath>
       </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
@@ -29,14 +28,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>../hash_table_array.c</itemPath>
-      <itemPath>../hash_table_double_linked_sorted.c</itemPath>
-      <itemPath>../hash_table_linked.c</itemPath>
-      <itemPath>../hash_table_linked_sorted.c</itemPath>
-      <itemPath>../hash_table_memory_alloc.c</itemPath>
       <itemPath>../hashing.c</itemPath>
+      <itemPath>../hashtable.c</itemPath>
       <itemPath>../master_cache_integer.c</itemPath>
       <itemPath>../master_cache_rational.c</itemPath>
+      <itemPath>../mastercache.c</itemPath>
+      <itemPath>../mpz_caching.c</itemPath>
+      <itemPath>../overflow_detection.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -69,35 +67,13 @@
       </item>
       <item path="../defines.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../hash_table_array.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../hash_table_array.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../hash_table_double_linked_sorted.c"
-            ex="false"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="../hash_table_double_linked_sorted.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../hash_table_linked.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../hash_table_linked.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../hash_table_linked_sorted.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../hash_table_linked_sorted.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../hash_table_memory_alloc.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../hash_table_memory_alloc.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../hashing.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../hashing.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../hashtable.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hashtable.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../master_cache_integer.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -106,6 +82,18 @@
       <item path="../master_cache_rational.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../master_cache_rational.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../mastercache.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../mastercache.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../mpz_caching.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../mpz_caching.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../overflow_detection.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../overflow_detection.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Makefile" ex="false" tool="3" flavor2="0">
       </item>
@@ -136,35 +124,13 @@
       </item>
       <item path="../defines.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../hash_table_array.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../hash_table_array.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../hash_table_double_linked_sorted.c"
-            ex="false"
-            tool="0"
-            flavor2="0">
-      </item>
-      <item path="../hash_table_double_linked_sorted.h"
-            ex="false"
-            tool="3"
-            flavor2="0">
-      </item>
-      <item path="../hash_table_linked.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../hash_table_linked.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../hash_table_linked_sorted.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../hash_table_linked_sorted.h" ex="false" tool="3" flavor2="0">
-      </item>
-      <item path="../hash_table_memory_alloc.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="../hash_table_memory_alloc.h" ex="false" tool="3" flavor2="0">
-      </item>
       <item path="../hashing.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../hashing.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../hashtable.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../hashtable.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../master_cache_integer.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -173,6 +139,18 @@
       <item path="../master_cache_rational.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../master_cache_rational.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../mastercache.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../mastercache.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../mpz_caching.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../mpz_caching.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../overflow_detection.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../overflow_detection.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="Makefile" ex="false" tool="3" flavor2="0">
       </item>

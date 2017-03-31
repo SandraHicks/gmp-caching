@@ -12,7 +12,7 @@
 #ifndef HASHING_H
 #define HASHING_H
 
-long get_mpz_hash(mpz_t myval);
+uint64_t get_FNV1a_hash(mpz_t myval);
 
 #endif /* HASHING_H */
 

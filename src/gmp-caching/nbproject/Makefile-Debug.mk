@@ -35,14 +35,13 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/5c0/hash_table_array.o \
-	${OBJECTDIR}/_ext/5c0/hash_table_double_linked_sorted.o \
-	${OBJECTDIR}/_ext/5c0/hash_table_linked.o \
-	${OBJECTDIR}/_ext/5c0/hash_table_linked_sorted.o \
-	${OBJECTDIR}/_ext/5c0/hash_table_memory_alloc.o \
 	${OBJECTDIR}/_ext/5c0/hashing.o \
+	${OBJECTDIR}/_ext/5c0/hashtable.o \
 	${OBJECTDIR}/_ext/5c0/master_cache_integer.o \
-	${OBJECTDIR}/_ext/5c0/master_cache_rational.o
+	${OBJECTDIR}/_ext/5c0/master_cache_rational.o \
+	${OBJECTDIR}/_ext/5c0/mastercache.o \
+	${OBJECTDIR}/_ext/5c0/mpz_caching.o \
+	${OBJECTDIR}/_ext/5c0/overflow_detection.o
 
 
 # C Compiler Flags
@@ -71,35 +70,15 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a: ${OBJECTFILES}
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a
 
-${OBJECTDIR}/_ext/5c0/hash_table_array.o: ../hash_table_array.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/hash_table_array.o ../hash_table_array.c
-
-${OBJECTDIR}/_ext/5c0/hash_table_double_linked_sorted.o: ../hash_table_double_linked_sorted.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/hash_table_double_linked_sorted.o ../hash_table_double_linked_sorted.c
-
-${OBJECTDIR}/_ext/5c0/hash_table_linked.o: ../hash_table_linked.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/hash_table_linked.o ../hash_table_linked.c
-
-${OBJECTDIR}/_ext/5c0/hash_table_linked_sorted.o: ../hash_table_linked_sorted.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/hash_table_linked_sorted.o ../hash_table_linked_sorted.c
-
-${OBJECTDIR}/_ext/5c0/hash_table_memory_alloc.o: ../hash_table_memory_alloc.c
-	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
-	${RM} "$@.d"
-	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/hash_table_memory_alloc.o ../hash_table_memory_alloc.c
-
 ${OBJECTDIR}/_ext/5c0/hashing.o: ../hashing.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/hashing.o ../hashing.c
+
+${OBJECTDIR}/_ext/5c0/hashtable.o: ../hashtable.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/hashtable.o ../hashtable.c
 
 ${OBJECTDIR}/_ext/5c0/master_cache_integer.o: ../master_cache_integer.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
@@ -110,6 +89,21 @@ ${OBJECTDIR}/_ext/5c0/master_cache_rational.o: ../master_cache_rational.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/master_cache_rational.o ../master_cache_rational.c
+
+${OBJECTDIR}/_ext/5c0/mastercache.o: ../mastercache.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/mastercache.o ../mastercache.c
+
+${OBJECTDIR}/_ext/5c0/mpz_caching.o: ../mpz_caching.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/mpz_caching.o ../mpz_caching.c
+
+${OBJECTDIR}/_ext/5c0/overflow_detection.o: ../overflow_detection.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/overflow_detection.o ../overflow_detection.c
 
 # Subprojects
 .build-subprojects:

@@ -1,96 +1,70 @@
-/*
- * Master Cache for caching Integer values in mpz
- *
- */
+ /**
+  * @file master_cache_integer.c
+  * @author Sandra Hicks
+  * @brief Master Cache functions for caching Integer operations in gmp
+  */
 #include <stdint.h> //always include first
 #include <gmp.h>
 #include <limits.h>
 
 #include "defines.h"
-#include "hash_table_double_linked_sorted.h"
+#include "mastercache.h"
+#include "hashtable.h"
+#include "mpz_caching.h"
 
 
-//Master Cache typedef and instance
-struct MasterCacheInteger {
-    //LookUp Table instances
-};
-
-//Master Cache bit mask version
-typedef long cache_mpz; //max: 1073741823 (2^30 - 2)
-
-
-#define SIGN (1 << 31)
-#define INDEX (1 << 30)
-
-//Master Cache struct version
-typedef unsigned long u_cache_mpz;
-
-struct cache_mpz_ {
-    u_cache_mpz number;
-    bool sign;
-    bool isIndex;
-};
-
-struct cache_rational {
-    u_cache_mpz counter;
-    u_cache_mpz denominator;
-    bool sign;
-    bool isIndex;
-};
-//oder
-struct cache_mpz__ {
-    u_cache_mpz number;
-    uint8_t info; //include information about sign and isIndex
-};
-
-/*
- * typedef based functions
+/**
+ * @brief function for master cache to add two cached values and cache the result if large.
+ * @param mstr MasterCache pointer
+ * @param val1 id of the first operand
+ * @param val2 id of the second operand
  */
-mpz_t int_cache_get(MasterCacheInteger mstr, cache_mpz value){
-    //get value from cache if exists
+cachedInt int_cache_add(MasterCache mstr, cachedInt val1, cachedInt val2){
+  //add integers
     
-    //error handling?
+  //if val1 and val2 small: return Result as number if result < maxResult
+    //if result > maxResult: cache and return ID
+    
+  //else: check if hash(val1, val2) or hash(val2, val1) valid
+    
+    //if cached: return ID_mpz
+    //if not cached: add
+      //if result small: add, cache ID, and return
+      //else: 
+         //add, 
+         //look if mpz cached, cache in ID_mpz->mpz
+         //cache ID_mpz in add table, 
+         //access by ID_add = hash(val1, val2) if val1>=val2
+         //return ID_mpz
+    return 0;
 }
 
-bool int_cache_exists(MasterCacheInteger mstr, mpz_t value){
-    //value exists in cache?
-}
-
-bool int_cache_insert(MasterCacheInteger mstr, mpz_t value){
-    //insert value in table
-}
-
-bool int_cache_insert_l(MasterCacheInteger mstr, cache_mpz value){
-    //insert long
-}
-
-mpz_t int_cache_add(MasterCacheInteger mstr, cache_mpz val1, cache_mpz val2){
-    //add integers
-}
-
-
-/*
- * struct based functions
+/**
+ * @brief function for master cache to subtract two cached values and cache the result if large.
+ * @param mstr MasterCache pointer
+ * @param val1 id of the first operand
+ * @param val2 id of the second operand
  */
-
-mpz_t int_cache_get_(MasterCacheInteger mstr, cache_mpz_ value){
-    //get value from cache if exists
-    
-    //error handling?
+cachedInt int_cache_subtract(MasterCache mstr, cachedInt val1, cachedInt val2){
+    return 0;
 }
 
-bool int_cache_exists_(MasterCacheInteger mstr, mpz_t value){
-    //value exists in cache?
+/**
+ * @brief function for master cache to multiply two cached values and cache the result if large.
+ * @param mstr MasterCache pointer
+ * @param val1 id of the first operand
+ * @param val2 id of the second operand
+ */
+cachedInt int_cache_multiply(MasterCache mstr, cachedInt val1, cachedInt val2){
+    return 0;
 }
 
-bool int_cache_insert_(MasterCacheInteger mstr, mpz_t value){
-    //insert value in table
-}
-
-bool int_cache_insert_l_(MasterCacheInteger mstr, cache_mpz_ value){
-    //insert long
-}
-
-mpz_t int_cache_add_(MasterCacheInteger mstr, cache_mpz_ val1, cache_mpz_ val2){
-    //add integers
+/**
+ * @brief function for master cache to divide two cached values and cache the result if large.
+ * @param mstr MasterCache pointer
+ * @param divident id of the first operand
+ * @param divisor id of the second operand
+ */
+cachedInt int_cache_divide(MasterCache mstr, cachedInt divident, cachedInt divisor){
+    return 0;
 }
