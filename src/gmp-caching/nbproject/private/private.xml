@@ -11,6 +11,8 @@
             <file>file:/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/defines.h</file>
             <file>file:/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/overflow_detection.c</file>
             <file>file:/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mastercache.h</file>
+            <file>file:/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashing.c</file>
+            <file>file:/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashing.h</file>
             <file>file:/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashtable.h</file>
             <file>file:/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashtable.c</file>
         </group>

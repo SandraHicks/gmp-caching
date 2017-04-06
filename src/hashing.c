@@ -7,48 +7,7 @@
 #include "defines.h"
 #include <gmp.h>
 
-//one positive mpz_t is hashed with FNV1a 32bit
-/*long get_mpz_hash(mpz_t myval){
-    //check for negative sign for safety
-    if(mpq_sgn(myval) < 0){
-        mpq_neg(myval, myval);
-    }
-    char* str;
-    mpz_get_str(str, 2, myval);
-    Fnv32_t hash = fnv_32a_str(str, FNV1_32_INIT);
-    while (hash >= P_INFINITY){
-        hash = fnv_32a_buf(&hash, sizeof(Fnv32_t), FNV1_32_INIT);
-    }
-    long hash_l = hash;
-    return hash_l;
-}
-
-//takes two positive mpz_t and combines them with Cantor function, then hash FNV1a 32bit
-long get_2_mpz_hash(mpz_t v1, mpz_t v2){
-    //check for negative sign for safety
-    if(mpq_sgn(v1) < 0){
-        mpq_neg(v1, v1);
-    }
-    if(mpq_sgn(v2) < 0){
-        mpq_neg(v2, v2);
-    }
-    
-    char* str;
-    long d1 = mpz_get_si(v1);
-    long d2 = mpz_get_si(v2);
-    //Cantor pairing function (bijective on NxN -> N)
-    long d3 = 0.5*(d1+d2)*(d1+d2+1) + d2;
-    mpz_t hop;
-    mpz_set_si (hop, d3);
-    mpz_get_str(str, 2, hop);
-    
-    Fnv32_t hash = fnv_32a_str(str, FNV1_32_INIT);
-    while (hash >= P_INFINITY){
-        hash = fnv_32a_buf(&hash, sizeof(Fnv32_t), FNV1_32_INIT);
-    }
-    long hash_l = hash;
-    return hash_l;
-}*/
+typedef unsigned __int128 uint128_t;
 
 //FNV1a
 uint64_t get_FNV1a_hash(mpz_t myval){
@@ -65,21 +24,36 @@ uint64_t get_FNV1a_hash(mpz_t myval){
     uint64_t hash_l = hash;
     return hash_l;
 }
-//Jenkins, Spookyhash
+//Jenkins, Spookyhash (hashes 128bit values!)
 uint64_t get_Jenkins_hash(mpz_t myval){
-    
+    return 0;
+} 
+
+//Jenkins lookup3
+uint64_t get_lookup3_hash(mpz_t myval){
+    return 0;
 } 
 //Siphash
 uint64_t get_Sip_hash(mpz_t myval){
-    
+    return 0;
 }
 //Murmurhash needs key, seed, length
-uint64_t get_Murmur_hash(mpz_t myval, uint64_t key){
-    
+uint64_t get_Murmur_hash(mpz_t myval){
+    //get key and seed for hash
+    uint32_t key = 0;
+    uint128_t hash = uint128_t(myval);
+    //constants
+    int32_t c1 = 0xcc9e2d51;
+    int32_t c2 = 0x1b873593;
+    int32_t r1 = 15;
+    int32_t r2 = 13;
+    int32_t m = 5;
+    int32_t n = 0xe6546b64;
+    return 0;
 }
 //CRC
 uint64_t get_CRC_hash(mpz_t myval){
-    
+    return 0;
 }
 
 uint64_t Cantor_pairing_function_int(uint64_t v1, uint64_t v2){

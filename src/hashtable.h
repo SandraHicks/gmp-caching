@@ -39,6 +39,7 @@ extern "C" {
     //hashes are not modulo size yet!!
     void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes);
     bool exists_element(Hashtable* ht, uint64_t* hashes);
+    uint64_t* get_k_hashes(mpz_t val);
     
 
 #ifdef __cplusplus

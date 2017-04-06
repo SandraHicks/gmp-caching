@@ -5,6 +5,7 @@
   */
 #include "hashtable.h"
 #include "defines.h"
+#include "hashing.h"
 
 void create_hashtable(Hashtable* ht, int size){
     ht->size = size;
@@ -41,7 +42,7 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
             this->id = id;
             this->hash = hashes[i];
             
-            //insert in sorted List, sort by original hash
+            //insert in sorted List, sort by id. can attach to last pointer because ids are fortlaufend
             cachedIntList* list = ht->lists[h[i]];
             cachedIntElement* curr = list->head;
             if(ht->counter[h[i]] == 0){
@@ -49,18 +50,8 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
                 list->tail = this;
             }
             else{
-                int j;
-                for (j=0; j< ht->counter[h[i]]; j++){
-                    if(curr->hash >= hashes[i]){
-                        //insert before curr
-                        curr->prev->next = this;
-                        this->prev = curr->prev;
-                        curr->prev = this;
-                        this->next = curr;
-                        break;
-                    }
-                    curr = curr->next;
-                }
+                list->tail->prev->next = this;
+                list->tail = this;
             }
             
             ht->counter[h[i]] = ht->counter[h[i]]+1;
@@ -70,9 +61,10 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
 
 bool exists_element(Hashtable* ht, uint64_t* hashes){
     //check if counter at hash position >= 1 if not, return
+    cachedIntElement* statefulPointer[NUMBER_HF];
     int min=0;
     int i;
-    for(i=0; i < NUMBER_HF; i++){
+    for(i=0; i < NUMBER_HF; ++i){
         if(ht->counter[(hashes[i] % ht->size)] < 1){
             return 0;
         }
@@ -80,6 +72,7 @@ bool exists_element(Hashtable* ht, uint64_t* hashes){
                 < ht->counter[(hashes[min] % ht->size)]){
             min = i;
         }
+        statefulPointer[i] = ht->lists[(hashes[i] % ht->size)]->head;
         
     }
     //exists one element in all lists
@@ -87,14 +80,81 @@ bool exists_element(Hashtable* ht, uint64_t* hashes){
     //1. find list of minimal size (previous loop)
     //2. find elements of minimal list in other lists
     
-    cachedIntElement* curr_list = ht->lists[(hashes[0] % ht->size)]->head;
     
     //sequential search, later binary search
     cachedIntElement* curr_min = ht->lists[(hashes[min] % ht->size)]->head;
-    for(i=0; i<ht->counter[(hashes[min] % ht->size)]; i++){
+    while(curr_min){
+        uint64_t curr_id = curr_min->id;
+        int globalfound = 0;
+        int i;
+        for(i=0;i<NUMBER_HF; ++i){
+            //check all lists except for minimal sized one
+            if(i!=min){
+                cachedIntElement* curr_list = statefulPointer[i];
+                int listfound = 0;
+                //search for id of element in minimal list
+                while(curr_list){
+                    if(curr_list->id == curr_id){
+                        listfound = 1;
+                        globalfound = 1;
+                        statefulPointer[i] = curr_list;
+                        break;
+                    }
+                    curr_list = curr_list->next;
+                }
+                
+                //if the element was not found in the list, go to next element in minimal list
+                if(listfound == 0){
+                    globalfound = 0;
+                    break;
+                }
+            }
+        }
+        //after searching all lists, check if found
+        if(globalfound == 1)
+            return 1;
         
         
         curr_min = curr_min->next;
     }
     return 0;
+}
+
+uint64_t* get_k_hashes(mpz_t val){
+    int number = (NUMBER_HF);
+    switch(number){
+        case 1:
+            uint64_t h_temp[1];
+            h_temp[0] = get_FNV1a_hash(val);
+            break;
+        case 2:
+            uint64_t h_temp[2];
+            h_temp[0] = get_FNV1a_hash(val);
+            h_temp[1] = get_Jenkins_hash(val);
+            break;
+        case 3:
+            uint64_t h_temp[3];
+            h_temp[0] = get_FNV1a_hash(val);
+            h_temp[1] = get_Jenkins_hash(val);
+            h_temp[2] = get_Sip_hash(val);
+            break;
+        case 4:
+            uint64_t h_temp[4];
+            h_temp[0] = get_FNV1a_hash(val);
+            h_temp[1] = get_Jenkins_hash(val);
+            h_temp[2] = get_Sip_hash(val);
+            h_temp[3] = get_Murmur_hash(val);
+            break;
+        case 5:
+            uint64_t h_temp[5];
+            h_temp[0] = get_FNV1a_hash(val);
+            h_temp[1] = get_Jenkins_hash(val);
+            h_temp[2] = get_Sip_hash(val);
+            h_temp[3] = get_Murmur_hash(val);
+            h_temp[4] = get_CRC_hash(val);
+            break;
+        default:
+            //ERROR
+            break;
+    }
 }
