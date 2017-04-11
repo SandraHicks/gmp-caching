@@ -130,28 +130,29 @@ uint64_t* get_k_hashes(mpz_t val){
         case 2:
             uint64_t h_temp[2];
             h_temp[0] = get_FNV1a_hash(val);
-            h_temp[1] = get_Jenkins_hash(val);
+            h_temp[1] = get_Murmur_hash(val);
+            
             break;
         case 3:
             uint64_t h_temp[3];
             h_temp[0] = get_FNV1a_hash(val);
-            h_temp[1] = get_Jenkins_hash(val);
-            h_temp[2] = get_Sip_hash(val);
+            h_temp[1] = get_Murmur_hash(val);
+            h_temp[2] = get_CRC_hash(val);
             break;
         case 4:
             uint64_t h_temp[4];
             h_temp[0] = get_FNV1a_hash(val);
-            h_temp[1] = get_Jenkins_hash(val);
-            h_temp[2] = get_Sip_hash(val);
-            h_temp[3] = get_Murmur_hash(val);
+            h_temp[1] = get_Murmur_hash(val);
+            h_temp[2] = get_CRC_hash(val);
+            h_temp[3] = get_Jenkins_hash(val);
             break;
         case 5:
             uint64_t h_temp[5];
             h_temp[0] = get_FNV1a_hash(val);
-            h_temp[1] = get_Jenkins_hash(val);
-            h_temp[2] = get_Sip_hash(val);
-            h_temp[3] = get_Murmur_hash(val);
-            h_temp[4] = get_CRC_hash(val);
+            h_temp[1] = get_Murmur_hash(val);
+            h_temp[2] = get_CRC_hash(val);
+            h_temp[3] = get_Jenkins_hash(val);
+            h_temp[4] = get_Sip_hash(val);
             break;
         default:
             //ERROR
