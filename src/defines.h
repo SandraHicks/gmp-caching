@@ -30,7 +30,7 @@ typedef int bool;
 #define hashtable_RATIO 0.4
 
 /*! number of hash functions */
-#define NUMBER_HF
+#define NUMBER_HF 3
 
 #ifdef __cplusplus
 }

@@ -18,10 +18,12 @@
 extern "C" {
 #endif
 
+#include "defines.h"
+    
 //Master Cache typedef and instance
-struct MasterCache {
+typedef struct MasterCache {
     //LookUp Table instances
-};
+} MasterCache;
 
 //Master Cache bit mask version
 typedef int64_t cachedInt; //max: 1073741823 (2^62 - 2)
@@ -29,23 +31,23 @@ typedef int64_t cachedInt; //max: 1073741823 (2^62 - 2)
 //Master Cache struct version
 typedef uint64_t u_cachedInt;
 
-struct cachedInt_ {
+typedef struct cachedInt_ {
     u_cachedInt number;
     bool sign;
     bool isIndex;
-};
+} cachedInt_;
 
-struct cached_rational {
+typedef struct cached_rational {
     u_cachedInt counter;
     u_cachedInt denominator;
     bool sign;
     bool isIndex;
-};
+} cached_rational;
 //oder
-struct cachedInt__ {
+typedef struct cachedInt__ {
     u_cachedInt number;
     uint8_t info; //include information about sign and isIndex
-};
+} cachedInt__;
 
 
 #ifdef __cplusplus

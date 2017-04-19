@@ -42,7 +42,6 @@ bool cache_exists(MasterCache* mstr, mpz_t element){
  * @param mstr MasterCache pointer
  * @param element id of the element to get from cache
  */
-mpz_t cache_get(MasterCache* mstr, cachedInt element){
-    
-    return 0;
+void cache_get(MasterCache* mstr, cachedInt element, mpz_t result){
+
 }

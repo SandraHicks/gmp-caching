@@ -6,6 +6,7 @@
 #include <sys/types.h>
 #include "defines.h"
 #include <gmp.h>
+#include <stdint.h>
 
 typedef unsigned __int128 uint128_t;
 typedef uint64_t Fnv64_t;
@@ -17,15 +18,17 @@ typedef uint64_t Fnv64_t;
 //FNV1a
 uint64_t get_FNV1a_hash(mpz_t myval){
     //check for negative sign for safety
-    if(myval->_mp_size < 0){
-        mpq_neg(myval, myval);
-    }
-
+    mp_limb_t* key = myval->_mp_d;
+    int size = myval->_mp_size;
     Fnv64_t hash = FNV1_64_INIT;
     
-    //in loop
-    hash ^= (Fnv64_t)
-    hash *= FNV_64_PRIME;
+    int i = size;
+    while(i--){
+        mp_limb_t limb = key[i];
+        hash ^= (Fnv64_t)limb;
+        hash *= FNV_64_PRIME;
+    }
+    
     
     //end loop
     return hash;
@@ -130,7 +133,7 @@ uint64_t get_CRC_hash(mpz_t myval){
             int b = 0;
             for(b=0;b<sizeof(mp_limb_t);b++){
                 uint8_t byte = (data[i] >> b);
-                crc_result ^= uint64_t(byte);
+                crc_result ^= (uint64_t)byte;
                 int j = 0;
                 for(j=0;j<8;j++){
                     if(crc_result & 0x1){

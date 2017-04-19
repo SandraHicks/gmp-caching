@@ -12,7 +12,8 @@
 #ifndef HASHING_H
 #define HASHING_H
 
-
+#include <stdint.h>
+#include <gmp.h>
 
 uint64_t get_FNV1a_hash(mpz_t myval);
 uint64_t get_Jenkins_hash(mpz_t myval);

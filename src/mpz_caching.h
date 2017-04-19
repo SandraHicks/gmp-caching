@@ -20,10 +20,10 @@ extern "C" {
 #include <stdint.h>
 #include <gmp.h>
 
-    struct cached_mpz_t {
+    typedef struct cached_mpz_t {
         mpz_t* integer;
         double fp;
-    };
+    } cached_mpz_t;
 
     cached_mpz_t* init_mpz_cache(int64_t size);
 #ifdef __cplusplus
