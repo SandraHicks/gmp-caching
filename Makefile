@@ -124,6 +124,19 @@ COMMAND/fast:
 .PHONY : COMMAND/fast
 
 #=============================================================================
+# Target rules for targets named caching-operations-test
+
+# Build rule for target.
+caching-operations-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test
+.PHONY : caching-operations-test
+
+# fast build rule for target.
+caching-operations-test/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test.dir/build.make CMakeFiles/caching-operations-test.dir/build
+.PHONY : caching-operations-test/fast
+
+#=============================================================================
 # Target rules for targets named gmp-caching
 
 # Build rule for target.
@@ -174,6 +187,33 @@ mpz-cache-test: cmake_check_build_system
 mpz-cache-test/fast:
 	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/build
 .PHONY : mpz-cache-test/fast
+
+Tests/caching-operations-test.o: Tests/caching-operations-test.c.o
+
+.PHONY : Tests/caching-operations-test.o
+
+# target to build an object file
+Tests/caching-operations-test.c.o:
+	$(MAKE) -f CMakeFiles/caching-operations-test.dir/build.make CMakeFiles/caching-operations-test.dir/Tests/caching-operations-test.c.o
+.PHONY : Tests/caching-operations-test.c.o
+
+Tests/caching-operations-test.i: Tests/caching-operations-test.c.i
+
+.PHONY : Tests/caching-operations-test.i
+
+# target to preprocess a source file
+Tests/caching-operations-test.c.i:
+	$(MAKE) -f CMakeFiles/caching-operations-test.dir/build.make CMakeFiles/caching-operations-test.dir/Tests/caching-operations-test.c.i
+.PHONY : Tests/caching-operations-test.c.i
+
+Tests/caching-operations-test.s: Tests/caching-operations-test.c.s
+
+.PHONY : Tests/caching-operations-test.s
+
+# target to generate assembly for a file
+Tests/caching-operations-test.c.s:
+	$(MAKE) -f CMakeFiles/caching-operations-test.dir/build.make CMakeFiles/caching-operations-test.dir/Tests/caching-operations-test.c.s
+.PHONY : Tests/caching-operations-test.c.s
 
 Tests/hash-test.o: Tests/hash-test.c.o
 
@@ -255,6 +295,33 @@ Tests/mpz-cache-test.s: Tests/mpz-cache-test.c.s
 Tests/mpz-cache-test.c.s:
 	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/Tests/mpz-cache-test.c.s
 .PHONY : Tests/mpz-cache-test.c.s
+
+caching_operations.o: caching_operations.c.o
+
+.PHONY : caching_operations.o
+
+# target to build an object file
+caching_operations.c.o:
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/caching_operations.c.o
+.PHONY : caching_operations.c.o
+
+caching_operations.i: caching_operations.c.i
+
+.PHONY : caching_operations.i
+
+# target to preprocess a source file
+caching_operations.c.i:
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/caching_operations.c.i
+.PHONY : caching_operations.c.i
+
+caching_operations.s: caching_operations.c.s
+
+.PHONY : caching_operations.s
+
+# target to generate assembly for a file
+caching_operations.c.s:
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/caching_operations.c.s
+.PHONY : caching_operations.c.s
 
 debug.o: debug.c.o
 
@@ -481,10 +548,14 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... COMMAND"
+	@echo "... caching-operations-test"
 	@echo "... gmp-caching"
 	@echo "... hash-test"
 	@echo "... hashtable-test"
 	@echo "... mpz-cache-test"
+	@echo "... Tests/caching-operations-test.o"
+	@echo "... Tests/caching-operations-test.i"
+	@echo "... Tests/caching-operations-test.s"
 	@echo "... Tests/hash-test.o"
 	@echo "... Tests/hash-test.i"
 	@echo "... Tests/hash-test.s"
@@ -494,6 +565,9 @@ help:
 	@echo "... Tests/mpz-cache-test.o"
 	@echo "... Tests/mpz-cache-test.i"
 	@echo "... Tests/mpz-cache-test.s"
+	@echo "... caching_operations.o"
+	@echo "... caching_operations.i"
+	@echo "... caching_operations.s"
 	@echo "... debug.o"
 	@echo "... debug.i"
 	@echo "... debug.s"

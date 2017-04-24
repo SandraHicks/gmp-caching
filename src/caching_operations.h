@@ -17,10 +17,55 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-    void get_mpz(uint64_t id, mpz_t val);
-
-
+#include "hashtable.h"
+#include "mpz_caching.h"
+#include "defines.h"
+    
+    
+    typedef struct lookup_table{
+        Hashtable* ht;
+        mpz_t_cache* cache;
+    } lookup_table;
+    
+    typedef struct lookup_table_binary{
+        Hashtable_binary* ht;
+        mpz_t_cache* cache;
+    } lookup_table_binary;
+    
+    /* CACHING SETUP */
+    void initCache(lookup_table* cache, lookup_table_binary* cache_binary, uint64_t cachesize);
+    
+    /* INTEGER CACHING */
+    
+    /* Direct Data Caching
+     */
+    void get_mpz(lookup_table* cache, uint64_t id, mpz_t val);
+    double get_double(lookup_table* cache, uint64_t id);
+    uint64_t cache_insert_mpz(lookup_table* cache, mpz_t val);
+    
+    //later local only
+    bool cache_exists_mpz(lookup_table* cache, mpz_t val);
+    
+    /* +/- Caching
+     */
+    
+    void add_cached_mpz(lookup_table* cache, mpz_t op1, mpz_t op2, uint64_t result);
+    void substract_cached_mpz(lookup_table* cache, mpz_t op1, mpz_t op2, uint64_t result);
+    
+    /* Mult/Div/mod Caching
+     */
+    void multiplicate_cached_mpz(lookup_table* cache, mpz_t op1, mpz_t op2, uint64_t result);
+    void divide_cached_mpz(lookup_table* cache, mpz_t op1, mpz_t op2, uint64_t result);
+    void modulo_cached_mpz(lookup_table* cache, mpz_t op, mpz_t mod, uint64_t result);
+    
+    /* ggT, invert
+     */
+    
+    void gcd_cached_mpz(lookup_table* cache, mpz_t op1, mpz_t op2, uint64_t result);
+    void invert_mod_cached_mpz_t(lookup_table* cache, mpz_t op, mpz_t mod, uint64_t result);
+    
+    
+    /* RATIONAL CACHING */
 
 #ifdef __cplusplus
 }

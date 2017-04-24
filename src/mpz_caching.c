@@ -39,12 +39,12 @@ void printEntry(mpz_t_cache* cache, uint64_t i){
     printf("Element i=%" PRIu64 ": %f\n",i, element->fp);
 }
 
-void get_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
+void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
     cached_mpz_t* element = &cache->cache[i];
     mpz_set(val, element->integer);
 }
 
-double get_double(mpz_t_cache* cache, uint64_t i){
+double get_cached_double(mpz_t_cache* cache, uint64_t i){
     cached_mpz_t* element = &cache->cache[i];
     return element->fp;
 }

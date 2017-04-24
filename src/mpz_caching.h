@@ -39,8 +39,8 @@ extern "C" {
     void init_mpz_cache(mpz_t_cache* cache, uint64_t size);
     int64_t insert_mpz(mpz_t_cache* cache, mpz_t val);
     void printEntry(mpz_t_cache* cache, uint64_t i);
-    void get_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val);
-    double get_double(mpz_t_cache* cache, uint64_t i);
+    void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val);
+    double get_cached_double(mpz_t_cache* cache, uint64_t i);
 #ifdef __cplusplus
 }
 #endif

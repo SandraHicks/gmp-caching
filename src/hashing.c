@@ -171,6 +171,8 @@ uint64_t get_CRC_hash(mpz_t myval){
 
 uint64_t Cantor_pairing_function_int64(uint64_t v1, uint64_t v2){
     uint64_t result = 0.5*(v1+v2)*(v1+v2+1) + v2;
+    uint64_t shift = 1;
+    result &= ~((shift << 63) | (shift << 62));
     return result;
 }
 

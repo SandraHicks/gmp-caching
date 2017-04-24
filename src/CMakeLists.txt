@@ -16,6 +16,7 @@ SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
 set(TEST_DIR ../Tests/)
 
 set(GMP_CACHING_SOURCES
+  ${GMP_CACHING_SRC_DIR}caching_operations.c
   ${GMP_CACHING_SRC_DIR}debug.c
   ${GMP_CACHING_SRC_DIR}hashing.c
   ${GMP_CACHING_SRC_DIR}hashtable.c
@@ -27,6 +28,7 @@ set(GMP_CACHING_SOURCES
 )
 
 set(GMP_CACHING_HEADERS
+  ${GMP_CACHING_SRC_DIR}caching_operations.h
   ${GMP_CACHING_SRC_DIR}config.h
   ${GMP_CACHING_SRC_DIR}debug.h
   ${GMP_CACHING_SRC_DIR}defines.h
@@ -42,6 +44,8 @@ set(GMP_CACHING_HEADERS
 add_library(gmp-caching STATIC ${GMP_CACHING_SOURCES})
 target_link_libraries(gmp-caching gmp)
 
+#### TESTS ####
+
 add_executable(hash-test ${TEST_DIR}hash-test.c)
 include_directories(../src/)
 target_link_libraries(hash-test gmp)
@@ -56,6 +60,13 @@ add_executable(mpz-cache-test ${TEST_DIR}mpz-cache-test.c)
 include_directories(../src/)
 target_link_libraries(mpz-cache-test gmp)
 target_link_libraries(mpz-cache-test gmp-caching)
+
+add_executable(caching-operations-test ${TEST_DIR}caching-operations-test.c)
+include_directories(../src/)
+target_link_libraries(caching-operations-test gmp)
+target_link_libraries(caching-operations-test gmp-caching)
+
+#### DOXYGEN ####
 
 find_package(Doxygen)
 IF (DOXYGEN_FOUND)

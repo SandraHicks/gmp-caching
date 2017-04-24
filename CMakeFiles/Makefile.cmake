@@ -46,6 +46,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
   "CMakeFiles/COMMAND.dir/DependInfo.cmake"
+  "CMakeFiles/caching-operations-test.dir/DependInfo.cmake"
   "CMakeFiles/gmp-caching.dir/DependInfo.cmake"
   "CMakeFiles/hash-test.dir/DependInfo.cmake"
   "CMakeFiles/hashtable-test.dir/DependInfo.cmake"

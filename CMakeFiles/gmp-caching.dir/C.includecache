@@ -6,6 +6,26 @@
 
 #IncludeRegexTransform: 
 
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.c
+caching_operations.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.h
+mpz_caching.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mpz_caching.h
+hashtable.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashtable.h
+hashing.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashing.h
+stdlib.h
+-
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.h
+hashtable.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashtable.h
+mpz_caching.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mpz_caching.h
+defines.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/defines.h
+
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/debug.c
 gmp.h
 -

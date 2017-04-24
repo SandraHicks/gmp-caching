@@ -1,4 +1,5 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/gmp-caching.dir/caching_operations.c.o"
   "CMakeFiles/gmp-caching.dir/debug.c.o"
   "CMakeFiles/gmp-caching.dir/hashing.c.o"
   "CMakeFiles/gmp-caching.dir/hashtable.c.o"

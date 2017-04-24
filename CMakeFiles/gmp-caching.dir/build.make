@@ -57,9 +57,33 @@ include CMakeFiles/gmp-caching.dir/progress.make
 # Include the compile flags for this target's objects.
 include CMakeFiles/gmp-caching.dir/flags.make
 
+CMakeFiles/gmp-caching.dir/caching_operations.c.o: CMakeFiles/gmp-caching.dir/flags.make
+CMakeFiles/gmp-caching.dir/caching_operations.c.o: src/caching_operations.c
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/gmp-caching.dir/caching_operations.c.o"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/gmp-caching.dir/caching_operations.c.o   -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.c
+
+CMakeFiles/gmp-caching.dir/caching_operations.c.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing C source to CMakeFiles/gmp-caching.dir/caching_operations.c.i"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -E /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.c > CMakeFiles/gmp-caching.dir/caching_operations.c.i
+
+CMakeFiles/gmp-caching.dir/caching_operations.c.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling C source to assembly CMakeFiles/gmp-caching.dir/caching_operations.c.s"
+	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -S /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.c -o CMakeFiles/gmp-caching.dir/caching_operations.c.s
+
+CMakeFiles/gmp-caching.dir/caching_operations.c.o.requires:
+
+.PHONY : CMakeFiles/gmp-caching.dir/caching_operations.c.o.requires
+
+CMakeFiles/gmp-caching.dir/caching_operations.c.o.provides: CMakeFiles/gmp-caching.dir/caching_operations.c.o.requires
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/caching_operations.c.o.provides.build
+.PHONY : CMakeFiles/gmp-caching.dir/caching_operations.c.o.provides
+
+CMakeFiles/gmp-caching.dir/caching_operations.c.o.provides.build: CMakeFiles/gmp-caching.dir/caching_operations.c.o
+
+
 CMakeFiles/gmp-caching.dir/debug.c.o: CMakeFiles/gmp-caching.dir/flags.make
 CMakeFiles/gmp-caching.dir/debug.c.o: src/debug.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Building C object CMakeFiles/gmp-caching.dir/debug.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/gmp-caching.dir/debug.c.o"
 	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/gmp-caching.dir/debug.c.o   -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/debug.c
 
 CMakeFiles/gmp-caching.dir/debug.c.i: cmake_force
@@ -83,7 +107,7 @@ CMakeFiles/gmp-caching.dir/debug.c.o.provides.build: CMakeFiles/gmp-caching.dir/
 
 CMakeFiles/gmp-caching.dir/hashing.c.o: CMakeFiles/gmp-caching.dir/flags.make
 CMakeFiles/gmp-caching.dir/hashing.c.o: src/hashing.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building C object CMakeFiles/gmp-caching.dir/hashing.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/gmp-caching.dir/hashing.c.o"
 	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/gmp-caching.dir/hashing.c.o   -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashing.c
 
 CMakeFiles/gmp-caching.dir/hashing.c.i: cmake_force
@@ -107,7 +131,7 @@ CMakeFiles/gmp-caching.dir/hashing.c.o.provides.build: CMakeFiles/gmp-caching.di
 
 CMakeFiles/gmp-caching.dir/hashtable.c.o: CMakeFiles/gmp-caching.dir/flags.make
 CMakeFiles/gmp-caching.dir/hashtable.c.o: src/hashtable.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building C object CMakeFiles/gmp-caching.dir/hashtable.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/gmp-caching.dir/hashtable.c.o"
 	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/gmp-caching.dir/hashtable.c.o   -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashtable.c
 
 CMakeFiles/gmp-caching.dir/hashtable.c.i: cmake_force
@@ -131,7 +155,7 @@ CMakeFiles/gmp-caching.dir/hashtable.c.o.provides.build: CMakeFiles/gmp-caching.
 
 CMakeFiles/gmp-caching.dir/mastercache.c.o: CMakeFiles/gmp-caching.dir/flags.make
 CMakeFiles/gmp-caching.dir/mastercache.c.o: src/mastercache.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building C object CMakeFiles/gmp-caching.dir/mastercache.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/gmp-caching.dir/mastercache.c.o"
 	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/gmp-caching.dir/mastercache.c.o   -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mastercache.c
 
 CMakeFiles/gmp-caching.dir/mastercache.c.i: cmake_force
@@ -155,7 +179,7 @@ CMakeFiles/gmp-caching.dir/mastercache.c.o.provides.build: CMakeFiles/gmp-cachin
 
 CMakeFiles/gmp-caching.dir/master_cache_integer.c.o: CMakeFiles/gmp-caching.dir/flags.make
 CMakeFiles/gmp-caching.dir/master_cache_integer.c.o: src/master_cache_integer.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building C object CMakeFiles/gmp-caching.dir/master_cache_integer.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/gmp-caching.dir/master_cache_integer.c.o"
 	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/gmp-caching.dir/master_cache_integer.c.o   -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_integer.c
 
 CMakeFiles/gmp-caching.dir/master_cache_integer.c.i: cmake_force
@@ -179,7 +203,7 @@ CMakeFiles/gmp-caching.dir/master_cache_integer.c.o.provides.build: CMakeFiles/g
 
 CMakeFiles/gmp-caching.dir/master_cache_rational.c.o: CMakeFiles/gmp-caching.dir/flags.make
 CMakeFiles/gmp-caching.dir/master_cache_rational.c.o: src/master_cache_rational.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building C object CMakeFiles/gmp-caching.dir/master_cache_rational.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/gmp-caching.dir/master_cache_rational.c.o"
 	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/gmp-caching.dir/master_cache_rational.c.o   -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c
 
 CMakeFiles/gmp-caching.dir/master_cache_rational.c.i: cmake_force
@@ -203,7 +227,7 @@ CMakeFiles/gmp-caching.dir/master_cache_rational.c.o.provides.build: CMakeFiles/
 
 CMakeFiles/gmp-caching.dir/mpz_caching.c.o: CMakeFiles/gmp-caching.dir/flags.make
 CMakeFiles/gmp-caching.dir/mpz_caching.c.o: src/mpz_caching.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building C object CMakeFiles/gmp-caching.dir/mpz_caching.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/gmp-caching.dir/mpz_caching.c.o"
 	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/gmp-caching.dir/mpz_caching.c.o   -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mpz_caching.c
 
 CMakeFiles/gmp-caching.dir/mpz_caching.c.i: cmake_force
@@ -227,7 +251,7 @@ CMakeFiles/gmp-caching.dir/mpz_caching.c.o.provides.build: CMakeFiles/gmp-cachin
 
 CMakeFiles/gmp-caching.dir/overflow_detection.c.o: CMakeFiles/gmp-caching.dir/flags.make
 CMakeFiles/gmp-caching.dir/overflow_detection.c.o: src/overflow_detection.c
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building C object CMakeFiles/gmp-caching.dir/overflow_detection.c.o"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building C object CMakeFiles/gmp-caching.dir/overflow_detection.c.o"
 	/usr/bin/cc  $(C_DEFINES) $(C_INCLUDES) $(C_FLAGS) -o CMakeFiles/gmp-caching.dir/overflow_detection.c.o   -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/overflow_detection.c
 
 CMakeFiles/gmp-caching.dir/overflow_detection.c.i: cmake_force
@@ -251,6 +275,7 @@ CMakeFiles/gmp-caching.dir/overflow_detection.c.o.provides.build: CMakeFiles/gmp
 
 # Object files for target gmp-caching
 gmp__caching_OBJECTS = \
+"CMakeFiles/gmp-caching.dir/caching_operations.c.o" \
 "CMakeFiles/gmp-caching.dir/debug.c.o" \
 "CMakeFiles/gmp-caching.dir/hashing.c.o" \
 "CMakeFiles/gmp-caching.dir/hashtable.c.o" \
@@ -263,6 +288,7 @@ gmp__caching_OBJECTS = \
 # External object files for target gmp-caching
 gmp__caching_EXTERNAL_OBJECTS =
 
+libgmp-caching.a: CMakeFiles/gmp-caching.dir/caching_operations.c.o
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/debug.c.o
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/hashing.c.o
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/hashtable.c.o
@@ -273,7 +299,7 @@ libgmp-caching.a: CMakeFiles/gmp-caching.dir/mpz_caching.c.o
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/overflow_detection.c.o
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/build.make
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Linking C static library libgmp-caching.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C static library libgmp-caching.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/gmp-caching.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gmp-caching.dir/link.txt --verbose=$(VERBOSE)
 
@@ -282,6 +308,7 @@ CMakeFiles/gmp-caching.dir/build: libgmp-caching.a
 
 .PHONY : CMakeFiles/gmp-caching.dir/build
 
+CMakeFiles/gmp-caching.dir/requires: CMakeFiles/gmp-caching.dir/caching_operations.c.o.requires
 CMakeFiles/gmp-caching.dir/requires: CMakeFiles/gmp-caching.dir/debug.c.o.requires
 CMakeFiles/gmp-caching.dir/requires: CMakeFiles/gmp-caching.dir/hashing.c.o.requires
 CMakeFiles/gmp-caching.dir/requires: CMakeFiles/gmp-caching.dir/hashtable.c.o.requires
