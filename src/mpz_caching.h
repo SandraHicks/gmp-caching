@@ -23,7 +23,7 @@ extern "C" {
     
     //cached mpz_t
     typedef struct cached_mpz_t {
-        mpz_t* integer;
+        mpz_t integer;
         double fp;
     } cached_mpz_t;
 
@@ -39,6 +39,8 @@ extern "C" {
     void init_mpz_cache(mpz_t_cache* cache, uint64_t size);
     int64_t insert_mpz(mpz_t_cache* cache, mpz_t val);
     void printEntry(mpz_t_cache* cache, uint64_t i);
+    void get_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val);
+    double get_double(mpz_t_cache* cache, uint64_t i);
 #ifdef __cplusplus
 }
 #endif

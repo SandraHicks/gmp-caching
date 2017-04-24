@@ -4,4 +4,5 @@
 CMakeFiles/hashtable-test.dir/Tests/hashtable-test.c.o: Tests/hashtable-test.c
 CMakeFiles/hashtable-test.dir/Tests/hashtable-test.c.o: src/defines.h
 CMakeFiles/hashtable-test.dir/Tests/hashtable-test.c.o: src/hashtable.h
+CMakeFiles/hashtable-test.dir/Tests/hashtable-test.c.o: src/mpz_caching.h
 

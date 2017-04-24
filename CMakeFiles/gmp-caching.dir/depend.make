@@ -12,6 +12,7 @@ CMakeFiles/gmp-caching.dir/hashtable.c.o: src/defines.h
 CMakeFiles/gmp-caching.dir/hashtable.c.o: src/hashing.h
 CMakeFiles/gmp-caching.dir/hashtable.c.o: src/hashtable.c
 CMakeFiles/gmp-caching.dir/hashtable.c.o: src/hashtable.h
+CMakeFiles/gmp-caching.dir/hashtable.c.o: src/mpz_caching.h
 
 CMakeFiles/gmp-caching.dir/master_cache_integer.c.o: src/defines.h
 CMakeFiles/gmp-caching.dir/master_cache_integer.c.o: src/hashtable.h

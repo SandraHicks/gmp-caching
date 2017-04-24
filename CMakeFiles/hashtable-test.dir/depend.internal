@@ -5,3 +5,4 @@ CMakeFiles/hashtable-test.dir/Tests/hashtable-test.c.o
  /home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashtable-test.c
  src/defines.h
  src/hashtable.h
+ src/mpz_caching.h

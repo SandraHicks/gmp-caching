@@ -14,6 +14,7 @@ extern "C" {
 #endif
     #include <stdint.h>
     #include "defines.h"
+    #include "mpz_caching.h"
     #include <gmp.h>
 
     typedef struct cachedIntElement cachedIntElement;
@@ -42,7 +43,7 @@ extern "C" {
     void delete_hashtable(Hashtable* ht);
     
     void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes);
-    bool exists_element(Hashtable* ht, uint64_t* hashes);
+    bool exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_cache* cache);
     void get_k_hashes(mpz_t val, uint64_t* hashes);
     
 

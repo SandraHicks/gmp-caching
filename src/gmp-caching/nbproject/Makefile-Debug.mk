@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/5c0/caching_operations.o \
 	${OBJECTDIR}/_ext/5c0/debug.o \
 	${OBJECTDIR}/_ext/5c0/hashing.o \
 	${OBJECTDIR}/_ext/5c0/hashtable.o \
@@ -70,6 +71,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a: ${OBJECTFILES}
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a
+
+${OBJECTDIR}/_ext/5c0/caching_operations.o: ../caching_operations.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+	${RM} "$@.d"
+	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/caching_operations.o ../caching_operations.c
 
 ${OBJECTDIR}/_ext/5c0/debug.o: ../debug.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0

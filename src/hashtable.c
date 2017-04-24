@@ -6,6 +6,7 @@
 #include "hashtable.h"
 #include "defines.h"
 #include "hashing.h"
+#include "mpz_caching.h"
 #include <stdint.h>
 #include <stdlib.h>
 
@@ -33,7 +34,6 @@ void delete_hashtable(Hashtable* ht){
 
 void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
     //get all hashes mod size
-    printf("insert\n");
     int64_t* h;
     int number_hf = NUMBER_HF;
     h = malloc(sizeof(int64_t)*number_hf);
@@ -54,7 +54,6 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
         h[i] = h_temp;
         
     }
-    printf("loop1\n");
     
     //check if any hash was doubled, set doubled to -1
     for(i=0; i<NUMBER_HF; ++i){
@@ -65,7 +64,6 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
             }
         }
     }
-    printf("loop2\n");
     //insert id into all hashed positions in hashtable
     for(i=0; i<NUMBER_HF; ++i){
         if(h[i]>=0){
@@ -77,12 +75,10 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
             cachedIntList* list = &(ht->lists[h[i]]);
             int curr_count = ht->counter[h[i]];
             if(curr_count == 0){
-                printf("if\n");
                 list->head = this;
                 list->tail = this;
             }
             else{
-                printf("else\n");
                 cachedIntElement* last = list->tail;
                 last->next = this;
                 list->tail = this;
@@ -91,11 +87,10 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
             ht->counter[h[i]] = ht->counter[h[i]]+1;
         }
     }
-    printf("loop3\n");
     free(h);
 }
 
-bool exists_element(Hashtable* ht, uint64_t* hashes){
+bool exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_cache* cache){
     //check if counter at hash position >= 1 if not, return
     cachedIntElement* statefulPointer[NUMBER_HF];
     int min=0;
@@ -151,9 +146,16 @@ bool exists_element(Hashtable* ht, uint64_t* hashes){
             }
         }
         //after searching all lists, check if found
-        if(globalfound == 1)
-            return 1;
-        
+        if(globalfound == 1){
+            mpz_t cached_val;
+            mpz_init(cached_val);
+            get_mpz(cache, curr_id, cached_val);
+            double cached = mpz_get_d(cached_val);
+            double found = mpz_get_d(element);
+            int cmp = mpz_cmpabs(cached_val, element);
+            if(cmp == 0)
+                return 1;
+        }
         
         curr_min = curr_min->next;
     }

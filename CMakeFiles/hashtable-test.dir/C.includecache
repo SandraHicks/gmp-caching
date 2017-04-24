@@ -9,6 +9,8 @@
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashtable-test.c
 hashtable.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashtable.h
+mpz_caching.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz_caching.h
 gmp.h
 -
 stdint.h
@@ -29,6 +31,14 @@ stdint.h
 -
 defines.h
 src/defines.h
+mpz_caching.h
+src/mpz_caching.h
+gmp.h
+-
+
+src/mpz_caching.h
+stdint.h
+-
 gmp.h
 -
 

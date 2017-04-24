@@ -7,6 +7,7 @@
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <logicalFolder name="gmp-caching" displayName="gmp-caching" projectFiles="true">
         </logicalFolder>
+        <itemPath>../caching_operations.h</itemPath>
         <itemPath>../config.h</itemPath>
         <itemPath>../debug.h</itemPath>
         <itemPath>../defines.h</itemPath>
@@ -22,6 +23,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>../caching_operations.c</itemPath>
       <itemPath>../debug.c</itemPath>
       <itemPath>../hashing.c</itemPath>
       <itemPath>../hashtable.c</itemPath>
@@ -57,6 +59,10 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="../caching_operations.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../caching_operations.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../config.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../debug.c" ex="false" tool="0" flavor2="0">
@@ -116,6 +122,10 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="../caching_operations.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../caching_operations.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../config.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../debug.c" ex="false" tool="0" flavor2="0">
