@@ -4,9 +4,6 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <logicalFolder name="gmp-caching" displayName="gmp-caching" projectFiles="true">
-        <itemPath>Makefile</itemPath>
-      </logicalFolder>
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <logicalFolder name="gmp-caching" displayName="gmp-caching" projectFiles="true">
         </logicalFolder>
@@ -21,10 +18,6 @@
         <itemPath>../mpz_caching.h</itemPath>
         <itemPath>../overflow_detection.h</itemPath>
       </logicalFolder>
-    </logicalFolder>
-    <logicalFolder name="ResourceFiles"
-                   displayName="Resource Files"
-                   projectFiles="true">
     </logicalFolder>
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
@@ -42,15 +35,11 @@
                    displayName="Test Files"
                    projectFiles="false"
                    kind="TEST_LOGICAL_FOLDER">
-      <logicalFolder name="f1" displayName="Testfile" projectFiles="true" kind="TEST">
-        <itemPath>../tests/simpletest.c</itemPath>
-      </logicalFolder>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
                    projectFiles="false"
                    kind="IMPORTANT_FILES_FOLDER">
-      <itemPath>Makefile</itemPath>
     </logicalFolder>
   </logicalFolder>
   <sourceRootList>
@@ -104,25 +93,6 @@
       </item>
       <item path="../overflow_detection.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../tests/simpletest.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="Makefile" ex="false" tool="3" flavor2="0">
-      </item>
-      <folder path="TestFiles/f1">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f1</output>
-        </linkerTool>
-      </folder>
     </conf>
     <conf name="Release" type="3">
       <toolsSet>
@@ -182,25 +152,6 @@
       </item>
       <item path="../overflow_detection.h" ex="false" tool="3" flavor2="0">
       </item>
-      <item path="../tests/simpletest.c" ex="false" tool="0" flavor2="0">
-      </item>
-      <item path="Makefile" ex="false" tool="3" flavor2="0">
-      </item>
-      <folder path="TestFiles/f1">
-        <cTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </cTool>
-        <ccTool>
-          <incDir>
-            <pElem>.</pElem>
-          </incDir>
-        </ccTool>
-        <linkerTool>
-          <output>${TESTDIR}/TestFiles/f1</output>
-        </linkerTool>
-      </folder>
     </conf>
   </confs>
 </configurationDescriptor>
