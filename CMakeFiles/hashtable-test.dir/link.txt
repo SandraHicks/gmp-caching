@@ -1,0 +1,1 @@
+/usr/bin/cc   -Wall   CMakeFiles/hashtable-test.dir/Tests/hashtable-test.c.o  -o hashtable-test -rdynamic -lgmp libgmp-caching.a -lgmp 

@@ -1,0 +1,2 @@
+/usr/bin/ar qc libgmp-caching.a  CMakeFiles/gmp-caching.dir/debug.c.o CMakeFiles/gmp-caching.dir/hashing.c.o CMakeFiles/gmp-caching.dir/hashtable.c.o CMakeFiles/gmp-caching.dir/mastercache.c.o CMakeFiles/gmp-caching.dir/master_cache_integer.c.o CMakeFiles/gmp-caching.dir/master_cache_rational.c.o CMakeFiles/gmp-caching.dir/mpz_caching.c.o CMakeFiles/gmp-caching.dir/overflow_detection.c.o
+/usr/bin/ranlib libgmp-caching.a

@@ -33,17 +33,17 @@ extern "C" {
     typedef struct Hashtable{
         int* counter;
         cachedIntList* lists;
-        int size;
+        uint64_t size;
     } Hashtable;
 
     //functions
     
-    void create_hashtable(Hashtable* ht, int size);
+    void create_hashtable(Hashtable* ht, uint64_t size);
+    void delete_hashtable(Hashtable* ht);
     
-    //hashes are not modulo size yet!!
     void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes);
     bool exists_element(Hashtable* ht, uint64_t* hashes);
-    uint64_t* get_k_hashes(mpz_t val, uint64_t* hashes);
+    void get_k_hashes(mpz_t val, uint64_t* hashes);
     
 
 #ifdef __cplusplus

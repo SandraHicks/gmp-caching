@@ -106,10 +106,10 @@ bool exponentiationOverflow(cachedInt base, cachedInt exp){
     return 1;
 }
 
-int MSB(cachedInt val){
+uint32_t MSB(cachedInt val){
   //get unsigned
   if(val < 0)
-      val = val*(-1)
+      val = val*(-1);
   //delete isID bit
   val = deleteIdBit(val);
   

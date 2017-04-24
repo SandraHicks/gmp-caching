@@ -2,11 +2,15 @@
  *
  */
 
-#include "FNV/fnv.h"
 #include <sys/types.h>
 #include "defines.h"
 #include <gmp.h>
 #include <stdint.h>
+
+//Debug
+#include <inttypes.h>
+#include <stdio.h>
+#include "debug.h"
 
 typedef unsigned __int128 uint128_t;
 typedef uint64_t Fnv64_t;
@@ -31,6 +35,11 @@ uint64_t get_FNV1a_hash(mpz_t myval){
     
     
     //end loop
+    //printf("H_prev %" PRIu64 "\n", hash);
+    
+    uint64_t shift = 1;
+    hash &= ~((shift << 63) | (shift << 62));
+
     return hash;
 }
 //Jenkins, Spookyhash (hashes 128bit values!)
@@ -53,8 +62,8 @@ uint64_t get_Murmur_hash(mpz_t myval){
     int size = myval->_mp_size;
     if(size < 0)
         size *= -1;
-    uint64_t hash = size;
-    size_t len;
+    uint64_t hash = 0;
+    size_t len = size;
     //constants
     int32_t c1 = 0xcc9e2d51;
     int32_t c2 = 0x1b873593;
@@ -80,7 +89,7 @@ uint64_t get_Murmur_hash(mpz_t myval){
         float lf = (sizelong/4);
         l =(sizelong/4);
         if(l != lf){
-            int restBytes = (lf-l)*4;
+            //int restBytes = (lf-l)*4;
             uint32_t k = limb >> (l*32);
             k *= c1;
             k = (k << r1) | (k >> (sizelong - r1));
@@ -95,22 +104,27 @@ uint64_t get_Murmur_hash(mpz_t myval){
     hash ^= hash >> 13;
     hash *= 0xc2b2ae35;
     hash ^= hash >> 16;
+    
+    
+    uint64_t shift = 1;
+    hash &= ~((shift << 63) | (shift << 62));
+    
     return hash;
 }
 //CRC
 uint64_t get_CRC_hash(mpz_t myval){
     //apply CRC64 ECMA on mpz_t limbs
-    uint64_t crc_polynom = 0x42F0E1EBA9EA3693;
+    //uint64_t crc_polynom = 0x42F0E1EBA9EA3693;
     uint64_t crc_polynom_rev = 0xC96C5795D7870F42;
     uint64_t crc_result = 0;
     long mp_size = (myval->_mp_size > 0 ? myval->_mp_size : myval->_mp_size* (-1));
-    long bits = mp_size * sizeof(mp_limb_t) * 8;
+    //long bits = mp_size * sizeof(mp_limb_t) * 8;
     mp_limb_t* data = myval->_mp_d;
     
     //XOR first 64 bits with polynom
     if(sizeof(mp_limb_t) <= 8){
         int i = 0;
-        for(i=0;i>mp_size;i++){
+        for(i=0;i<mp_size;i++){
             //begin with lsb
             crc_result ^= data[i];
             int j = 0;
@@ -147,9 +161,12 @@ uint64_t get_CRC_hash(mpz_t myval){
         }
     }
     
-    
-    
-    return 0;
+    //printtoBinary(crc_result);
+    uint64_t shift = 1;
+    crc_result &= ~((shift << 63) | (shift << 62));
+    //printf("H %" PRIu64 "\n", crc_result);
+    //printtoBinary(crc_result);
+    return crc_result;
 }
 
 uint64_t Cantor_pairing_function_int64(uint64_t v1, uint64_t v2){

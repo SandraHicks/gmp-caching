@@ -1,0 +1,43 @@
+\hypertarget{hashtable_8c}{}\section{hashtable.\+c File Reference}
+\label{hashtable_8c}\index{hashtable.\+c@{hashtable.\+c}}
+
+
+hash table implementation  
+
+
+{\ttfamily \#include \char`\"{}hashtable.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}hashing.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+Include dependency graph for hashtable.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=342pt]{hashtable_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries create\+\_\+hashtable} (\hyperlink{structHashtable}{Hashtable} $\ast$ht, int size)\hypertarget{hashtable_8c_a31dcfc0b63d10392d4f56f4cb9b9a184}{}\label{hashtable_8c_a31dcfc0b63d10392d4f56f4cb9b9a184}
+
+\item 
+void {\bfseries insert\+\_\+element} (\hyperlink{structHashtable}{Hashtable} $\ast$ht, uint64\+\_\+t id, uint64\+\_\+t $\ast$hashes)\hypertarget{hashtable_8c_a3999323c0facade24699b869058ddeb7}{}\label{hashtable_8c_a3999323c0facade24699b869058ddeb7}
+
+\item 
+bool {\bfseries exists\+\_\+element} (\hyperlink{structHashtable}{Hashtable} $\ast$ht, uint64\+\_\+t $\ast$hashes)\hypertarget{hashtable_8c_aed8c2f4fe2841d104316a89031c9ec18}{}\label{hashtable_8c_aed8c2f4fe2841d104316a89031c9ec18}
+
+\item 
+uint64\+\_\+t $\ast$ {\bfseries get\+\_\+k\+\_\+hashes} (mpz\+\_\+t val, uint64\+\_\+t $\ast$hashes)\hypertarget{hashtable_8c_aac92fc3070a43b3b8f77d899a1d59ac1}{}\label{hashtable_8c_aac92fc3070a43b3b8f77d899a1d59ac1}
+
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+hash table implementation 
+
+\begin{DoxyAuthor}{Author}
+Sandra Hicks 
+\end{DoxyAuthor}

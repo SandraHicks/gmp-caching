@@ -25,7 +25,7 @@ extern "C" {
         double fp;
     } cached_mpz_t;
 
-    cached_mpz_t* init_mpz_cache(int64_t size);
+    void init_mpz_cache(int64_t size, cached_mpz_t* result);
 #ifdef __cplusplus
 }
 #endif

@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hash-test.c
+hashing.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashing.h
+gmp.h
+-
+stdint.h
+-
+inttypes.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+
+src/hashing.h
+stdint.h
+-
+gmp.h
+-
+

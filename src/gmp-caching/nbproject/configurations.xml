@@ -11,6 +11,7 @@
         <logicalFolder name="gmp-caching" displayName="gmp-caching" projectFiles="true">
         </logicalFolder>
         <itemPath>../config.h</itemPath>
+        <itemPath>../debug.h</itemPath>
         <itemPath>../defines.h</itemPath>
         <itemPath>../hashing.h</itemPath>
         <itemPath>../hashtable.h</itemPath>
@@ -28,6 +29,7 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>../debug.c</itemPath>
       <itemPath>../hashing.c</itemPath>
       <itemPath>../hashtable.c</itemPath>
       <itemPath>../master_cache_integer.c</itemPath>
@@ -67,6 +69,10 @@
         </archiverTool>
       </compileType>
       <item path="../config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../debug.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../debug.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../defines.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -141,6 +147,10 @@
         </archiverTool>
       </compileType>
       <item path="../config.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../debug.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="../debug.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../defines.h" ex="false" tool="3" flavor2="0">
       </item>

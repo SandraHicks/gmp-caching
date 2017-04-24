@@ -35,6 +35,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/_ext/5c0/debug.o \
 	${OBJECTDIR}/_ext/5c0/hashing.o \
 	${OBJECTDIR}/_ext/5c0/hashtable.o \
 	${OBJECTDIR}/_ext/5c0/master_cache_integer.o \
@@ -79,6 +80,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a: ${OBJECTFILES}
 	${RM} ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a
 	${AR} -rv ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a ${OBJECTFILES} 
 	$(RANLIB) ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/libgmp-caching.a
+
+${OBJECTDIR}/_ext/5c0/debug.o: ../debug.c
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/debug.o ../debug.c
 
 ${OBJECTDIR}/_ext/5c0/hashing.o: ../hashing.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
@@ -132,6 +138,19 @@ ${TESTDIR}/_ext/829ac912/simpletest.o: ../tests/simpletest.c
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -I. -MMD -MP -MF "$@.d" -o ${TESTDIR}/_ext/829ac912/simpletest.o ../tests/simpletest.c
 
+
+${OBJECTDIR}/_ext/5c0/debug_nomain.o: ${OBJECTDIR}/_ext/5c0/debug.o ../debug.c 
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+	@NMOUTPUT=`${NM} ${OBJECTDIR}/_ext/5c0/debug.o`; \
+	if (echo "$$NMOUTPUT" | ${GREP} '|main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T main$$') || \
+	   (echo "$$NMOUTPUT" | ${GREP} 'T _main$$'); \
+	then  \
+	    ${RM} "$@.d";\
+	    $(COMPILE.c) -O2 -Dmain=__nomain -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/debug_nomain.o ../debug.c;\
+	else  \
+	    ${CP} ${OBJECTDIR}/_ext/5c0/debug.o ${OBJECTDIR}/_ext/5c0/debug_nomain.o;\
+	fi
 
 ${OBJECTDIR}/_ext/5c0/hashing_nomain.o: ${OBJECTDIR}/_ext/5c0/hashing.o ../hashing.c 
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0

@@ -9,24 +9,55 @@
 #include <stdint.h>
 #include <stdlib.h>
 
-void create_hashtable(Hashtable* ht, int size){
+//Debug
+#include <stdio.h>
+#include <inttypes.h>
+
+void create_hashtable(Hashtable* ht, uint64_t size){
     ht->size = size;
-    cachedIntList l[size];
-    ht->lists = l;
-    int c[size];
-    ht->counter = c;
     
-    //init counter array with 0?
+    cachedIntList* l = malloc(sizeof(cachedIntList)*(size));
+    ht->lists = l;
+    
+    int c[size];
+    //init counter array with 0
+    int i = size;
+    while(i--){
+        c[i] = 0;
+    }
+    ht->counter = c;
+}
+
+void delete_hashtable(Hashtable* ht){
+    free(ht);
 }
 
 void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
     //get all hashes mod size
+    printf("Start insert\n");
+    int64_t* h;
+    int number_hf = NUMBER_HF;
+    h = malloc(sizeof(int64_t)*number_hf);
+    
+    uint64_t uh_temp1 = hashes[0];
+    int64_t h_temp1 = (int64_t)uh_temp1;
+    h[0] = h_temp1;
+    
+    
     int i;
-    int64_t h[NUMBER_HF];
-    for(i=0; i<NUMBER_HF; ++i){
-        h[i] = hashes[i];
-        h[i] = h[i] % ht->size;
+    for(i=0; i<number_hf; ++i){
+        uint64_t uh_temp = hashes[i];
+        int64_t h_temp = (int64_t)uh_temp;
+        if(h_temp > ht->size){
+            if(ht->size > 0)
+                h_temp = (int64_t)(h_temp % (int64_t)ht->size);
+        }
+        h[i] = h_temp;
+        
+        //h[i] = h[i] % ht->size;
     }
+    
+    
     //check if any hash was doubled, set doubled to -1
     for(i=0; i<NUMBER_HF; ++i){
         int j;
@@ -37,18 +68,22 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
         }
     }
     
-    
+    printf("hash\n");
     //insert id into all hashed positions in hashtable
+    cachedIntList* lista = &(ht->lists[h[0]]);
+    printf("hash2\n");
+    //cachedIntList* listb = &(ht->lists[h[4]]);
+    int c = ht->counter[h[4]];
     for(i=0; i<NUMBER_HF; ++i){
         if(h[i]>=0){
+            printf("size %" PRIx64 "\n", h[i]);
             //create new element
             cachedIntElement* this = malloc(sizeof(cachedIntElement));
             this->id = id;
             this->hash = hashes[i];
-            
+            printf("init\n");
             //insert in sorted List, sort by id. can attach to last pointer because ids are fortlaufend
             cachedIntList* list = &(ht->lists[h[i]]);
-            cachedIntElement* curr = list->head;
             if(ht->counter[h[i]] == 0){
                 list->head = this;
                 list->tail = this;
@@ -58,9 +93,12 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
                 list->tail = this;
             }
             
+            printf("count up\n");
             ht->counter[h[i]] = ht->counter[h[i]]+1;
         }
     }
+    printf("End hash\n");
+    free(h);
 }
 
 bool exists_element(Hashtable* ht, uint64_t* hashes){
@@ -128,48 +166,33 @@ bool exists_element(Hashtable* ht, uint64_t* hashes){
     return 0;
 }
 
-uint64_t* get_k_hashes(mpz_t val, uint64_t* hashes){
+void get_k_hashes(mpz_t val, uint64_t* hashes){
     int number = (NUMBER_HF);
     switch(number){
-        case 1: ;
-            uint64_t h_temp1[1];
-            h_temp1[0] = get_FNV1a_hash(val);
-            hashes = h_temp1;
-            return hashes;
+        case 1: 
+            hashes[0] = get_FNV1a_hash(val);
             break;
-        case 2: ;
-            uint64_t h_temp2[2];
-            h_temp2[0] = get_FNV1a_hash(val);
-            h_temp2[1] = get_Murmur_hash(val);
-            hashes = h_temp2;
-            return hashes;
+        case 2: 
+            hashes[0] = get_FNV1a_hash(val);
+            hashes[1] = get_Murmur_hash(val);
             break;
-        case 3: ;
-            uint64_t h_temp3[3];
-            h_temp3[0] = get_FNV1a_hash(val);
-            h_temp3[1] = get_Murmur_hash(val);
-            h_temp3[2] = get_CRC_hash(val);
-            hashes = h_temp3;
-            return hashes;
+        case 3: 
+            hashes[0] = get_FNV1a_hash(val);
+            hashes[1] = get_Murmur_hash(val);
+            hashes[2] = get_CRC_hash(val);
             break;
-        case 4: ;
-            uint64_t h_temp4[4];
-            h_temp4[0] = get_FNV1a_hash(val);
-            h_temp4[1] = get_Murmur_hash(val);
-            h_temp4[2] = get_CRC_hash(val);
-            h_temp4[3] = get_Jenkins_hash(val);
-            hashes = h_temp4;
-            return hashes;
+        case 4: 
+            hashes[0] = get_FNV1a_hash(val);
+            hashes[1] = get_Murmur_hash(val);
+            hashes[2] = get_CRC_hash(val);
+            hashes[3] = get_Jenkins_hash(val);
             break;
-        case 5: ;
-            uint64_t h_temp5[5];
-            h_temp5[0] = get_FNV1a_hash(val);
-            h_temp5[1] = get_Murmur_hash(val);
-            h_temp5[2] = get_CRC_hash(val);
-            h_temp5[3] = get_Jenkins_hash(val);
-            h_temp5[4] = get_Sip_hash(val);
-            hashes = h_temp5;
-            return hashes;
+        case 5: 
+            hashes[0] = get_FNV1a_hash(val);
+            hashes[1] = get_Murmur_hash(val);
+            hashes[2] = get_CRC_hash(val);
+            hashes[3] = get_Jenkins_hash(val);
+            hashes[4] = get_Sip_hash(val);
             break;
         default:
             //ERROR

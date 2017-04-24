@@ -1,0 +1,132 @@
+\hypertarget{master__cache__integer_8c}{}\section{master\+\_\+cache\+\_\+integer.\+c File Reference}
+\label{master__cache__integer_8c}\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+
+
+Master Cache functions for caching Integer operations in gmp.  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$gmp.\+h$>$}\\*
+{\ttfamily \#include $<$limits.\+h$>$}\\*
+{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mastercache.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}hashtable.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}mpz\+\_\+caching.\+h\char`\"{}}\\*
+Include dependency graph for master\+\_\+cache\+\_\+integer.\+c\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{master__cache__integer_8c__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+cached\+Int \hyperlink{master__cache__integer_8c_a3397536b3b12ba3bd017d29e760131a3}{int\+\_\+cache\+\_\+add} (\hyperlink{structMasterCache}{Master\+Cache} mstr, cached\+Int val1, cached\+Int val2)
+\begin{DoxyCompactList}\small\item\em function for master cache to add two cached values and cache the result if large. \end{DoxyCompactList}\item 
+cached\+Int \hyperlink{master__cache__integer_8c_aa1561d5f860144af16cc17ecee6c1a56}{int\+\_\+cache\+\_\+subtract} (\hyperlink{structMasterCache}{Master\+Cache} mstr, cached\+Int val1, cached\+Int val2)
+\begin{DoxyCompactList}\small\item\em function for master cache to subtract two cached values and cache the result if large. \end{DoxyCompactList}\item 
+cached\+Int \hyperlink{master__cache__integer_8c_a411ddc812bb0bdf3dfeb69c70a19a418}{int\+\_\+cache\+\_\+multiply} (\hyperlink{structMasterCache}{Master\+Cache} mstr, cached\+Int val1, cached\+Int val2)
+\begin{DoxyCompactList}\small\item\em function for master cache to multiply two cached values and cache the result if large. \end{DoxyCompactList}\item 
+cached\+Int \hyperlink{master__cache__integer_8c_ae3957ca8ea6bce9f7ac7bb2c3ad14d40}{int\+\_\+cache\+\_\+divide} (\hyperlink{structMasterCache}{Master\+Cache} mstr, cached\+Int divident, cached\+Int divisor)
+\begin{DoxyCompactList}\small\item\em function for master cache to divide two cached values and cache the result if large. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Master Cache functions for caching Integer operations in gmp. 
+
+\begin{DoxyAuthor}{Author}
+Sandra Hicks 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!int\+\_\+cache\+\_\+add@{int\+\_\+cache\+\_\+add}}
+\index{int\+\_\+cache\+\_\+add@{int\+\_\+cache\+\_\+add}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{int\+\_\+cache\+\_\+add(\+Master\+Cache mstr, cached\+Int val1, cached\+Int val2)}{int_cache_add(MasterCache mstr, cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}cached\+Int int\+\_\+cache\+\_\+add (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache}}]{mstr, }
+\item[{cached\+Int}]{val1, }
+\item[{cached\+Int}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_a3397536b3b12ba3bd017d29e760131a3}{}\label{master__cache__integer_8c_a3397536b3b12ba3bd017d29e760131a3}
+
+
+function for master cache to add two cached values and cache the result if large. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em val1} & id of the first operand \\
+\hline
+{\em val2} & id of the second operand \\
+\hline
+\end{DoxyParams}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!int\+\_\+cache\+\_\+divide@{int\+\_\+cache\+\_\+divide}}
+\index{int\+\_\+cache\+\_\+divide@{int\+\_\+cache\+\_\+divide}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{int\+\_\+cache\+\_\+divide(\+Master\+Cache mstr, cached\+Int divident, cached\+Int divisor)}{int_cache_divide(MasterCache mstr, cachedInt divident, cachedInt divisor)}}]{\setlength{\rightskip}{0pt plus 5cm}cached\+Int int\+\_\+cache\+\_\+divide (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache}}]{mstr, }
+\item[{cached\+Int}]{divident, }
+\item[{cached\+Int}]{divisor}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_ae3957ca8ea6bce9f7ac7bb2c3ad14d40}{}\label{master__cache__integer_8c_ae3957ca8ea6bce9f7ac7bb2c3ad14d40}
+
+
+function for master cache to divide two cached values and cache the result if large. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em divident} & id of the first operand \\
+\hline
+{\em divisor} & id of the second operand \\
+\hline
+\end{DoxyParams}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!int\+\_\+cache\+\_\+multiply@{int\+\_\+cache\+\_\+multiply}}
+\index{int\+\_\+cache\+\_\+multiply@{int\+\_\+cache\+\_\+multiply}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{int\+\_\+cache\+\_\+multiply(\+Master\+Cache mstr, cached\+Int val1, cached\+Int val2)}{int_cache_multiply(MasterCache mstr, cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}cached\+Int int\+\_\+cache\+\_\+multiply (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache}}]{mstr, }
+\item[{cached\+Int}]{val1, }
+\item[{cached\+Int}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_a411ddc812bb0bdf3dfeb69c70a19a418}{}\label{master__cache__integer_8c_a411ddc812bb0bdf3dfeb69c70a19a418}
+
+
+function for master cache to multiply two cached values and cache the result if large. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em val1} & id of the first operand \\
+\hline
+{\em val2} & id of the second operand \\
+\hline
+\end{DoxyParams}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!int\+\_\+cache\+\_\+subtract@{int\+\_\+cache\+\_\+subtract}}
+\index{int\+\_\+cache\+\_\+subtract@{int\+\_\+cache\+\_\+subtract}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{int\+\_\+cache\+\_\+subtract(\+Master\+Cache mstr, cached\+Int val1, cached\+Int val2)}{int_cache_subtract(MasterCache mstr, cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}cached\+Int int\+\_\+cache\+\_\+subtract (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache}}]{mstr, }
+\item[{cached\+Int}]{val1, }
+\item[{cached\+Int}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_aa1561d5f860144af16cc17ecee6c1a56}{}\label{master__cache__integer_8c_aa1561d5f860144af16cc17ecee6c1a56}
+
+
+function for master cache to subtract two cached values and cache the result if large. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em val1} & id of the first operand \\
+\hline
+{\em val2} & id of the second operand \\
+\hline
+\end{DoxyParams}
