@@ -52,6 +52,11 @@ include_directories(../src/)
 target_link_libraries(hashtable-test gmp)
 target_link_libraries(hashtable-test gmp-caching)
 
+add_executable(mpz-cache-test ${TEST_DIR}mpz-cache-test.c)
+include_directories(../src/)
+target_link_libraries(mpz-cache-test gmp)
+target_link_libraries(mpz-cache-test gmp-caching)
+
 find_package(Doxygen)
 IF (DOXYGEN_FOUND)
 SET(DOXYGEN_INPUT src/Doxyfile)

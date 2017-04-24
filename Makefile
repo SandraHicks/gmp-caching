@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named COMMAND
+
+# Build rule for target.
+COMMAND: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 COMMAND
+.PHONY : COMMAND
+
+# fast build rule for target.
+COMMAND/fast:
+	$(MAKE) -f CMakeFiles/COMMAND.dir/build.make CMakeFiles/COMMAND.dir/build
+.PHONY : COMMAND/fast
+
+#=============================================================================
 # Target rules for targets named gmp-caching
 
 # Build rule for target.
@@ -150,17 +163,17 @@ hashtable-test/fast:
 .PHONY : hashtable-test/fast
 
 #=============================================================================
-# Target rules for targets named COMMAND
+# Target rules for targets named mpz-cache-test
 
 # Build rule for target.
-COMMAND: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 COMMAND
-.PHONY : COMMAND
+mpz-cache-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mpz-cache-test
+.PHONY : mpz-cache-test
 
 # fast build rule for target.
-COMMAND/fast:
-	$(MAKE) -f CMakeFiles/COMMAND.dir/build.make CMakeFiles/COMMAND.dir/build
-.PHONY : COMMAND/fast
+mpz-cache-test/fast:
+	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/build
+.PHONY : mpz-cache-test/fast
 
 Tests/hash-test.o: Tests/hash-test.c.o
 
@@ -215,6 +228,33 @@ Tests/hashtable-test.s: Tests/hashtable-test.c.s
 Tests/hashtable-test.c.s:
 	$(MAKE) -f CMakeFiles/hashtable-test.dir/build.make CMakeFiles/hashtable-test.dir/Tests/hashtable-test.c.s
 .PHONY : Tests/hashtable-test.c.s
+
+Tests/mpz-cache-test.o: Tests/mpz-cache-test.c.o
+
+.PHONY : Tests/mpz-cache-test.o
+
+# target to build an object file
+Tests/mpz-cache-test.c.o:
+	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/Tests/mpz-cache-test.c.o
+.PHONY : Tests/mpz-cache-test.c.o
+
+Tests/mpz-cache-test.i: Tests/mpz-cache-test.c.i
+
+.PHONY : Tests/mpz-cache-test.i
+
+# target to preprocess a source file
+Tests/mpz-cache-test.c.i:
+	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/Tests/mpz-cache-test.c.i
+.PHONY : Tests/mpz-cache-test.c.i
+
+Tests/mpz-cache-test.s: Tests/mpz-cache-test.c.s
+
+.PHONY : Tests/mpz-cache-test.s
+
+# target to generate assembly for a file
+Tests/mpz-cache-test.c.s:
+	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/Tests/mpz-cache-test.c.s
+.PHONY : Tests/mpz-cache-test.c.s
 
 debug.o: debug.c.o
 
@@ -440,16 +480,20 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... COMMAND"
 	@echo "... gmp-caching"
 	@echo "... hash-test"
 	@echo "... hashtable-test"
-	@echo "... COMMAND"
+	@echo "... mpz-cache-test"
 	@echo "... Tests/hash-test.o"
 	@echo "... Tests/hash-test.i"
 	@echo "... Tests/hash-test.s"
 	@echo "... Tests/hashtable-test.o"
 	@echo "... Tests/hashtable-test.i"
 	@echo "... Tests/hashtable-test.s"
+	@echo "... Tests/mpz-cache-test.o"
+	@echo "... Tests/mpz-cache-test.i"
+	@echo "... Tests/mpz-cache-test.s"
 	@echo "... debug.o"
 	@echo "... debug.i"
 	@echo "... debug.s"

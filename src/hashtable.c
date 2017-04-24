@@ -19,13 +19,12 @@ void create_hashtable(Hashtable* ht, uint64_t size){
     cachedIntList* l = malloc(sizeof(cachedIntList)*(size));
     ht->lists = l;
     
-    int c[size];
+    ht->counter = malloc(sizeof(int)*size);
     //init counter array with 0
     int i = size;
     while(i--){
-        c[i] = 0;
+        ht->counter[i] = 0;
     }
-    ht->counter = c;
 }
 
 void delete_hashtable(Hashtable* ht){
@@ -34,7 +33,7 @@ void delete_hashtable(Hashtable* ht){
 
 void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
     //get all hashes mod size
-    printf("Start insert\n");
+    printf("insert\n");
     int64_t* h;
     int number_hf = NUMBER_HF;
     h = malloc(sizeof(int64_t)*number_hf);
@@ -54,9 +53,8 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
         }
         h[i] = h_temp;
         
-        //h[i] = h[i] % ht->size;
     }
-    
+    printf("loop1\n");
     
     //check if any hash was doubled, set doubled to -1
     for(i=0; i<NUMBER_HF; ++i){
@@ -67,37 +65,33 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
             }
         }
     }
-    
-    printf("hash\n");
+    printf("loop2\n");
     //insert id into all hashed positions in hashtable
-    cachedIntList* lista = &(ht->lists[h[0]]);
-    printf("hash2\n");
-    //cachedIntList* listb = &(ht->lists[h[4]]);
-    int c = ht->counter[h[4]];
     for(i=0; i<NUMBER_HF; ++i){
         if(h[i]>=0){
-            printf("size %" PRIx64 "\n", h[i]);
             //create new element
             cachedIntElement* this = malloc(sizeof(cachedIntElement));
             this->id = id;
             this->hash = hashes[i];
-            printf("init\n");
             //insert in sorted List, sort by id. can attach to last pointer because ids are fortlaufend
             cachedIntList* list = &(ht->lists[h[i]]);
-            if(ht->counter[h[i]] == 0){
+            int curr_count = ht->counter[h[i]];
+            if(curr_count == 0){
+                printf("if\n");
                 list->head = this;
                 list->tail = this;
             }
             else{
-                list->tail->prev->next = this;
+                printf("else\n");
+                cachedIntElement* last = list->tail;
+                last->next = this;
                 list->tail = this;
             }
             
-            printf("count up\n");
             ht->counter[h[i]] = ht->counter[h[i]]+1;
         }
     }
-    printf("End hash\n");
+    printf("loop3\n");
     free(h);
 }
 
