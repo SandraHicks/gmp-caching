@@ -33,8 +33,8 @@ extern "C" {
     } lookup_table_binary;
     
     /* CACHING SETUP */
-    void initCache(lookup_table* cache, lookup_table_binary* cache_binary, uint64_t cachesize);
-    
+    void init_cache(lookup_table* cache, lookup_table_binary* cache_binary, uint64_t cachesize);
+    void delete_cache(lookup_table* cache, lookup_table_binary* cache_binary);
     /* INTEGER CACHING */
     
     /* Direct Data Caching
@@ -44,25 +44,26 @@ extern "C" {
     uint64_t cache_insert_mpz(lookup_table* cache, mpz_t val);
     
     //later local only
-    bool cache_exists_mpz(lookup_table* cache, mpz_t val);
+    uint64_t cache_exists_mpz(lookup_table* cache, mpz_t val);
+    uint64_t cache_exists_mpz_binary(lookup_table_binary* cache, mpz_t op1, mpz_t op2);
     
     /* +/- Caching
      */
     
-    void add_cached_mpz(lookup_table* cache, mpz_t op1, mpz_t op2, uint64_t result);
-    void substract_cached_mpz(lookup_table* cache, mpz_t op1, mpz_t op2, uint64_t result);
+    uint64_t add_cached_mpz(lookup_table_binary* cache, mpz_t op1, mpz_t op2);
+    uint64_t substract_cached_mpz(lookup_table_binary* cache, mpz_t op1, mpz_t op2);
     
     /* Mult/Div/mod Caching
      */
-    void multiplicate_cached_mpz(lookup_table* cache, mpz_t op1, mpz_t op2, uint64_t result);
-    void divide_cached_mpz(lookup_table* cache, mpz_t op1, mpz_t op2, uint64_t result);
-    void modulo_cached_mpz(lookup_table* cache, mpz_t op, mpz_t mod, uint64_t result);
+    void multiplicate_cached_mpz(lookup_table_binary* cache, mpz_t op1, mpz_t op2, uint64_t result);
+    void divide_cached_mpz(lookup_table_binary* cache, mpz_t op1, mpz_t op2, uint64_t result);
+    void modulo_cached_mpz(lookup_table_binary* cache, mpz_t op, mpz_t mod, uint64_t result);
     
     /* ggT, invert
      */
     
-    void gcd_cached_mpz(lookup_table* cache, mpz_t op1, mpz_t op2, uint64_t result);
-    void invert_mod_cached_mpz_t(lookup_table* cache, mpz_t op, mpz_t mod, uint64_t result);
+    void gcd_cached_mpz(lookup_table_binary* cache, mpz_t op1, mpz_t op2, uint64_t result);
+    void invert_mod_cached_mpz_t(lookup_table_binary* cache, mpz_t op, mpz_t mod, uint64_t result);
     
     
     /* RATIONAL CACHING */

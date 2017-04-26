@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <inttypes.h>
 
-void create_hashtable(Hashtable* ht, uint64_t size){
+void init_hashtable(Hashtable* ht, uint64_t size){
     ht->size = size;
     
     cachedIntList* l = malloc(sizeof(cachedIntList)*(size));
@@ -29,7 +29,22 @@ void create_hashtable(Hashtable* ht, uint64_t size){
 }
 
 void delete_hashtable(Hashtable* ht){
-    free(ht);
+    int i = 0;
+    for(i=0; i<ht->size; ++i){
+        cachedIntList* curr_list = &(ht->lists[i]);
+        cachedIntElement* curr = curr_list->head;
+        while(curr != curr_list->tail){
+            cachedIntElement* next = curr->next;
+            free(curr);
+            curr = next;
+        }
+        free(curr_list->tail);
+        free(curr_list);
+    }
+    free(ht->counter);
+    free(ht->lists);
+    ht->counter = NULL;
+    ht->lists = NULL;
 }
 
 void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
@@ -88,9 +103,10 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
         }
     }
     free(h);
+    h = NULL;
 }
 
-bool exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_cache* cache){
+uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_cache* cache){
     //check if counter at hash position >= 1 if not, return
     cachedIntElement* statefulPointer[NUMBER_HF];
     int min=0;
@@ -207,11 +223,15 @@ void get_k_hashes_cpf(mpz_t val1, mpz_t val2, uint64_t* hashes){
     for(i=0;i<NUMBER_HF;++i){
         hashes[i] = Cantor_pairing_function_int64(hashes1[i], hashes2[i]);
     }
+    free(hashes1);
+    hashes1 = NULL;
+    free(hashes2);
+    hashes2 = NULL;
 }
 
 
 
-void create_hashtable_binary(Hashtable_binary* ht, uint64_t size){
+void init_hashtable_binary(Hashtable_binary* ht, uint64_t size){
     ht->size = size;
     
     cachedIntList_binary* l = malloc(sizeof(cachedIntList_binary)*(size));
@@ -226,7 +246,22 @@ void create_hashtable_binary(Hashtable_binary* ht, uint64_t size){
 }
 
 void delete_hashtable_binary(Hashtable_binary* ht){
-    free(ht);
+    int i = 0;
+    for(i=0; i<ht->size; ++i){
+        cachedIntList_binary* curr_list = &(ht->lists[i]);
+        cachedIntElement_binary* curr = curr_list->head;
+        while(curr != curr_list->tail){
+            cachedIntElement_binary* next = curr->next;
+            free(curr);
+            curr = next;
+        }
+        free(curr_list->tail);
+        free(curr_list);
+    }
+    free(ht->counter);
+    ht->counter = NULL;
+    free(ht->lists);
+    ht->lists = NULL;
 }
 
 void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op2, uint64_t id_res, uint64_t* hashes){
@@ -290,7 +325,7 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
     free(h);
 }
 
-bool exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1, mpz_t op2, mpz_t_cache* cache){
+uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1, mpz_t op2, mpz_t_cache* cache){
     //check if counter at hash position >= 1 if not, return
     cachedIntElement_binary* statefulPointer[NUMBER_HF];
     int min=0;

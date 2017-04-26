@@ -40,11 +40,11 @@ extern "C" {
     
     //functions
     
-    void create_hashtable(Hashtable* ht, uint64_t size);
+    void init_hashtable(Hashtable* ht, uint64_t size);
     void delete_hashtable(Hashtable* ht);
     
     void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes);
-    bool exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_cache* cache);
+    uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_cache* cache);
     void get_k_hashes(mpz_t val, uint64_t* hashes);
     
     /*UNARY*/
@@ -72,11 +72,11 @@ extern "C" {
         uint64_t size;
     } Hashtable_binary;
     
-    void create_hashtable_binary(Hashtable_binary* ht, uint64_t size);
+    void init_hashtable_binary(Hashtable_binary* ht, uint64_t size);
     void delete_hashtable_binary(Hashtable_binary* ht);
     
     void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op2, uint64_t id_res, uint64_t* hashes);
-    bool exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1, mpz_t op2, mpz_t_cache* cache);
+    uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1, mpz_t op2, mpz_t_cache* cache);
     void get_k_hashes_cpf(mpz_t val1, mpz_t val2, uint64_t* hashes);
 
 #ifdef __cplusplus

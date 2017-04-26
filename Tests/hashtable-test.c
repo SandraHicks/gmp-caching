@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
 
   Hashtable* mytable;
   mytable = malloc(sizeof(Hashtable));
-  create_hashtable(mytable, SIZE);
+  init_hashtable(mytable, SIZE);
 printf("size %" PRIu64 "\n", mytable->size);
 
   mpz_t_cache* mycache = malloc(sizeof(mpz_t_cache));

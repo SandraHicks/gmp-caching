@@ -12,7 +12,7 @@
 int main(int argc, char** argv) {
   lookup_table* table = malloc(sizeof(lookup_table));
   lookup_table_binary* table_binary = malloc(sizeof(lookup_table_binary));
-  initCache(table, table_binary, SIZE_C);
+  init_cache(table, table_binary, SIZE_C);
 
   mpz_t val;
   mpz_init(val);
@@ -32,11 +32,32 @@ int main(int argc, char** argv) {
 
   printf("Val1: %f Val2: %f Val3: %f\n", get_double(table, id), get_double(table, id2), get_double(table, id3));
 
-  printf("Exists Val1?: %d\n", cache_exists_mpz(table, val));
+  printf("Exists Val1?: %" PRIu64 "\n", cache_exists_mpz(table, val));
+  printf("Get Val1\n");
+  
+  mpz_t temp;
+  mpz_init(temp);
+  get_mpz(table, id, temp);
+
+  printf("temp %f\n", mpz_get_d(temp));
+
+  mpz_t temp_noinit;
+  get_mpz(table, id, temp_noinit);
+
+  printf("temp no init %f\n", mpz_get_d(temp_noinit));
 
   mpz_t val4;
   mpz_init(val4);
   mpz_set_si(val4, 10061992);
+  printf("Val4: %f\n", mpz_get_d(val4));
 
-  printf("Exists Val4?: %d\n", cache_exists_mpz(table, val4));
+  printf("Exists Val4?: %" PRIu64 "\n", cache_exists_mpz(table, val4));
+
+  delete_cache(table, table_binary);
+  mpz_clear(val);
+  mpz_clear(val2);
+  mpz_clear(val3);
+  mpz_clear(val4);
+  mpz_clear(temp);
+  mpz_clear(temp_noinit);
 }

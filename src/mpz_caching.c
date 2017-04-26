@@ -11,10 +11,22 @@
 #include <stdio.h>
 #include <inttypes.h>
 
+//keine ID 0, fange an bei 1 zu zählen weil praktischer bei Abfragen
+
 void init_mpz_cache(mpz_t_cache* cache, uint64_t size){
     cache->cache = malloc(sizeof(cached_mpz_t) * size);
-    cache->next_id = 0;
+    cache->next_id = 1;
     cache->size = size;
+}
+
+void delete_mpz_cache(mpz_t_cache* cache){
+    int i = 1;
+    for(i=1; i<cache->next_id; i++){
+        cached_mpz_t* curr = &(cache->cache[i]);
+        mpz_clear(curr->integer);
+    }
+    free(cache->cache);
+    cache->cache = NULL;
 }
 
 //insert new mpz_t at the end, return ID
@@ -41,7 +53,12 @@ void printEntry(mpz_t_cache* cache, uint64_t i){
 
 void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
     cached_mpz_t* element = &cache->cache[i];
-    mpz_set(val, element->integer);
+    if(val == NULL){
+        mpz_init_set(val, element->integer);
+    }
+    else{
+        mpz_set(val, element->integer);
+    }
 }
 
 double get_cached_double(mpz_t_cache* cache, uint64_t i){

@@ -28,6 +28,7 @@ int main(int argc, char** argv) {
   id = insert_mpz(mycache, val2);
   printf("ID %" PRIx64 "\n", id);
   printEntry(mycache, id);
+  delete_mpz_cache(mycache);
 
   return 0;
 }
