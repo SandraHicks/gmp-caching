@@ -17,6 +17,8 @@ hashing.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashing.h
 stdlib.h
 -
+stdio.h
+-
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.h
 hashtable.h

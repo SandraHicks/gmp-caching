@@ -65,6 +65,7 @@ add_executable(caching-operations-test ${TEST_DIR}caching-operations-test.c)
 include_directories(../src/)
 target_link_libraries(caching-operations-test gmp)
 target_link_libraries(caching-operations-test gmp-caching)
+set (CMAKE_C_FLAGS "-fPIC")
 
 #### DOXYGEN ####
 

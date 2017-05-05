@@ -39,7 +39,6 @@ void delete_hashtable(Hashtable* ht){
             curr = next;
         }
         free(curr_list->tail);
-        free(curr_list);
     }
     free(ht->counter);
     free(ht->lists);
@@ -256,7 +255,6 @@ void delete_hashtable_binary(Hashtable_binary* ht){
             curr = next;
         }
         free(curr_list->tail);
-        free(curr_list);
     }
     free(ht->counter);
     ht->counter = NULL;
