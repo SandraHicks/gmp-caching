@@ -54,6 +54,11 @@ int main(int argc, char** argv) {
 
   printf("Exists Val4?: %" PRIu64 "\n", cache_exists_mpz(cache, val4));
 
+
+  uint64_t add_id = cached_mpz_add(cache, val, val2);
+  printf("42 + 1337 id: %" PRIu64 "\n", add_id);
+  printf("42 + 1337 =%f\n", get_double(cache, add_id));
+
   delete_cache(cache);
   mpz_clear(val);
   mpz_clear(val2);

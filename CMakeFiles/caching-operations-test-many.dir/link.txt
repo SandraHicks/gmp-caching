@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC   CMakeFiles/caching-operations-test-many.dir/Tests/caching-operations-test-many.c.o  -o caching-operations-test-many -rdynamic -lgmp libgmp-caching.a -lgmp 

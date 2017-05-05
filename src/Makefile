@@ -124,6 +124,19 @@ COMMAND/fast:
 .PHONY : COMMAND/fast
 
 #=============================================================================
+# Target rules for targets named caching-operations-test-many
+
+# Build rule for target.
+caching-operations-test-many: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-many
+.PHONY : caching-operations-test-many
+
+# fast build rule for target.
+caching-operations-test-many/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/build
+.PHONY : caching-operations-test-many/fast
+
+#=============================================================================
 # Target rules for targets named caching-operations-test
 
 # Build rule for target.
@@ -295,6 +308,33 @@ hashtable.s: hashtable.c.s
 hashtable.c.s:
 	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/hashtable.c.s
 .PHONY : hashtable.c.s
+
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.o: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.o
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.o
+
+# target to build an object file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.o:
+	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.o
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.o
+
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.i: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.i
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.i
+
+# target to preprocess a source file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.i:
+	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.i
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.i
+
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.s: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.s
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.s
+
+# target to generate assembly for a file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.s:
+	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.s
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c.s
 
 home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test.o: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test.c.o
 
@@ -548,6 +588,7 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... COMMAND"
+	@echo "... caching-operations-test-many"
 	@echo "... caching-operations-test"
 	@echo "... gmp-caching"
 	@echo "... hash-test"
@@ -565,6 +606,9 @@ help:
 	@echo "... hashtable.o"
 	@echo "... hashtable.i"
 	@echo "... hashtable.s"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.o"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.i"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.s"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test.o"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test.i"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test.s"

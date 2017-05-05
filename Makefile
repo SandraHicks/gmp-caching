@@ -124,6 +124,19 @@ COMMAND/fast:
 .PHONY : COMMAND/fast
 
 #=============================================================================
+# Target rules for targets named caching-operations-test-many
+
+# Build rule for target.
+caching-operations-test-many: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-many
+.PHONY : caching-operations-test-many
+
+# fast build rule for target.
+caching-operations-test-many/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/build
+.PHONY : caching-operations-test-many/fast
+
+#=============================================================================
 # Target rules for targets named caching-operations-test
 
 # Build rule for target.
@@ -187,6 +200,33 @@ mpz-cache-test: cmake_check_build_system
 mpz-cache-test/fast:
 	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/build
 .PHONY : mpz-cache-test/fast
+
+Tests/caching-operations-test-many.o: Tests/caching-operations-test-many.c.o
+
+.PHONY : Tests/caching-operations-test-many.o
+
+# target to build an object file
+Tests/caching-operations-test-many.c.o:
+	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/Tests/caching-operations-test-many.c.o
+.PHONY : Tests/caching-operations-test-many.c.o
+
+Tests/caching-operations-test-many.i: Tests/caching-operations-test-many.c.i
+
+.PHONY : Tests/caching-operations-test-many.i
+
+# target to preprocess a source file
+Tests/caching-operations-test-many.c.i:
+	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/Tests/caching-operations-test-many.c.i
+.PHONY : Tests/caching-operations-test-many.c.i
+
+Tests/caching-operations-test-many.s: Tests/caching-operations-test-many.c.s
+
+.PHONY : Tests/caching-operations-test-many.s
+
+# target to generate assembly for a file
+Tests/caching-operations-test-many.c.s:
+	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/Tests/caching-operations-test-many.c.s
+.PHONY : Tests/caching-operations-test-many.c.s
 
 Tests/caching-operations-test.o: Tests/caching-operations-test.c.o
 
@@ -548,11 +588,15 @@ help:
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
 	@echo "... COMMAND"
+	@echo "... caching-operations-test-many"
 	@echo "... caching-operations-test"
 	@echo "... gmp-caching"
 	@echo "... hash-test"
 	@echo "... hashtable-test"
 	@echo "... mpz-cache-test"
+	@echo "... Tests/caching-operations-test-many.o"
+	@echo "... Tests/caching-operations-test-many.i"
+	@echo "... Tests/caching-operations-test-many.s"
 	@echo "... Tests/caching-operations-test.o"
 	@echo "... Tests/caching-operations-test.i"
 	@echo "... Tests/caching-operations-test.s"

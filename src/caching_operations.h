@@ -21,6 +21,15 @@ extern "C" {
 #include "mpz_caching.h"
 #include "defines.h"
 
+    enum Operation {
+        ADD,
+        SUB,
+        MUL,
+        DIV,
+        MOD,
+        GCD,
+        INV
+    };
 
     
     typedef struct lookup_table{
@@ -57,7 +66,7 @@ extern "C" {
     
     //later local only
     uint64_t cache_exists_mpz(lookup* lu, mpz_t val);
-    uint64_t cache_exists_mpz_binary(lookup_table_binary* cache, mpz_t op1, mpz_t op2);
+    uint64_t cache_exists_mpz_binary(lookup* cache, mpz_t op1, mpz_t op2, int op);
     
     /* +/- Caching
      */
@@ -67,15 +76,15 @@ extern "C" {
     
     /* Mult/Div/mod Caching
      */
-    void multiplicate_cached_mpz(lookup* cache, mpz_t op1, mpz_t op2, uint64_t result);
-    void divide_cached_mpz(lookup* cache, mpz_t op1, mpz_t op2, uint64_t result);
-    void modulo_cached_mpz(lookup* cache, mpz_t op, mpz_t mod, uint64_t result);
+    uint64_t multiplicate_cached_mpz(lookup* cache, mpz_t op1, mpz_t op2);
+    uint64_t divide_cached_mpz(lookup* cache, mpz_t op1, mpz_t op2);
+    uint64_t modulo_cached_mpz(lookup* cache, mpz_t op, mpz_t mod);
     
     /* ggT, invert
      */
     
-    void gcd_cached_mpz(lookup_table_binary* cache, mpz_t op1, mpz_t op2, uint64_t result);
-    void invert_mod_cached_mpz_t(lookup_table_binary* cache, mpz_t op, mpz_t mod, uint64_t result);
+    uint64_t gcd_cached_mpz(lookup_table_binary* cache, mpz_t op1, mpz_t op2);
+    uint64_t invert_mod_cached_mpz_t(lookup_table_binary* cache, mpz_t op, mpz_t mod);
     
     
     /* RATIONAL CACHING */

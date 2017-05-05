@@ -272,7 +272,6 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
     int64_t h_temp1 = (int64_t)uh_temp1;
     h[0] = h_temp1;
     
-    
     int i;
     for(i=0; i<number_hf; ++i){
         uint64_t uh_temp = hashes[i];
@@ -284,7 +283,6 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
         h[i] = h_temp;
         
     }
-    
     //check if any hash was doubled, set doubled to -1
     for(i=0; i<NUMBER_HF; ++i){
         int j;
@@ -321,6 +319,7 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
         }
     }
     free(h);
+    h=NULL;
 }
 
 uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1, mpz_t op2, mpz_t_cache* cache){
