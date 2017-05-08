@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named caching-operations-test-advanced
+
+# Build rule for target.
+caching-operations-test-advanced: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-advanced
+.PHONY : caching-operations-test-advanced
+
+# fast build rule for target.
+caching-operations-test-advanced/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test-advanced.dir/build.make CMakeFiles/caching-operations-test-advanced.dir/build
+.PHONY : caching-operations-test-advanced/fast
+
+#=============================================================================
 # Target rules for targets named COMMAND
 
 # Build rule for target.
@@ -200,6 +213,33 @@ mpz-cache-test: cmake_check_build_system
 mpz-cache-test/fast:
 	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/build
 .PHONY : mpz-cache-test/fast
+
+Tests/caching-operations-test-advanced.o: Tests/caching-operations-test-advanced.c.o
+
+.PHONY : Tests/caching-operations-test-advanced.o
+
+# target to build an object file
+Tests/caching-operations-test-advanced.c.o:
+	$(MAKE) -f CMakeFiles/caching-operations-test-advanced.dir/build.make CMakeFiles/caching-operations-test-advanced.dir/Tests/caching-operations-test-advanced.c.o
+.PHONY : Tests/caching-operations-test-advanced.c.o
+
+Tests/caching-operations-test-advanced.i: Tests/caching-operations-test-advanced.c.i
+
+.PHONY : Tests/caching-operations-test-advanced.i
+
+# target to preprocess a source file
+Tests/caching-operations-test-advanced.c.i:
+	$(MAKE) -f CMakeFiles/caching-operations-test-advanced.dir/build.make CMakeFiles/caching-operations-test-advanced.dir/Tests/caching-operations-test-advanced.c.i
+.PHONY : Tests/caching-operations-test-advanced.c.i
+
+Tests/caching-operations-test-advanced.s: Tests/caching-operations-test-advanced.c.s
+
+.PHONY : Tests/caching-operations-test-advanced.s
+
+# target to generate assembly for a file
+Tests/caching-operations-test-advanced.c.s:
+	$(MAKE) -f CMakeFiles/caching-operations-test-advanced.dir/build.make CMakeFiles/caching-operations-test-advanced.dir/Tests/caching-operations-test-advanced.c.s
+.PHONY : Tests/caching-operations-test-advanced.c.s
 
 Tests/caching-operations-test-many.o: Tests/caching-operations-test-many.c.o
 
@@ -587,6 +627,7 @@ help:
 	@echo "... depend"
 	@echo "... edit_cache"
 	@echo "... rebuild_cache"
+	@echo "... caching-operations-test-advanced"
 	@echo "... COMMAND"
 	@echo "... caching-operations-test-many"
 	@echo "... caching-operations-test"
@@ -594,6 +635,9 @@ help:
 	@echo "... hash-test"
 	@echo "... hashtable-test"
 	@echo "... mpz-cache-test"
+	@echo "... Tests/caching-operations-test-advanced.o"
+	@echo "... Tests/caching-operations-test-advanced.i"
+	@echo "... Tests/caching-operations-test-advanced.s"
 	@echo "... Tests/caching-operations-test-many.o"
 	@echo "... Tests/caching-operations-test-many.i"
 	@echo "... Tests/caching-operations-test-many.s"

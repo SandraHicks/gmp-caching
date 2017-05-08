@@ -22,9 +22,9 @@ typedef int bool;
 #define cachedInt_MIN -(2^62-2)
 
 /*! bitmask to get sign position of cachedInt */
-#define cachedInt_SIGN (1 << 63)
+#define cachedInt_SIGN 63
 /*! bitmask to get the position of cachedInt indicating if it is an ID or number*/
-#define cachedInt_IsID (1 << 62)
+#define cachedInt_IsID 62
 
 /*! ratio of the size of the hashtable compared to size of cache */
 #define hashtable_RATIO 0.4

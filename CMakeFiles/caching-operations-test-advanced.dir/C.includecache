@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-many.c
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching-operations-test-advanced.c
 caching_operations.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/caching_operations.h
 gmp.h

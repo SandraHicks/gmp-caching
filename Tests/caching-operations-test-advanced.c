@@ -12,7 +12,7 @@
 #define SIZE_C 1000
 #define MPZTS 20
 
-//add, sub, mul tests
+//tdiv, gcd, invert tests
 
 int main(int argc, char** argv) {
 
@@ -32,9 +32,10 @@ int main(int argc, char** argv) {
   //speichern der ids
   uint64_t* ids = malloc(sizeof(uint64_t) * MPZTS);
   uint64_t* ids_neg = malloc(sizeof(uint64_t) * MPZTS);
-  uint64_t* add_ids = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
-  uint64_t* sub_ids = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
-  uint64_t* mul_ids = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
+  uint64_t* tdiv_ids_q = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
+  uint64_t* tdiv_ids_r = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
+  uint64_t* mod_ids = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
+  uint64_t* inv_ids = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
   //erstelle mpz_ts und füge zum cache hinzu
   int i;
   for(i=0; i < MPZTS; i++){
@@ -48,7 +49,7 @@ int main(int argc, char** argv) {
     ids_neg[i] = cache_insert_mpz(cache, integers_neg[i]);
   }
 
-
+/*
   //prüfe ob mpz_ts angelegt wurden
   for(i=0; i < MPZTS; i++){
     printf("Exists %d: %" PRIu64 "\n", i, cache_exists_mpz(cache, integers[i]));
@@ -86,6 +87,7 @@ int main(int argc, char** argv) {
   for(i=0; i < MPZTS; i++){
     mpz_clear(integers[i]);
   }
+*/
   free(integers);
   integers = NULL;
   free(integers_neg);
@@ -94,10 +96,12 @@ int main(int argc, char** argv) {
   ids = NULL;
   free(ids_neg);
   ids_neg = NULL;
-  free(add_ids);
-  add_ids = NULL;
-  free(sub_ids);
-  sub_ids = NULL;
-  free(mul_ids);
-  mul_ids = NULL;
+  free(tdiv_ids_q);
+  tdiv_ids_q = NULL;
+  free(tdiv_ids_r);
+  tdiv_ids_r = NULL;
+  free(mod_ids);
+  mod_ids = NULL;
+  free(inv_ids);
+  inv_ids = NULL;
 }

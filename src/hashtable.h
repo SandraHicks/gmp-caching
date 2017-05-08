@@ -75,8 +75,9 @@ extern "C" {
     void init_hashtable_binary(Hashtable_binary* ht, uint64_t size);
     void delete_hashtable_binary(Hashtable_binary* ht);
     
-    void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op2, uint64_t id_res, uint64_t* hashes);
-    uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1, mpz_t op2, mpz_t_cache* cache);
+    //extra_info is optional and can be passed as NULL
+    void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op2, uint64_t id_res, uint64_t* extra_info, uint64_t* hashes);
+    uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1, mpz_t op2, mpz_t_cache* cache, uint64_t* extra_info);
     void get_k_hashes_cpf(mpz_t val1, mpz_t val2, uint64_t* hashes);
 
 #ifdef __cplusplus

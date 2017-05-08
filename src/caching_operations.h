@@ -25,7 +25,7 @@ extern "C" {
         ADD,
         SUB,
         MUL,
-        DIV,
+        TDIV,
         MOD,
         GCD,
         INV
@@ -47,7 +47,7 @@ extern "C" {
         lookup_table_binary* add;
         lookup_table_binary* sub;
         lookup_table_binary* mul;
-        lookup_table_binary* div;
+        lookup_table_binary* tdiv;
         lookup_table_binary* mod;
         lookup_table_binary* gcd;
         lookup_table_binary* inv;
@@ -66,25 +66,25 @@ extern "C" {
     
     //later local only
     uint64_t cache_exists_mpz(lookup* lu, mpz_t val);
-    uint64_t cache_exists_mpz_binary(lookup* cache, mpz_t op1, mpz_t op2, int op);
+    uint64_t cache_exists_mpz_binary(lookup* cache, mpz_t op1, mpz_t op2, uint64_t* extra_info, int op);
     
     /* +/- Caching
      */
     
-    uint64_t cached_mpz_add(lookup* cache, mpz_t op1, mpz_t op2);
+    uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in);
     uint64_t cached_mpz_sub(lookup* cache, mpz_t op1, mpz_t op2);
     
     /* Mult/Div/mod Caching
      */
-    uint64_t multiplicate_cached_mpz(lookup* cache, mpz_t op1, mpz_t op2);
-    uint64_t divide_cached_mpz(lookup* cache, mpz_t op1, mpz_t op2);
-    uint64_t modulo_cached_mpz(lookup* cache, mpz_t op, mpz_t mod);
+    uint64_t cached_mpz_mul(lookup* cache, mpz_t op1, mpz_t op2);
+    uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2);
+    uint64_t cached_mpz_mod(lookup* cache, mpz_t op, mpz_t mod);
     
     /* ggT, invert
      */
     
-    uint64_t gcd_cached_mpz(lookup_table_binary* cache, mpz_t op1, mpz_t op2);
-    uint64_t invert_mod_cached_mpz_t(lookup_table_binary* cache, mpz_t op, mpz_t mod);
+    uint64_t cached_mpz_gcd(lookup* cache, mpz_t op1, mpz_t op2);
+    uint64_t cached_mpz_invert(lookup* cache, mpz_t op, mpz_t mod);
     
     
     /* RATIONAL CACHING */

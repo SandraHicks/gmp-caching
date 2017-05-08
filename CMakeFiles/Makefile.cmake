@@ -45,6 +45,7 @@ set(CMAKE_MAKEFILE_PRODUCTS
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
+  "CMakeFiles/caching-operations-test-advanced.dir/DependInfo.cmake"
   "CMakeFiles/COMMAND.dir/DependInfo.cmake"
   "CMakeFiles/caching-operations-test-many.dir/DependInfo.cmake"
   "CMakeFiles/caching-operations-test.dir/DependInfo.cmake"

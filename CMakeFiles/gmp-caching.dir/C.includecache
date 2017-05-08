@@ -19,6 +19,8 @@ stdlib.h
 -
 stdio.h
 -
+inttypes.h
+-
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.h
 hashtable.h

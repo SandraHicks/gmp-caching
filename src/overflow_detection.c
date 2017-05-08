@@ -125,5 +125,5 @@ uint32_t MSB(cachedInt val){
 
 cachedInt deleteIdBit(cachedInt val){
     uint64_t one = 1;
-    return (val & cachedInt_IsID) ? (val & (~(one<<62))): val;
+    return (val & (one << cachedInt_IsID)) ? (val & (~(one<<cachedInt_IsID))): val;
 }
