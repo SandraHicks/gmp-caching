@@ -111,82 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named caching-operations-test-advanced
+# Target rules for targets named mpz-cache-test
 
 # Build rule for target.
-caching-operations-test-advanced: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-advanced
-.PHONY : caching-operations-test-advanced
+mpz-cache-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 mpz-cache-test
+.PHONY : mpz-cache-test
 
 # fast build rule for target.
-caching-operations-test-advanced/fast:
-	$(MAKE) -f CMakeFiles/caching-operations-test-advanced.dir/build.make CMakeFiles/caching-operations-test-advanced.dir/build
-.PHONY : caching-operations-test-advanced/fast
-
-#=============================================================================
-# Target rules for targets named COMMAND
-
-# Build rule for target.
-COMMAND: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 COMMAND
-.PHONY : COMMAND
-
-# fast build rule for target.
-COMMAND/fast:
-	$(MAKE) -f CMakeFiles/COMMAND.dir/build.make CMakeFiles/COMMAND.dir/build
-.PHONY : COMMAND/fast
-
-#=============================================================================
-# Target rules for targets named caching-operations-test-many
-
-# Build rule for target.
-caching-operations-test-many: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-many
-.PHONY : caching-operations-test-many
-
-# fast build rule for target.
-caching-operations-test-many/fast:
-	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/build
-.PHONY : caching-operations-test-many/fast
-
-#=============================================================================
-# Target rules for targets named caching-operations-test
-
-# Build rule for target.
-caching-operations-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test
-.PHONY : caching-operations-test
-
-# fast build rule for target.
-caching-operations-test/fast:
-	$(MAKE) -f CMakeFiles/caching-operations-test.dir/build.make CMakeFiles/caching-operations-test.dir/build
-.PHONY : caching-operations-test/fast
-
-#=============================================================================
-# Target rules for targets named gmp-caching
-
-# Build rule for target.
-gmp-caching: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmp-caching
-.PHONY : gmp-caching
-
-# fast build rule for target.
-gmp-caching/fast:
-	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/build
-.PHONY : gmp-caching/fast
-
-#=============================================================================
-# Target rules for targets named hash-test
-
-# Build rule for target.
-hash-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hash-test
-.PHONY : hash-test
-
-# fast build rule for target.
-hash-test/fast:
-	$(MAKE) -f CMakeFiles/hash-test.dir/build.make CMakeFiles/hash-test.dir/build
-.PHONY : hash-test/fast
+mpz-cache-test/fast:
+	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/build
+.PHONY : mpz-cache-test/fast
 
 #=============================================================================
 # Target rules for targets named hashtable-test
@@ -202,17 +137,95 @@ hashtable-test/fast:
 .PHONY : hashtable-test/fast
 
 #=============================================================================
-# Target rules for targets named mpz-cache-test
+# Target rules for targets named hash-test
 
 # Build rule for target.
-mpz-cache-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 mpz-cache-test
-.PHONY : mpz-cache-test
+hash-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hash-test
+.PHONY : hash-test
 
 # fast build rule for target.
-mpz-cache-test/fast:
-	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/build
-.PHONY : mpz-cache-test/fast
+hash-test/fast:
+	$(MAKE) -f CMakeFiles/hash-test.dir/build.make CMakeFiles/hash-test.dir/build
+.PHONY : hash-test/fast
+
+#=============================================================================
+# Target rules for targets named caching-operations-test
+
+# Build rule for target.
+caching-operations-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test
+.PHONY : caching-operations-test
+
+# fast build rule for target.
+caching-operations-test/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test.dir/build.make CMakeFiles/caching-operations-test.dir/build
+.PHONY : caching-operations-test/fast
+
+#=============================================================================
+# Target rules for targets named caching-operations-test-many
+
+# Build rule for target.
+caching-operations-test-many: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-many
+.PHONY : caching-operations-test-many
+
+# fast build rule for target.
+caching-operations-test-many/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/build
+.PHONY : caching-operations-test-many/fast
+
+#=============================================================================
+# Target rules for targets named COMMAND
+
+# Build rule for target.
+COMMAND: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 COMMAND
+.PHONY : COMMAND
+
+# fast build rule for target.
+COMMAND/fast:
+	$(MAKE) -f CMakeFiles/COMMAND.dir/build.make CMakeFiles/COMMAND.dir/build
+.PHONY : COMMAND/fast
+
+#=============================================================================
+# Target rules for targets named caching-operations-test-advanced
+
+# Build rule for target.
+caching-operations-test-advanced: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-advanced
+.PHONY : caching-operations-test-advanced
+
+# fast build rule for target.
+caching-operations-test-advanced/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test-advanced.dir/build.make CMakeFiles/caching-operations-test-advanced.dir/build
+.PHONY : caching-operations-test-advanced/fast
+
+#=============================================================================
+# Target rules for targets named master-cache-integer-test
+
+# Build rule for target.
+master-cache-integer-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 master-cache-integer-test
+.PHONY : master-cache-integer-test
+
+# fast build rule for target.
+master-cache-integer-test/fast:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test.dir/build.make CMakeFiles/master-cache-integer-test.dir/build
+.PHONY : master-cache-integer-test/fast
+
+#=============================================================================
+# Target rules for targets named gmp-caching
+
+# Build rule for target.
+gmp-caching: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmp-caching
+.PHONY : gmp-caching
+
+# fast build rule for target.
+gmp-caching/fast:
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/build
+.PHONY : gmp-caching/fast
 
 Tests/caching-operations-test-advanced.o: Tests/caching-operations-test-advanced.c.o
 
@@ -348,6 +361,33 @@ Tests/hashtable-test.s: Tests/hashtable-test.c.s
 Tests/hashtable-test.c.s:
 	$(MAKE) -f CMakeFiles/hashtable-test.dir/build.make CMakeFiles/hashtable-test.dir/Tests/hashtable-test.c.s
 .PHONY : Tests/hashtable-test.c.s
+
+Tests/master-cache-integer-test.o: Tests/master-cache-integer-test.c.o
+
+.PHONY : Tests/master-cache-integer-test.o
+
+# target to build an object file
+Tests/master-cache-integer-test.c.o:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test.dir/build.make CMakeFiles/master-cache-integer-test.dir/Tests/master-cache-integer-test.c.o
+.PHONY : Tests/master-cache-integer-test.c.o
+
+Tests/master-cache-integer-test.i: Tests/master-cache-integer-test.c.i
+
+.PHONY : Tests/master-cache-integer-test.i
+
+# target to preprocess a source file
+Tests/master-cache-integer-test.c.i:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test.dir/build.make CMakeFiles/master-cache-integer-test.dir/Tests/master-cache-integer-test.c.i
+.PHONY : Tests/master-cache-integer-test.c.i
+
+Tests/master-cache-integer-test.s: Tests/master-cache-integer-test.c.s
+
+.PHONY : Tests/master-cache-integer-test.s
+
+# target to generate assembly for a file
+Tests/master-cache-integer-test.c.s:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test.dir/build.make CMakeFiles/master-cache-integer-test.dir/Tests/master-cache-integer-test.c.s
+.PHONY : Tests/master-cache-integer-test.c.s
 
 Tests/mpz-cache-test.o: Tests/mpz-cache-test.c.o
 
@@ -626,15 +666,16 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
-	@echo "... caching-operations-test-advanced"
-	@echo "... COMMAND"
-	@echo "... caching-operations-test-many"
-	@echo "... caching-operations-test"
-	@echo "... gmp-caching"
-	@echo "... hash-test"
-	@echo "... hashtable-test"
 	@echo "... mpz-cache-test"
+	@echo "... hashtable-test"
+	@echo "... hash-test"
+	@echo "... caching-operations-test"
+	@echo "... caching-operations-test-many"
+	@echo "... COMMAND"
+	@echo "... caching-operations-test-advanced"
+	@echo "... master-cache-integer-test"
+	@echo "... gmp-caching"
+	@echo "... rebuild_cache"
 	@echo "... Tests/caching-operations-test-advanced.o"
 	@echo "... Tests/caching-operations-test-advanced.i"
 	@echo "... Tests/caching-operations-test-advanced.s"
@@ -650,6 +691,9 @@ help:
 	@echo "... Tests/hashtable-test.o"
 	@echo "... Tests/hashtable-test.i"
 	@echo "... Tests/hashtable-test.s"
+	@echo "... Tests/master-cache-integer-test.o"
+	@echo "... Tests/master-cache-integer-test.i"
+	@echo "... Tests/master-cache-integer-test.s"
 	@echo "... Tests/mpz-cache-test.o"
 	@echo "... Tests/mpz-cache-test.i"
 	@echo "... Tests/mpz-cache-test.s"

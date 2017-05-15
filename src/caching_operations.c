@@ -10,8 +10,8 @@
 
 
 /*local definitions*/
-uint64_t shift = (uint64_t)1 << cachedInt_IsID;
-uint64_t neg = (uint64_t)1 << cachedInt_SIGN;
+#define SHIFT ((uint64_t)1 << cachedInt_IsID)
+#define NEG ((uint64_t)1 << cachedInt_SIGN)
 
 
 uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val);
@@ -118,9 +118,9 @@ void delete_cache(lookup* cache){
 }
 
 void get_mpz(lookup* cache, uint64_t id, mpz_t val){
-    id = id & ~shift;
-    if(id & neg){
-        id = id & ~neg;
+    id = id & ~SHIFT;
+    if(id & NEG){
+        id = id & ~NEG;
         get_cached_mpz(cache->lkup->cache, id, val);
         mpz_neg(val, val);
     }
@@ -129,9 +129,9 @@ void get_mpz(lookup* cache, uint64_t id, mpz_t val){
 }
 
 double get_double(lookup* cache, uint64_t id){
-    id = id & ~shift;
-    if(id & neg){
-        id = id & ~neg;
+    id = id & ~SHIFT;
+    if(id & NEG){
+        id = id & ~NEG;
         return (-1)*get_cached_double(cache->lkup->cache, id);
     }
     else
@@ -189,9 +189,9 @@ uint64_t cache_insert_mpz(lookup* lu, mpz_t val){
         return 0;
     
     if(isNeg)
-        return id | neg | shift;
+        return id | NEG | SHIFT;
     else
-        return id | shift;
+        return id | SHIFT;
 }
 
 uint64_t cache_exists_mpz_raw(lookup* lu, mpz_t val){
@@ -242,9 +242,9 @@ uint64_t cache_exists_mpz(lookup* lu, mpz_t val){
         return 0;
     
     if(isNeg)
-        return id | neg | shift;
+        return id | NEG | SHIFT;
     else
-        return id | shift;
+        return id | SHIFT;
 }
 
 
@@ -307,7 +307,7 @@ uint64_t cache_exists_mpz_binary_raw(lookup* cache, mpz_t op1, mpz_t op2, uint64
 
 uint64_t cache_exists_mpz_binary(lookup* cache, mpz_t op1, mpz_t op2, uint64_t* extra_info, int op){
     uint64_t id = cache_exists_mpz_binary_raw(cache, op1, op2, extra_info, op);
-    return id | shift;
+    return id | SHIFT;
 }
 
 void mpz_swap(mpz_t op1, mpz_t op2){
@@ -345,7 +345,7 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
         if(id){
             mpz_clear(op1);
             mpz_clear(op2);
-            id |= shift;
+            id |= SHIFT;
             return id;
         }
         
@@ -359,7 +359,7 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
         if(id){
             mpz_clear(op1);
             mpz_clear(op2);
-            return id | neg | shift;
+            return id | NEG | SHIFT;
         }
         lkuptable = cache->add;
         mpz_add(result, op1, op2);
@@ -373,9 +373,9 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
             mpz_clear(op1);
             mpz_clear(op2);
             if(cmp >= 0)
-                return id | shift;
+                return id | SHIFT;
             else
-                return id | neg | shift;
+                return id | NEG | SHIFT;
         }
         lkuptable = cache->sub;
         mpz_add(result, op1, op2);
@@ -410,9 +410,9 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
     mpz_clear(op2);
     mpz_clear(result);
     if(resNeg)
-        return id_res | shift | neg;
+        return id_res | SHIFT | NEG;
     else
-        return id_res | shift;
+        return id_res | SHIFT;
 }
 
 uint64_t cached_mpz_sub(lookup* cache, mpz_t op1, mpz_t op2){
@@ -444,9 +444,9 @@ uint64_t cached_mpz_mul(lookup* cache, mpz_t op1, mpz_t op2){
         mpz_clear(op1_in);
         mpz_clear(op2_in);
         if(((op1->_mp_size < 0) + (op2->_mp_size < 0))%2)
-            return id | shift | neg;
+            return id | SHIFT | NEG;
         else
-           return id | shift; 
+           return id | SHIFT; 
     }
     
     mpz_t result;
@@ -481,9 +481,9 @@ uint64_t cached_mpz_mul(lookup* cache, mpz_t op1, mpz_t op2){
     mpz_clear(result);
     
     if(resNeg)
-        return id_res | shift | neg;
+        return id_res | SHIFT | NEG;
     else
-        return id_res | shift;
+        return id_res | SHIFT;
 }
 
 uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
@@ -508,10 +508,10 @@ uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
         mpz_clear(op1_in);
         mpz_clear(op2_in);
         if(((op1->_mp_size < 0) + (op2->_mp_size < 0))%2){
-            return id | shift | neg;
+            return id | SHIFT | NEG;
         }
         else{
-            return id | shift; 
+            return id | SHIFT; 
         }
     }
     
@@ -550,12 +550,12 @@ uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
     mpz_clear(result_q);
     mpz_clear(result_r);
     
-    id_res_r = id_res_r | shift; 
+    id_res_r = id_res_r | SHIFT; 
     *rest = id_res_r;
     if(resNeg)
-        return id_res_q | shift | neg;
+        return id_res_q | SHIFT | NEG;
     else
-        return id_res_q | shift;
+        return id_res_q | SHIFT;
 }
 
 uint64_t cached_mpz_mod(lookup* cache, mpz_t op1, mpz_t op2){
@@ -582,7 +582,7 @@ uint64_t cached_mpz_gcd(lookup* cache, mpz_t op1, mpz_t op2){
     if(id){
         mpz_clear(op1_in);
         mpz_clear(op2_in);
-        return id | shift; 
+        return id | SHIFT; 
     }
     
     mpz_t result;
@@ -611,7 +611,7 @@ uint64_t cached_mpz_gcd(lookup* cache, mpz_t op1, mpz_t op2){
     mpz_clear(op2_in);
     mpz_clear(result);
     
-    return id_res | shift;
+    return id_res | SHIFT;
 }
 
 uint64_t cached_mpz_invert(lookup* cache, mpz_t op, mpz_t mod){
@@ -628,7 +628,7 @@ uint64_t cached_mpz_invert(lookup* cache, mpz_t op, mpz_t mod){
     if(id){
         mpz_clear(op1_in);
         mpz_clear(op2_in);
-        return id | shift; 
+        return id | SHIFT; 
     }
     
     mpz_t result;
@@ -663,5 +663,5 @@ uint64_t cached_mpz_invert(lookup* cache, mpz_t op, mpz_t mod){
     mpz_clear(op2_in);
     mpz_clear(result);
     
-    return id_res | shift;
+    return id_res | SHIFT;
 }

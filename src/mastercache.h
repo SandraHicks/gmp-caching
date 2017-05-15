@@ -19,33 +19,41 @@ extern "C" {
 #endif
 
 #include "defines.h"
+#include "caching_operations.h"
+    typedef struct MasterCacheInt{
+        lookup* cache;
+    } MasterCacheInt;
     
+    typedef struct MasterCacheRational{
+        
+    } MasterCacheRational;
 //Master Cache typedef and instance
 typedef struct MasterCache {
-    //LookUp Table instances
+    MasterCacheInt* _integers;
+    MasterCacheRational* _rationals;
 } MasterCache;
 
 //Master Cache bit mask version
-typedef int64_t cachedInt; //max: 1073741823 (2^62 - 2)
+typedef uint64_t cachedInt; //max: 1073741823 (2^62 - 2)
 
 //Master Cache struct version
-typedef uint64_t u_cachedInt;
+typedef uint64_t _cachedInt;
 
 typedef struct cachedInt_ {
-    u_cachedInt number;
+    cachedInt number;
     bool sign;
     bool isIndex;
 } cachedInt_;
 
 typedef struct cached_rational {
-    u_cachedInt counter;
-    u_cachedInt denominator;
+    cachedInt counter;
+    cachedInt denominator;
     bool sign;
     bool isIndex;
 } cached_rational;
 //oder
 typedef struct cachedInt__ {
-    u_cachedInt number;
+    cachedInt number;
     uint8_t info; //include information about sign and isIndex
 } cachedInt__;
 

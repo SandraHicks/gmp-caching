@@ -77,6 +77,11 @@ include_directories(../src/)
 target_link_libraries(caching-operations-test-advanced gmp)
 target_link_libraries(caching-operations-test-advanced gmp-caching)
 
+add_executable(master-cache-integer-test ${TEST_DIR}master-cache-integer-test.c)
+include_directories(../src/)
+target_link_libraries(master-cache-integer-test gmp)
+target_link_libraries(master-cache-integer-test gmp-caching)
+
 #### DOXYGEN ####
 
 find_package(Doxygen)

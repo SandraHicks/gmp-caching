@@ -17,9 +17,9 @@ extern "C" {
 typedef int bool;
 
 /*! maximum size of a cachedInt */
-#define cachedInt_MAX 2^62-2
+#define cachedInt_MAX (int64_t)2^62-2
 /*! minimum size of a cachedInt */
-#define cachedInt_MIN -(2^62-2)
+#define cachedInt_MIN (int64_t)-(2^62-2)
 
 /*! bitmask to get sign position of cachedInt */
 #define cachedInt_SIGN 63

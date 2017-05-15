@@ -111,10 +111,20 @@ defines.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/defines.h
 mastercache.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mastercache.h
-hashtable.h
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashtable.h
-mpz_caching.h
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mpz_caching.h
+master_cache_integer.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_integer.h
+caching_operations.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.h
+overflow_detection.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/overflow_detection.h
+stdio.h
+-
+inttypes.h
+-
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_integer.h
+mastercache.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mastercache.h
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c
 defines.h
@@ -133,6 +143,8 @@ mastercache.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mastercache.h
 defines.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/defines.h
+caching_operations.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.h
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mpz_caching.c
 mpz_caching.h
