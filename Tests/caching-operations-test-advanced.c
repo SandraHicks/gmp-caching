@@ -10,7 +10,7 @@
 #include <time.h>
 
 #define SIZE_C 1000
-#define MPZTS 20
+#define MPZTS 10
 
 //tdiv, gcd, invert tests
 
@@ -35,6 +35,7 @@ int main(int argc, char** argv) {
   uint64_t* tdiv_ids_q = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
   uint64_t* tdiv_ids_r = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
   uint64_t* mod_ids = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
+  uint64_t* gcd_ids = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
   uint64_t* inv_ids = malloc(sizeof(uint64_t) * MPZTS*MPZTS);
   //erstelle mpz_ts und füge zum cache hinzu
   int i;
@@ -49,34 +50,31 @@ int main(int argc, char** argv) {
     ids_neg[i] = cache_insert_mpz(cache, integers_neg[i]);
   }
 
-/*
-  //prüfe ob mpz_ts angelegt wurden
-  for(i=0; i < MPZTS; i++){
-    printf("Exists %d: %" PRIu64 "\n", i, cache_exists_mpz(cache, integers[i]));
-    printf("Exists -%d: %" PRIu64 "\n", i, cache_exists_mpz(cache, integers_neg[i]));
-  }
+
 
   clock_t c0 = clock();
-  //addiere jeweils zwei mpz_ts
+  //dividiere/mod/inv jeweils zwei mpz_ts
   for(i=0; i < MPZTS; i++){
-    mul_ids[i+i] = cached_mpz_mul(cache, integers[i], integers_neg[i]);
-    printf("%d * -%d = %f\n", i, i, get_double(cache, mul_ids[i+i]));
     int j;
-    for(j=0; j < MPZTS/10; j++){
-      add_ids[i+j] = cached_mpz_add(cache, integers[i], integers[j]);
-      sub_ids[j+i] = cached_mpz_sub(cache, integers[j], integers[i]);
-      
-      
+    for(j=0; j < MPZTS; j++){
+      tdiv_ids_q[i*10+j] = cached_mpz_tdiv(cache, &tdiv_ids_r[i*10+j], integers[i], integers[j]);
+      mod_ids[i*10+j] = cached_mpz_mod(cache, integers[i], integers[j]);
+      inv_ids[i*10+j] = cached_mpz_invert(cache, integers[i], integers[j]);
+      gcd_ids[i*10+j] = cached_mpz_gcd(cache, integers[i], integers[j]);
     }
   }
   clock_t end = clock();
   double runtime_diff_ms = (end - c0) * 1000. / CLOCKS_PER_SEC;
   printf("end time %f\n", runtime_diff_ms);
-  //gebe ids aus
+  uint64_t test = tdiv_ids_r[0];
+  //gebe werte aus
   for(i=0; i < MPZTS; i++){
     int j;
-    for(j=0; j < MPZTS/10; j++){
-      //printf("Exists %d %d: %" PRIu64 "\n",i,j, sub_ids[j+i]); 
+    for(j=0; j < MPZTS; j++){
+      printf("ID %d %d: %" PRIu64 " inv: %f\n",i,j, inv_ids[i*10+j], get_double(cache, inv_ids[i*10+j]));
+      //printf("result: %f\n", get_double(cache, tdiv_ids_q[i*10+j]));
+      //printf("r_id: %" PRIu64 "\n", tdiv_ids_r[i*10+j]);
+      //printf("gcd: %f.\n", get_double(cache, gcd_ids[i*10+j])); 
     }
   }
 
@@ -86,8 +84,9 @@ int main(int argc, char** argv) {
   //lösche mpz_ts
   for(i=0; i < MPZTS; i++){
     mpz_clear(integers[i]);
+    mpz_clear(integers_neg[i]);
   }
-*/
+
   free(integers);
   integers = NULL;
   free(integers_neg);
@@ -102,6 +101,8 @@ int main(int argc, char** argv) {
   tdiv_ids_r = NULL;
   free(mod_ids);
   mod_ids = NULL;
+  free(gcd_ids);
+  gcd_ids = NULL;
   free(inv_ids);
   inv_ids = NULL;
 }

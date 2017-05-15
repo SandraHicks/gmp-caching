@@ -401,10 +401,12 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
             int cmp1 = mpz_cmpabs(cached_val, op1);
             get_cached_mpz(cache, curr_min->op2, cached_val);
             int cmp2 = mpz_cmpabs(cached_val, op2);
-            if(cmp1 == 0 && cmp2 == 0)
-                if(extra_info != NULL)
-                    extra_info = &(curr_min->extra_info);
+            if(cmp1 == 0 && cmp2 == 0){
+                if(extra_info != NULL){
+                    *extra_info = (curr_min->extra_info);
+                }
                 return curr_id;
+            }
         }
         
         curr_min = curr_min->next;

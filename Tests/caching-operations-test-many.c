@@ -62,8 +62,8 @@ int main(int argc, char** argv) {
     printf("%d * -%d = %f\n", i, i, get_double(cache, mul_ids[i+i]));
     int j;
     for(j=0; j < MPZTS/10; j++){
-      add_ids[i+j] = cached_mpz_add(cache, integers[i], integers[j]);
-      sub_ids[j+i] = cached_mpz_sub(cache, integers[j], integers[i]);
+      //add_ids[i+j] = cached_mpz_add(cache, integers[i], integers[j]);
+      //sub_ids[j+i] = cached_mpz_sub(cache, integers[j], integers[i]);
       
       
     }
