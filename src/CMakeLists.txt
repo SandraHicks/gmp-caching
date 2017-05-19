@@ -82,6 +82,11 @@ include_directories(../src/)
 target_link_libraries(master-cache-integer-test gmp)
 target_link_libraries(master-cache-integer-test gmp-caching)
 
+add_executable(master-cache-integer-test-largenum ${TEST_DIR}master-cache-integer-test-largenum.c)
+include_directories(../src/)
+target_link_libraries(master-cache-integer-test-largenum gmp)
+target_link_libraries(master-cache-integer-test-largenum gmp-caching)
+
 #### DOXYGEN ####
 
 find_package(Doxygen)

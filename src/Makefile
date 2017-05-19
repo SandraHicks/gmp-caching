@@ -111,69 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named caching-operations-test-advanced
+# Target rules for targets named hashtable-test
 
 # Build rule for target.
-caching-operations-test-advanced: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-advanced
-.PHONY : caching-operations-test-advanced
+hashtable-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hashtable-test
+.PHONY : hashtable-test
 
 # fast build rule for target.
-caching-operations-test-advanced/fast:
-	$(MAKE) -f CMakeFiles/caching-operations-test-advanced.dir/build.make CMakeFiles/caching-operations-test-advanced.dir/build
-.PHONY : caching-operations-test-advanced/fast
-
-#=============================================================================
-# Target rules for targets named COMMAND
-
-# Build rule for target.
-COMMAND: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 COMMAND
-.PHONY : COMMAND
-
-# fast build rule for target.
-COMMAND/fast:
-	$(MAKE) -f CMakeFiles/COMMAND.dir/build.make CMakeFiles/COMMAND.dir/build
-.PHONY : COMMAND/fast
-
-#=============================================================================
-# Target rules for targets named caching-operations-test-many
-
-# Build rule for target.
-caching-operations-test-many: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-many
-.PHONY : caching-operations-test-many
-
-# fast build rule for target.
-caching-operations-test-many/fast:
-	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/build
-.PHONY : caching-operations-test-many/fast
-
-#=============================================================================
-# Target rules for targets named caching-operations-test
-
-# Build rule for target.
-caching-operations-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test
-.PHONY : caching-operations-test
-
-# fast build rule for target.
-caching-operations-test/fast:
-	$(MAKE) -f CMakeFiles/caching-operations-test.dir/build.make CMakeFiles/caching-operations-test.dir/build
-.PHONY : caching-operations-test/fast
-
-#=============================================================================
-# Target rules for targets named gmp-caching
-
-# Build rule for target.
-gmp-caching: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 gmp-caching
-.PHONY : gmp-caching
-
-# fast build rule for target.
-gmp-caching/fast:
-	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/build
-.PHONY : gmp-caching/fast
+hashtable-test/fast:
+	$(MAKE) -f CMakeFiles/hashtable-test.dir/build.make CMakeFiles/hashtable-test.dir/build
+.PHONY : hashtable-test/fast
 
 #=============================================================================
 # Target rules for targets named hash-test
@@ -189,17 +137,82 @@ hash-test/fast:
 .PHONY : hash-test/fast
 
 #=============================================================================
-# Target rules for targets named hashtable-test
+# Target rules for targets named gmp-caching
 
 # Build rule for target.
-hashtable-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hashtable-test
-.PHONY : hashtable-test
+gmp-caching: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmp-caching
+.PHONY : gmp-caching
 
 # fast build rule for target.
-hashtable-test/fast:
-	$(MAKE) -f CMakeFiles/hashtable-test.dir/build.make CMakeFiles/hashtable-test.dir/build
-.PHONY : hashtable-test/fast
+gmp-caching/fast:
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/build
+.PHONY : gmp-caching/fast
+
+#=============================================================================
+# Target rules for targets named caching-operations-test
+
+# Build rule for target.
+caching-operations-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test
+.PHONY : caching-operations-test
+
+# fast build rule for target.
+caching-operations-test/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test.dir/build.make CMakeFiles/caching-operations-test.dir/build
+.PHONY : caching-operations-test/fast
+
+#=============================================================================
+# Target rules for targets named caching-operations-test-many
+
+# Build rule for target.
+caching-operations-test-many: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-many
+.PHONY : caching-operations-test-many
+
+# fast build rule for target.
+caching-operations-test-many/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test-many.dir/build.make CMakeFiles/caching-operations-test-many.dir/build
+.PHONY : caching-operations-test-many/fast
+
+#=============================================================================
+# Target rules for targets named COMMAND
+
+# Build rule for target.
+COMMAND: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 COMMAND
+.PHONY : COMMAND
+
+# fast build rule for target.
+COMMAND/fast:
+	$(MAKE) -f CMakeFiles/COMMAND.dir/build.make CMakeFiles/COMMAND.dir/build
+.PHONY : COMMAND/fast
+
+#=============================================================================
+# Target rules for targets named caching-operations-test-advanced
+
+# Build rule for target.
+caching-operations-test-advanced: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test-advanced
+.PHONY : caching-operations-test-advanced
+
+# fast build rule for target.
+caching-operations-test-advanced/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test-advanced.dir/build.make CMakeFiles/caching-operations-test-advanced.dir/build
+.PHONY : caching-operations-test-advanced/fast
+
+#=============================================================================
+# Target rules for targets named master-cache-integer-test
+
+# Build rule for target.
+master-cache-integer-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 master-cache-integer-test
+.PHONY : master-cache-integer-test
+
+# fast build rule for target.
+master-cache-integer-test/fast:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test.dir/build.make CMakeFiles/master-cache-integer-test.dir/build
+.PHONY : master-cache-integer-test/fast
 
 #=============================================================================
 # Target rules for targets named mpz-cache-test
@@ -213,6 +226,19 @@ mpz-cache-test: cmake_check_build_system
 mpz-cache-test/fast:
 	$(MAKE) -f CMakeFiles/mpz-cache-test.dir/build.make CMakeFiles/mpz-cache-test.dir/build
 .PHONY : mpz-cache-test/fast
+
+#=============================================================================
+# Target rules for targets named master-cache-integer-test-largenum
+
+# Build rule for target.
+master-cache-integer-test-largenum: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 master-cache-integer-test-largenum
+.PHONY : master-cache-integer-test-largenum
+
+# fast build rule for target.
+master-cache-integer-test-largenum/fast:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test-largenum.dir/build.make CMakeFiles/master-cache-integer-test-largenum.dir/build
+.PHONY : master-cache-integer-test-largenum/fast
 
 caching_operations.o: caching_operations.c.o
 
@@ -457,6 +483,60 @@ home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashtable-test.c.s:
 	$(MAKE) -f CMakeFiles/hashtable-test.dir/build.make CMakeFiles/hashtable-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashtable-test.c.s
 .PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashtable-test.c.s
 
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.o: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.o
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.o
+
+# target to build an object file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.o:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test-largenum.dir/build.make CMakeFiles/master-cache-integer-test-largenum.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.o
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.o
+
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.i: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.i
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.i
+
+# target to preprocess a source file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.i:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test-largenum.dir/build.make CMakeFiles/master-cache-integer-test-largenum.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.i
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.i
+
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.s: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.s
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.s
+
+# target to generate assembly for a file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.s:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test-largenum.dir/build.make CMakeFiles/master-cache-integer-test-largenum.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.s
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.s
+
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.o: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.o
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.o
+
+# target to build an object file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.o:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test.dir/build.make CMakeFiles/master-cache-integer-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.o
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.o
+
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.i: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.i
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.i
+
+# target to preprocess a source file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.i:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test.dir/build.make CMakeFiles/master-cache-integer-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.i
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.i
+
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.s: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.s
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.s
+
+# target to generate assembly for a file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.s:
+	$(MAKE) -f CMakeFiles/master-cache-integer-test.dir/build.make CMakeFiles/master-cache-integer-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.s
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.s
+
 home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.o: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.c.o
 
 .PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.o
@@ -626,15 +706,17 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
-	@echo "... caching-operations-test-advanced"
-	@echo "... COMMAND"
-	@echo "... caching-operations-test-many"
-	@echo "... caching-operations-test"
-	@echo "... gmp-caching"
-	@echo "... hash-test"
 	@echo "... hashtable-test"
+	@echo "... hash-test"
+	@echo "... rebuild_cache"
+	@echo "... gmp-caching"
+	@echo "... caching-operations-test"
+	@echo "... caching-operations-test-many"
+	@echo "... COMMAND"
+	@echo "... caching-operations-test-advanced"
+	@echo "... master-cache-integer-test"
 	@echo "... mpz-cache-test"
+	@echo "... master-cache-integer-test-largenum"
 	@echo "... caching_operations.o"
 	@echo "... caching_operations.i"
 	@echo "... caching_operations.s"
@@ -662,6 +744,12 @@ help:
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashtable-test.o"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashtable-test.i"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashtable-test.s"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.o"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.i"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.s"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.o"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.i"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.s"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.o"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.i"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.s"

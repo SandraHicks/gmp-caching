@@ -6,6 +6,8 @@
 #include <stdint.h> //always include first
 #include <gmp.h>
 #include <limits.h>
+#include <stdlib.h>
+#include <float.h>
 
 #include "defines.h"
 #include "mastercache.h"
@@ -25,12 +27,35 @@
 
 cachedInt direct_add(cachedInt val1, cachedInt val2);
 cachedInt direct_sub(cachedInt val1, cachedInt val2);
+cachedInt direct_mul(cachedInt val1, cachedInt val2);
+cachedInt direct_div(cachedInt val1, cachedInt val2);
+cachedInt direct_mod(cachedInt val1, cachedInt val2);
+cachedInt direct_gcd(cachedInt val1, cachedInt val2);
+cachedInt direct_invers(cachedInt val1, cachedInt val2);
+
+void cached_int_init_cache(MasterCache* mstr, uint64_t cachesize){
+    MasterCacheInt* integers = malloc(sizeof(MasterCacheInt));
+    mstr->_integers = integers;
+    
+    lookup* cache  = malloc(sizeof(lookup));
+    init_cache(cache, cachesize);
+    mstr->_integers->cache = cache;
+}
+
+void cached_int_clear_cache(MasterCache* mstr){
+    delete_cache(mstr->_integers->cache);
+    free(mstr->_integers->cache);
+    mstr->_integers->cache = NULL;
+    free(mstr->_integers);
+    mstr->_integers = NULL;
+}
 
 uint64_t mpz_cached_int(mpz_t number){
     int64_t cmp = cachedInt_MAX;
     int limbs = number->_mp_size;
     limbs = (limbs < 0) ? limbs*(-1) : limbs;
-    
+    if(limbs > 2)
+        return 0;
     
 #if (GMP_NAIL_BITS == 0)
     uint64_t data = number->_mp_d[0];
@@ -40,6 +65,8 @@ uint64_t mpz_cached_int(mpz_t number){
         if(data <= cachedInt_MAX)
             return data;
     #else
+        if(limbs > 1)
+            return 0;
         if(data <= cachedInt_MAX)
             return data;
     #endif
@@ -53,6 +80,8 @@ uint64_t mpz_cached_int(mpz_t number){
         if(data <= cachedInt_MAX)
             return data
     #else
+        if(limbs > 1)
+            return 0;
         if(data <= cachedInt_MAX)
             return data;
     #endif
@@ -81,7 +110,7 @@ void cached_int_mpz(cachedInt id, mpz_t number){
 cachedInt cached_int_set(MasterCache* mstr, mpz_t number){
     cachedInt id = mpz_cached_int(number);
     
-    if(id==0){
+    if((id==0) && (number->_mp_size!=0)){
         id = cache_insert_mpz(mstr->_integers->cache, number);
         return id;
     }
@@ -109,6 +138,31 @@ void cached_int_get(MasterCache* mstr, cachedInt id, mpz_t number){
 }
 
 /**
+ * @brief function for master cache to get a previously cached mpz_t as double from an id
+ * @param mstr MasterCache pointer
+ * @param id cachedInt id that was cached
+ * @param number mpz_t number to set
+ */
+double cached_int_get_d(MasterCache* mstr, cachedInt id){
+    //convert cachedInt to mpz if it is no id
+    if((id & SHIFT) == 0){
+        int64_t signed_id;
+        if((id & NEG) >= 1){
+            id = id & ~NEG;
+            signed_id = (int64_t)(id);
+            signed_id = signed_id * (-1);
+        }
+        else
+            signed_id = id;
+        
+        return (double)signed_id;
+    }
+    else{
+        return get_double(mstr->_integers->cache, id);
+    }
+}
+
+/**
  * @brief function for master cache to add two cached values and cache the result if large.
  * @param mstr MasterCache pointer
  * @param val1 id of the first operand
@@ -126,20 +180,17 @@ cachedInt cached_int_add(MasterCache* mstr, cachedInt val1, cachedInt val2){
         }
         mpz_t op1;
         mpz_t op2;
-        mpz_t res;
         mpz_init(op1);
         mpz_init(op2);
-        mpz_init(res);
         cached_int_mpz(val1, op1);
         cached_int_mpz(val2, op2);
         
-        mpz_add(res, op1, op2);
-        result = cache_insert_mpz(mstr->_integers->cache, res);
+        result = cached_mpz_add(mstr->_integers->cache, op1, op2);
         
         return result;
     }
     
-  //else: cache add
+  //else: directly cache add
     mpz_t op1;
     mpz_t op2;
     mpz_init(op1);
@@ -152,12 +203,12 @@ cachedInt cached_int_add(MasterCache* mstr, cachedInt val1, cachedInt val2){
 }
 cachedInt direct_add(cachedInt val1, cachedInt val2){
     int val1neg=0;
-    if((val1 & NEG) == 1){
+    if((val1 & NEG) >= 1){
         val1neg = 1;
         val1 = val1 & ~NEG;
     }
     int val2neg=0;
-    if((val2 & NEG) == 1){
+    if((val2 & NEG) >= 1){
         val2neg = 1;
         val2 = val2 & ~NEG;
     }
@@ -181,18 +232,21 @@ cachedInt direct_add(cachedInt val1, cachedInt val2){
     }
     //case 3: one pos, one neg
     else{
-        if(val1neg < val2neg){
+        //if val2neg = 0 (positive) and val1neg = 1 (negaive) -> swap
+        if(val2neg < val1neg){
             uint64_t temp;
             temp = val2;
             val2 = val1;
             val1 = temp;
         }
-        if(!subtractionOverflow(val1, val2)){
-            return val1 - val2;
+        
+        //no overflow possible if one value positive and one negative
+        if(((int64_t)val1 - (int64_t)val2) < 0){
+            return (val2 - val1) | NEG;
         }
         else{
-            return SHIFT;
-        }
+            return val1 - val2;
+        } 
     }
 }
 /**
@@ -202,7 +256,7 @@ cachedInt direct_add(cachedInt val1, cachedInt val2){
  * @param val2 id of the second operand
  */
 cachedInt cached_int_sub(MasterCache* mstr, cachedInt val1, cachedInt val2){
-    if((val2 & NEG) == 1){
+    if((val2 & NEG) >= 1){
         return cached_int_add(mstr, val1, (val2 & ~NEG));
     }
     else{
@@ -217,7 +271,58 @@ cachedInt cached_int_sub(MasterCache* mstr, cachedInt val1, cachedInt val2){
  * @param val2 id of the second operand
  */
 cachedInt cached_int_mul(MasterCache* mstr, cachedInt val1, cachedInt val2){
-    return 0;
+    uint64_t result;
+    
+    if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
+        result = direct_mul(val1, val2);
+        if((result & SHIFT) == 0){
+            return result;
+        }
+        
+        mpz_t op1;
+        mpz_t op2;
+        mpz_init(op1);
+        mpz_init(op2);
+        cached_int_mpz(val1, op1);
+        cached_int_mpz(val2, op2);
+        
+        result = cached_mpz_mul(mstr->_integers->cache, op1, op2);
+        
+        return result;
+    }
+    
+  //else: directly cache mul
+    mpz_t op1;
+    mpz_t op2;
+    mpz_init(op1);
+    mpz_init(op2);
+    get_mpz(mstr->_integers->cache, val1, op1);
+    get_mpz(mstr->_integers->cache, val2, op2);
+    result = cached_mpz_mul(mstr->_integers->cache, op1, op2);
+   
+    return result;
+}
+
+cachedInt direct_mul(cachedInt val1, cachedInt val2){
+    int val1neg=0;
+    if((val1 & NEG) >= 1){
+        val1neg = 1;
+        val1 = val1 & ~NEG;
+    }
+    int val2neg=0;
+    if((val2 & NEG) >= 1){
+        val2neg = 1;
+        val2 = val2 & ~NEG;
+    }
+    
+    if(!multiplicationOverflow(val1, val2)){
+        if(val1neg < val2neg || val1neg > val2neg)
+            return (val1 * val2) | NEG;
+        else
+            return (val1 * val2);
+    }
+    else
+        return SHIFT;
 }
 
 /**
@@ -228,7 +333,74 @@ cachedInt cached_int_mul(MasterCache* mstr, cachedInt val1, cachedInt val2){
  * @param rest pointer to id for rest of division
  */
 cachedInt cached_int_tdiv(MasterCache* mstr, cachedInt divident, cachedInt divisor, cachedInt* rest){
-    return 0;
+    if(divisor == 0)
+        return SHIFT;
+    
+    cachedInt result;
+    cachedInt mod;
+    if(((divident & SHIFT) == 0) && ((divisor & SHIFT) == 0)){
+        result = direct_div(divident, divisor);
+        if((result & SHIFT) == 0){
+            mod = direct_mod(divident, divisor);
+            *rest = mod;
+            return result;
+        }
+        
+        mpz_t op1;
+        mpz_t op2;
+        mpz_init(op1);
+        mpz_init(op2);
+        cached_int_mpz(divident, op1);
+        cached_int_mpz(divisor, op2);
+        
+        result = cached_mpz_tdiv(mstr->_integers->cache, rest, op1, op2);
+        
+        return result;
+    }
+    
+//else: directly cache div
+    mpz_t op1;
+    mpz_t op2;
+    mpz_init(op1);
+    mpz_init(op2);
+    get_mpz(mstr->_integers->cache, divident, op1);
+    get_mpz(mstr->_integers->cache, divisor, op2);
+    result = cached_mpz_tdiv(mstr->_integers->cache, rest, op1, op2);
+   
+    return result;
+}
+
+cachedInt direct_div(cachedInt val1, cachedInt val2){
+    int val1neg=0;
+    if((val1 & NEG) >= 1){
+        val1neg = 1;
+        val1 = val1 & ~NEG;
+    }
+    int val2neg=0;
+    if((val2 & NEG) >= 1){
+        val2neg = 1;
+        val2 = val2 & ~NEG;
+    }
+    
+    if(val2!=0){
+        if(val1neg < val2neg || val1neg > val2neg)
+            return (val1 / val2) | NEG;
+        else
+            return (val1 / val2);
+    }
+    else
+        return SHIFT;
+}
+
+cachedInt direct_mod(cachedInt val1, cachedInt val2){
+    if((val1 & NEG) >= 1){
+        val1 = val1 & ~NEG;
+    }
+    if((val2 & NEG) >= 1){
+        val2 = val2 & ~NEG;
+    }
+    
+    return val1 % val2;
 }
 
 /**
@@ -238,7 +410,23 @@ cachedInt cached_int_tdiv(MasterCache* mstr, cachedInt divident, cachedInt divis
  * @param n id of the second operand
  */
 cachedInt cached_int_mod(MasterCache* mstr, cachedInt number, cachedInt n){
-    return 0;
+    uint64_t result;
+    
+    if(((number & SHIFT) == 0) && ((n & SHIFT) == 0)){
+        result = direct_mod(number, n);
+        return result;
+    }
+    
+  //else: directly cache mod
+    mpz_t op1;
+    mpz_t op2;
+    mpz_init(op1);
+    mpz_init(op2);
+    get_mpz(mstr->_integers->cache, number, op1);
+    get_mpz(mstr->_integers->cache, n, op2);
+    result = cached_mpz_mod(mstr->_integers->cache, op1, op2);
+   
+    return result;
 }
 
 /**
@@ -250,6 +438,12 @@ cachedInt cached_int_mod(MasterCache* mstr, cachedInt number, cachedInt n){
 cachedInt cached_int_gcd(MasterCache* mstr, cachedInt operand1, cachedInt operand2){
     return 0;
 }
+cachedInt direct_gcd(cachedInt val1, cachedInt val2){
+    if(val2 == 0){
+        return val1;
+    }
+    return direct_gcd(val2, val1 % val2);
+}
 
 /**
  * @brief function for master cache to calculate the inverse of a cached value mod n and cache the result if large.
@@ -258,5 +452,9 @@ cachedInt cached_int_gcd(MasterCache* mstr, cachedInt operand1, cachedInt operan
  * @param n id of the second operand
  */
 cachedInt cached_int_invers(MasterCache* mstr, cachedInt number, cachedInt n){
+    return 0;
+}
+
+cachedInt direct_invers(cachedInt val1, cachedInt val2){
     return 0;
 }

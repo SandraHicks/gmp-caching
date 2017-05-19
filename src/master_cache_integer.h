@@ -3,8 +3,12 @@
 
 #include "mastercache.h"
 
+void cached_int_init_cache(MasterCache* mstr, uint64_t cachesize);
+void cached_int_clear_cache(MasterCache* mstr);
+
 cachedInt cached_int_set(MasterCache* mstr, mpz_t number);
 void cached_int_get(MasterCache* mstr, cachedInt id, mpz_t number);
+double cached_int_get_d(MasterCache* mstr, cachedInt id);
 void cached_int_mpz(cachedInt id, mpz_t number);
 uint64_t mpz_cached_int(mpz_t number);
 

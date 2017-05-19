@@ -10,6 +10,14 @@
 
 #define MAXBIT 62
 
+/*local definitions*/
+#define SHIFT ((uint64_t)1 << cachedInt_IsID)
+#define NEG ((uint64_t)1 << cachedInt_SIGN)
+
+//debug
+#include <stdio.h>
+#include <inttypes.h>
+
 uint32_t MSB(cachedInt val);
 cachedInt deleteIdBit(cachedInt val);
 
@@ -19,10 +27,6 @@ cachedInt deleteIdBit(cachedInt val);
  * @param op2 second operator
  */
 bool additionOverflow(cachedInt op1, cachedInt op2){
-    //check sign for problems
-    bool sign = (op1 <= 0 && op2 >= 0) || (op2 <= 0 && op1 >= 0);
-    if(sign)
-        return 0;
     
     //first check based on msb
     int msb_op1 = MSB(op1);
@@ -42,15 +46,8 @@ bool additionOverflow(cachedInt op1, cachedInt op2){
     return 0;
 }
 
-/**
- * @brief function to predict if a subtraction will overflow
- * @param op1 first operator
- * @param op2 second operator
- */
-bool subtractionOverflow(cachedInt op1, cachedInt op2){
-    //check sign for problems
-    additionOverflow(op1, op2*(-1));
-}
+//if the sign is constant, there is no subtraction overflow
+
 
 /**
  * @brief function to predict if a multiplication will overflow
@@ -68,21 +65,18 @@ bool multiplicationOverflow(cachedInt op1, cachedInt op2){
     op1 = deleteIdBit(op1);
     op2 = deleteIdBit(op2);
     cachedInt res = op1*op2;
-    cachedInt backwards = res/op1;
+    cachedInt backwards;
+    if(op1 != 0)
+        backwards = (uint64_t)res/op1;
+    else
+        backwards = res;
     if(backwards != op2){
         return 1;
     }
     return 0;
 }
 
-/**
- * @brief function to predict if a division will overflow
- * @param op1 first operator
- * @param op2 second operator
- */
-bool divisionOverflow(cachedInt op1, cachedInt op2){
-    return 0;
-}
+//there is no integer division overflow
 
 /**
  * @brief function to predict if an exponentiation will overflow
@@ -124,6 +118,5 @@ uint32_t MSB(cachedInt val){
 }
 
 cachedInt deleteIdBit(cachedInt val){
-    uint64_t one = 1;
-    return (val & (one << cachedInt_IsID)) ? (val & (~(one<<cachedInt_IsID))): val;
+    return val & ~(SHIFT);
 }

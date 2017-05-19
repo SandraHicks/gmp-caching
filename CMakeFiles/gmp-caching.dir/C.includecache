@@ -107,6 +107,10 @@ gmp.h
 -
 limits.h
 -
+stdlib.h
+-
+float.h
+-
 defines.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/defines.h
 mastercache.h
@@ -171,6 +175,10 @@ overflow_detection.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/overflow_detection.h
 defines.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/defines.h
+stdio.h
+-
+inttypes.h
+-
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/overflow_detection.h
 mastercache.h

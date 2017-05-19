@@ -15,9 +15,7 @@ extern "C" {
 #include "mastercache.h"
 
 bool additionOverflow(cachedInt op1, cachedInt op2);
-bool subtractionOverflow(cachedInt op1, cachedInt op2);
 bool multiplicationOverflow(cachedInt op1, cachedInt op2);
-bool divisionOverflow(cachedInt op1, cachedInt op2);
 bool exponentiationOverflow(cachedInt base, cachedInt exp);
 
 #ifdef __cplusplus
