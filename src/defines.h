@@ -32,6 +32,9 @@ typedef int bool;
 /*! number of hash functions */
 #define NUMBER_HF 3
 
+#define SHIFT ((uint64_t)1 << cachedInt_IsID)
+#define NEG ((uint64_t)1 << cachedInt_SIGN)
+
 #ifdef __cplusplus
 }
 #endif

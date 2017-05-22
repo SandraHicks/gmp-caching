@@ -12,9 +12,6 @@
 #define SIZE_C 1000
 #define MPZTS 10
 
-#define SHIFT ((uint64_t)1 << 62)
-#define NEG ((uint64_t)1 << cachedInt_SIGN)
-
 
 //PRIu64
 int main(int argc, char** argv) {

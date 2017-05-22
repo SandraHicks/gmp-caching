@@ -17,7 +17,7 @@ cachedInt cached_int_sub(MasterCache* mstr, cachedInt val1, cachedInt val2);
 cachedInt cached_int_mul(MasterCache* mstr, cachedInt val1, cachedInt val2);
 cachedInt cached_int_tdiv(MasterCache* mstr, cachedInt divident, cachedInt divisor, cachedInt* rest);
 cachedInt cached_int_mod(MasterCache* mstr, cachedInt number, cachedInt n);
-cachedInt cached_int_gcd(MasterCache* mstr, cachedInt operand1, cachedInt operand2);
-cachedInt cached_int_invers(MasterCache* mstr, cachedInt number, cachedInt n);
+cachedInt cached_int_gcd(MasterCache* mstr, cachedInt val1, cachedInt val2);
+int cached_int_invert(MasterCache* mstr, cachedInt val1, cachedInt val2, cachedInt* result);
 
 #endif /* MASTER_CACHE_INTEGER_H */

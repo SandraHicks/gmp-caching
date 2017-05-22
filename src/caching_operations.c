@@ -2,6 +2,7 @@
 #include "mpz_caching.h"
 #include "hashtable.h"
 #include "hashing.h"
+#include "defines.h"
 #include <stdlib.h>
 
 //Debug
@@ -10,14 +11,10 @@
 
 
 /*local definitions*/
-#define SHIFT ((uint64_t)1 << cachedInt_IsID)
-#define NEG ((uint64_t)1 << cachedInt_SIGN)
-
-
 uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val);
 uint64_t cache_exists_mpz_raw(lookup* lu, mpz_t val);
 uint64_t cache_exists_mpz_binary_raw(lookup* cache, mpz_t op1, mpz_t op2, uint64_t* extra_info, int op);
-//uint64_t cachedInt_IsID = 1 << 62;
+
 
 void init_cache(lookup* cache, uint64_t cachesize){
     
