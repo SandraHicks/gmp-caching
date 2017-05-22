@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   mpz_caching.h
- * Author: sandra
- *
- * Created on March 24, 2017, 12:51 PM
- */
+ /**
+  * @file mpz_caching.h
+  * @author Sandra Hicks
+  * @brief header for cache for mpz_t
+  */
 
 #ifndef MPZ_CACHING_H
 #define MPZ_CACHING_H
@@ -21,19 +14,23 @@ extern "C" {
 #include <gmp.h>
 
     
-    //cached mpz_t
+    /**
+     * @brief cached representation of an mpz_t
+     */
     typedef struct cached_mpz_t {
-        mpz_t integer;
-        double fp;
+        mpz_t integer;  /**< actual mpz_t*/
+        double fp;      /**< mpz_t double representation*/
     } cached_mpz_t;
 
-    //cache object
+    /**
+     * @brief cache implemented as an array (fast random access)
+     */
     typedef struct mpz_t_cache {
         //cache
-        cached_mpz_t* cache;
+        cached_mpz_t* cache;    /**< array of cached_mpz_t*/
         //next free ID
-        uint64_t next_id;
-        uint64_t size;
+        uint64_t next_id;       /**< next free id for fast insert*/
+        uint64_t size;          /**< array size*/
     } mpz_t_cache;
     
     void init_mpz_cache(mpz_t_cache* cache, uint64_t size);

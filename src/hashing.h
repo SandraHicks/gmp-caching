@@ -1,13 +1,8 @@
-/*
- *
- */
-
-/* 
- * File:   hashing.h
- * Author: sandra
- *
- * Created on March 3, 2017, 10:15 AM
- */
+ /**
+  * @file hashing.h
+  * @author Sandra Hicks
+  * @brief header for implementation of hash functions on mpz_t's
+  */
 
 #ifndef HASHING_H
 #define HASHING_H

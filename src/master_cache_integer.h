@@ -1,3 +1,9 @@
+ /**
+  * @file master_cache_integer.h
+  * @author Sandra Hicks
+  * @brief header for Master Cache functions for caching Integer operations in gmp
+  */
+
 #ifndef MASTER_CACHE_INTEGER_H
 #define MASTER_CACHE_INTEGER_H
 

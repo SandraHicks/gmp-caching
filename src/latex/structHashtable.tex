@@ -2,8 +2,16 @@
 \label{structHashtable}\index{Hashtable@{Hashtable}}
 
 
-Collaboration diagram for Hashtable\+:
-\nopagebreak
+hash table  
+
+
+
+
+{\ttfamily \#include $<$hashtable.\+h$>$}
+
+
+
+Collaboration diagram for Hashtable\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -13,17 +21,29 @@ Collaboration diagram for Hashtable\+:
 \subsection*{Public Attributes}
 \begin{DoxyCompactItemize}
 \item 
-int $\ast$ {\bfseries counter}\hypertarget{structHashtable_a99f7c11aa20bbd066528843438a42958}{}\label{structHashtable_a99f7c11aa20bbd066528843438a42958}
-
+int $\ast$ \hyperlink{structHashtable_a99f7c11aa20bbd066528843438a42958}{counter}
 \item 
-\hyperlink{structcachedIntList}{cached\+Int\+List} $\ast$ {\bfseries lists}\hypertarget{structHashtable_ac4140ebb0209a40547999cce896fe17c}{}\label{structHashtable_ac4140ebb0209a40547999cce896fe17c}
-
+\hyperlink{structcachedIntList}{cached\+Int\+List} $\ast$ \hyperlink{structHashtable_ac4140ebb0209a40547999cce896fe17c}{lists}
 \item 
-int {\bfseries size}\hypertarget{structHashtable_ad8deca1b493e081c8bd9e45580b3bd53}{}\label{structHashtable_ad8deca1b493e081c8bd9e45580b3bd53}
-
+uint64\+\_\+t \hyperlink{structHashtable_aab81586954ce81cc3d52b41cf5ec5a04}{size}
 \end{DoxyCompactItemize}
 
 
+\subsection{Detailed Description}
+hash table 
+
+\subsection{Member Data Documentation}
+\index{Hashtable@{Hashtable}!counter@{counter}}
+\index{counter@{counter}!Hashtable@{Hashtable}}
+\subsubsection[{\texorpdfstring{counter}{counter}}]{\setlength{\rightskip}{0pt plus 5cm}int$\ast$ Hashtable\+::counter}\hypertarget{structHashtable_a99f7c11aa20bbd066528843438a42958}{}\label{structHashtable_a99f7c11aa20bbd066528843438a42958}
+array of counters of elements in each list \index{Hashtable@{Hashtable}!lists@{lists}}
+\index{lists@{lists}!Hashtable@{Hashtable}}
+\subsubsection[{\texorpdfstring{lists}{lists}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int\+List}$\ast$ Hashtable\+::lists}\hypertarget{structHashtable_ac4140ebb0209a40547999cce896fe17c}{}\label{structHashtable_ac4140ebb0209a40547999cce896fe17c}
+array of lists \index{Hashtable@{Hashtable}!size@{size}}
+\index{size@{size}!Hashtable@{Hashtable}}
+\subsubsection[{\texorpdfstring{size}{size}}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t Hashtable\+::size}\hypertarget{structHashtable_aab81586954ce81cc3d52b41cf5ec5a04}{}\label{structHashtable_aab81586954ce81cc3d52b41cf5ec5a04}
+number of lists, size of hash table 
+
 The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-hashtable.\+h\end{DoxyCompactItemize}
+\hyperlink{hashtable_8h}{hashtable.\+h}\end{DoxyCompactItemize}

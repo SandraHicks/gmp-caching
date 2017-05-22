@@ -1,7 +1,7 @@
  /**
   * @file mpz_caching.c
   * @author Sandra Hicks
-  * @brief cache
+  * @brief cache for mpz_t
   */
 #include "mpz_caching.h"
 #include "mastercache.h"
@@ -13,12 +13,21 @@
 
 //keine ID 0, fange an bei 1 zu zählen weil praktischer bei Abfragen
 
+/**
+ * @brief initialization of the cache
+ * @param cache pointer to cache
+ * @param size initial size of the cache
+ */
 void init_mpz_cache(mpz_t_cache* cache, uint64_t size){
     cache->cache = malloc(sizeof(cached_mpz_t) * size);
     cache->next_id = 1;
     cache->size = size;
 }
 
+/**
+ * @brief deletion of the cache and free of all underlying data structures
+ * @param cache pointer to cache
+ */
 void delete_mpz_cache(mpz_t_cache* cache){
     int i = 1;
     for(i=1; i<cache->next_id; i++){
@@ -30,6 +39,12 @@ void delete_mpz_cache(mpz_t_cache* cache){
 }
 
 //insert new mpz_t at the end, return ID
+/**
+ * @brief insert a new mpz_t in cache, no check for double, start at id=1 (0 is reserved for errors)
+ * @param cache pointer to cache
+ * @param val mpz_t to insert
+ * @return id of inserted element
+ */
 int64_t insert_mpz(mpz_t_cache* cache, mpz_t val){
     if(cache->next_id >= cache->size)
         return -1;
@@ -45,12 +60,22 @@ int64_t insert_mpz(mpz_t_cache* cache, mpz_t val){
     cache->next_id = id+1;
     return id;
 }
-
+/**
+ * @brief print function for debugging, prints double representation
+ * @param cache
+ * @param i id
+ */
 void printEntry(mpz_t_cache* cache, uint64_t i){
     cached_mpz_t* element = &cache->cache[i];
     printf("Element i=%" PRIu64 ": %f\n",i, element->fp);
 }
 
+/**
+ * @brief get a cached mpz_t by id
+ * @param cache pointer to cache
+ * @param i requested id
+ * @param val mpz_t to set for return
+ */
 void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
     cached_mpz_t* element = &cache->cache[i];
     if(val == NULL){
@@ -60,7 +85,12 @@ void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
         mpz_set(val, element->integer);
     }
 }
-
+/**
+ * @brief get double representation of a cached mpz_t by id
+ * @param cache pointer to cache
+ * @param i requested id
+ * @return double representation
+ */
 double get_cached_double(mpz_t_cache* cache, uint64_t i){
     cached_mpz_t* element = &cache->cache[i];
     return element->fp;

@@ -8,12 +8,11 @@ Master Cache for caching Integers and Integer operations from gmp.
 {\ttfamily \#include $<$stdint.\+h$>$}\\*
 {\ttfamily \#include $<$gmp.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}mastercache.\+h\char`\"{}}\\*
-Include dependency graph for mastercache.\+c\+:
-\nopagebreak
+Include dependency graph for mastercache.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=291pt]{mastercache_8c__incl}
+\includegraphics[width=350pt]{mastercache_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Functions}
@@ -21,11 +20,11 @@ Include dependency graph for mastercache.\+c\+:
 \item 
 void \hyperlink{mastercache_8c_ad0254518fa335884d9330470e7889186}{cache\+\_\+init} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, uint64\+\_\+t cache\+\_\+size)
 \begin{DoxyCompactList}\small\item\em Init function for master cache. \end{DoxyCompactList}\item 
-cached\+Int \hyperlink{mastercache_8c_a50d90b1940a54a27f5582e46f02483c2}{cache\+\_\+add} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, mpz\+\_\+t new)
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{mastercache_8c_a50d90b1940a54a27f5582e46f02483c2}{cache\+\_\+add} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, mpz\+\_\+t new)
 \begin{DoxyCompactList}\small\item\em add function for master cache \end{DoxyCompactList}\item 
-bool \hyperlink{mastercache_8c_af3f696b0d56758825d872a5280bcfd7b}{cache\+\_\+exists} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, mpz\+\_\+t element)
+int \hyperlink{mastercache_8c_a702f23d4d3196c203401392dc5ec362f}{cache\+\_\+exists} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, mpz\+\_\+t element)
 \begin{DoxyCompactList}\small\item\em function for master cache to check if an item exists \end{DoxyCompactList}\item 
-void \hyperlink{mastercache_8c_acd42afe339ef9ef2a2c6c6733f870e07}{cache\+\_\+get} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, cached\+Int element, mpz\+\_\+t result)
+void \hyperlink{mastercache_8c_acd42afe339ef9ef2a2c6c6733f870e07}{cache\+\_\+get} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} element, mpz\+\_\+t result)
 \begin{DoxyCompactList}\small\item\em function for master cache to get an item back from cache as mpq\+\_\+t \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -40,7 +39,7 @@ Sandra Hicks
 \subsection{Function Documentation}
 \index{mastercache.\+c@{mastercache.\+c}!cache\+\_\+add@{cache\+\_\+add}}
 \index{cache\+\_\+add@{cache\+\_\+add}!mastercache.\+c@{mastercache.\+c}}
-\subsubsection[{\texorpdfstring{cache\+\_\+add(\+Master\+Cache $\ast$mstr, mpz\+\_\+t new)}{cache_add(MasterCache *mstr, mpz_t new)}}]{\setlength{\rightskip}{0pt plus 5cm}cached\+Int cache\+\_\+add (
+\subsubsection[{\texorpdfstring{cache\+\_\+add(\+Master\+Cache $\ast$mstr, mpz\+\_\+t new)}{cache_add(MasterCache *mstr, mpz_t new)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} cache\+\_\+add (
 \begin{DoxyParamCaption}
 \item[{{\bf Master\+Cache} $\ast$}]{mstr, }
 \item[{mpz\+\_\+t}]{new}
@@ -59,12 +58,12 @@ add function for master cache
 \end{DoxyParams}
 \index{mastercache.\+c@{mastercache.\+c}!cache\+\_\+exists@{cache\+\_\+exists}}
 \index{cache\+\_\+exists@{cache\+\_\+exists}!mastercache.\+c@{mastercache.\+c}}
-\subsubsection[{\texorpdfstring{cache\+\_\+exists(\+Master\+Cache $\ast$mstr, mpz\+\_\+t element)}{cache_exists(MasterCache *mstr, mpz_t element)}}]{\setlength{\rightskip}{0pt plus 5cm}bool cache\+\_\+exists (
+\subsubsection[{\texorpdfstring{cache\+\_\+exists(\+Master\+Cache $\ast$mstr, mpz\+\_\+t element)}{cache_exists(MasterCache *mstr, mpz_t element)}}]{\setlength{\rightskip}{0pt plus 5cm}int cache\+\_\+exists (
 \begin{DoxyParamCaption}
 \item[{{\bf Master\+Cache} $\ast$}]{mstr, }
 \item[{mpz\+\_\+t}]{element}
 \end{DoxyParamCaption}
-)}\hypertarget{mastercache_8c_af3f696b0d56758825d872a5280bcfd7b}{}\label{mastercache_8c_af3f696b0d56758825d872a5280bcfd7b}
+)}\hypertarget{mastercache_8c_a702f23d4d3196c203401392dc5ec362f}{}\label{mastercache_8c_a702f23d4d3196c203401392dc5ec362f}
 
 
 function for master cache to check if an item exists 
@@ -81,7 +80,7 @@ function for master cache to check if an item exists
 \subsubsection[{\texorpdfstring{cache\+\_\+get(\+Master\+Cache $\ast$mstr, cached\+Int element, mpz\+\_\+t result)}{cache_get(MasterCache *mstr, cachedInt element, mpz_t result)}}]{\setlength{\rightskip}{0pt plus 5cm}void cache\+\_\+get (
 \begin{DoxyParamCaption}
 \item[{{\bf Master\+Cache} $\ast$}]{mstr, }
-\item[{cached\+Int}]{element, }
+\item[{{\bf cached\+Int}}]{element, }
 \item[{mpz\+\_\+t}]{result}
 \end{DoxyParamCaption}
 )}\hypertarget{mastercache_8c_acd42afe339ef9ef2a2c6c6733f870e07}{}\label{mastercache_8c_acd42afe339ef9ef2a2c6c6733f870e07}
@@ -94,6 +93,8 @@ function for master cache to get an item back from cache as mpq\+\_\+t
 {\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
 \hline
 {\em element} & id of the element to get from cache \\
+\hline
+{\em result} & \\
 \hline
 \end{DoxyParams}
 \index{mastercache.\+c@{mastercache.\+c}!cache\+\_\+init@{cache\+\_\+init}}

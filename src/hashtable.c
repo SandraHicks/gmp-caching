@@ -4,7 +4,6 @@
   * @brief hash table implementation
   */
 #include "hashtable.h"
-#include "defines.h"
 #include "hashing.h"
 #include "mpz_caching.h"
 #include <stdint.h>
@@ -14,6 +13,11 @@
 #include <stdio.h>
 #include <inttypes.h>
 
+/**
+ * @brief initialization of the hash table
+ * @param ht pointer to hash table
+ * @param size of the hash table
+ */
 void init_hashtable(Hashtable* ht, uint64_t size){
     ht->size = size;
     
@@ -28,6 +32,10 @@ void init_hashtable(Hashtable* ht, uint64_t size){
     }
 }
 
+/**
+ * @brief deletion of the hash table and all its underlying data structures
+ * @param ht pointer to hash table
+ */
 void delete_hashtable(Hashtable* ht){
     int i = 0;
     for(i=0; i<ht->size; ++i){
@@ -46,6 +54,12 @@ void delete_hashtable(Hashtable* ht){
     ht->lists = NULL;
 }
 
+/**
+ * @brief insertion method for an element in the hash table
+ * @param ht pointer to hash table
+ * @param id id of the mpz_t in the singleton cache
+ * @param hashes array of hash values of the mpz_t
+ */
 void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
     //get all hashes mod size
     int64_t* h;
@@ -106,7 +120,14 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
 }
 
 
-
+/**
+ * @brief check existence of an element
+ * @param ht pointer to hash table
+ * @param hashes array of hash values for the element
+ * @param element mpz_t to search for
+ * @param cache pointer to singleton cache
+ * @return id if existent, if not return 0
+ */
 uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_cache* cache){
     //check if counter at hash position >= 1 if not, return
     cachedIntElement* statefulPointer[NUMBER_HF];
@@ -177,6 +198,11 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
     return 0;
 }
 
+/**
+ * @brief function to calculate the multiple hash values for an mpz_t element
+ * @param val mpz_t value to hash
+ * @param hashes pointer to array of hashes to fill
+ */
 void get_k_hashes(mpz_t val, uint64_t* hashes){
     int number = (NUMBER_HF);
     switch(number){
@@ -211,6 +237,12 @@ void get_k_hashes(mpz_t val, uint64_t* hashes){
     }
 }
 
+/**
+ * @brief function to calculate multiple hashes for a tupel of mpz_t's after applying Cantor Pairing function
+ * @param val1 first mpz_t
+ * @param val2 second mpz_t
+ * @param hashes array of hashes to fill
+ */
 void get_k_hashes_cpf(mpz_t val1, mpz_t val2, uint64_t* hashes){
     
     mpz_t op1;
@@ -243,7 +275,11 @@ void get_k_hashes_cpf(mpz_t val1, mpz_t val2, uint64_t* hashes){
 }
 
 
-
+/**
+ * @brief initialization of a hashtable for (mpz_t x mpz_t) -> mpz_t
+ * @param ht pointer to hash table
+ * @param size size of hash table
+ */
 void init_hashtable_binary(Hashtable_binary* ht, uint64_t size){
     ht->size = size;
     
@@ -258,6 +294,10 @@ void init_hashtable_binary(Hashtable_binary* ht, uint64_t size){
     }
 }
 
+/**
+ * @brief deletion of hash table and all underlying data structures
+ * @param ht pointer to hash table
+ */
 void delete_hashtable_binary(Hashtable_binary* ht){
     int i = 0;
     for(i=0; i<ht->size; ++i){
@@ -275,7 +315,15 @@ void delete_hashtable_binary(Hashtable_binary* ht){
     free(ht->lists);
     ht->lists = NULL;
 }
-
+/**
+ * @brief insert a mapping (mpz_t x mpz_t) -> mpz_t in hashtable 
+ * @param ht pointer to hash table
+ * @param id_op1 id to first operand in singleton cache
+ * @param id_op2 id to second operand in singleton cache
+ * @param id_res id to result in singleton cache
+ * @param extra_info id to extra info in singleton cache (e.g. division rest)
+ * @param hashes array of hashes
+ */
 void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op2, uint64_t id_res, uint64_t* extra_info, uint64_t* hashes){
     //get all hashes mod size
     int64_t* h;
@@ -338,6 +386,16 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
     h=NULL;
 }
 
+/**
+ * @brief function to check if a mapping (mpz_t x mpz_t) -> mpz_t exists in the hash table
+ * @param ht pointer to hash table
+ * @param hashes array of hashes
+ * @param op1 first operator
+ * @param op2 second operator
+ * @param cache pointer to singleton mpz_t cache
+ * @param extra_info id of extra info of found element, stays null if none exists
+ * @return id if found, 0 if not existent
+ */
 uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1, mpz_t op2, mpz_t_cache* cache, uint64_t* extra_info){
     //check if counter at hash position >= 1 if not, return
     cachedIntElement_binary* statefulPointer[NUMBER_HF];

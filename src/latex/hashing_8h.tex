@@ -1,0 +1,211 @@
+\hypertarget{hashing_8h}{}\section{hashing.\+h File Reference}
+\label{hashing_8h}\index{hashing.\+h@{hashing.\+h}}
+
+
+header for implementation of hash functions on mpz\+\_\+t\textquotesingle{}s  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$gmp.\+h$>$}\\*
+Include dependency graph for hashing.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{hashing_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=274pt]{hashing_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+uint64\+\_\+t \hyperlink{hashing_8h_a2b4c88ee112b98a4964da93fb0c8ab05}{get\+\_\+\+F\+N\+V1a\+\_\+hash} (mpz\+\_\+t myval)
+\begin{DoxyCompactList}\small\item\em F\+N\+V1a hashing of an mpz\+\_\+t to a 64 bit unsigned value. \end{DoxyCompactList}\item 
+uint64\+\_\+t \hyperlink{hashing_8h_a319e6314e49fb9e23fc8b1667031409a}{get\+\_\+\+Jenkins\+\_\+hash} (mpz\+\_\+t myval)
+\begin{DoxyCompactList}\small\item\em (T\+O\+DO) Jenkins Spookyhash hash of a mpz\+\_\+t to a 64 bit unsigned value \end{DoxyCompactList}\item 
+uint64\+\_\+t \hyperlink{hashing_8h_a3418cd49ff87c091e401df5c1745f8c0}{get\+\_\+lookup3\+\_\+hash} (mpz\+\_\+t myval)
+\begin{DoxyCompactList}\small\item\em (T\+O\+DO) Jenkins lookup3 hash of a mpz\+\_\+t to a 64 bit unsigned value \end{DoxyCompactList}\item 
+uint64\+\_\+t \hyperlink{hashing_8h_a8c95fa7a682da0f000d85afbaaf28d83}{get\+\_\+\+Sip\+\_\+hash} (mpz\+\_\+t myval)
+\begin{DoxyCompactList}\small\item\em (T\+O\+DO) Siphash hash of a mpz\+\_\+t to a 64 bit unsigned value \end{DoxyCompactList}\item 
+uint64\+\_\+t \hyperlink{hashing_8h_ae1fc6aab0474de396ac9abe0ef6e6466}{get\+\_\+\+Murmur\+\_\+hash} (mpz\+\_\+t myval)
+\begin{DoxyCompactList}\small\item\em Murmur hash of a mpz\+\_\+t to a 64 bit unsigned value. \end{DoxyCompactList}\item 
+uint64\+\_\+t \hyperlink{hashing_8h_a8a8dd73303711a6884acad72b0caa968}{get\+\_\+\+C\+R\+C\+\_\+hash} (mpz\+\_\+t myval)
+\begin{DoxyCompactList}\small\item\em C\+RC hash of a mpz\+\_\+t to a 64 bit unsigned value. \end{DoxyCompactList}\item 
+void \hyperlink{hashing_8h_a6fa8f477d6b93a5a0c4753a75bd3cc8b}{Cantor\+\_\+pairing\+\_\+function\+\_\+mpz} (mpz\+\_\+t v1, mpz\+\_\+t v2, mpz\+\_\+t res)
+\begin{DoxyCompactList}\small\item\em apply Cantor pairing function to mpz\+\_\+t \end{DoxyCompactList}\item 
+uint64\+\_\+t \hyperlink{hashing_8h_af44c8e6918384ae4ab580b7b5976eca9}{Cantor\+\_\+pairing\+\_\+function\+\_\+int64} (uint64\+\_\+t v1, uint64\+\_\+t v2)
+\begin{DoxyCompactList}\small\item\em apply Cantor pairing function to uint64\+\_\+t \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+header for implementation of hash functions on mpz\+\_\+t\textquotesingle{}s 
+
+\begin{DoxyAuthor}{Author}
+Sandra Hicks 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{hashing.\+h@{hashing.\+h}!Cantor\+\_\+pairing\+\_\+function\+\_\+int64@{Cantor\+\_\+pairing\+\_\+function\+\_\+int64}}
+\index{Cantor\+\_\+pairing\+\_\+function\+\_\+int64@{Cantor\+\_\+pairing\+\_\+function\+\_\+int64}!hashing.\+h@{hashing.\+h}}
+\subsubsection[{\texorpdfstring{Cantor\+\_\+pairing\+\_\+function\+\_\+int64(uint64\+\_\+t v1, uint64\+\_\+t v2)}{Cantor_pairing_function_int64(uint64_t v1, uint64_t v2)}}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t Cantor\+\_\+pairing\+\_\+function\+\_\+int64 (
+\begin{DoxyParamCaption}
+\item[{uint64\+\_\+t}]{v1, }
+\item[{uint64\+\_\+t}]{v2}
+\end{DoxyParamCaption}
+)}\hypertarget{hashing_8h_af44c8e6918384ae4ab580b7b5976eca9}{}\label{hashing_8h_af44c8e6918384ae4ab580b7b5976eca9}
+
+
+apply Cantor pairing function to uint64\+\_\+t 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v1} & operand 1 \\
+\hline
+{\em v2} & operand 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+result 
+\end{DoxyReturn}
+\index{hashing.\+h@{hashing.\+h}!Cantor\+\_\+pairing\+\_\+function\+\_\+mpz@{Cantor\+\_\+pairing\+\_\+function\+\_\+mpz}}
+\index{Cantor\+\_\+pairing\+\_\+function\+\_\+mpz@{Cantor\+\_\+pairing\+\_\+function\+\_\+mpz}!hashing.\+h@{hashing.\+h}}
+\subsubsection[{\texorpdfstring{Cantor\+\_\+pairing\+\_\+function\+\_\+mpz(mpz\+\_\+t v1, mpz\+\_\+t v2, mpz\+\_\+t res)}{Cantor_pairing_function_mpz(mpz_t v1, mpz_t v2, mpz_t res)}}]{\setlength{\rightskip}{0pt plus 5cm}void Cantor\+\_\+pairing\+\_\+function\+\_\+mpz (
+\begin{DoxyParamCaption}
+\item[{mpz\+\_\+t}]{v1, }
+\item[{mpz\+\_\+t}]{v2, }
+\item[{mpz\+\_\+t}]{res}
+\end{DoxyParamCaption}
+)}\hypertarget{hashing_8h_a6fa8f477d6b93a5a0c4753a75bd3cc8b}{}\label{hashing_8h_a6fa8f477d6b93a5a0c4753a75bd3cc8b}
+
+
+apply Cantor pairing function to mpz\+\_\+t 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v1} & operand 1 \\
+\hline
+{\em v2} & operand 2 \\
+\hline
+{\em res} & resulting mpz\+\_\+t \\
+\hline
+\end{DoxyParams}
+\index{hashing.\+h@{hashing.\+h}!get\+\_\+\+C\+R\+C\+\_\+hash@{get\+\_\+\+C\+R\+C\+\_\+hash}}
+\index{get\+\_\+\+C\+R\+C\+\_\+hash@{get\+\_\+\+C\+R\+C\+\_\+hash}!hashing.\+h@{hashing.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+\+C\+R\+C\+\_\+hash(mpz\+\_\+t myval)}{get_CRC_hash(mpz_t myval)}}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t get\+\_\+\+C\+R\+C\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{mpz\+\_\+t}]{myval}
+\end{DoxyParamCaption}
+)}\hypertarget{hashing_8h_a8a8dd73303711a6884acad72b0caa968}{}\label{hashing_8h_a8a8dd73303711a6884acad72b0caa968}
+
+
+C\+RC hash of a mpz\+\_\+t to a 64 bit unsigned value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em myval} & mpz\+\_\+t to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash value 
+\end{DoxyReturn}
+\index{hashing.\+h@{hashing.\+h}!get\+\_\+\+F\+N\+V1a\+\_\+hash@{get\+\_\+\+F\+N\+V1a\+\_\+hash}}
+\index{get\+\_\+\+F\+N\+V1a\+\_\+hash@{get\+\_\+\+F\+N\+V1a\+\_\+hash}!hashing.\+h@{hashing.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+\+F\+N\+V1a\+\_\+hash(mpz\+\_\+t myval)}{get_FNV1a_hash(mpz_t myval)}}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t get\+\_\+\+F\+N\+V1a\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{mpz\+\_\+t}]{myval}
+\end{DoxyParamCaption}
+)}\hypertarget{hashing_8h_a2b4c88ee112b98a4964da93fb0c8ab05}{}\label{hashing_8h_a2b4c88ee112b98a4964da93fb0c8ab05}
+
+
+F\+N\+V1a hashing of an mpz\+\_\+t to a 64 bit unsigned value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em myval} & mpz\+\_\+t to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash value 
+\end{DoxyReturn}
+\index{hashing.\+h@{hashing.\+h}!get\+\_\+\+Jenkins\+\_\+hash@{get\+\_\+\+Jenkins\+\_\+hash}}
+\index{get\+\_\+\+Jenkins\+\_\+hash@{get\+\_\+\+Jenkins\+\_\+hash}!hashing.\+h@{hashing.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+\+Jenkins\+\_\+hash(mpz\+\_\+t myval)}{get_Jenkins_hash(mpz_t myval)}}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t get\+\_\+\+Jenkins\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{mpz\+\_\+t}]{myval}
+\end{DoxyParamCaption}
+)}\hypertarget{hashing_8h_a319e6314e49fb9e23fc8b1667031409a}{}\label{hashing_8h_a319e6314e49fb9e23fc8b1667031409a}
+
+
+(T\+O\+DO) Jenkins Spookyhash hash of a mpz\+\_\+t to a 64 bit unsigned value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em myval} & mpz\+\_\+t to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash value 
+\end{DoxyReturn}
+\index{hashing.\+h@{hashing.\+h}!get\+\_\+lookup3\+\_\+hash@{get\+\_\+lookup3\+\_\+hash}}
+\index{get\+\_\+lookup3\+\_\+hash@{get\+\_\+lookup3\+\_\+hash}!hashing.\+h@{hashing.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+lookup3\+\_\+hash(mpz\+\_\+t myval)}{get_lookup3_hash(mpz_t myval)}}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t get\+\_\+lookup3\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{mpz\+\_\+t}]{myval}
+\end{DoxyParamCaption}
+)}\hypertarget{hashing_8h_a3418cd49ff87c091e401df5c1745f8c0}{}\label{hashing_8h_a3418cd49ff87c091e401df5c1745f8c0}
+
+
+(T\+O\+DO) Jenkins lookup3 hash of a mpz\+\_\+t to a 64 bit unsigned value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em myval} & mpz\+\_\+t to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash value 
+\end{DoxyReturn}
+\index{hashing.\+h@{hashing.\+h}!get\+\_\+\+Murmur\+\_\+hash@{get\+\_\+\+Murmur\+\_\+hash}}
+\index{get\+\_\+\+Murmur\+\_\+hash@{get\+\_\+\+Murmur\+\_\+hash}!hashing.\+h@{hashing.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+\+Murmur\+\_\+hash(mpz\+\_\+t myval)}{get_Murmur_hash(mpz_t myval)}}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t get\+\_\+\+Murmur\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{mpz\+\_\+t}]{myval}
+\end{DoxyParamCaption}
+)}\hypertarget{hashing_8h_ae1fc6aab0474de396ac9abe0ef6e6466}{}\label{hashing_8h_ae1fc6aab0474de396ac9abe0ef6e6466}
+
+
+Murmur hash of a mpz\+\_\+t to a 64 bit unsigned value. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em myval} & mpz\+\_\+t to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash value 
+\end{DoxyReturn}
+\index{hashing.\+h@{hashing.\+h}!get\+\_\+\+Sip\+\_\+hash@{get\+\_\+\+Sip\+\_\+hash}}
+\index{get\+\_\+\+Sip\+\_\+hash@{get\+\_\+\+Sip\+\_\+hash}!hashing.\+h@{hashing.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+\+Sip\+\_\+hash(mpz\+\_\+t myval)}{get_Sip_hash(mpz_t myval)}}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t get\+\_\+\+Sip\+\_\+hash (
+\begin{DoxyParamCaption}
+\item[{mpz\+\_\+t}]{myval}
+\end{DoxyParamCaption}
+)}\hypertarget{hashing_8h_a8c95fa7a682da0f000d85afbaaf28d83}{}\label{hashing_8h_a8c95fa7a682da0f000d85afbaaf28d83}
+
+
+(T\+O\+DO) Siphash hash of a mpz\+\_\+t to a 64 bit unsigned value 
+
+
+\begin{DoxyParams}{Parameters}
+{\em myval} & mpz\+\_\+t to be hashed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+hash value 
+\end{DoxyReturn}

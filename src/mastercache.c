@@ -32,7 +32,7 @@ cachedInt cache_add(MasterCache* mstr, mpz_t new){
  * @param mstr MasterCache pointer
  * @param element mpz_t to be added to cache
  */
-bool cache_exists(MasterCache* mstr, mpz_t element){
+int cache_exists(MasterCache* mstr, mpz_t element){
     
     return 0;
 }
@@ -41,6 +41,7 @@ bool cache_exists(MasterCache* mstr, mpz_t element){
  * @brief function for master cache to get an item back from cache as mpq_t
  * @param mstr MasterCache pointer
  * @param element id of the element to get from cache
+ * @param result
  */
 void cache_get(MasterCache* mstr, cachedInt element, mpz_t result){
 

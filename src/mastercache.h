@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   mastercache.h
- * Author: sandra
- *
- * Created on March 24, 2017, 12:53 PM
- */
+ /**
+  * @file mastercache.h
+  * @author Sandra Hicks
+  * @brief header for Master Cache for caching Integers and Integer operations from gmp.
+  */
 
 #ifndef MASTERCACHE_H
 #define MASTERCACHE_H
@@ -20,42 +13,53 @@ extern "C" {
 
 #include "defines.h"
 #include "caching_operations.h"
+    /**
+     * Master cache for integers
+     */
     typedef struct MasterCacheInt{
-        lookup* cache;
+        lookup* cache;      /**< cache for integer caching*/
     } MasterCacheInt;
     
+    /**
+     * Master cache for rationals
+     */
     typedef struct MasterCacheRational{
         
     } MasterCacheRational;
-//Master Cache typedef and instance
-typedef struct MasterCache {
-    MasterCacheInt* _integers;
-    MasterCacheRational* _rationals;
-} MasterCache;
+    
+    /**
+     * @brief MasterCache
+     */
+    typedef struct MasterCache {
+        MasterCacheInt* _integers;          /**< cache for integer caching*/
+        MasterCacheRational* _rationals;    /**< cache for rational caching*/
+    } MasterCache;
 
-//Master Cache bit mask version
+/** cachedInt can be either an id to a cached mpz_t (indicated by MSB) or an actual number,
+ * the sign is indicated by MSB-1
+ */
 typedef uint64_t cachedInt; //max: 1073741823 (2^62 - 2)
 
-//Master Cache struct version
-typedef uint64_t _cachedInt;
 
-typedef struct cachedInt_ {
+
+
+/*typedef struct cachedInt_ {
     cachedInt number;
-    bool sign;
-    bool isIndex;
+    int sign;
+    int isIndex;
 } cachedInt_;
 
 typedef struct cached_rational {
     cachedInt counter;
     cachedInt denominator;
-    bool sign;
-    bool isIndex;
+    int sign;
+    int isIndex;
 } cached_rational;
 //oder
 typedef struct cachedInt__ {
     cachedInt number;
     uint8_t info; //include information about sign and isIndex
-} cachedInt__;
+} cachedInt__;*/
 
 
 #ifdef __cplusplus

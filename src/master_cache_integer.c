@@ -9,7 +9,6 @@
 #include <stdlib.h>
 #include <float.h>
 
-#include "defines.h"
 #include "mastercache.h"
 #include "master_cache_integer.h"
 #include "caching_operations.h"
@@ -22,7 +21,6 @@
 
 /*local definitions*/
 cachedInt direct_add(cachedInt val1, cachedInt val2);
-cachedInt direct_sub(cachedInt val1, cachedInt val2);
 cachedInt direct_mul(cachedInt val1, cachedInt val2);
 cachedInt direct_div(cachedInt val1, cachedInt val2);
 cachedInt direct_mod(cachedInt val1, cachedInt val2);
@@ -56,6 +54,11 @@ void cached_int_clear_cache(MasterCache* mstr){
     mstr->_integers = NULL;
 }
 
+/**
+ * (for internal use only!)
+ * @param number
+ * @return 
+ */
 uint64_t mpz_cached_int(mpz_t number){
     int64_t cmp = cachedInt_MAX;
     int limbs = number->_mp_size;
@@ -95,6 +98,11 @@ uint64_t mpz_cached_int(mpz_t number){
     return 0;
 }
 
+/**
+ * (for internal use only!)
+ * @param id
+ * @param number
+ */
 void cached_int_mpz(cachedInt id, mpz_t number){
     id = id & (~SHIFT);
     if(id & NEG){
@@ -148,7 +156,6 @@ void cached_int_get(MasterCache* mstr, cachedInt id, mpz_t number){
  * @brief function for master cache to get a previously cached mpz_t as double from an id
  * @param mstr MasterCache pointer
  * @param id cachedInt id that was cached
- * @param number mpz_t number to set
  * @return double the double representation of the mpz cached with id
  */
 double cached_int_get_d(MasterCache* mstr, cachedInt id){
@@ -210,6 +217,12 @@ cachedInt cached_int_add(MasterCache* mstr, cachedInt val1, cachedInt val2){
    
     return result;
 }
+/**
+ * (for internal use only!)
+ * @param val1
+ * @param val2
+ * @return 
+ */
 cachedInt direct_add(cachedInt val1, cachedInt val2){
     int val1neg=0;
     if((val1 & NEG) >= 1){
@@ -313,7 +326,12 @@ cachedInt cached_int_mul(MasterCache* mstr, cachedInt val1, cachedInt val2){
    
     return result;
 }
-
+/**
+ * (for internal use only!)
+ * @param val1
+ * @param val2
+ * @return 
+ */
 cachedInt direct_mul(cachedInt val1, cachedInt val2){
     int val1neg=0;
     if((val1 & NEG) >= 1){
@@ -381,7 +399,12 @@ cachedInt cached_int_tdiv(MasterCache* mstr, cachedInt divident, cachedInt divis
    
     return result;
 }
-
+/**
+ * (for internal use only!)
+ * @param val1
+ * @param val2
+ * @return 
+ */
 cachedInt direct_div(cachedInt val1, cachedInt val2){
     int val1neg=0;
     if((val1 & NEG) >= 1){
@@ -404,6 +427,12 @@ cachedInt direct_div(cachedInt val1, cachedInt val2){
         return SHIFT;
 }
 
+/**
+ * (for internal use only!)
+ * @param val1
+ * @param val2
+ * @return 
+ */
 cachedInt direct_mod(cachedInt val1, cachedInt val2){
     if((val1 & NEG) >= 1){
         val1 = val1 & ~NEG;
@@ -472,6 +501,12 @@ cachedInt cached_int_gcd(MasterCache* mstr, cachedInt val1, cachedInt val2){
    
     return result;
 }
+/**
+ * (for internal use only!)
+ * @param val1
+ * @param val2
+ * @return 
+ */
 cachedInt direct_gcd(cachedInt val1, cachedInt val2){
     if((val1 & NEG) >= 1){
         val1 = val1 & ~NEG;
@@ -519,7 +554,12 @@ int cached_int_invert(MasterCache* mstr, cachedInt val1, cachedInt val2, cachedI
     return 1;
 }
 
-
+/**
+ * (for internal use only!)
+ * @param val1
+ * @param val2
+ * @return 
+ */
 cachedInt direct_invert(cachedInt val1, cachedInt val2){
     cachedInt gcd = direct_gcd(val1, val2);
     if(gcd != 1)
@@ -534,6 +574,14 @@ cachedInt direct_invert(cachedInt val1, cachedInt val2){
     return inverse;
 }
 
+/**
+ * (for internal use only!)
+ * @param val1
+ * @param val2
+ * @param d
+ * @param s
+ * @param t
+ */
 void ext_euclid(cachedInt val1, cachedInt val2, cachedInt* d, cachedInt* s, cachedInt* t){
     if(val2 == 0){
         *d = val1;

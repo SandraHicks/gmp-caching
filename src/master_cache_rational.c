@@ -4,27 +4,19 @@
  */
 #include "defines.h"
 #include <gmp.h>
+#include "mastercache.h"
 
 
-//Master Cache typedef and instance
-typedef struct MasterCacheRational {
-    
-} MasterCacheRational;
-//Master Cache bitmask version
+typedef uint64_t cache_mpq;
 
-typedef long cache_mpq;
-typedef unsigned long u_cache_mpq;
-
-#define SIGN 0b10000000000000000000000000000000
-#define INDEX 0b01000000000000000000000000000000
 
 //Master Cache struct version
-
-typedef struct cache_rational {
-    u_cache_mpq counter;
-    u_cache_mpq denominator;
-    bool sign;
-    bool isIndex;
+/**
+ * cached Rational
+ */
+typedef struct cachedRational {
+    cache_mpq counter;      /**< counter*/
+    cache_mpq denominator;  /**< denominator*/
 } cache_rational;
 
 
@@ -32,26 +24,54 @@ typedef struct cache_rational {
 /*
  * typedef based functions
  */
+/**
+ * (TODO)
+ * @param mstr
+ * @param value
+ * @param result
+ */
 void int_cache_get(MasterCacheRational mstr, cache_mpq value, mpq_t result){
     //get value from cache if exists
     
     //error handling?
 }
-
-bool int_cache_exists(MasterCacheRational mstr, mpq_t value){
+/**
+ * (TODO)
+ * @param mstr
+ * @param value
+ * @return 
+ */
+int int_cache_exists(MasterCacheRational mstr, mpq_t value){
     //value exists in cache?
     return 0;
 }
-
-bool int_cache_insert(MasterCacheRational mstr, mpq_t value){
+/**
+ * (TODO)
+ * @param mstr
+ * @param value
+ * @return 
+ */
+int int_cache_insert(MasterCacheRational mstr, mpq_t value){
     //insert value in table
     return 0;
 }
-
-bool int_cache_insert_l(MasterCacheRational mstr, cache_mpq value){
+/**
+ * (TODO)
+ * @param mstr
+ * @param value
+ * @return 
+ */
+int int_cache_insert_l(MasterCacheRational mstr, cache_mpq value){
     //insert long
     return 0;
 }
+/**
+ * (TODO)
+ * @param mstr
+ * @param val1
+ * @param val2
+ * @param result
+ */
 void int_cache_add(MasterCacheRational mstr, cache_mpq val1, cache_mpq val2, mpq_t result){
     //add rationals
 
@@ -61,24 +81,44 @@ void int_cache_add(MasterCacheRational mstr, cache_mpq val1, cache_mpq val2, mpq
 /*
  * struct based functions
  */
-
+/**
+ * (TODO)
+ * @param mstr
+ * @param value
+ * @param result
+ */
 void int_cache_get_(MasterCacheRational mstr, cache_rational value, mpq_t result){
     //get value from cache if exists
     
     //error handling?
 }
-
-bool int_cache_exists_(MasterCacheRational mstr, mpq_t value){
+/**
+ * (TODO)
+ * @param mstr
+ * @param value
+ * @return 
+ */
+int int_cache_exists_(MasterCacheRational mstr, mpq_t value){
     //value exists in cache?
     return 0;
 }
-
-bool int_cache_insert_(MasterCacheRational mstr, mpq_t value){
+/**
+ * (TODO)
+ * @param mstr
+ * @param value
+ * @return 
+ */
+int int_cache_insert_(MasterCacheRational mstr, mpq_t value){
     //insert value in table
     return 0;
 }
-
-bool int_cache_insert_d_(MasterCacheRational mstr, double value){
+/**
+ * (TODO)
+ * @param mstr
+ * @param value
+ * @return 
+ */
+int int_cache_insert_d_(MasterCacheRational mstr, double value){
     //insert double
     return 0;
 }

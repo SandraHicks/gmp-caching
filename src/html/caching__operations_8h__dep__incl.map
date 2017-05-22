@@ -1,0 +1,10 @@
+<map id="caching_operations.h" name="caching_operations.h">
+<area shape="rect" id="node2" href="$caching__operations_8c.html" title="caching operations if numbers are large and not directly used " alt="" coords="255,80,400,107"/>
+<area shape="rect" id="node3" href="$mastercache_8h.html" title="header for Master Cache for caching Integers and Integer operations from gmp. " alt="" coords="424,80,532,107"/>
+<area shape="rect" id="node4" href="$master__cache__integer_8c.html" title="Master Cache functions for caching Integer operations in gmp. " alt="" coords="364,229,525,256"/>
+<area shape="rect" id="node5" href="$master__cache__integer_8h.html" title="header for Master Cache functions for caching Integer operations in gmp " alt="" coords="172,155,333,181"/>
+<area shape="rect" id="node6" href="$overflow__detection_8h.html" title="header for overflow detection functions " alt="" coords="5,155,148,181"/>
+<area shape="rect" id="node8" href="$mastercache_8c.html" title="Master Cache for caching Integers and Integer operations from gmp. " alt="" coords="357,155,465,181"/>
+<area shape="rect" id="node9" href="$mpz__caching_8c.html" title="cache for mpz_t " alt="" coords="489,155,600,181"/>
+<area shape="rect" id="node7" href="$overflow__detection_8c.html" title="Functions to detect overflows in integer operations. " alt="" coords="5,229,148,256"/>
+</map>

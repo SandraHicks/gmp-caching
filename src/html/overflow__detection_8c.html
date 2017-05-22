@@ -91,67 +91,77 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <p>Functions to detect overflows in integer operations.  
 <a href="#details">More...</a></p>
 <div class="textblock"><code>#include &lt;stdint.h&gt;</code><br />
-<code>#include &quot;overflow_detection.h&quot;</code><br />
-<code>#include &quot;defines.h&quot;</code><br />
+<code>#include &quot;<a class="el" href="overflow__detection_8h_source.html">overflow_detection.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="defines_8h_source.html">defines.h</a>&quot;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;inttypes.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for overflow_detection.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="overflow__detection_8c__incl.png" border="0" usemap="#overflow__detection_8c" alt=""/></div>
 <map name="overflow__detection_8c" id="overflow__detection_8c">
-<area shape="rect" id="node3" href="overflow__detection_8h_source.html" title="overflow_detection.h" alt="" coords="95,80,237,107"/>
-<area shape="rect" id="node5" href="defines_8h_source.html" title="defines.h" alt="" coords="187,229,262,256"/>
-<area shape="rect" id="node4" href="mastercache_8h_source.html" title="mastercache.h" alt="" coords="120,155,228,181"/>
+<area shape="rect" id="node3" href="overflow__detection_8h.html" title="header for overflow detection functions " alt="" coords="187,80,330,107"/>
+<area shape="rect" id="node5" href="defines_8h.html" title="general defines for the caching process " alt="" coords="280,379,355,405"/>
+<area shape="rect" id="node4" href="mastercache_8h.html" title="header for Master Cache for caching Integers and Integer operations from gmp. " alt="" coords="205,155,313,181"/>
+<area shape="rect" id="node6" href="caching__operations_8h.html" title="header for caching operations if numbers are large and not directly used " alt="" coords="123,229,269,256"/>
+<area shape="rect" id="node7" href="hashtable_8h.html" title="Header for hash table implementation. " alt="" coords="139,304,229,331"/>
+<area shape="rect" id="node8" href="mpz__caching_8h.html" title="header for cache for mpz_t " alt="" coords="43,379,154,405"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
 Macros</h2></td></tr>
-<tr class="memitem:af3694ae57103552f7fba8b94e114a90f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af3694ae57103552f7fba8b94e114a90f"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>MAXBIT</b>&#160;&#160;&#160;62</td></tr>
+<tr class="memitem:af3694ae57103552f7fba8b94e114a90f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#af3694ae57103552f7fba8b94e114a90f">MAXBIT</a>&#160;&#160;&#160;62</td></tr>
 <tr class="separator:af3694ae57103552f7fba8b94e114a90f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ab9ebfca4f389fbfd7518c73802739dfa"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab9ebfca4f389fbfd7518c73802739dfa"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>MSB</b> (cachedInt val)</td></tr>
+<tr class="memitem:ab9ebfca4f389fbfd7518c73802739dfa"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#ab9ebfca4f389fbfd7518c73802739dfa">MSB</a> (<a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val)</td></tr>
 <tr class="separator:ab9ebfca4f389fbfd7518c73802739dfa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a069c125ad06465b64cbfe809b29ec9ce"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a069c125ad06465b64cbfe809b29ec9ce"></a>
-cachedInt&#160;</td><td class="memItemRight" valign="bottom"><b>deleteIdBit</b> (cachedInt val)</td></tr>
+<tr class="memitem:a069c125ad06465b64cbfe809b29ec9ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#a069c125ad06465b64cbfe809b29ec9ce">deleteIdBit</a> (<a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val)</td></tr>
 <tr class="separator:a069c125ad06465b64cbfe809b29ec9ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad1d45046267b858944b973cb3703c82"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#aad1d45046267b858944b973cb3703c82">additionOverflow</a> (cachedInt op1, cachedInt op2)</td></tr>
-<tr class="memdesc:aad1d45046267b858944b973cb3703c82"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to predict if an addition will overflow  <a href="#aad1d45046267b858944b973cb3703c82">More...</a><br /></td></tr>
-<tr class="separator:aad1d45046267b858944b973cb3703c82"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0ca71e4122a9904edad0beec0a623263"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#a0ca71e4122a9904edad0beec0a623263">subtractionOverflow</a> (cachedInt op1, cachedInt op2)</td></tr>
-<tr class="memdesc:a0ca71e4122a9904edad0beec0a623263"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to predict if a subtraction will overflow  <a href="#a0ca71e4122a9904edad0beec0a623263">More...</a><br /></td></tr>
-<tr class="separator:a0ca71e4122a9904edad0beec0a623263"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a971cb63d161a2dabb62ce1f51c7be192"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#a971cb63d161a2dabb62ce1f51c7be192">multiplicationOverflow</a> (cachedInt op1, cachedInt op2)</td></tr>
-<tr class="memdesc:a971cb63d161a2dabb62ce1f51c7be192"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to predict if a multiplication will overflow  <a href="#a971cb63d161a2dabb62ce1f51c7be192">More...</a><br /></td></tr>
-<tr class="separator:a971cb63d161a2dabb62ce1f51c7be192"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae441d5f8cbbea00ffce31ae045a4e8d3"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#ae441d5f8cbbea00ffce31ae045a4e8d3">divisionOverflow</a> (cachedInt op1, cachedInt op2)</td></tr>
-<tr class="memdesc:ae441d5f8cbbea00ffce31ae045a4e8d3"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to predict if a division will overflow  <a href="#ae441d5f8cbbea00ffce31ae045a4e8d3">More...</a><br /></td></tr>
-<tr class="separator:ae441d5f8cbbea00ffce31ae045a4e8d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae7c8bc0079e298587829bf442c2a9107"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#ae7c8bc0079e298587829bf442c2a9107">exponentiationOverflow</a> (cachedInt base, cachedInt exp)</td></tr>
-<tr class="memdesc:ae7c8bc0079e298587829bf442c2a9107"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to predict if an exponentiation will overflow  <a href="#ae7c8bc0079e298587829bf442c2a9107">More...</a><br /></td></tr>
-<tr class="separator:ae7c8bc0079e298587829bf442c2a9107"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9353ddb1f8619095dfce206ab4209d3a"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#a9353ddb1f8619095dfce206ab4209d3a">additionOverflow</a> (<a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> op1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> op2)</td></tr>
+<tr class="memdesc:a9353ddb1f8619095dfce206ab4209d3a"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to predict if an addition will overflow  <a href="#a9353ddb1f8619095dfce206ab4209d3a">More...</a><br /></td></tr>
+<tr class="separator:a9353ddb1f8619095dfce206ab4209d3a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d152657eff6ecfd62713f7252beb0fe"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#a3d152657eff6ecfd62713f7252beb0fe">multiplicationOverflow</a> (<a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> op1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> op2)</td></tr>
+<tr class="memdesc:a3d152657eff6ecfd62713f7252beb0fe"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to predict if a multiplication will overflow  <a href="#a3d152657eff6ecfd62713f7252beb0fe">More...</a><br /></td></tr>
+<tr class="separator:a3d152657eff6ecfd62713f7252beb0fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f5d390da9ae4425c7ba83964f3b0905"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="overflow__detection_8c.html#a3f5d390da9ae4425c7ba83964f3b0905">exponentiationOverflow</a> (<a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> base, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> exp)</td></tr>
+<tr class="memdesc:a3f5d390da9ae4425c7ba83964f3b0905"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to predict if an exponentiation will overflow  <a href="#a3f5d390da9ae4425c7ba83964f3b0905">More...</a><br /></td></tr>
+<tr class="separator:a3f5d390da9ae4425c7ba83964f3b0905"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Functions to detect overflows in integer operations. </p>
 <dl class="section author"><dt>Author</dt><dd>Sandra Hicks </dd></dl>
-</div><h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aad1d45046267b858944b973cb3703c82"></a>
+</div><h2 class="groupheader">Macro Definition Documentation</h2>
+<a class="anchor" id="af3694ae57103552f7fba8b94e114a90f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool additionOverflow </td>
+          <td class="memname">#define MAXBIT&#160;&#160;&#160;62</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>maximal bit to be set before overflow </p>
+
+</div>
+</div>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a9353ddb1f8619095dfce206ab4209d3a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int additionOverflow </td>
           <td>(</td>
-          <td class="paramtype">cachedInt&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
           <td class="paramname"><em>op1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cachedInt&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
           <td class="paramname"><em>op2</em>&#160;</td>
         </tr>
         <tr>
@@ -173,55 +183,43 @@ cachedInt&#160;</td><td class="memItemRight" valign="bottom"><b>deleteIdBit</b> 
 
 </div>
 </div>
-<a class="anchor" id="ae441d5f8cbbea00ffce31ae045a4e8d3"></a>
+<a class="anchor" id="a069c125ad06465b64cbfe809b29ec9ce"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool divisionOverflow </td>
+          <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> deleteIdBit </td>
           <td>(</td>
-          <td class="paramtype">cachedInt&#160;</td>
-          <td class="paramname"><em>op1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">cachedInt&#160;</td>
-          <td class="paramname"><em>op2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-
-<p>function to predict if a division will overflow </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p>(for internal use only!) </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">op1</td><td>first operator </td></tr>
-    <tr><td class="paramname">op2</td><td>second operator </td></tr>
+    <tr><td class="paramname">val</td><td></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="ae7c8bc0079e298587829bf442c2a9107"></a>
+<a class="anchor" id="a3f5d390da9ae4425c7ba83964f3b0905"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool exponentiationOverflow </td>
+          <td class="memname">int exponentiationOverflow </td>
           <td>(</td>
-          <td class="paramtype">cachedInt&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
           <td class="paramname"><em>base</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cachedInt&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
           <td class="paramname"><em>exp</em>&#160;</td>
         </tr>
         <tr>
@@ -243,20 +241,43 @@ cachedInt&#160;</td><td class="memItemRight" valign="bottom"><b>deleteIdBit</b> 
 
 </div>
 </div>
-<a class="anchor" id="a971cb63d161a2dabb62ce1f51c7be192"></a>
+<a class="anchor" id="ab9ebfca4f389fbfd7518c73802739dfa"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool multiplicationOverflow </td>
+          <td class="memname">uint32_t MSB </td>
           <td>(</td>
-          <td class="paramtype">cachedInt&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>(for internal use only!) </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a3d152657eff6ecfd62713f7252beb0fe"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int multiplicationOverflow </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
           <td class="paramname"><em>op1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">cachedInt&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
           <td class="paramname"><em>op2</em>&#160;</td>
         </tr>
         <tr>
@@ -268,41 +289,6 @@ cachedInt&#160;</td><td class="memItemRight" valign="bottom"><b>deleteIdBit</b> 
 </div><div class="memdoc">
 
 <p>function to predict if a multiplication will overflow </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">op1</td><td>first operator </td></tr>
-    <tr><td class="paramname">op2</td><td>second operator </td></tr>
-  </table>
-  </dd>
-</dl>
-
-</div>
-</div>
-<a class="anchor" id="a0ca71e4122a9904edad0beec0a623263"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool subtractionOverflow </td>
-          <td>(</td>
-          <td class="paramtype">cachedInt&#160;</td>
-          <td class="paramname"><em>op1</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">cachedInt&#160;</td>
-          <td class="paramname"><em>op2</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>function to predict if a subtraction will overflow </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">op1</td><td>first operator </td></tr>

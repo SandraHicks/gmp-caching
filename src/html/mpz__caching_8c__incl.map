@@ -1,5 +1,7 @@
 <map id="mpz_caching.c" name="mpz_caching.c">
-<area shape="rect" id="node2" href="$mpz__caching_8h_source.html" title="mpz_caching.h" alt="" coords="48,80,159,107"/>
-<area shape="rect" id="node5" href="$mastercache_8h_source.html" title="mastercache.h" alt="" coords="183,80,291,107"/>
-<area shape="rect" id="node6" href="$defines_8h_source.html" title="defines.h" alt="" coords="199,155,274,181"/>
+<area shape="rect" id="node2" href="$mpz__caching_8h.html" title="header for cache for mpz_t " alt="" coords="206,304,317,331"/>
+<area shape="rect" id="node5" href="$mastercache_8h.html" title="header for Master Cache for caching Integers and Integer operations from gmp. " alt="" coords="94,80,202,107"/>
+<area shape="rect" id="node6" href="$defines_8h.html" title="general defines for the caching process " alt="" coords="5,304,80,331"/>
+<area shape="rect" id="node7" href="$caching__operations_8h.html" title="header for caching operations if numbers are large and not directly used " alt="" coords="75,155,221,181"/>
+<area shape="rect" id="node8" href="$hashtable_8h.html" title="Header for hash table implementation. " alt="" coords="103,229,193,256"/>
 </map>

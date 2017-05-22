@@ -1,0 +1,7 @@
+<map id="lookup_table_binary" name="lookup_table_binary">
+<area shape="rect" id="node2" href="$structmpz__t__cache.html" title="cache implemented as an array (fast random access) " alt="" coords="11,201,111,228"/>
+<area shape="rect" id="node3" href="$structcached__mpz__t.html" title="cached representation of an mpz_t " alt="" coords="5,112,112,139"/>
+<area shape="rect" id="node4" href="$structHashtable__binary.html" title="hash table binary mapping " alt="" coords="137,201,260,228"/>
+<area shape="rect" id="node5" href="$structcachedIntList__binary.html" title="list of elements in one slot of the hash table binary mapping " alt="" coords="137,112,279,139"/>
+<area shape="rect" id="node6" href="$structcachedIntElement__binary.html" title="element of hash table binary mapping " alt="" coords="123,7,293,33"/>
+</map>

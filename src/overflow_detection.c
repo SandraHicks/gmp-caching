@@ -8,11 +8,10 @@
 #include "overflow_detection.h"
 #include "defines.h"
 
+/** maximal bit to be set before overflow*/
 #define MAXBIT 62
 
 /*local definitions*/
-#define SHIFT ((uint64_t)1 << cachedInt_IsID)
-#define NEG ((uint64_t)1 << cachedInt_SIGN)
 
 //debug
 #include <stdio.h>
@@ -26,7 +25,7 @@ cachedInt deleteIdBit(cachedInt val);
  * @param op1 first operator
  * @param op2 second operator
  */
-bool additionOverflow(cachedInt op1, cachedInt op2){
+int additionOverflow(cachedInt op1, cachedInt op2){
     
     //first check based on msb
     int msb_op1 = MSB(op1);
@@ -54,7 +53,7 @@ bool additionOverflow(cachedInt op1, cachedInt op2){
  * @param op1 first operator
  * @param op2 second operator
  */
-bool multiplicationOverflow(cachedInt op1, cachedInt op2){
+int multiplicationOverflow(cachedInt op1, cachedInt op2){
     //first check based on msb
     int msb_op1 = MSB(op1);
     int msb_op2 = MSB(op2);
@@ -83,7 +82,7 @@ bool multiplicationOverflow(cachedInt op1, cachedInt op2){
  * @param base first operator, base
  * @param exp second operator, exponent
  */
-bool exponentiationOverflow(cachedInt base, cachedInt exp){
+int exponentiationOverflow(cachedInt base, cachedInt exp){
     //first check based on msb
     int msb_op1 = MSB(base);
     if(!multiplicationOverflow(msb_op1, exp)){
@@ -99,7 +98,11 @@ bool exponentiationOverflow(cachedInt base, cachedInt exp){
     }
     return 1;
 }
-
+/**
+ * (for internal use only!)
+ * @param val
+ * @return 
+ */
 uint32_t MSB(cachedInt val){
   //get unsigned
   if(val < 0)
@@ -117,6 +120,11 @@ uint32_t MSB(cachedInt val){
   return difference-1;
 }
 
+/**
+ * (for internal use only!)
+ * @param val
+ * @return 
+ */
 cachedInt deleteIdBit(cachedInt val){
     return val & ~(SHIFT);
 }

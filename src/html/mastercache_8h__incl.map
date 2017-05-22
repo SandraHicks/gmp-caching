@@ -1,0 +1,6 @@
+<map id="mastercache.h" name="mastercache.h">
+<area shape="rect" id="node2" href="$defines_8h.html" title="general defines for the caching process " alt="" coords="242,229,317,256"/>
+<area shape="rect" id="node3" href="$caching__operations_8h.html" title="header for caching operations if numbers are large and not directly used " alt="" coords="92,80,237,107"/>
+<area shape="rect" id="node4" href="$hashtable_8h.html" title="Header for hash table implementation. " alt="" coords="109,155,199,181"/>
+<area shape="rect" id="node6" href="$mpz__caching_8h.html" title="header for cache for mpz_t " alt="" coords="5,229,116,256"/>
+</map>

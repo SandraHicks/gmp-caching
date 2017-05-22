@@ -1,9 +1,8 @@
-/* 
- * File:   defines.h
- * Author: sandra
- *
- * Created on March 24, 2017, 12:53 PM
- */
+/**
+  * @file defines.h
+  * @author Sandra Hicks
+  * @brief general defines for the caching process
+  */
 
 #ifndef DEFINES_H
 #define DEFINES_H
@@ -11,10 +10,6 @@
 #ifdef __cplusplus
 extern "C" {
 #endif
-
-#define true 1
-#define false 0
-typedef int bool;
 
 /*! maximum size of a cachedInt */
 #define cachedInt_MAX (int64_t)2^62-2
@@ -32,7 +27,9 @@ typedef int bool;
 /*! number of hash functions */
 #define NUMBER_HF 3
 
+/*! macro to detect the bit in a cachedInt which defines if it is an id or a number */
 #define SHIFT ((uint64_t)1 << cachedInt_IsID)
+/*! macro to detect the bit in a cachedInt which defines if it is positive or negative */
 #define NEG ((uint64_t)1 << cachedInt_SIGN)
 
 #ifdef __cplusplus

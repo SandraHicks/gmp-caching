@@ -1,15 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-
-/* 
- * File:   caching_operations.h
- * Author: sandra
- *
- * Created on April 24, 2017, 11:39 AM
- */
+/**
+  * @file caching_operations.h
+  * @author Sandra Hicks
+  * @brief header for caching operations if numbers are large and not directly used
+  */
 
 #ifndef CACHING_OPERATIONS_H
 #define CACHING_OPERATIONS_H
@@ -21,36 +14,46 @@ extern "C" {
 #include "mpz_caching.h"
 #include "defines.h"
 
+    /*! identifiers for operations applied to mpz_t's*/
     enum Operation {
-        ADD,
-        SUB,
-        MUL,
-        TDIV,
-        MOD,
-        GCD,
-        INV
+        /*! addition*/          ADD, 
+        /*! subtraction*/       SUB, 
+        /*! multiplication*/    MUL, 
+        /*! integer division*/  TDIV,
+        /*! modulo*/            MOD, 
+        /*! greatest common divisor*/       GCD,
+        /*! modular multiplicative inverse*/INV
     };
 
     
+    /**
+     * @brief lookup table for mpz_t
+     */
     typedef struct lookup_table{
-        Hashtable* ht;
-        mpz_t_cache* cache;
+        Hashtable* ht;          /**< hash table for mpz_t*/
+        mpz_t_cache* cache;     /**< pointer to singleton mpz_t cache*/
     } lookup_table;
     
+    /**
+     * @brief lookup table for binary operations mpz_t x mpz_t -> mpz_t
+     */
     typedef struct lookup_table_binary{
-        Hashtable_binary* ht;
-        mpz_t_cache* cache;
+        Hashtable_binary* ht;       /**< hash table for (mpz_t x mpz_t)*/
+        mpz_t_cache* cache;         /**< pointer to singleton mpz_t cache*/
     } lookup_table_binary;
     
+    /**
+     * @brief collection of lookup tables for the required operations
+     */
     typedef struct lookup{
-        lookup_table* lkup;
-        lookup_table_binary* add;
-        lookup_table_binary* sub;
-        lookup_table_binary* mul;
-        lookup_table_binary* tdiv;
-        lookup_table_binary* mod;
-        lookup_table_binary* gcd;
-        lookup_table_binary* inv;
+        lookup_table* lkup;         /**< lookup table for mpz_t*/
+        lookup_table_binary* add;   /**< lookup table for mpz_t addition*/
+        lookup_table_binary* sub;   /**< lookup table for mpz_t subtraction*/
+        lookup_table_binary* mul;   /**< lookup table for mpz_t multiplication*/
+        lookup_table_binary* tdiv;  /**< lookup table for mpz_t integer division*/
+        lookup_table_binary* mod;   /**< lookup table for mpz_t modulo*/
+        lookup_table_binary* gcd;   /**< lookup table for mpz_t greatest common divisor*/
+        lookup_table_binary* inv;   /**< lookup table for mpz_t modular multiplicative inverse*/
     } lookup;
     
     /* CACHING SETUP */

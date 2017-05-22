@@ -1,6 +1,8 @@
-/*
- *
- */
+ /**
+  * @file hashing.c
+  * @author Sandra Hicks
+  * @brief implementation of hash functions on mpz_t's
+  */
 
 #include <sys/types.h>
 #include "defines.h"
@@ -12,14 +14,24 @@
 #include <stdio.h>
 #include "debug.h"
 
+/*! need a uint128_t value*/
 typedef unsigned __int128 uint128_t;
+/*! use uint64_t for implementing the FNV1a algorithm*/
 typedef uint64_t Fnv64_t;
 
+/*! special prime for FNV1a*/
 #define FNV_64_PRIME ((Fnv64_t)0x100000001b3ULL)
+/*! init value for FNV1*/
 #define FNV1_64_INIT ((Fnv64_t)0xcbf29ce484222325ULL)
+/*! init value for FNV1a*/
 #define FNV1A_64_INIT FNV1_64_INIT
 
 //FNV1a
+/**
+ * @brief FNV1a hashing of an mpz_t to a 64 bit unsigned value.
+ * @param myval mpz_t to be hashed
+ * @return hash value
+ */
 uint64_t get_FNV1a_hash(mpz_t myval){
     //check for negative sign for safety
     mp_limb_t* key = myval->_mp_d;
@@ -33,29 +45,45 @@ uint64_t get_FNV1a_hash(mpz_t myval){
         hash *= FNV_64_PRIME;
     }
     
-    
-    //end loop
-    //printf("H_prev %" PRIu64 "\n", hash);
-    
     uint64_t shift = 1;
     hash &= ~((shift << 63) | (shift << 62));
 
     return hash;
 }
 //Jenkins, Spookyhash (hashes 128bit values!)
+/**
+ * @brief (TODO) Jenkins Spookyhash hash of a mpz_t to a 64 bit unsigned value
+ * @param myval mpz_t to be hashed
+ * @return hash value
+ */
 uint64_t get_Jenkins_hash(mpz_t myval){
     return 0;
 } 
 
 //Jenkins lookup3
+/**
+ * @brief (TODO) Jenkins lookup3 hash of a mpz_t to a 64 bit unsigned value
+ * @param myval mpz_t to be hashed
+ * @return hash value
+ */
 uint64_t get_lookup3_hash(mpz_t myval){
     return 0;
 } 
 //Siphash
+/**
+ * @brief (TODO) Siphash hash of a mpz_t to a 64 bit unsigned value
+ * @param myval mpz_t to be hashed
+ * @return hash value
+ */
 uint64_t get_Sip_hash(mpz_t myval){
     return 0;
 }
 //Murmurhash needs key, seed, length
+/**
+ * @brief Murmur hash of a mpz_t to a 64 bit unsigned value
+ * @param myval mpz_t to be hashed
+ * @return hash value
+ */
 uint64_t get_Murmur_hash(mpz_t myval){
     //get key and seed for hash
     mp_limb_t* key = myval->_mp_d;
@@ -112,6 +140,11 @@ uint64_t get_Murmur_hash(mpz_t myval){
     return hash;
 }
 //CRC
+/**
+ * @brief CRC hash of a mpz_t to a 64 bit unsigned value
+ * @param myval mpz_t to be hashed
+ * @return hash value
+ */
 uint64_t get_CRC_hash(mpz_t myval){
     //apply CRC64 ECMA on mpz_t limbs
     //uint64_t crc_polynom = 0x42F0E1EBA9EA3693;
@@ -169,6 +202,12 @@ uint64_t get_CRC_hash(mpz_t myval){
     return crc_result;
 }
 
+/**
+ * @brief apply Cantor pairing function to uint64_t
+ * @param v1 operand 1
+ * @param v2 operand 2
+ * @return result
+ */
 uint64_t Cantor_pairing_function_int64(uint64_t v1, uint64_t v2){
     uint64_t result = 0.5*(v1+v2)*(v1+v2+1) + v2;
     uint64_t shift = 1;
@@ -176,6 +215,12 @@ uint64_t Cantor_pairing_function_int64(uint64_t v1, uint64_t v2){
     return result;
 }
 
+/**
+ * @brief apply Cantor pairing function to mpz_t
+ * @param v1 operand 1
+ * @param v2 operand 2
+ * @param res resulting mpz_t
+ */
 void Cantor_pairing_function_mpz(mpz_t v1, mpz_t v2, mpz_t res){
     
     //v1+v2

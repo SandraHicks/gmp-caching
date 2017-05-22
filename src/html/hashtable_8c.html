@@ -89,41 +89,477 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>hash table implementation  
 <a href="#details">More...</a></p>
-<div class="textblock"><code>#include &quot;hashtable.h&quot;</code><br />
-<code>#include &quot;defines.h&quot;</code><br />
-<code>#include &quot;hashing.h&quot;</code><br />
+<div class="textblock"><code>#include &quot;<a class="el" href="hashtable_8h_source.html">hashtable.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="hashing_8h_source.html">hashing.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mpz__caching_8h_source.html">mpz_caching.h</a>&quot;</code><br />
 <code>#include &lt;stdint.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
+<code>#include &lt;stdio.h&gt;</code><br />
+<code>#include &lt;inttypes.h&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for hashtable.c:</div>
 <div class="dyncontent">
 <div class="center"><img src="hashtable_8c__incl.png" border="0" usemap="#hashtable_8c" alt=""/></div>
 <map name="hashtable_8c" id="hashtable_8c">
-<area shape="rect" id="node2" href="hashtable_8h_source.html" title="hashtable.h" alt="" coords="126,80,215,107"/>
-<area shape="rect" id="node4" href="defines_8h_source.html" title="defines.h" alt="" coords="212,155,287,181"/>
-<area shape="rect" id="node6" href="hashing_8h_source.html" title="hashing.h" alt="" coords="23,80,102,107"/>
+<area shape="rect" id="node2" href="hashtable_8h.html" title="Header for hash table implementation. " alt="" coords="169,80,258,107"/>
+<area shape="rect" id="node5" href="mpz__caching_8h.html" title="header for cache for mpz_t " alt="" coords="326,155,437,181"/>
+<area shape="rect" id="node7" href="hashing_8h.html" title="header for implementation of hash functions on mpz_t&#39;s " alt="" coords="22,155,101,181"/>
+<area shape="rect" id="node4" href="defines_8h.html" title="general defines for the caching process " alt="" coords="176,155,251,181"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a31dcfc0b63d10392d4f56f4cb9b9a184"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a31dcfc0b63d10392d4f56f4cb9b9a184"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>create_hashtable</b> (<a class="el" href="structHashtable.html">Hashtable</a> *ht, int size)</td></tr>
-<tr class="separator:a31dcfc0b63d10392d4f56f4cb9b9a184"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3999323c0facade24699b869058ddeb7"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3999323c0facade24699b869058ddeb7"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>insert_element</b> (<a class="el" href="structHashtable.html">Hashtable</a> *ht, uint64_t id, uint64_t *hashes)</td></tr>
+<tr class="memitem:a8f4aa8473391505b303072098b101285"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8c.html#a8f4aa8473391505b303072098b101285">init_hashtable</a> (<a class="el" href="structHashtable.html">Hashtable</a> *ht, uint64_t size)</td></tr>
+<tr class="memdesc:a8f4aa8473391505b303072098b101285"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialization of the hash table  <a href="#a8f4aa8473391505b303072098b101285">More...</a><br /></td></tr>
+<tr class="separator:a8f4aa8473391505b303072098b101285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31e50f67c07fb1a475268694bfd5743d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8c.html#a31e50f67c07fb1a475268694bfd5743d">delete_hashtable</a> (<a class="el" href="structHashtable.html">Hashtable</a> *ht)</td></tr>
+<tr class="memdesc:a31e50f67c07fb1a475268694bfd5743d"><td class="mdescLeft">&#160;</td><td class="mdescRight">deletion of the hash table and all its underlying data structures  <a href="#a31e50f67c07fb1a475268694bfd5743d">More...</a><br /></td></tr>
+<tr class="separator:a31e50f67c07fb1a475268694bfd5743d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3999323c0facade24699b869058ddeb7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8c.html#a3999323c0facade24699b869058ddeb7">insert_element</a> (<a class="el" href="structHashtable.html">Hashtable</a> *ht, uint64_t id, uint64_t *hashes)</td></tr>
+<tr class="memdesc:a3999323c0facade24699b869058ddeb7"><td class="mdescLeft">&#160;</td><td class="mdescRight">insertion method for an element in the hash table  <a href="#a3999323c0facade24699b869058ddeb7">More...</a><br /></td></tr>
 <tr class="separator:a3999323c0facade24699b869058ddeb7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aed8c2f4fe2841d104316a89031c9ec18"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aed8c2f4fe2841d104316a89031c9ec18"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>exists_element</b> (<a class="el" href="structHashtable.html">Hashtable</a> *ht, uint64_t *hashes)</td></tr>
-<tr class="separator:aed8c2f4fe2841d104316a89031c9ec18"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aac92fc3070a43b3b8f77d899a1d59ac1"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aac92fc3070a43b3b8f77d899a1d59ac1"></a>
-uint64_t *&#160;</td><td class="memItemRight" valign="bottom"><b>get_k_hashes</b> (mpz_t val, uint64_t *hashes)</td></tr>
-<tr class="separator:aac92fc3070a43b3b8f77d899a1d59ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa2cdb80b044d66f091e6cad114e633b9"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8c.html#aa2cdb80b044d66f091e6cad114e633b9">exists_element</a> (<a class="el" href="structHashtable.html">Hashtable</a> *ht, uint64_t *hashes, mpz_t element, <a class="el" href="structmpz__t__cache.html">mpz_t_cache</a> *cache)</td></tr>
+<tr class="memdesc:aa2cdb80b044d66f091e6cad114e633b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">check existence of an element  <a href="#aa2cdb80b044d66f091e6cad114e633b9">More...</a><br /></td></tr>
+<tr class="separator:aa2cdb80b044d66f091e6cad114e633b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7198d8653365a8e7b187bbcb49bab4aa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8c.html#a7198d8653365a8e7b187bbcb49bab4aa">get_k_hashes</a> (mpz_t val, uint64_t *hashes)</td></tr>
+<tr class="memdesc:a7198d8653365a8e7b187bbcb49bab4aa"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to calculate the multiple hash values for an mpz_t element  <a href="#a7198d8653365a8e7b187bbcb49bab4aa">More...</a><br /></td></tr>
+<tr class="separator:a7198d8653365a8e7b187bbcb49bab4aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af267b5c3e0669ad9844482299eb9dce0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8c.html#af267b5c3e0669ad9844482299eb9dce0">get_k_hashes_cpf</a> (mpz_t val1, mpz_t val2, uint64_t *hashes)</td></tr>
+<tr class="memdesc:af267b5c3e0669ad9844482299eb9dce0"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to calculate multiple hashes for a tupel of mpz_t's after applying Cantor Pairing function  <a href="#af267b5c3e0669ad9844482299eb9dce0">More...</a><br /></td></tr>
+<tr class="separator:af267b5c3e0669ad9844482299eb9dce0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1758c25104d2433ec0fb68861baaa330"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8c.html#a1758c25104d2433ec0fb68861baaa330">init_hashtable_binary</a> (<a class="el" href="structHashtable__binary.html">Hashtable_binary</a> *ht, uint64_t size)</td></tr>
+<tr class="memdesc:a1758c25104d2433ec0fb68861baaa330"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialization of a hashtable for (mpz_t x mpz_t) -&gt; mpz_t  <a href="#a1758c25104d2433ec0fb68861baaa330">More...</a><br /></td></tr>
+<tr class="separator:a1758c25104d2433ec0fb68861baaa330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99e3e52694edc6e5396bc93bcdb2d0eb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8c.html#a99e3e52694edc6e5396bc93bcdb2d0eb">delete_hashtable_binary</a> (<a class="el" href="structHashtable__binary.html">Hashtable_binary</a> *ht)</td></tr>
+<tr class="memdesc:a99e3e52694edc6e5396bc93bcdb2d0eb"><td class="mdescLeft">&#160;</td><td class="mdescRight">deletion of hash table and all underlying data structures  <a href="#a99e3e52694edc6e5396bc93bcdb2d0eb">More...</a><br /></td></tr>
+<tr class="separator:a99e3e52694edc6e5396bc93bcdb2d0eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8d6049bccb0ee7c582dd8190c9e0530d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8c.html#a8d6049bccb0ee7c582dd8190c9e0530d">insert_element_binary</a> (<a class="el" href="structHashtable__binary.html">Hashtable_binary</a> *ht, uint64_t id_op1, uint64_t id_op2, uint64_t id_res, uint64_t *extra_info, uint64_t *hashes)</td></tr>
+<tr class="memdesc:a8d6049bccb0ee7c582dd8190c9e0530d"><td class="mdescLeft">&#160;</td><td class="mdescRight">insert a mapping (mpz_t x mpz_t) -&gt; mpz_t in hashtable  <a href="#a8d6049bccb0ee7c582dd8190c9e0530d">More...</a><br /></td></tr>
+<tr class="separator:a8d6049bccb0ee7c582dd8190c9e0530d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a640832720182207089e4e7156ffcac6d"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="hashtable_8c.html#a640832720182207089e4e7156ffcac6d">exists_element_binary</a> (<a class="el" href="structHashtable__binary.html">Hashtable_binary</a> *ht, uint64_t *hashes, mpz_t op1, mpz_t op2, <a class="el" href="structmpz__t__cache.html">mpz_t_cache</a> *cache, uint64_t *extra_info)</td></tr>
+<tr class="memdesc:a640832720182207089e4e7156ffcac6d"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to check if a mapping (mpz_t x mpz_t) -&gt; mpz_t exists in the hash table  <a href="#a640832720182207089e4e7156ffcac6d">More...</a><br /></td></tr>
+<tr class="separator:a640832720182207089e4e7156ffcac6d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>hash table implementation </p>
 <dl class="section author"><dt>Author</dt><dd>Sandra Hicks </dd></dl>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="a31e50f67c07fb1a475268694bfd5743d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_hashtable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHashtable.html">Hashtable</a> *&#160;</td>
+          <td class="paramname"><em>ht</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>deletion of the hash table and all its underlying data structures </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ht</td><td>pointer to hash table </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a99e3e52694edc6e5396bc93bcdb2d0eb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void delete_hashtable_binary </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHashtable__binary.html">Hashtable_binary</a> *&#160;</td>
+          <td class="paramname"><em>ht</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>deletion of hash table and all underlying data structures </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ht</td><td>pointer to hash table </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="aa2cdb80b044d66f091e6cad114e633b9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t exists_element </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHashtable.html">Hashtable</a> *&#160;</td>
+          <td class="paramname"><em>ht</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mpz_t&#160;</td>
+          <td class="paramname"><em>element</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmpz__t__cache.html">mpz_t_cache</a> *&#160;</td>
+          <td class="paramname"><em>cache</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>check existence of an element </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ht</td><td>pointer to hash table </td></tr>
+    <tr><td class="paramname">hashes</td><td>array of hash values for the element </td></tr>
+    <tr><td class="paramname">element</td><td>mpz_t to search for </td></tr>
+    <tr><td class="paramname">cache</td><td>pointer to singleton cache </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>id if existent, if not return 0 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a640832720182207089e4e7156ffcac6d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t exists_element_binary </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHashtable__binary.html">Hashtable_binary</a> *&#160;</td>
+          <td class="paramname"><em>ht</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mpz_t&#160;</td>
+          <td class="paramname"><em>op1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mpz_t&#160;</td>
+          <td class="paramname"><em>op2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="structmpz__t__cache.html">mpz_t_cache</a> *&#160;</td>
+          <td class="paramname"><em>cache</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>extra_info</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>function to check if a mapping (mpz_t x mpz_t) -&gt; mpz_t exists in the hash table </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ht</td><td>pointer to hash table </td></tr>
+    <tr><td class="paramname">hashes</td><td>array of hashes </td></tr>
+    <tr><td class="paramname">op1</td><td>first operator </td></tr>
+    <tr><td class="paramname">op2</td><td>second operator </td></tr>
+    <tr><td class="paramname">cache</td><td>pointer to singleton mpz_t cache </td></tr>
+    <tr><td class="paramname">extra_info</td><td>id of extra info of found element, stays null if none exists </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>id if found, 0 if not existent </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7198d8653365a8e7b187bbcb49bab4aa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void get_k_hashes </td>
+          <td>(</td>
+          <td class="paramtype">mpz_t&#160;</td>
+          <td class="paramname"><em>val</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>function to calculate the multiple hash values for an mpz_t element </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td>mpz_t value to hash </td></tr>
+    <tr><td class="paramname">hashes</td><td>pointer to array of hashes to fill </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="af267b5c3e0669ad9844482299eb9dce0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void get_k_hashes_cpf </td>
+          <td>(</td>
+          <td class="paramtype">mpz_t&#160;</td>
+          <td class="paramname"><em>val1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">mpz_t&#160;</td>
+          <td class="paramname"><em>val2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>function to calculate multiple hashes for a tupel of mpz_t's after applying Cantor Pairing function </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val1</td><td>first mpz_t </td></tr>
+    <tr><td class="paramname">val2</td><td>second mpz_t </td></tr>
+    <tr><td class="paramname">hashes</td><td>array of hashes to fill </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a8f4aa8473391505b303072098b101285"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_hashtable </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHashtable.html">Hashtable</a> *&#160;</td>
+          <td class="paramname"><em>ht</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialization of the hash table </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ht</td><td>pointer to hash table </td></tr>
+    <tr><td class="paramname">size</td><td>of the hash table </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1758c25104d2433ec0fb68861baaa330"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void init_hashtable_binary </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHashtable__binary.html">Hashtable_binary</a> *&#160;</td>
+          <td class="paramname"><em>ht</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>size</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>initialization of a hashtable for (mpz_t x mpz_t) -&gt; mpz_t </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ht</td><td>pointer to hash table </td></tr>
+    <tr><td class="paramname">size</td><td>size of hash table </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3999323c0facade24699b869058ddeb7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void insert_element </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHashtable.html">Hashtable</a> *&#160;</td>
+          <td class="paramname"><em>ht</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>insertion method for an element in the hash table </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ht</td><td>pointer to hash table </td></tr>
+    <tr><td class="paramname">id</td><td>id of the mpz_t in the singleton cache </td></tr>
+    <tr><td class="paramname">hashes</td><td>array of hash values of the mpz_t </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a8d6049bccb0ee7c582dd8190c9e0530d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void insert_element_binary </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="structHashtable__binary.html">Hashtable_binary</a> *&#160;</td>
+          <td class="paramname"><em>ht</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>id_op1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>id_op2</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t&#160;</td>
+          <td class="paramname"><em>id_res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>extra_info</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint64_t *&#160;</td>
+          <td class="paramname"><em>hashes</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>insert a mapping (mpz_t x mpz_t) -&gt; mpz_t in hashtable </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">ht</td><td>pointer to hash table </td></tr>
+    <tr><td class="paramname">id_op1</td><td>id to first operand in singleton cache </td></tr>
+    <tr><td class="paramname">id_op2</td><td>id to second operand in singleton cache </td></tr>
+    <tr><td class="paramname">id_res</td><td>id to result in singleton cache </td></tr>
+    <tr><td class="paramname">extra_info</td><td>id to extra info in singleton cache (e.g. division rest) </td></tr>
+    <tr><td class="paramname">hashes</td><td>array of hashes </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

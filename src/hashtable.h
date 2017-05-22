@@ -1,10 +1,8 @@
-
-/* 
- * File:   hashtable.h
- * Author: sandra
- *
- * Created on March 24, 2017, 12:49 PM
- */
+/**
+  * @file hashtable.h
+  * @author Sandra Hicks
+  * @brief Header for hash table implementation
+  */
 
 #ifndef HASHTABLE_H
 #define HASHTABLE_H
@@ -20,22 +18,31 @@ extern "C" {
     /* MPZ-T */
     typedef struct cachedIntElement cachedIntElement;
     //data types
+    /**
+     * @brief Element of the hash table
+     */
     typedef struct cachedIntElement{
-        uint64_t id;
-        uint64_t hash;
-        cachedIntElement* next;
-        cachedIntElement* prev;
+        uint64_t id;            /**< id to element in singleton cache*/
+        uint64_t hash;          /**< hashed element*/
+        cachedIntElement* next; /**< next element in list*/
+        cachedIntElement* prev; /**< previous element in list*/
     } cachedIntElement;
     
+    /**
+     * @brief List of Elements in one slot of the hash table
+     */
     typedef struct cachedIntList{
-        cachedIntElement* head;
-        cachedIntElement* tail;
+        cachedIntElement* head; /**< head pointer of list*/
+        cachedIntElement* tail; /**< tail pointer of list for fast insert*/
     } cachedIntList;
     
+    /**
+     * @brief hash table
+     */
     typedef struct Hashtable{
-        int* counter;
-        cachedIntList* lists;
-        uint64_t size;
+        int* counter;           /**< array of counters of elements in each list*/
+        cachedIntList* lists;   /**< array of lists*/
+        uint64_t size;          /**< number of lists, size of hash table*/
     } Hashtable;
     
     //functions
@@ -51,25 +58,34 @@ extern "C" {
     
     /*BINARY*/
     typedef struct cachedIntElement_binary cachedIntElement_binary;
+    /**
+     * @brief element of hash table binary mapping
+     */
     typedef struct cachedIntElement_binary{
-        uint64_t op1;
-        uint64_t op2;
-        uint64_t result;
-        uint64_t extra_info;  //this is for example for the modulo result in addition to division result
-        uint64_t hash;
-        cachedIntElement_binary* next;
-        cachedIntElement_binary* prev;
+        uint64_t op1;                   /**< id of operator 1 in singleton cache*/
+        uint64_t op2;                   /**< id of operator 2 in singleton cache*/
+        uint64_t result;                /**< id of result in singleton cache*/
+        uint64_t extra_info;            /**< id of extra information (e.g. rest of division)*/
+        uint64_t hash;                  /**< hashed element*/
+        cachedIntElement_binary* next;  /**< next element in list*/
+        cachedIntElement_binary* prev;  /**< previous element in list*/
     } cachedIntElement_binary;
     
+    /**
+     * @brief list of elements in one slot of the hash table binary mapping
+     */
     typedef struct cachedIntList_binary{
-        cachedIntElement_binary* head;
-        cachedIntElement_binary* tail;
+        cachedIntElement_binary* head;  /**< head pointer of list*/
+        cachedIntElement_binary* tail;  /**< tail pointer of list for fast insert*/
     } cachedIntList_binary;
     
+    /**
+     * @brief hash table binary mapping
+     */
     typedef struct Hashtable_binary{
-        int* counter;
-        cachedIntList_binary* lists;
-        uint64_t size;
+        int* counter;                   /**< array of counters of elements in each list*/
+        cachedIntList_binary* lists;    /**< array of lists*/
+        uint64_t size;                  /**< number of lists, size of hash table*/
     } Hashtable_binary;
     
     void init_hashtable_binary(Hashtable_binary* ht, uint64_t size);

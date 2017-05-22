@@ -62,6 +62,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -87,16 +88,48 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">cached_mpz_t Struct Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>cached representation of an mpz_t  
+ <a href="structcached__mpz__t.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="mpz__caching_8h_source.html">mpz_caching.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a3a5c6b5acfc037061ef87979bcfd9aa0"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a3a5c6b5acfc037061ef87979bcfd9aa0"></a>
-mpz_t *&#160;</td><td class="memItemRight" valign="bottom"><b>integer</b></td></tr>
-<tr class="separator:a3a5c6b5acfc037061ef87979bcfd9aa0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a60b47a7eec98eaa5f98316e5fe1c9724"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60b47a7eec98eaa5f98316e5fe1c9724"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>fp</b></td></tr>
+<tr class="memitem:ac583570461b183678dd9223ecf0a8cfd"><td class="memItemLeft" align="right" valign="top">mpz_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcached__mpz__t.html#ac583570461b183678dd9223ecf0a8cfd">integer</a></td></tr>
+<tr class="separator:ac583570461b183678dd9223ecf0a8cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60b47a7eec98eaa5f98316e5fe1c9724"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structcached__mpz__t.html#a60b47a7eec98eaa5f98316e5fe1c9724">fp</a></td></tr>
 <tr class="separator:a60b47a7eec98eaa5f98316e5fe1c9724"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>cached representation of an mpz_t </p>
+</div><h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a60b47a7eec98eaa5f98316e5fe1c9724"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double cached_mpz_t::fp</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>mpz_t double representation </p>
+
+</div>
+</div>
+<a class="anchor" id="ac583570461b183678dd9223ecf0a8cfd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">mpz_t cached_mpz_t::integer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>actual mpz_t </p>
+
+</div>
+</div>
 <hr/>The documentation for this struct was generated from the following file:<ul>
 <li><a class="el" href="mpz__caching_8h_source.html">mpz_caching.h</a></li>
 </ul>

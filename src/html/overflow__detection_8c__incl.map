@@ -1,5 +1,8 @@
 <map id="overflow_detection.c" name="overflow_detection.c">
-<area shape="rect" id="node3" href="$overflow__detection_8h_source.html" title="overflow_detection.h" alt="" coords="95,80,237,107"/>
-<area shape="rect" id="node5" href="$defines_8h_source.html" title="defines.h" alt="" coords="187,229,262,256"/>
-<area shape="rect" id="node4" href="$mastercache_8h_source.html" title="mastercache.h" alt="" coords="120,155,228,181"/>
+<area shape="rect" id="node3" href="$overflow__detection_8h.html" title="header for overflow detection functions " alt="" coords="187,80,330,107"/>
+<area shape="rect" id="node5" href="$defines_8h.html" title="general defines for the caching process " alt="" coords="280,379,355,405"/>
+<area shape="rect" id="node4" href="$mastercache_8h.html" title="header for Master Cache for caching Integers and Integer operations from gmp. " alt="" coords="205,155,313,181"/>
+<area shape="rect" id="node6" href="$caching__operations_8h.html" title="header for caching operations if numbers are large and not directly used " alt="" coords="123,229,269,256"/>
+<area shape="rect" id="node7" href="$hashtable_8h.html" title="Header for hash table implementation. " alt="" coords="139,304,229,331"/>
+<area shape="rect" id="node8" href="$mpz__caching_8h.html" title="header for cache for mpz_t " alt="" coords="43,379,154,405"/>
 </map>

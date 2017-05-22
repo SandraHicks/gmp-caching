@@ -8,38 +8,32 @@ Functions to detect overflows in integer operations.
 {\ttfamily \#include $<$stdint.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}overflow\+\_\+detection.\+h\char`\"{}}\\*
 {\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
-Include dependency graph for overflow\+\_\+detection.\+c\+:
-\nopagebreak
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$inttypes.\+h$>$}\\*
+Include dependency graph for overflow\+\_\+detection.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
-\includegraphics[width=273pt]{overflow__detection_8c__incl}
+\includegraphics[width=350pt]{overflow__detection_8c__incl}
 \end{center}
 \end{figure}
 \subsection*{Macros}
 \begin{DoxyCompactItemize}
 \item 
-\#define {\bfseries M\+A\+X\+B\+IT}~62\hypertarget{overflow__detection_8c_af3694ae57103552f7fba8b94e114a90f}{}\label{overflow__detection_8c_af3694ae57103552f7fba8b94e114a90f}
-
+\#define \hyperlink{overflow__detection_8c_af3694ae57103552f7fba8b94e114a90f}{M\+A\+X\+B\+IT}~62
 \end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-uint32\+\_\+t {\bfseries M\+SB} (cached\+Int val)\hypertarget{overflow__detection_8c_ab9ebfca4f389fbfd7518c73802739dfa}{}\label{overflow__detection_8c_ab9ebfca4f389fbfd7518c73802739dfa}
-
+uint32\+\_\+t \hyperlink{overflow__detection_8c_ab9ebfca4f389fbfd7518c73802739dfa}{M\+SB} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val)
 \item 
-cached\+Int {\bfseries delete\+Id\+Bit} (cached\+Int val)\hypertarget{overflow__detection_8c_a069c125ad06465b64cbfe809b29ec9ce}{}\label{overflow__detection_8c_a069c125ad06465b64cbfe809b29ec9ce}
-
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{overflow__detection_8c_a069c125ad06465b64cbfe809b29ec9ce}{delete\+Id\+Bit} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val)
 \item 
-bool \hyperlink{overflow__detection_8c_aad1d45046267b858944b973cb3703c82}{addition\+Overflow} (cached\+Int op1, cached\+Int op2)
+int \hyperlink{overflow__detection_8c_a9353ddb1f8619095dfce206ab4209d3a}{addition\+Overflow} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} op1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} op2)
 \begin{DoxyCompactList}\small\item\em function to predict if an addition will overflow \end{DoxyCompactList}\item 
-bool \hyperlink{overflow__detection_8c_a0ca71e4122a9904edad0beec0a623263}{subtraction\+Overflow} (cached\+Int op1, cached\+Int op2)
-\begin{DoxyCompactList}\small\item\em function to predict if a subtraction will overflow \end{DoxyCompactList}\item 
-bool \hyperlink{overflow__detection_8c_a971cb63d161a2dabb62ce1f51c7be192}{multiplication\+Overflow} (cached\+Int op1, cached\+Int op2)
+int \hyperlink{overflow__detection_8c_a3d152657eff6ecfd62713f7252beb0fe}{multiplication\+Overflow} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} op1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} op2)
 \begin{DoxyCompactList}\small\item\em function to predict if a multiplication will overflow \end{DoxyCompactList}\item 
-bool \hyperlink{overflow__detection_8c_ae441d5f8cbbea00ffce31ae045a4e8d3}{division\+Overflow} (cached\+Int op1, cached\+Int op2)
-\begin{DoxyCompactList}\small\item\em function to predict if a division will overflow \end{DoxyCompactList}\item 
-bool \hyperlink{overflow__detection_8c_ae7c8bc0079e298587829bf442c2a9107}{exponentiation\+Overflow} (cached\+Int base, cached\+Int exp)
+int \hyperlink{overflow__detection_8c_a3f5d390da9ae4425c7ba83964f3b0905}{exponentiation\+Overflow} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} base, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} exp)
 \begin{DoxyCompactList}\small\item\em function to predict if an exponentiation will overflow \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
@@ -51,15 +45,21 @@ Sandra Hicks
 \end{DoxyAuthor}
 
 
+\subsection{Macro Definition Documentation}
+\index{overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}!M\+A\+X\+B\+IT@{M\+A\+X\+B\+IT}}
+\index{M\+A\+X\+B\+IT@{M\+A\+X\+B\+IT}!overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}}
+\subsubsection[{\texorpdfstring{M\+A\+X\+B\+IT}{MAXBIT}}]{\setlength{\rightskip}{0pt plus 5cm}\#define M\+A\+X\+B\+IT~62}\hypertarget{overflow__detection_8c_af3694ae57103552f7fba8b94e114a90f}{}\label{overflow__detection_8c_af3694ae57103552f7fba8b94e114a90f}
+maximal bit to be set before overflow 
+
 \subsection{Function Documentation}
 \index{overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}!addition\+Overflow@{addition\+Overflow}}
 \index{addition\+Overflow@{addition\+Overflow}!overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}}
-\subsubsection[{\texorpdfstring{addition\+Overflow(cached\+Int op1, cached\+Int op2)}{additionOverflow(cachedInt op1, cachedInt op2)}}]{\setlength{\rightskip}{0pt plus 5cm}bool addition\+Overflow (
+\subsubsection[{\texorpdfstring{addition\+Overflow(cached\+Int op1, cached\+Int op2)}{additionOverflow(cachedInt op1, cachedInt op2)}}]{\setlength{\rightskip}{0pt plus 5cm}int addition\+Overflow (
 \begin{DoxyParamCaption}
-\item[{cached\+Int}]{op1, }
-\item[{cached\+Int}]{op2}
+\item[{{\bf cached\+Int}}]{op1, }
+\item[{{\bf cached\+Int}}]{op2}
 \end{DoxyParamCaption}
-)}\hypertarget{overflow__detection_8c_aad1d45046267b858944b973cb3703c82}{}\label{overflow__detection_8c_aad1d45046267b858944b973cb3703c82}
+)}\hypertarget{overflow__detection_8c_a9353ddb1f8619095dfce206ab4209d3a}{}\label{overflow__detection_8c_a9353ddb1f8619095dfce206ab4209d3a}
 
 
 function to predict if an addition will overflow 
@@ -71,33 +71,29 @@ function to predict if an addition will overflow
 {\em op2} & second operator \\
 \hline
 \end{DoxyParams}
-\index{overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}!division\+Overflow@{division\+Overflow}}
-\index{division\+Overflow@{division\+Overflow}!overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}}
-\subsubsection[{\texorpdfstring{division\+Overflow(cached\+Int op1, cached\+Int op2)}{divisionOverflow(cachedInt op1, cachedInt op2)}}]{\setlength{\rightskip}{0pt plus 5cm}bool division\+Overflow (
+\index{overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}!delete\+Id\+Bit@{delete\+Id\+Bit}}
+\index{delete\+Id\+Bit@{delete\+Id\+Bit}!overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}}
+\subsubsection[{\texorpdfstring{delete\+Id\+Bit(cached\+Int val)}{deleteIdBit(cachedInt val)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} delete\+Id\+Bit (
 \begin{DoxyParamCaption}
-\item[{cached\+Int}]{op1, }
-\item[{cached\+Int}]{op2}
+\item[{{\bf cached\+Int}}]{val}
 \end{DoxyParamCaption}
-)}\hypertarget{overflow__detection_8c_ae441d5f8cbbea00ffce31ae045a4e8d3}{}\label{overflow__detection_8c_ae441d5f8cbbea00ffce31ae045a4e8d3}
-
-
-function to predict if a division will overflow 
-
-
+)}\hypertarget{overflow__detection_8c_a069c125ad06465b64cbfe809b29ec9ce}{}\label{overflow__detection_8c_a069c125ad06465b64cbfe809b29ec9ce}
+(for internal use only!) 
 \begin{DoxyParams}{Parameters}
-{\em op1} & first operator \\
-\hline
-{\em op2} & second operator \\
+{\em val} & \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 \index{overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}!exponentiation\+Overflow@{exponentiation\+Overflow}}
 \index{exponentiation\+Overflow@{exponentiation\+Overflow}!overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}}
-\subsubsection[{\texorpdfstring{exponentiation\+Overflow(cached\+Int base, cached\+Int exp)}{exponentiationOverflow(cachedInt base, cachedInt exp)}}]{\setlength{\rightskip}{0pt plus 5cm}bool exponentiation\+Overflow (
+\subsubsection[{\texorpdfstring{exponentiation\+Overflow(cached\+Int base, cached\+Int exp)}{exponentiationOverflow(cachedInt base, cachedInt exp)}}]{\setlength{\rightskip}{0pt plus 5cm}int exponentiation\+Overflow (
 \begin{DoxyParamCaption}
-\item[{cached\+Int}]{base, }
-\item[{cached\+Int}]{exp}
+\item[{{\bf cached\+Int}}]{base, }
+\item[{{\bf cached\+Int}}]{exp}
 \end{DoxyParamCaption}
-)}\hypertarget{overflow__detection_8c_ae7c8bc0079e298587829bf442c2a9107}{}\label{overflow__detection_8c_ae7c8bc0079e298587829bf442c2a9107}
+)}\hypertarget{overflow__detection_8c_a3f5d390da9ae4425c7ba83964f3b0905}{}\label{overflow__detection_8c_a3f5d390da9ae4425c7ba83964f3b0905}
 
 
 function to predict if an exponentiation will overflow 
@@ -109,36 +105,32 @@ function to predict if an exponentiation will overflow
 {\em exp} & second operator, exponent \\
 \hline
 \end{DoxyParams}
+\index{overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}!M\+SB@{M\+SB}}
+\index{M\+SB@{M\+SB}!overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}}
+\subsubsection[{\texorpdfstring{M\+S\+B(cached\+Int val)}{MSB(cachedInt val)}}]{\setlength{\rightskip}{0pt plus 5cm}uint32\+\_\+t M\+SB (
+\begin{DoxyParamCaption}
+\item[{{\bf cached\+Int}}]{val}
+\end{DoxyParamCaption}
+)}\hypertarget{overflow__detection_8c_ab9ebfca4f389fbfd7518c73802739dfa}{}\label{overflow__detection_8c_ab9ebfca4f389fbfd7518c73802739dfa}
+(for internal use only!) 
+\begin{DoxyParams}{Parameters}
+{\em val} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
 \index{overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}!multiplication\+Overflow@{multiplication\+Overflow}}
 \index{multiplication\+Overflow@{multiplication\+Overflow}!overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}}
-\subsubsection[{\texorpdfstring{multiplication\+Overflow(cached\+Int op1, cached\+Int op2)}{multiplicationOverflow(cachedInt op1, cachedInt op2)}}]{\setlength{\rightskip}{0pt plus 5cm}bool multiplication\+Overflow (
+\subsubsection[{\texorpdfstring{multiplication\+Overflow(cached\+Int op1, cached\+Int op2)}{multiplicationOverflow(cachedInt op1, cachedInt op2)}}]{\setlength{\rightskip}{0pt plus 5cm}int multiplication\+Overflow (
 \begin{DoxyParamCaption}
-\item[{cached\+Int}]{op1, }
-\item[{cached\+Int}]{op2}
+\item[{{\bf cached\+Int}}]{op1, }
+\item[{{\bf cached\+Int}}]{op2}
 \end{DoxyParamCaption}
-)}\hypertarget{overflow__detection_8c_a971cb63d161a2dabb62ce1f51c7be192}{}\label{overflow__detection_8c_a971cb63d161a2dabb62ce1f51c7be192}
+)}\hypertarget{overflow__detection_8c_a3d152657eff6ecfd62713f7252beb0fe}{}\label{overflow__detection_8c_a3d152657eff6ecfd62713f7252beb0fe}
 
 
 function to predict if a multiplication will overflow 
-
-
-\begin{DoxyParams}{Parameters}
-{\em op1} & first operator \\
-\hline
-{\em op2} & second operator \\
-\hline
-\end{DoxyParams}
-\index{overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}!subtraction\+Overflow@{subtraction\+Overflow}}
-\index{subtraction\+Overflow@{subtraction\+Overflow}!overflow\+\_\+detection.\+c@{overflow\+\_\+detection.\+c}}
-\subsubsection[{\texorpdfstring{subtraction\+Overflow(cached\+Int op1, cached\+Int op2)}{subtractionOverflow(cachedInt op1, cachedInt op2)}}]{\setlength{\rightskip}{0pt plus 5cm}bool subtraction\+Overflow (
-\begin{DoxyParamCaption}
-\item[{cached\+Int}]{op1, }
-\item[{cached\+Int}]{op2}
-\end{DoxyParamCaption}
-)}\hypertarget{overflow__detection_8c_a0ca71e4122a9904edad0beec0a623263}{}\label{overflow__detection_8c_a0ca71e4122a9904edad0beec0a623263}
-
-
-function to predict if a subtraction will overflow 
 
 
 \begin{DoxyParams}{Parameters}

@@ -1,14 +1,5 @@
 var searchData=
 [
-  ['cache_5fadd',['cache_add',['../mastercache_8c.html#a50d90b1940a54a27f5582e46f02483c2',1,'mastercache.c']]],
-  ['cache_5fexists',['cache_exists',['../mastercache_8c.html#af3f696b0d56758825d872a5280bcfd7b',1,'mastercache.c']]],
-  ['cache_5fget',['cache_get',['../mastercache_8c.html#acd42afe339ef9ef2a2c6c6733f870e07',1,'mastercache.c']]],
-  ['cache_5finit',['cache_init',['../mastercache_8c.html#ad0254518fa335884d9330470e7889186',1,'mastercache.c']]],
-  ['cache_5frational',['cache_rational',['../structcache__rational.html',1,'']]],
-  ['cached_5fmpz_5ft',['cached_mpz_t',['../structcached__mpz__t.html',1,'']]],
-  ['cached_5frational',['cached_rational',['../structcached__rational.html',1,'']]],
-  ['cachedint_5f',['cachedInt_',['../structcachedInt__.html',1,'']]],
-  ['cachedint_5f_5f',['cachedInt__',['../structcachedInt____.html',1,'']]],
-  ['cachedintelement',['cachedIntElement',['../structcachedIntElement.html',1,'']]],
-  ['cachedintlist',['cachedIntList',['../structcachedIntList.html',1,'']]]
+  ['add',['add',['../structlookup.html#ada52eb4221d2d2ab592f13e57936dad2',1,'lookup::add()'],['../caching__operations_8h.html#aa8f137f19095e0bdcf4f521e901f88bbacfcf145f2788bf340ff3f3098bc54909',1,'ADD():&#160;caching_operations.h']]],
+  ['additionoverflow',['additionOverflow',['../overflow__detection_8c.html#a9353ddb1f8619095dfce206ab4209d3a',1,'additionOverflow(cachedInt op1, cachedInt op2):&#160;overflow_detection.c'],['../overflow__detection_8h.html#a9353ddb1f8619095dfce206ab4209d3a',1,'additionOverflow(cachedInt op1, cachedInt op2):&#160;overflow_detection.c']]]
 ];

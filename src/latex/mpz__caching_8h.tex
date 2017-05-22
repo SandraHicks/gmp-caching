@@ -1,0 +1,185 @@
+\hypertarget{mpz__caching_8h}{}\section{mpz\+\_\+caching.\+h File Reference}
+\label{mpz__caching_8h}\index{mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}}
+
+
+header for cache for mpz\+\_\+t  
+
+
+{\ttfamily \#include $<$stdint.\+h$>$}\\*
+{\ttfamily \#include $<$gmp.\+h$>$}\\*
+Include dependency graph for mpz\+\_\+caching.\+h\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=192pt]{mpz__caching_8h__incl}
+\end{center}
+\end{figure}
+This graph shows which files directly or indirectly include this file\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{mpz__caching_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structcached__mpz__t}{cached\+\_\+mpz\+\_\+t}
+\begin{DoxyCompactList}\small\item\em cached representation of an mpz\+\_\+t \end{DoxyCompactList}\item 
+struct \hyperlink{structmpz__t__cache}{mpz\+\_\+t\+\_\+cache}
+\begin{DoxyCompactList}\small\item\em cache implemented as an array (fast random access) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef struct \hyperlink{structcached__mpz__t}{cached\+\_\+mpz\+\_\+t} \hyperlink{mpz__caching_8h_a43691d5ed6539a74f75fcbb2eeb01d8e}{cached\+\_\+mpz\+\_\+t}\hypertarget{mpz__caching_8h_a43691d5ed6539a74f75fcbb2eeb01d8e}{}\label{mpz__caching_8h_a43691d5ed6539a74f75fcbb2eeb01d8e}
+
+\begin{DoxyCompactList}\small\item\em cached representation of an mpz\+\_\+t \end{DoxyCompactList}\item 
+typedef struct \hyperlink{structmpz__t__cache}{mpz\+\_\+t\+\_\+cache} \hyperlink{mpz__caching_8h_a084f99de7821a83cdca8d0f747cd6484}{mpz\+\_\+t\+\_\+cache}\hypertarget{mpz__caching_8h_a084f99de7821a83cdca8d0f747cd6484}{}\label{mpz__caching_8h_a084f99de7821a83cdca8d0f747cd6484}
+
+\begin{DoxyCompactList}\small\item\em cache implemented as an array (fast random access) \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{mpz__caching_8h_af5387ca483d290f5da20649239c5fdef}{init\+\_\+mpz\+\_\+cache} (\hyperlink{structmpz__t__cache}{mpz\+\_\+t\+\_\+cache} $\ast$cache, uint64\+\_\+t size)
+\begin{DoxyCompactList}\small\item\em initialization of the cache \end{DoxyCompactList}\item 
+void \hyperlink{mpz__caching_8h_aad2ec516965e5bd06eb4ed91a9707775}{delete\+\_\+mpz\+\_\+cache} (\hyperlink{structmpz__t__cache}{mpz\+\_\+t\+\_\+cache} $\ast$cache)
+\begin{DoxyCompactList}\small\item\em deletion of the cache and free of all underlying data structures \end{DoxyCompactList}\item 
+int64\+\_\+t \hyperlink{mpz__caching_8h_ab93e1f89e6a97ba347b58bd7955d02ba}{insert\+\_\+mpz} (\hyperlink{structmpz__t__cache}{mpz\+\_\+t\+\_\+cache} $\ast$cache, mpz\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em insert a new mpz\+\_\+t in cache, no check for double, start at id=1 (0 is reserved for errors) \end{DoxyCompactList}\item 
+void \hyperlink{mpz__caching_8h_a4ea9e1949f05c8ed0fa17421e156d7ba}{print\+Entry} (\hyperlink{structmpz__t__cache}{mpz\+\_\+t\+\_\+cache} $\ast$cache, uint64\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em print function for debugging, prints double representation \end{DoxyCompactList}\item 
+void \hyperlink{mpz__caching_8h_acfb7f476b995041bb4ba41e31f5220ae}{get\+\_\+cached\+\_\+mpz} (\hyperlink{structmpz__t__cache}{mpz\+\_\+t\+\_\+cache} $\ast$cache, uint64\+\_\+t i, mpz\+\_\+t val)
+\begin{DoxyCompactList}\small\item\em get a cached mpz\+\_\+t by id \end{DoxyCompactList}\item 
+double \hyperlink{mpz__caching_8h_a1afc9ada65a26e6562e7eb6b24064f72}{get\+\_\+cached\+\_\+double} (\hyperlink{structmpz__t__cache}{mpz\+\_\+t\+\_\+cache} $\ast$cache, uint64\+\_\+t i)
+\begin{DoxyCompactList}\small\item\em get double representation of a cached mpz\+\_\+t by id \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+header for cache for mpz\+\_\+t 
+
+\begin{DoxyAuthor}{Author}
+Sandra Hicks 
+\end{DoxyAuthor}
+
+
+\subsection{Function Documentation}
+\index{mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}!delete\+\_\+mpz\+\_\+cache@{delete\+\_\+mpz\+\_\+cache}}
+\index{delete\+\_\+mpz\+\_\+cache@{delete\+\_\+mpz\+\_\+cache}!mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}}
+\subsubsection[{\texorpdfstring{delete\+\_\+mpz\+\_\+cache(mpz\+\_\+t\+\_\+cache $\ast$cache)}{delete_mpz_cache(mpz_t_cache *cache)}}]{\setlength{\rightskip}{0pt plus 5cm}void delete\+\_\+mpz\+\_\+cache (
+\begin{DoxyParamCaption}
+\item[{{\bf mpz\+\_\+t\+\_\+cache} $\ast$}]{cache}
+\end{DoxyParamCaption}
+)}\hypertarget{mpz__caching_8h_aad2ec516965e5bd06eb4ed91a9707775}{}\label{mpz__caching_8h_aad2ec516965e5bd06eb4ed91a9707775}
+
+
+deletion of the cache and free of all underlying data structures 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & pointer to cache \\
+\hline
+\end{DoxyParams}
+\index{mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}!get\+\_\+cached\+\_\+double@{get\+\_\+cached\+\_\+double}}
+\index{get\+\_\+cached\+\_\+double@{get\+\_\+cached\+\_\+double}!mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+cached\+\_\+double(mpz\+\_\+t\+\_\+cache $\ast$cache, uint64\+\_\+t i)}{get_cached_double(mpz_t_cache *cache, uint64_t i)}}]{\setlength{\rightskip}{0pt plus 5cm}double get\+\_\+cached\+\_\+double (
+\begin{DoxyParamCaption}
+\item[{{\bf mpz\+\_\+t\+\_\+cache} $\ast$}]{cache, }
+\item[{uint64\+\_\+t}]{i}
+\end{DoxyParamCaption}
+)}\hypertarget{mpz__caching_8h_a1afc9ada65a26e6562e7eb6b24064f72}{}\label{mpz__caching_8h_a1afc9ada65a26e6562e7eb6b24064f72}
+
+
+get double representation of a cached mpz\+\_\+t by id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & pointer to cache \\
+\hline
+{\em i} & requested id \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double representation 
+\end{DoxyReturn}
+\index{mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}!get\+\_\+cached\+\_\+mpz@{get\+\_\+cached\+\_\+mpz}}
+\index{get\+\_\+cached\+\_\+mpz@{get\+\_\+cached\+\_\+mpz}!mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}}
+\subsubsection[{\texorpdfstring{get\+\_\+cached\+\_\+mpz(mpz\+\_\+t\+\_\+cache $\ast$cache, uint64\+\_\+t i, mpz\+\_\+t val)}{get_cached_mpz(mpz_t_cache *cache, uint64_t i, mpz_t val)}}]{\setlength{\rightskip}{0pt plus 5cm}void get\+\_\+cached\+\_\+mpz (
+\begin{DoxyParamCaption}
+\item[{{\bf mpz\+\_\+t\+\_\+cache} $\ast$}]{cache, }
+\item[{uint64\+\_\+t}]{i, }
+\item[{mpz\+\_\+t}]{val}
+\end{DoxyParamCaption}
+)}\hypertarget{mpz__caching_8h_acfb7f476b995041bb4ba41e31f5220ae}{}\label{mpz__caching_8h_acfb7f476b995041bb4ba41e31f5220ae}
+
+
+get a cached mpz\+\_\+t by id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & pointer to cache \\
+\hline
+{\em i} & requested id \\
+\hline
+{\em val} & mpz\+\_\+t to set for return \\
+\hline
+\end{DoxyParams}
+\index{mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}!init\+\_\+mpz\+\_\+cache@{init\+\_\+mpz\+\_\+cache}}
+\index{init\+\_\+mpz\+\_\+cache@{init\+\_\+mpz\+\_\+cache}!mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}}
+\subsubsection[{\texorpdfstring{init\+\_\+mpz\+\_\+cache(mpz\+\_\+t\+\_\+cache $\ast$cache, uint64\+\_\+t size)}{init_mpz_cache(mpz_t_cache *cache, uint64_t size)}}]{\setlength{\rightskip}{0pt plus 5cm}void init\+\_\+mpz\+\_\+cache (
+\begin{DoxyParamCaption}
+\item[{{\bf mpz\+\_\+t\+\_\+cache} $\ast$}]{cache, }
+\item[{uint64\+\_\+t}]{size}
+\end{DoxyParamCaption}
+)}\hypertarget{mpz__caching_8h_af5387ca483d290f5da20649239c5fdef}{}\label{mpz__caching_8h_af5387ca483d290f5da20649239c5fdef}
+
+
+initialization of the cache 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & pointer to cache \\
+\hline
+{\em size} & initial size of the cache \\
+\hline
+\end{DoxyParams}
+\index{mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}!insert\+\_\+mpz@{insert\+\_\+mpz}}
+\index{insert\+\_\+mpz@{insert\+\_\+mpz}!mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}}
+\subsubsection[{\texorpdfstring{insert\+\_\+mpz(mpz\+\_\+t\+\_\+cache $\ast$cache, mpz\+\_\+t val)}{insert_mpz(mpz_t_cache *cache, mpz_t val)}}]{\setlength{\rightskip}{0pt plus 5cm}int64\+\_\+t insert\+\_\+mpz (
+\begin{DoxyParamCaption}
+\item[{{\bf mpz\+\_\+t\+\_\+cache} $\ast$}]{cache, }
+\item[{mpz\+\_\+t}]{val}
+\end{DoxyParamCaption}
+)}\hypertarget{mpz__caching_8h_ab93e1f89e6a97ba347b58bd7955d02ba}{}\label{mpz__caching_8h_ab93e1f89e6a97ba347b58bd7955d02ba}
+
+
+insert a new mpz\+\_\+t in cache, no check for double, start at id=1 (0 is reserved for errors) 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & pointer to cache \\
+\hline
+{\em val} & mpz\+\_\+t to insert \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+id of inserted element 
+\end{DoxyReturn}
+\index{mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}!print\+Entry@{print\+Entry}}
+\index{print\+Entry@{print\+Entry}!mpz\+\_\+caching.\+h@{mpz\+\_\+caching.\+h}}
+\subsubsection[{\texorpdfstring{print\+Entry(mpz\+\_\+t\+\_\+cache $\ast$cache, uint64\+\_\+t i)}{printEntry(mpz_t_cache *cache, uint64_t i)}}]{\setlength{\rightskip}{0pt plus 5cm}void print\+Entry (
+\begin{DoxyParamCaption}
+\item[{{\bf mpz\+\_\+t\+\_\+cache} $\ast$}]{cache, }
+\item[{uint64\+\_\+t}]{i}
+\end{DoxyParamCaption}
+)}\hypertarget{mpz__caching_8h_a4ea9e1949f05c8ed0fa17421e156d7ba}{}\label{mpz__caching_8h_a4ea9e1949f05c8ed0fa17421e156d7ba}
+
+
+print function for debugging, prints double representation 
+
+
+\begin{DoxyParams}{Parameters}
+{\em cache} & \\
+\hline
+{\em i} & id \\
+\hline
+\end{DoxyParams}

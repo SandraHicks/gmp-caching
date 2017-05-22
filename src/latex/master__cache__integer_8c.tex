@@ -8,12 +8,15 @@ Master Cache functions for caching Integer operations in gmp.
 {\ttfamily \#include $<$stdint.\+h$>$}\\*
 {\ttfamily \#include $<$gmp.\+h$>$}\\*
 {\ttfamily \#include $<$limits.\+h$>$}\\*
-{\ttfamily \#include \char`\"{}defines.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdlib.\+h$>$}\\*
+{\ttfamily \#include $<$float.\+h$>$}\\*
 {\ttfamily \#include \char`\"{}mastercache.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}hashtable.\+h\char`\"{}}\\*
-{\ttfamily \#include \char`\"{}mpz\+\_\+caching.\+h\char`\"{}}\\*
-Include dependency graph for master\+\_\+cache\+\_\+integer.\+c\+:
-\nopagebreak
+{\ttfamily \#include \char`\"{}master\+\_\+cache\+\_\+integer.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}caching\+\_\+operations.\+h\char`\"{}}\\*
+{\ttfamily \#include \char`\"{}overflow\+\_\+detection.\+h\char`\"{}}\\*
+{\ttfamily \#include $<$stdio.\+h$>$}\\*
+{\ttfamily \#include $<$inttypes.\+h$>$}\\*
+Include dependency graph for master\+\_\+cache\+\_\+integer.\+c\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -23,14 +26,48 @@ Include dependency graph for master\+\_\+cache\+\_\+integer.\+c\+:
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-cached\+Int \hyperlink{master__cache__integer_8c_a3397536b3b12ba3bd017d29e760131a3}{int\+\_\+cache\+\_\+add} (\hyperlink{structMasterCache}{Master\+Cache} mstr, cached\+Int val1, cached\+Int val2)
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_acf48c6c064be125bfc2e3daf62f10177}{direct\+\_\+add} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2)
+\item 
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_aa558a557fa5371fc35597dc52fd824e5}{direct\+\_\+mul} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2)
+\item 
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_a7cbe579aa33d35c4042fac942fed2070}{direct\+\_\+div} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2)
+\item 
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_abe0e4d423323534bba705a0e6fed30dc}{direct\+\_\+mod} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2)
+\item 
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_a663303ff03efc5249b8aa408ff5cce29}{direct\+\_\+gcd} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2)
+\item 
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_aae7d64a848078cd497869680dbca4780}{direct\+\_\+invert} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2)
+\item 
+void \hyperlink{master__cache__integer_8c_a66c8c57579e8806ff904aeb71d54ec44}{ext\+\_\+euclid} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} $\ast$d, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} $\ast$s, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} $\ast$t)
+\item 
+void \hyperlink{master__cache__integer_8c_a6095b13ce14cae93851e746599d8038e}{cached\+\_\+int\+\_\+init\+\_\+cache} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, uint64\+\_\+t cachesize)
+\begin{DoxyCompactList}\small\item\em function for master cache to initialize \end{DoxyCompactList}\item 
+void \hyperlink{master__cache__integer_8c_a1f693b4093b62e1c70a866b4947cea00}{cached\+\_\+int\+\_\+clear\+\_\+cache} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr)
+\begin{DoxyCompactList}\small\item\em function for master cache to clear all background data before free \end{DoxyCompactList}\item 
+uint64\+\_\+t \hyperlink{master__cache__integer_8c_a8ad24c72fe1e1e7bcb71342763573276}{mpz\+\_\+cached\+\_\+int} (mpz\+\_\+t number)
+\item 
+void \hyperlink{master__cache__integer_8c_ac755a7c217e68e03bac95bda3c12e2a7}{cached\+\_\+int\+\_\+mpz} (\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} id, mpz\+\_\+t number)
+\item 
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_a2e8ed43761ae3945335b89102db422fd}{cached\+\_\+int\+\_\+set} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, mpz\+\_\+t number)
+\begin{DoxyCompactList}\small\item\em function for master cache to set a mpz\+\_\+t and get back an id \end{DoxyCompactList}\item 
+void \hyperlink{master__cache__integer_8c_a70e68c14bd00b07597b31dba34aba997}{cached\+\_\+int\+\_\+get} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} id, mpz\+\_\+t number)
+\begin{DoxyCompactList}\small\item\em function for master cache to get a previously cached mpz\+\_\+t from an id \end{DoxyCompactList}\item 
+double \hyperlink{master__cache__integer_8c_af0c42f55a0674b42df4ce45322c33198}{cached\+\_\+int\+\_\+get\+\_\+d} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} id)
+\begin{DoxyCompactList}\small\item\em function for master cache to get a previously cached mpz\+\_\+t as double from an id \end{DoxyCompactList}\item 
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_a2c77389b27a3a9c47f580cc52b6bbe62}{cached\+\_\+int\+\_\+add} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2)
 \begin{DoxyCompactList}\small\item\em function for master cache to add two cached values and cache the result if large. \end{DoxyCompactList}\item 
-cached\+Int \hyperlink{master__cache__integer_8c_aa1561d5f860144af16cc17ecee6c1a56}{int\+\_\+cache\+\_\+subtract} (\hyperlink{structMasterCache}{Master\+Cache} mstr, cached\+Int val1, cached\+Int val2)
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_af3fa99a34d3f8f474ca5cb1caf45b0dc}{cached\+\_\+int\+\_\+sub} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2)
 \begin{DoxyCompactList}\small\item\em function for master cache to subtract two cached values and cache the result if large. \end{DoxyCompactList}\item 
-cached\+Int \hyperlink{master__cache__integer_8c_a411ddc812bb0bdf3dfeb69c70a19a418}{int\+\_\+cache\+\_\+multiply} (\hyperlink{structMasterCache}{Master\+Cache} mstr, cached\+Int val1, cached\+Int val2)
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_a418f697aefb1a082369940b69ef21758}{cached\+\_\+int\+\_\+mul} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2)
 \begin{DoxyCompactList}\small\item\em function for master cache to multiply two cached values and cache the result if large. \end{DoxyCompactList}\item 
-cached\+Int \hyperlink{master__cache__integer_8c_ae3957ca8ea6bce9f7ac7bb2c3ad14d40}{int\+\_\+cache\+\_\+divide} (\hyperlink{structMasterCache}{Master\+Cache} mstr, cached\+Int divident, cached\+Int divisor)
-\begin{DoxyCompactList}\small\item\em function for master cache to divide two cached values and cache the result if large. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_a65de9b96c7568d2a4bc8a6a05749be04}{cached\+\_\+int\+\_\+tdiv} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} divident, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} divisor, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} $\ast$rest)
+\begin{DoxyCompactList}\small\item\em function for master cache to divide two cached values and cache the result if large. \end{DoxyCompactList}\item 
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_ac95bf4ec8ac8cdfc09f81dc6ab3f7954}{cached\+\_\+int\+\_\+mod} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} number, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} n)
+\begin{DoxyCompactList}\small\item\em function for master cache to calculate the modulo of two cached values and cache the result if large. \end{DoxyCompactList}\item 
+\hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} \hyperlink{master__cache__integer_8c_aee6e62d1fc9500706bd768db8e2a5af3}{cached\+\_\+int\+\_\+gcd} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2)
+\begin{DoxyCompactList}\small\item\em function for master cache to calculate the greatest common divisor of two cached values and cache the result if large. \end{DoxyCompactList}\item 
+int \hyperlink{master__cache__integer_8c_aaabedd43537e5425aebea90933ccaa75}{cached\+\_\+int\+\_\+invert} (\hyperlink{structMasterCache}{Master\+Cache} $\ast$mstr, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val1, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} val2, \hyperlink{mastercache_8h_a113c03970467afb459ed5ae157d0a870}{cached\+Int} $\ast$result)
+\begin{DoxyCompactList}\small\item\em function for master cache to calculate the inverse of a cached value mod n and cache the result if large. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -42,15 +79,15 @@ Sandra Hicks
 
 
 \subsection{Function Documentation}
-\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!int\+\_\+cache\+\_\+add@{int\+\_\+cache\+\_\+add}}
-\index{int\+\_\+cache\+\_\+add@{int\+\_\+cache\+\_\+add}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
-\subsubsection[{\texorpdfstring{int\+\_\+cache\+\_\+add(\+Master\+Cache mstr, cached\+Int val1, cached\+Int val2)}{int_cache_add(MasterCache mstr, cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}cached\+Int int\+\_\+cache\+\_\+add (
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+add@{cached\+\_\+int\+\_\+add}}
+\index{cached\+\_\+int\+\_\+add@{cached\+\_\+int\+\_\+add}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+add(\+Master\+Cache $\ast$mstr, cached\+Int val1, cached\+Int val2)}{cached_int_add(MasterCache *mstr, cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} cached\+\_\+int\+\_\+add (
 \begin{DoxyParamCaption}
-\item[{{\bf Master\+Cache}}]{mstr, }
-\item[{cached\+Int}]{val1, }
-\item[{cached\+Int}]{val2}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2}
 \end{DoxyParamCaption}
-)}\hypertarget{master__cache__integer_8c_a3397536b3b12ba3bd017d29e760131a3}{}\label{master__cache__integer_8c_a3397536b3b12ba3bd017d29e760131a3}
+)}\hypertarget{master__cache__integer_8c_a2c77389b27a3a9c47f580cc52b6bbe62}{}\label{master__cache__integer_8c_a2c77389b27a3a9c47f580cc52b6bbe62}
 
 
 function for master cache to add two cached values and cache the result if large. 
@@ -64,37 +101,190 @@ function for master cache to add two cached values and cache the result if large
 {\em val2} & id of the second operand \\
 \hline
 \end{DoxyParams}
-\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!int\+\_\+cache\+\_\+divide@{int\+\_\+cache\+\_\+divide}}
-\index{int\+\_\+cache\+\_\+divide@{int\+\_\+cache\+\_\+divide}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
-\subsubsection[{\texorpdfstring{int\+\_\+cache\+\_\+divide(\+Master\+Cache mstr, cached\+Int divident, cached\+Int divisor)}{int_cache_divide(MasterCache mstr, cachedInt divident, cachedInt divisor)}}]{\setlength{\rightskip}{0pt plus 5cm}cached\+Int int\+\_\+cache\+\_\+divide (
+\begin{DoxyReturn}{Returns}
+cached\+Int returns caching id or result for addtion 
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+clear\+\_\+cache@{cached\+\_\+int\+\_\+clear\+\_\+cache}}
+\index{cached\+\_\+int\+\_\+clear\+\_\+cache@{cached\+\_\+int\+\_\+clear\+\_\+cache}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+clear\+\_\+cache(\+Master\+Cache $\ast$mstr)}{cached_int_clear_cache(MasterCache *mstr)}}]{\setlength{\rightskip}{0pt plus 5cm}void cached\+\_\+int\+\_\+clear\+\_\+cache (
 \begin{DoxyParamCaption}
-\item[{{\bf Master\+Cache}}]{mstr, }
-\item[{cached\+Int}]{divident, }
-\item[{cached\+Int}]{divisor}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr}
 \end{DoxyParamCaption}
-)}\hypertarget{master__cache__integer_8c_ae3957ca8ea6bce9f7ac7bb2c3ad14d40}{}\label{master__cache__integer_8c_ae3957ca8ea6bce9f7ac7bb2c3ad14d40}
+)}\hypertarget{master__cache__integer_8c_a1f693b4093b62e1c70a866b4947cea00}{}\label{master__cache__integer_8c_a1f693b4093b62e1c70a866b4947cea00}
 
 
-function for master cache to divide two cached values and cache the result if large. 
+function for master cache to clear all background data before free 
 
 
 \begin{DoxyParams}{Parameters}
 {\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
 \hline
-{\em divident} & id of the first operand \\
+\end{DoxyParams}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+gcd@{cached\+\_\+int\+\_\+gcd}}
+\index{cached\+\_\+int\+\_\+gcd@{cached\+\_\+int\+\_\+gcd}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+gcd(\+Master\+Cache $\ast$mstr, cached\+Int val1, cached\+Int val2)}{cached_int_gcd(MasterCache *mstr, cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} cached\+\_\+int\+\_\+gcd (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_aee6e62d1fc9500706bd768db8e2a5af3}{}\label{master__cache__integer_8c_aee6e62d1fc9500706bd768db8e2a5af3}
+
+
+function for master cache to calculate the greatest common divisor of two cached values and cache the result if large. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
 \hline
-{\em divisor} & id of the second operand \\
+{\em val1} & id of the first operand \\
+\hline
+{\em val2} & id of the second operand \\
 \hline
 \end{DoxyParams}
-\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!int\+\_\+cache\+\_\+multiply@{int\+\_\+cache\+\_\+multiply}}
-\index{int\+\_\+cache\+\_\+multiply@{int\+\_\+cache\+\_\+multiply}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
-\subsubsection[{\texorpdfstring{int\+\_\+cache\+\_\+multiply(\+Master\+Cache mstr, cached\+Int val1, cached\+Int val2)}{int_cache_multiply(MasterCache mstr, cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}cached\+Int int\+\_\+cache\+\_\+multiply (
+\begin{DoxyReturn}{Returns}
+cached\+Int returns caching id or result for gcd 
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+get@{cached\+\_\+int\+\_\+get}}
+\index{cached\+\_\+int\+\_\+get@{cached\+\_\+int\+\_\+get}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+get(\+Master\+Cache $\ast$mstr, cached\+Int id, mpz\+\_\+t number)}{cached_int_get(MasterCache *mstr, cachedInt id, mpz_t number)}}]{\setlength{\rightskip}{0pt plus 5cm}void cached\+\_\+int\+\_\+get (
 \begin{DoxyParamCaption}
-\item[{{\bf Master\+Cache}}]{mstr, }
-\item[{cached\+Int}]{val1, }
-\item[{cached\+Int}]{val2}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{{\bf cached\+Int}}]{id, }
+\item[{mpz\+\_\+t}]{number}
 \end{DoxyParamCaption}
-)}\hypertarget{master__cache__integer_8c_a411ddc812bb0bdf3dfeb69c70a19a418}{}\label{master__cache__integer_8c_a411ddc812bb0bdf3dfeb69c70a19a418}
+)}\hypertarget{master__cache__integer_8c_a70e68c14bd00b07597b31dba34aba997}{}\label{master__cache__integer_8c_a70e68c14bd00b07597b31dba34aba997}
+
+
+function for master cache to get a previously cached mpz\+\_\+t from an id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em id} & cached\+Int id that was cached \\
+\hline
+{\em number} & mpz\+\_\+t number to set \\
+\hline
+\end{DoxyParams}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+get\+\_\+d@{cached\+\_\+int\+\_\+get\+\_\+d}}
+\index{cached\+\_\+int\+\_\+get\+\_\+d@{cached\+\_\+int\+\_\+get\+\_\+d}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+get\+\_\+d(\+Master\+Cache $\ast$mstr, cached\+Int id)}{cached_int_get_d(MasterCache *mstr, cachedInt id)}}]{\setlength{\rightskip}{0pt plus 5cm}double cached\+\_\+int\+\_\+get\+\_\+d (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{{\bf cached\+Int}}]{id}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_af0c42f55a0674b42df4ce45322c33198}{}\label{master__cache__integer_8c_af0c42f55a0674b42df4ce45322c33198}
+
+
+function for master cache to get a previously cached mpz\+\_\+t as double from an id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em id} & cached\+Int id that was cached \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+double the double representation of the mpz cached with id 
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+init\+\_\+cache@{cached\+\_\+int\+\_\+init\+\_\+cache}}
+\index{cached\+\_\+int\+\_\+init\+\_\+cache@{cached\+\_\+int\+\_\+init\+\_\+cache}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+init\+\_\+cache(\+Master\+Cache $\ast$mstr, uint64\+\_\+t cachesize)}{cached_int_init_cache(MasterCache *mstr, uint64_t cachesize)}}]{\setlength{\rightskip}{0pt plus 5cm}void cached\+\_\+int\+\_\+init\+\_\+cache (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{uint64\+\_\+t}]{cachesize}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_a6095b13ce14cae93851e746599d8038e}{}\label{master__cache__integer_8c_a6095b13ce14cae93851e746599d8038e}
+
+
+function for master cache to initialize 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em cachesize} & uint64\+\_\+t with user defined size of the cache \\
+\hline
+\end{DoxyParams}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+invert@{cached\+\_\+int\+\_\+invert}}
+\index{cached\+\_\+int\+\_\+invert@{cached\+\_\+int\+\_\+invert}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+invert(\+Master\+Cache $\ast$mstr, cached\+Int val1, cached\+Int val2, cached\+Int $\ast$result)}{cached_int_invert(MasterCache *mstr, cachedInt val1, cachedInt val2, cachedInt *result)}}]{\setlength{\rightskip}{0pt plus 5cm}int cached\+\_\+int\+\_\+invert (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2, }
+\item[{{\bf cached\+Int} $\ast$}]{result}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_aaabedd43537e5425aebea90933ccaa75}{}\label{master__cache__integer_8c_aaabedd43537e5425aebea90933ccaa75}
+
+
+function for master cache to calculate the inverse of a cached value mod n and cache the result if large. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em val1} & id of the first operand \\
+\hline
+{\em val2} & id of the second operand \\
+\hline
+{\em result} & pointer for returning result \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int returns 0 if inverse does not exists, 1 if result is defined 
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+mod@{cached\+\_\+int\+\_\+mod}}
+\index{cached\+\_\+int\+\_\+mod@{cached\+\_\+int\+\_\+mod}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+mod(\+Master\+Cache $\ast$mstr, cached\+Int number, cached\+Int n)}{cached_int_mod(MasterCache *mstr, cachedInt number, cachedInt n)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} cached\+\_\+int\+\_\+mod (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{{\bf cached\+Int}}]{number, }
+\item[{{\bf cached\+Int}}]{n}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_ac95bf4ec8ac8cdfc09f81dc6ab3f7954}{}\label{master__cache__integer_8c_ac95bf4ec8ac8cdfc09f81dc6ab3f7954}
+
+
+function for master cache to calculate the modulo of two cached values and cache the result if large. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em number} & id of the first operand \\
+\hline
+{\em n} & id of the second operand \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cached\+Int returns caching id or result for mod 
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+mpz@{cached\+\_\+int\+\_\+mpz}}
+\index{cached\+\_\+int\+\_\+mpz@{cached\+\_\+int\+\_\+mpz}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+mpz(cached\+Int id, mpz\+\_\+t number)}{cached_int_mpz(cachedInt id, mpz_t number)}}]{\setlength{\rightskip}{0pt plus 5cm}void cached\+\_\+int\+\_\+mpz (
+\begin{DoxyParamCaption}
+\item[{{\bf cached\+Int}}]{id, }
+\item[{mpz\+\_\+t}]{number}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_ac755a7c217e68e03bac95bda3c12e2a7}{}\label{master__cache__integer_8c_ac755a7c217e68e03bac95bda3c12e2a7}
+(for internal use only!) 
+\begin{DoxyParams}{Parameters}
+{\em id} & \\
+\hline
+{\em number} & \\
+\hline
+\end{DoxyParams}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+mul@{cached\+\_\+int\+\_\+mul}}
+\index{cached\+\_\+int\+\_\+mul@{cached\+\_\+int\+\_\+mul}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+mul(\+Master\+Cache $\ast$mstr, cached\+Int val1, cached\+Int val2)}{cached_int_mul(MasterCache *mstr, cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} cached\+\_\+int\+\_\+mul (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_a418f697aefb1a082369940b69ef21758}{}\label{master__cache__integer_8c_a418f697aefb1a082369940b69ef21758}
 
 
 function for master cache to multiply two cached values and cache the result if large. 
@@ -108,15 +298,40 @@ function for master cache to multiply two cached values and cache the result if 
 {\em val2} & id of the second operand \\
 \hline
 \end{DoxyParams}
-\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!int\+\_\+cache\+\_\+subtract@{int\+\_\+cache\+\_\+subtract}}
-\index{int\+\_\+cache\+\_\+subtract@{int\+\_\+cache\+\_\+subtract}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
-\subsubsection[{\texorpdfstring{int\+\_\+cache\+\_\+subtract(\+Master\+Cache mstr, cached\+Int val1, cached\+Int val2)}{int_cache_subtract(MasterCache mstr, cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}cached\+Int int\+\_\+cache\+\_\+subtract (
+\begin{DoxyReturn}{Returns}
+cached\+Int returns caching id or result for multiplication 
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+set@{cached\+\_\+int\+\_\+set}}
+\index{cached\+\_\+int\+\_\+set@{cached\+\_\+int\+\_\+set}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+set(\+Master\+Cache $\ast$mstr, mpz\+\_\+t number)}{cached_int_set(MasterCache *mstr, mpz_t number)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} cached\+\_\+int\+\_\+set (
 \begin{DoxyParamCaption}
-\item[{{\bf Master\+Cache}}]{mstr, }
-\item[{cached\+Int}]{val1, }
-\item[{cached\+Int}]{val2}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{mpz\+\_\+t}]{number}
 \end{DoxyParamCaption}
-)}\hypertarget{master__cache__integer_8c_aa1561d5f860144af16cc17ecee6c1a56}{}\label{master__cache__integer_8c_aa1561d5f860144af16cc17ecee6c1a56}
+)}\hypertarget{master__cache__integer_8c_a2e8ed43761ae3945335b89102db422fd}{}\label{master__cache__integer_8c_a2e8ed43761ae3945335b89102db422fd}
+
+
+function for master cache to set a mpz\+\_\+t and get back an id 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em number} & number to cache \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cached\+Int id for cached mpz\+\_\+t 
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+sub@{cached\+\_\+int\+\_\+sub}}
+\index{cached\+\_\+int\+\_\+sub@{cached\+\_\+int\+\_\+sub}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+sub(\+Master\+Cache $\ast$mstr, cached\+Int val1, cached\+Int val2)}{cached_int_sub(MasterCache *mstr, cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} cached\+\_\+int\+\_\+sub (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_af3fa99a34d3f8f474ca5cb1caf45b0dc}{}\label{master__cache__integer_8c_af3fa99a34d3f8f474ca5cb1caf45b0dc}
 
 
 function for master cache to subtract two cached values and cache the result if large. 
@@ -130,3 +345,181 @@ function for master cache to subtract two cached values and cache the result if 
 {\em val2} & id of the second operand \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cached\+Int returns caching id or result for subtraction 
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!cached\+\_\+int\+\_\+tdiv@{cached\+\_\+int\+\_\+tdiv}}
+\index{cached\+\_\+int\+\_\+tdiv@{cached\+\_\+int\+\_\+tdiv}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{cached\+\_\+int\+\_\+tdiv(\+Master\+Cache $\ast$mstr, cached\+Int divident, cached\+Int divisor, cached\+Int $\ast$rest)}{cached_int_tdiv(MasterCache *mstr, cachedInt divident, cachedInt divisor, cachedInt *rest)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} cached\+\_\+int\+\_\+tdiv (
+\begin{DoxyParamCaption}
+\item[{{\bf Master\+Cache} $\ast$}]{mstr, }
+\item[{{\bf cached\+Int}}]{divident, }
+\item[{{\bf cached\+Int}}]{divisor, }
+\item[{{\bf cached\+Int} $\ast$}]{rest}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_a65de9b96c7568d2a4bc8a6a05749be04}{}\label{master__cache__integer_8c_a65de9b96c7568d2a4bc8a6a05749be04}
+
+
+function for master cache to divide two cached values and cache the result if large. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em mstr} & \hyperlink{structMasterCache}{Master\+Cache} pointer \\
+\hline
+{\em divident} & id of the first operand \\
+\hline
+{\em divisor} & id of the second operand \\
+\hline
+{\em rest} & pointer to id for rest of division \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+cached\+Int returns caching id or result for division 
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!direct\+\_\+add@{direct\+\_\+add}}
+\index{direct\+\_\+add@{direct\+\_\+add}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{direct\+\_\+add(cached\+Int val1, cached\+Int val2)}{direct_add(cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} direct\+\_\+add (
+\begin{DoxyParamCaption}
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_acf48c6c064be125bfc2e3daf62f10177}{}\label{master__cache__integer_8c_acf48c6c064be125bfc2e3daf62f10177}
+(for internal use only!) 
+\begin{DoxyParams}{Parameters}
+{\em val1} & \\
+\hline
+{\em val2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!direct\+\_\+div@{direct\+\_\+div}}
+\index{direct\+\_\+div@{direct\+\_\+div}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{direct\+\_\+div(cached\+Int val1, cached\+Int val2)}{direct_div(cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} direct\+\_\+div (
+\begin{DoxyParamCaption}
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_a7cbe579aa33d35c4042fac942fed2070}{}\label{master__cache__integer_8c_a7cbe579aa33d35c4042fac942fed2070}
+(for internal use only!) 
+\begin{DoxyParams}{Parameters}
+{\em val1} & \\
+\hline
+{\em val2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!direct\+\_\+gcd@{direct\+\_\+gcd}}
+\index{direct\+\_\+gcd@{direct\+\_\+gcd}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{direct\+\_\+gcd(cached\+Int val1, cached\+Int val2)}{direct_gcd(cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} direct\+\_\+gcd (
+\begin{DoxyParamCaption}
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_a663303ff03efc5249b8aa408ff5cce29}{}\label{master__cache__integer_8c_a663303ff03efc5249b8aa408ff5cce29}
+(for internal use only!) 
+\begin{DoxyParams}{Parameters}
+{\em val1} & \\
+\hline
+{\em val2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!direct\+\_\+invert@{direct\+\_\+invert}}
+\index{direct\+\_\+invert@{direct\+\_\+invert}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{direct\+\_\+invert(cached\+Int val1, cached\+Int val2)}{direct_invert(cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} direct\+\_\+invert (
+\begin{DoxyParamCaption}
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_aae7d64a848078cd497869680dbca4780}{}\label{master__cache__integer_8c_aae7d64a848078cd497869680dbca4780}
+(for internal use only!) 
+\begin{DoxyParams}{Parameters}
+{\em val1} & \\
+\hline
+{\em val2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!direct\+\_\+mod@{direct\+\_\+mod}}
+\index{direct\+\_\+mod@{direct\+\_\+mod}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{direct\+\_\+mod(cached\+Int val1, cached\+Int val2)}{direct_mod(cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} direct\+\_\+mod (
+\begin{DoxyParamCaption}
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_abe0e4d423323534bba705a0e6fed30dc}{}\label{master__cache__integer_8c_abe0e4d423323534bba705a0e6fed30dc}
+(for internal use only!) 
+\begin{DoxyParams}{Parameters}
+{\em val1} & \\
+\hline
+{\em val2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!direct\+\_\+mul@{direct\+\_\+mul}}
+\index{direct\+\_\+mul@{direct\+\_\+mul}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{direct\+\_\+mul(cached\+Int val1, cached\+Int val2)}{direct_mul(cachedInt val1, cachedInt val2)}}]{\setlength{\rightskip}{0pt plus 5cm}{\bf cached\+Int} direct\+\_\+mul (
+\begin{DoxyParamCaption}
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_aa558a557fa5371fc35597dc52fd824e5}{}\label{master__cache__integer_8c_aa558a557fa5371fc35597dc52fd824e5}
+(for internal use only!) 
+\begin{DoxyParams}{Parameters}
+{\em val1} & \\
+\hline
+{\em val2} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!ext\+\_\+euclid@{ext\+\_\+euclid}}
+\index{ext\+\_\+euclid@{ext\+\_\+euclid}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{ext\+\_\+euclid(cached\+Int val1, cached\+Int val2, cached\+Int $\ast$d, cached\+Int $\ast$s, cached\+Int $\ast$t)}{ext_euclid(cachedInt val1, cachedInt val2, cachedInt *d, cachedInt *s, cachedInt *t)}}]{\setlength{\rightskip}{0pt plus 5cm}void ext\+\_\+euclid (
+\begin{DoxyParamCaption}
+\item[{{\bf cached\+Int}}]{val1, }
+\item[{{\bf cached\+Int}}]{val2, }
+\item[{{\bf cached\+Int} $\ast$}]{d, }
+\item[{{\bf cached\+Int} $\ast$}]{s, }
+\item[{{\bf cached\+Int} $\ast$}]{t}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_a66c8c57579e8806ff904aeb71d54ec44}{}\label{master__cache__integer_8c_a66c8c57579e8806ff904aeb71d54ec44}
+(for internal use only!) 
+\begin{DoxyParams}{Parameters}
+{\em val1} & \\
+\hline
+{\em val2} & \\
+\hline
+{\em d} & \\
+\hline
+{\em s} & \\
+\hline
+{\em t} & \\
+\hline
+\end{DoxyParams}
+\index{master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}!mpz\+\_\+cached\+\_\+int@{mpz\+\_\+cached\+\_\+int}}
+\index{mpz\+\_\+cached\+\_\+int@{mpz\+\_\+cached\+\_\+int}!master\+\_\+cache\+\_\+integer.\+c@{master\+\_\+cache\+\_\+integer.\+c}}
+\subsubsection[{\texorpdfstring{mpz\+\_\+cached\+\_\+int(mpz\+\_\+t number)}{mpz_cached_int(mpz_t number)}}]{\setlength{\rightskip}{0pt plus 5cm}uint64\+\_\+t mpz\+\_\+cached\+\_\+int (
+\begin{DoxyParamCaption}
+\item[{mpz\+\_\+t}]{number}
+\end{DoxyParamCaption}
+)}\hypertarget{master__cache__integer_8c_a8ad24c72fe1e1e7bcb71342763573276}{}\label{master__cache__integer_8c_a8ad24c72fe1e1e7bcb71342763573276}
+(for internal use only!) 
+\begin{DoxyParams}{Parameters}
+{\em number} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+
+\end{DoxyReturn}

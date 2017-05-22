@@ -1,8 +1,13 @@
+/**
+  * @file caching_operations.c
+  * @author Sandra Hicks
+  * @brief caching operations if numbers are large and not directly used
+  */
+
 #include "caching_operations.h"
 #include "mpz_caching.h"
 #include "hashtable.h"
 #include "hashing.h"
-#include "defines.h"
 #include <stdlib.h>
 
 //Debug
@@ -15,7 +20,11 @@ uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val);
 uint64_t cache_exists_mpz_raw(lookup* lu, mpz_t val);
 uint64_t cache_exists_mpz_binary_raw(lookup* cache, mpz_t op1, mpz_t op2, uint64_t* extra_info, int op);
 
-
+/**
+ * @brief initialization of the lookup cache containing the hashtables and the actual cache
+ * @param cache lookup cache pointer
+ * @param cachesize size of the cache
+ */
 void init_cache(lookup* cache, uint64_t cachesize){
     
     lookup_table* table = malloc(sizeof(lookup_table));
@@ -97,7 +106,10 @@ void init_cache(lookup* cache, uint64_t cachesize){
     init_hashtable_binary(newtable_bin_inv, (uint64_t)cachesize*hashtable_RATIO);
     cache->inv->ht = newtable_bin_inv;
 }
-
+/**
+ * @brief deletion of the cache and the underlying data structures
+ * @param cache lookup cache pointer
+ */
 void delete_cache(lookup* cache){
     //call delete for mpz_t cache
     delete_mpz_cache(cache->lkup->cache);
@@ -113,7 +125,12 @@ void delete_cache(lookup* cache){
     free(cache->add->ht);
     cache->add->ht = NULL;
 }
-
+/**
+ * @brief function for master cache to set a mpz_t and get back an id
+ * @param cache lookup cache pointer
+ * @param id id for cached mpz_t
+ * @param val for writing the result
+ */
 void get_mpz(lookup* cache, uint64_t id, mpz_t val){
     id = id & ~SHIFT;
     if(id & NEG){
@@ -124,7 +141,12 @@ void get_mpz(lookup* cache, uint64_t id, mpz_t val){
     else
         get_cached_mpz(cache->lkup->cache, id, val);
 }
-
+/**
+ * @brief function for master cache to set a mpz_t and get back an id
+ * @param cache lookup cache pointer
+ * @param id for cached mpz_t
+ * @return double representation for mpz_t
+ */
 double get_double(lookup* cache, uint64_t id){
     id = id & ~SHIFT;
     if(id & NEG){
@@ -135,7 +157,12 @@ double get_double(lookup* cache, uint64_t id){
         return get_cached_double(cache->lkup->cache, id);
 }
 
-//try insert, if not working return -1
+/**
+ * @brief (for internal use only!) cache an mpz_t
+ * @param lu lookup cache pointer
+ * @param val mpz_t which should be cached
+ * @return id for cached mpz_t
+ */
 uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val){
     mpz_t temp;
     mpz_init(temp);
@@ -169,6 +196,12 @@ uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val){
     return (uint64_t)id;
 }
 
+/**
+ * @brief cache an mpz_t
+ * @param lu lookup cache pointer
+ * @param val mpz_t which should be cached
+ * @return id for cached mpz_t
+ */
 uint64_t cache_insert_mpz(lookup* lu, mpz_t val){
     mpz_t temp;
     mpz_init(temp);
@@ -191,6 +224,12 @@ uint64_t cache_insert_mpz(lookup* lu, mpz_t val){
         return id | SHIFT;
 }
 
+/**
+ * @brief (for internal use only!) check if an mpz_t already exists in cache
+ * @param lu lookup cache pointer
+ * @param val mpz_t which should be checked
+ * @return id for cached mpz_t
+ */
 uint64_t cache_exists_mpz_raw(lookup* lu, mpz_t val){
     
     mpz_t temp;
@@ -220,6 +259,12 @@ uint64_t cache_exists_mpz_raw(lookup* lu, mpz_t val){
     return id;
 }
 
+/**
+ * @brief check if an mpz_t already exists in cache
+ * @param lu lookup cache pointer
+ * @param val mpz_t which should be checked
+ * @return id for cached mpz_t
+ */
 uint64_t cache_exists_mpz(lookup* lu, mpz_t val){
     mpz_t temp;
     mpz_init(temp);
@@ -244,7 +289,15 @@ uint64_t cache_exists_mpz(lookup* lu, mpz_t val){
         return id | SHIFT;
 }
 
-
+/**
+ * @brief (for internal use only!) check if a binary operation mpz_t x mpz_t -> mpt_t exists
+ * @param cache lookup cache pointer
+ * @param op1 mpz_t first operator
+ * @param op2 mpz_t second operator
+ * @param extra_info pointer for extra information if existent (e.g. rest in integer division)
+ * @param op operator which is used
+ * @return id for cached mpz_t if existent, 0 if not cached
+ */
 uint64_t cache_exists_mpz_binary_raw(lookup* cache, mpz_t op1, mpz_t op2, uint64_t* extra_info, int op){
     //check if op1, op2 positive
     mpz_t t_op1;
@@ -302,11 +355,25 @@ uint64_t cache_exists_mpz_binary_raw(lookup* cache, mpz_t op1, mpz_t op2, uint64
     return id;
 }
 
+/**
+ * @brief check if a binary operation mpz_t x mpz_t -> mpt_t exists
+ * @param cache lookup cache pointer
+ * @param op1 mpz_t first operator
+ * @param op2 mpz_t second operator
+ * @param extra_info pointer for extra information if existent (e.g. rest in integer division)
+ * @param op operator which is used
+ * @return id for cached mpz_t if existent, 0 if not cached
+ */
 uint64_t cache_exists_mpz_binary(lookup* cache, mpz_t op1, mpz_t op2, uint64_t* extra_info, int op){
     uint64_t id = cache_exists_mpz_binary_raw(cache, op1, op2, extra_info, op);
     return id | SHIFT;
 }
 
+/**
+ * @brief swap two mpz_t's
+ * @param op1
+ * @param op2
+ */
 void mpz_swap(mpz_t op1, mpz_t op2){
     //simple triangle exchange
     mpz_t temp;
@@ -317,6 +384,13 @@ void mpz_swap(mpz_t op1, mpz_t op2){
     mpz_clear(temp);
 }
 
+/**
+ * @brief addition of two mpz_t, the operation and result are cached.
+ * @param cache lookup cache pointer
+ * @param op1_in first operand
+ * @param op2_in second operand
+ * @return id to result of addition
+ */
 uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
     
     ////// cache addition result
@@ -412,6 +486,13 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
         return id_res | SHIFT;
 }
 
+/**
+ * @brief subtraction of two mpz_t, the operation and result are cached.
+ * @param cache lookup cache pointer
+ * @param op1 first operand
+ * @param op2 second operand
+ * @return id to result of subtraction
+ */
 uint64_t cached_mpz_sub(lookup* cache, mpz_t op1, mpz_t op2){
     //every subtraction is an addition
     
@@ -423,6 +504,13 @@ uint64_t cached_mpz_sub(lookup* cache, mpz_t op1, mpz_t op2){
     return id;
 }
 
+/**
+ * @brief multiplication of two mpz_t, the operation and result are cached.
+ * @param cache lookup cache pointer
+ * @param op1 first operand
+ * @param op2 second operand
+ * @return id to result of multiplication
+ */
 uint64_t cached_mpz_mul(lookup* cache, mpz_t op1, mpz_t op2){
     ////// cache multiplication result
     mpz_t op1_in;
@@ -483,6 +571,14 @@ uint64_t cached_mpz_mul(lookup* cache, mpz_t op1, mpz_t op2){
         return id_res | SHIFT;
 }
 
+/**
+ * @brief integer division of two mpz_t, the operation and result are cached.
+ * @param cache lookup cache pointer
+ * @param rest pointer to store the rest of the integer division
+ * @param op1 first operand
+ * @param op2 second operand
+ * @return id to result of division
+ */
 uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
     //return 0 if operand2 == 0
     int cmp = mpz_cmpabs_ui(op2, 0);
@@ -555,12 +651,26 @@ uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
         return id_res_q | SHIFT;
 }
 
+/**
+ * @brief modulo of two mpz_t, the operation and result are cached.
+ * @param cache lookup cache pointer
+ * @param op1 first operand
+ * @param op2 second operand
+ * @return id to result of modulo operation
+ */
 uint64_t cached_mpz_mod(lookup* cache, mpz_t op1, mpz_t op2){
     uint64_t mod_id;
     cached_mpz_tdiv(cache, &mod_id, op1, op2);
     return mod_id;
 }
 
+/**
+ * @brief greatest common divisor of two mpz_t, the operation and result are cached.
+ * @param cache lookup cache pointer
+ * @param op1 first operand
+ * @param op2 second operand
+ * @return id to result of greatest common divisor
+ */
 uint64_t cached_mpz_gcd(lookup* cache, mpz_t op1, mpz_t op2){
     ////// cache ggT result
     //result always positive
@@ -611,6 +721,13 @@ uint64_t cached_mpz_gcd(lookup* cache, mpz_t op1, mpz_t op2){
     return id_res | SHIFT;
 }
 
+/**
+ * @brief modular multiplicative inverse of op modulo mod, the operation and result are cached.
+ * @param cache lookup cache pointer
+ * @param op first operand
+ * @param mod second operand
+ * @return id to result of inverse, 0 if non existent
+ */
 uint64_t cached_mpz_invert(lookup* cache, mpz_t op, mpz_t mod){
     ////// cache inverse mod n result
     mpz_t op1_in;

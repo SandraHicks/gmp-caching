@@ -1,9 +1,8 @@
-/* 
- * File:   overflow_detection.h
- * Author: sandra
- *
- * Created on March 24, 2017, 1:25 PM
- */
+ /**
+  * @file overflow_detection.h
+  * @author Sandra Hicks
+  * @brief header for overflow detection functions
+  */
 
 #ifndef OVERFLOW_DETECTION_H
 #define OVERFLOW_DETECTION_H
@@ -14,9 +13,9 @@ extern "C" {
     
 #include "mastercache.h"
 
-bool additionOverflow(cachedInt op1, cachedInt op2);
-bool multiplicationOverflow(cachedInt op1, cachedInt op2);
-bool exponentiationOverflow(cachedInt base, cachedInt exp);
+int additionOverflow(cachedInt op1, cachedInt op2);
+int multiplicationOverflow(cachedInt op1, cachedInt op2);
+int exponentiationOverflow(cachedInt base, cachedInt exp);
 
 #ifdef __cplusplus
 }
