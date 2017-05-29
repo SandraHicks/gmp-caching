@@ -1,13 +1,7 @@
 #ifndef MASTER_CACHE_RATIONAL_H
 #define MASTER_CACHE_RATIONAL_H
 
-/**
- * cached Rational
- */
-typedef struct cache_rational {
-    cachedInt counter;      /**< counter*/
-    cachedInt denominator;  /**< denominator*/
-} cachedRational;
+
 
 void cached_rational_set_mpq(MasterCache* mstr, mpq_t number, cachedRational* value);
 void cached_rational_set(MasterCache* mstr, mpz_t counter, mpz_t denominator, cachedRational* value);

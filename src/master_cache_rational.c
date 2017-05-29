@@ -19,8 +19,8 @@
  * @param value
  */
 void cached_rational_set(MasterCache* mstr, mpz_t counter, mpz_t denominator, cachedRational* value){
-    
-    
+    value->counter = cached_int_set(mstr, counter);
+    value->denominator = cached_int_set(mstr, denominator);
 }
 /**
  * 
@@ -39,7 +39,8 @@ void cached_rational_set_mpq(MasterCache* mstr, mpq_t number, cachedRational* va
  * @param denominator
  */
 void cached_rational_get(MasterCache* mstr, cachedRational* id, mpz_t counter, mpz_t denominator){
-    
+    cached_int_get(mstr, id->counter, counter);
+    cached_int_get(mstr, id->denominator, denominator);
 }
 /**
  * 
@@ -63,7 +64,9 @@ void cached_rational_get_mpq(MasterCache* mstr, cachedRational* id, mpq_t number
  * @return 
  */
 double cached_rational_get_d(MasterCache* mstr, cachedRational* id){
-    return 0;
+    double ctr = cached_int_get_d(mstr, id->counter);
+    double den = cached_int_get_d(mstr, id->denominator);
+    return ctr/den;
 }
 
 /**

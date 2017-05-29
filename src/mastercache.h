@@ -40,26 +40,13 @@ extern "C" {
  */
 typedef uint64_t cachedInt; //max: 1073741823 (2^62 - 2)
 
-
-
-
-/*typedef struct cachedInt_ {
-    cachedInt number;
-    int sign;
-    int isIndex;
-} cachedInt_;
-
-typedef struct cached_rational {
-    cachedInt counter;
-    cachedInt denominator;
-    int sign;
-    int isIndex;
-} cached_rational;
-//oder
-typedef struct cachedInt__ {
-    cachedInt number;
-    uint8_t info; //include information about sign and isIndex
-} cachedInt__;*/
+/**
+ * cached Rational
+ */
+typedef struct cache_rational {
+    cachedInt counter;      /**< counter*/
+    cachedInt denominator;  /**< denominator*/
+} cachedRational;
 
 
 #ifdef __cplusplus
