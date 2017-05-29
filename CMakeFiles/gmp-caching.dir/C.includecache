@@ -127,12 +127,20 @@ mastercache.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mastercache.h
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c
-defines.h
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/defines.h
 gmp.h
 -
+stdlib.h
+-
+defines.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/defines.h
 mastercache.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mastercache.h
+master_cache_rational.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.h
+master_cache_integer.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_integer.h
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.h
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mastercache.c
 stdint.h

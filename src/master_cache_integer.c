@@ -20,11 +20,15 @@
 
 
 /*local definitions*/
+void get_mpz_from_id(MasterCache* mstr, cachedInt id, mpz_t mpz);
+
 cachedInt direct_add(cachedInt val1, cachedInt val2);
 cachedInt direct_mul(cachedInt val1, cachedInt val2);
 cachedInt direct_div(cachedInt val1, cachedInt val2);
 cachedInt direct_mod(cachedInt val1, cachedInt val2);
 cachedInt direct_gcd(cachedInt val1, cachedInt val2);
+cachedInt direct_lcm(cachedInt val1, cachedInt val2);
+cachedInt direct_abs(cachedInt val);
 cachedInt direct_invert(cachedInt val1, cachedInt val2);
 void ext_euclid(cachedInt val1, cachedInt val2, cachedInt* d, cachedInt* s, cachedInt* t);
 
@@ -117,6 +121,21 @@ void cached_int_mpz(cachedInt id, mpz_t number){
 }
 
 /**
+ * (for internal use only!)
+ * @param mstr
+ * @param id
+ * @param mpz
+ */
+void get_mpz_from_id(MasterCache* mstr, cachedInt id, mpz_t mpz){
+    if((id & SHIFT) == 0){
+        cached_int_mpz(id, mpz);
+    }
+    else{
+        get_mpz(mstr->_integers->cache, id, mpz);
+    }
+}
+
+/**
  * @brief function for master cache to set a mpz_t and get back an id
  * @param mstr MasterCache pointer
  * @param number number to cache
@@ -176,6 +195,42 @@ double cached_int_get_d(MasterCache* mstr, cachedInt id){
         return get_double(mstr->_integers->cache, id);
     }
 }
+/**
+ * @brief function to negate a cachedInt
+ * @param mstr MasterCache pointer
+ * @param val cachedInt id of value to negate
+ * @return negated id
+ */
+cachedInt cached_int_neg(MasterCache* mstr, cachedInt val){
+    if((val & NEG) >= 1)
+        return val & ~NEG;
+    else
+        return val | NEG;
+}
+
+/**
+ * @brief function to get the absolute of a cachedInt
+ * @param mstr MasterCache pointer
+ * @param val cachedInt id of value to get absolute value
+ * @return absolute value
+ */
+cachedInt cached_int_abs(MasterCache* mstr, cachedInt val){
+    if((val & NEG) >= 1)
+        return val & ~NEG;
+    else
+        return val;
+}
+/**
+ * (internal use only!)
+ * @param val
+ * @return 
+ */
+cachedInt direct_abs(cachedInt val){
+    if((val & NEG) >= 1)
+        return val & ~NEG;
+    else
+        return val;
+}
 
 /**
  * @brief function for master cache to add two cached values and cache the result if large.
@@ -211,8 +266,8 @@ cachedInt cached_int_add(MasterCache* mstr, cachedInt val1, cachedInt val2){
     mpz_t op2;
     mpz_init(op1);
     mpz_init(op2);
-    get_mpz(mstr->_integers->cache, val1, op1);
-    get_mpz(mstr->_integers->cache, val2, op2);
+    get_mpz_from_id(mstr, val1, op1);
+    get_mpz_from_id(mstr, val2, op2);
     result = cached_mpz_add(mstr->_integers->cache, op1, op2);
    
     return result;
@@ -221,7 +276,7 @@ cachedInt cached_int_add(MasterCache* mstr, cachedInt val1, cachedInt val2){
  * (for internal use only!)
  * @param val1
  * @param val2
- * @return 
+ * @return cachedInt result or SHIFT if overflow
  */
 cachedInt direct_add(cachedInt val1, cachedInt val2){
     int val1neg=0;
@@ -320,8 +375,8 @@ cachedInt cached_int_mul(MasterCache* mstr, cachedInt val1, cachedInt val2){
     mpz_t op2;
     mpz_init(op1);
     mpz_init(op2);
-    get_mpz(mstr->_integers->cache, val1, op1);
-    get_mpz(mstr->_integers->cache, val2, op2);
+    get_mpz_from_id(mstr, val1, op1);
+    get_mpz_from_id(mstr, val2, op2);
     result = cached_mpz_mul(mstr->_integers->cache, op1, op2);
    
     return result;
@@ -330,7 +385,7 @@ cachedInt cached_int_mul(MasterCache* mstr, cachedInt val1, cachedInt val2){
  * (for internal use only!)
  * @param val1
  * @param val2
- * @return 
+ * @return cachedInt result or SHIFT if overflow
  */
 cachedInt direct_mul(cachedInt val1, cachedInt val2){
     int val1neg=0;
@@ -393,8 +448,8 @@ cachedInt cached_int_tdiv(MasterCache* mstr, cachedInt divident, cachedInt divis
     mpz_t op2;
     mpz_init(op1);
     mpz_init(op2);
-    get_mpz(mstr->_integers->cache, divident, op1);
-    get_mpz(mstr->_integers->cache, divisor, op2);
+    get_mpz_from_id(mstr, divident, op1);
+    get_mpz_from_id(mstr, divisor, op2);
     result = cached_mpz_tdiv(mstr->_integers->cache, rest, op1, op2);
    
     return result;
@@ -403,7 +458,7 @@ cachedInt cached_int_tdiv(MasterCache* mstr, cachedInt divident, cachedInt divis
  * (for internal use only!)
  * @param val1
  * @param val2
- * @return 
+ * @return cachedInt result
  */
 cachedInt direct_div(cachedInt val1, cachedInt val2){
     int val1neg=0;
@@ -431,7 +486,7 @@ cachedInt direct_div(cachedInt val1, cachedInt val2){
  * (for internal use only!)
  * @param val1
  * @param val2
- * @return 
+ * @return cachedInt result
  */
 cachedInt direct_mod(cachedInt val1, cachedInt val2){
     if((val1 & NEG) >= 1){
@@ -466,12 +521,14 @@ cachedInt cached_int_mod(MasterCache* mstr, cachedInt number, cachedInt n){
     mpz_t op2;
     mpz_init(op1);
     mpz_init(op2);
-    get_mpz(mstr->_integers->cache, number, op1);
-    get_mpz(mstr->_integers->cache, n, op2);
+    
+    get_mpz_from_id(mstr, number, op1);
+    get_mpz_from_id(mstr, n, op2);
     result = cached_mpz_mod(mstr->_integers->cache, op1, op2);
    
     return result;
 }
+
 
 /**
  * @brief function for master cache to calculate the greatest common divisor of two cached values and cache the result if large.
@@ -495,8 +552,8 @@ cachedInt cached_int_gcd(MasterCache* mstr, cachedInt val1, cachedInt val2){
     mpz_t op2;
     mpz_init(op1);
     mpz_init(op2);
-    get_mpz(mstr->_integers->cache, val1, op1);
-    get_mpz(mstr->_integers->cache, val2, op2);
+    get_mpz_from_id(mstr, val1, op1);
+    get_mpz_from_id(mstr, val2, op2);
     result = cached_mpz_gcd(mstr->_integers->cache, op1, op2);
    
     return result;
@@ -505,7 +562,7 @@ cachedInt cached_int_gcd(MasterCache* mstr, cachedInt val1, cachedInt val2){
  * (for internal use only!)
  * @param val1
  * @param val2
- * @return 
+ * @return cachedInt result
  */
 cachedInt direct_gcd(cachedInt val1, cachedInt val2){
     if((val1 & NEG) >= 1){
@@ -521,6 +578,40 @@ cachedInt direct_gcd(cachedInt val1, cachedInt val2){
     return direct_gcd(val2, val1 % val2);
 }
 
+cachedInt cached_int_lcm(MasterCache* mstr, cachedInt val1, cachedInt val2){
+    uint64_t result;
+    
+    if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
+        result = direct_lcm(val1, val2);
+        return result;
+        
+        //as lcm is always smaller equals the operands, it cannot overflow in direct calculation
+    }
+    
+    mpz_t op1;
+    mpz_t op2;
+    mpz_init(op1);
+    mpz_init(op2);
+    get_mpz_from_id(mstr, val1, op1);
+    get_mpz_from_id(mstr, val2, op2);
+    result = cached_mpz_lcm(mstr->_integers->cache, op1, op2);
+   
+    return result;
+}
+
+cachedInt direct_lcm(cachedInt val1, cachedInt val2){
+    cachedInt mul = direct_mul(val1, val2);
+    mul = direct_abs(mul);
+    if(mul != SHIFT){
+        cachedInt gcd = direct_gcd(val1, val2);
+        cachedInt result = direct_div(mul, gcd);
+        return result;
+    }
+    else{
+        return SHIFT;
+    }
+}
+
 /**
  * @brief function for master cache to calculate the inverse of a cached value mod n and cache the result if large.
  * @param mstr MasterCache pointer
@@ -533,8 +624,11 @@ int cached_int_invert(MasterCache* mstr, cachedInt val1, cachedInt val2, cachedI
     
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         *result = direct_invert(val1, val2);
-        
-        return 1;
+        //check for overflow
+        if((*result & SHIFT) == 0)
+            return 1;
+        else
+            *result = 0;
         
         //as the integer division rest is always smaller equals the number, it cannot overflow
     }
@@ -548,17 +642,17 @@ int cached_int_invert(MasterCache* mstr, cachedInt val1, cachedInt val2, cachedI
     mpz_t op2;
     mpz_init(op1);
     mpz_init(op2);
-    get_mpz(mstr->_integers->cache, val1, op1);
-    get_mpz(mstr->_integers->cache, val2, op2);
+    get_mpz_from_id(mstr, val1, op1);
+    get_mpz_from_id(mstr, val2, op2);
     *result = cached_mpz_invert(mstr->_integers->cache, op1, op2);
     return 1;
 }
 
 /**
- * (for internal use only!)
+ * (for internal use only!) invert modulo n
  * @param val1
  * @param val2
- * @return 
+ * @return cachedInt result or SHIFT if overflow
  */
 cachedInt direct_invert(cachedInt val1, cachedInt val2){
     cachedInt gcd = direct_gcd(val1, val2);
@@ -571,11 +665,16 @@ cachedInt direct_invert(cachedInt val1, cachedInt val2){
     cachedInt t;
     ext_euclid(val1, val2, &d, &inverse, &t);
     
-    return inverse;
+    //check inverse for overflow
+    uint64_t check = (val1 * inverse) % val2;
+    if(check == 1)
+        return inverse;
+    else
+        return SHIFT;
 }
 
 /**
- * (for internal use only!)
+ * (for internal use only!) extended euclid
  * @param val1
  * @param val2
  * @param d

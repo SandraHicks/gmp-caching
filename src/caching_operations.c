@@ -34,6 +34,7 @@ void init_cache(lookup* cache, uint64_t cachesize){
     lookup_table_binary* table_binary_tdiv = malloc(sizeof(lookup_table_binary));
     lookup_table_binary* table_binary_mod = malloc(sizeof(lookup_table_binary));
     lookup_table_binary* table_binary_gcd = malloc(sizeof(lookup_table_binary));
+    lookup_table_binary* table_binary_lcm = malloc(sizeof(lookup_table_binary));
     lookup_table_binary* table_binary_inv = malloc(sizeof(lookup_table_binary));
     
     cache->lkup = table;
@@ -43,6 +44,7 @@ void init_cache(lookup* cache, uint64_t cachesize){
     cache->tdiv = table_binary_tdiv;
     cache->mod = table_binary_mod;
     cache->gcd = table_binary_gcd;
+    cache->lcm = table_binary_lcm;
     cache->inv = table_binary_inv;
     
     //simple cache for mpz_t
@@ -99,6 +101,13 @@ void init_cache(lookup* cache, uint64_t cachesize){
     init_hashtable_binary(newtable_bin_gcd, (uint64_t)cachesize*hashtable_RATIO);
     cache->gcd->ht = newtable_bin_gcd;
     
+    //cache for lcm
+    cache->lcm->cache = newcache;
+
+    Hashtable_binary* newtable_bin_lcm = malloc(sizeof(Hashtable_binary));
+    init_hashtable_binary(newtable_bin_lcm, (uint64_t)cachesize*hashtable_RATIO);
+    cache->lcm->ht = newtable_bin_lcm;
+    
     //cache for invers
     cache->inv->cache = newcache;
 
@@ -124,6 +133,34 @@ void delete_cache(lookup* cache){
     delete_hashtable_binary(cache->add->ht);
     free(cache->add->ht);
     cache->add->ht = NULL;
+    
+    delete_hashtable_binary(cache->sub->ht);
+    free(cache->sub->ht);
+    cache->sub->ht = NULL;
+    
+    delete_hashtable_binary(cache->mul->ht);
+    free(cache->mul->ht);
+    cache->mul->ht = NULL;
+    
+    delete_hashtable_binary(cache->tdiv->ht);
+    free(cache->tdiv->ht);
+    cache->tdiv->ht = NULL;
+    
+    delete_hashtable_binary(cache->mod->ht);
+    free(cache->mod->ht);
+    cache->mod->ht = NULL;
+    
+    delete_hashtable_binary(cache->gcd->ht);
+    free(cache->gcd->ht);
+    cache->gcd->ht = NULL;
+    
+    delete_hashtable_binary(cache->lcm->ht);
+    free(cache->lcm->ht);
+    cache->lcm->ht = NULL;
+    
+    delete_hashtable_binary(cache->inv->ht);
+    free(cache->inv->ht);
+    cache->inv->ht = NULL;
 }
 /**
  * @brief function for master cache to set a mpz_t and get back an id
@@ -330,6 +367,9 @@ uint64_t cache_exists_mpz_binary_raw(lookup* cache, mpz_t op1, mpz_t op2, uint64
             break;
         case GCD:
             lkuptable = cache->gcd;
+            break;
+        case LCM:
+            lkuptable = cache->lcm;
             break;
         case INV:
             lkuptable = cache->inv;
@@ -708,6 +748,64 @@ uint64_t cached_mpz_gcd(lookup* cache, mpz_t op1, mpz_t op2){
     uint64_t id_op2 = cache_insert_mpz_raw(cache, op2_in);
     uint64_t id_res = cache_insert_mpz_raw(cache, result);
     insert_element_binary(cache->gcd->ht, id_op1, id_op2, id_res, NULL, hashes);
+    
+    //free hashes
+    free(hashes);
+    hashes=NULL;
+    
+    //return new id
+    mpz_clear(op1_in);
+    mpz_clear(op2_in);
+    mpz_clear(result);
+    
+    return id_res | SHIFT;
+}
+
+/**
+ * @brief least common multiple
+ * @param cache lookup cache pointer
+ * @param op1 first operand
+ * @param op2 second operand
+ * @return id to least common multiple
+ */
+uint64_t cached_mpz_lcm(lookup* cache, mpz_t op1, mpz_t op2){
+    ////// cache lcm result
+    //result always positive
+    mpz_t op1_in;
+    mpz_t op2_in;
+    mpz_init(op1_in);
+    mpz_init(op2_in);
+    mpz_set(op1_in, op1);
+    mpz_set(op2_in, op2);
+    //sort operands
+    if(mpz_cmp(op1_in, op2_in) < 0){
+        mpz_swap(op1_in, op2_in);
+    }
+    
+    //check if exists in cache
+    uint64_t id = cache_exists_mpz_binary_raw(cache, op1_in, op2_in, NULL, LCM);
+    if(id){
+        mpz_clear(op1_in);
+        mpz_clear(op2_in);
+        return id | SHIFT; 
+    }
+    
+    mpz_t result;
+    mpz_init(result);
+    
+    mpz_lcm(result, op1_in, op2_in);
+    
+    
+    //hash tuple
+    uint64_t* hashes;
+    hashes = malloc(sizeof(uint64_t)*NUMBER_HF);
+    get_k_hashes_cpf(op1_in, op2_in, hashes);
+    
+    //add to cache
+    uint64_t id_op1 = cache_insert_mpz_raw(cache, op1_in);
+    uint64_t id_op2 = cache_insert_mpz_raw(cache, op2_in);
+    uint64_t id_res = cache_insert_mpz_raw(cache, result);
+    insert_element_binary(cache->lcm->ht, id_op1, id_op2, id_res, NULL, hashes);
     
     //free hashes
     free(hashes);

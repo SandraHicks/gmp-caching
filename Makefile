@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named hashtable-test
+# Target rules for targets named master-cache-integer-grenzwerte
 
 # Build rule for target.
-hashtable-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 hashtable-test
-.PHONY : hashtable-test
+master-cache-integer-grenzwerte: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 master-cache-integer-grenzwerte
+.PHONY : master-cache-integer-grenzwerte
 
 # fast build rule for target.
-hashtable-test/fast:
-	$(MAKE) -f CMakeFiles/hashtable-test.dir/build.make CMakeFiles/hashtable-test.dir/build
-.PHONY : hashtable-test/fast
+master-cache-integer-grenzwerte/fast:
+	$(MAKE) -f CMakeFiles/master-cache-integer-grenzwerte.dir/build.make CMakeFiles/master-cache-integer-grenzwerte.dir/build
+.PHONY : master-cache-integer-grenzwerte/fast
 
 #=============================================================================
 # Target rules for targets named hash-test
@@ -150,17 +150,30 @@ gmp-caching/fast:
 .PHONY : gmp-caching/fast
 
 #=============================================================================
-# Target rules for targets named caching-operations-test
+# Target rules for targets named hashtable-test
 
 # Build rule for target.
-caching-operations-test: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test
-.PHONY : caching-operations-test
+hashtable-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 hashtable-test
+.PHONY : hashtable-test
 
 # fast build rule for target.
-caching-operations-test/fast:
-	$(MAKE) -f CMakeFiles/caching-operations-test.dir/build.make CMakeFiles/caching-operations-test.dir/build
-.PHONY : caching-operations-test/fast
+hashtable-test/fast:
+	$(MAKE) -f CMakeFiles/hashtable-test.dir/build.make CMakeFiles/hashtable-test.dir/build
+.PHONY : hashtable-test/fast
+
+#=============================================================================
+# Target rules for targets named doc
+
+# Build rule for target.
+doc: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 doc
+.PHONY : doc
+
+# fast build rule for target.
+doc/fast:
+	$(MAKE) -f CMakeFiles/doc.dir/build.make CMakeFiles/doc.dir/build
+.PHONY : doc/fast
 
 #=============================================================================
 # Target rules for targets named caching-operations-test-many
@@ -176,17 +189,17 @@ caching-operations-test-many/fast:
 .PHONY : caching-operations-test-many/fast
 
 #=============================================================================
-# Target rules for targets named COMMAND
+# Target rules for targets named caching-operations-test
 
 # Build rule for target.
-COMMAND: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 COMMAND
-.PHONY : COMMAND
+caching-operations-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 caching-operations-test
+.PHONY : caching-operations-test
 
 # fast build rule for target.
-COMMAND/fast:
-	$(MAKE) -f CMakeFiles/COMMAND.dir/build.make CMakeFiles/COMMAND.dir/build
-.PHONY : COMMAND/fast
+caching-operations-test/fast:
+	$(MAKE) -f CMakeFiles/caching-operations-test.dir/build.make CMakeFiles/caching-operations-test.dir/build
+.PHONY : caching-operations-test/fast
 
 #=============================================================================
 # Target rules for targets named caching-operations-test-advanced
@@ -374,6 +387,33 @@ Tests/hashtable-test.s: Tests/hashtable-test.c.s
 Tests/hashtable-test.c.s:
 	$(MAKE) -f CMakeFiles/hashtable-test.dir/build.make CMakeFiles/hashtable-test.dir/Tests/hashtable-test.c.s
 .PHONY : Tests/hashtable-test.c.s
+
+Tests/master-cache-integer-grenzwerte.o: Tests/master-cache-integer-grenzwerte.c.o
+
+.PHONY : Tests/master-cache-integer-grenzwerte.o
+
+# target to build an object file
+Tests/master-cache-integer-grenzwerte.c.o:
+	$(MAKE) -f CMakeFiles/master-cache-integer-grenzwerte.dir/build.make CMakeFiles/master-cache-integer-grenzwerte.dir/Tests/master-cache-integer-grenzwerte.c.o
+.PHONY : Tests/master-cache-integer-grenzwerte.c.o
+
+Tests/master-cache-integer-grenzwerte.i: Tests/master-cache-integer-grenzwerte.c.i
+
+.PHONY : Tests/master-cache-integer-grenzwerte.i
+
+# target to preprocess a source file
+Tests/master-cache-integer-grenzwerte.c.i:
+	$(MAKE) -f CMakeFiles/master-cache-integer-grenzwerte.dir/build.make CMakeFiles/master-cache-integer-grenzwerte.dir/Tests/master-cache-integer-grenzwerte.c.i
+.PHONY : Tests/master-cache-integer-grenzwerte.c.i
+
+Tests/master-cache-integer-grenzwerte.s: Tests/master-cache-integer-grenzwerte.c.s
+
+.PHONY : Tests/master-cache-integer-grenzwerte.s
+
+# target to generate assembly for a file
+Tests/master-cache-integer-grenzwerte.c.s:
+	$(MAKE) -f CMakeFiles/master-cache-integer-grenzwerte.dir/build.make CMakeFiles/master-cache-integer-grenzwerte.dir/Tests/master-cache-integer-grenzwerte.c.s
+.PHONY : Tests/master-cache-integer-grenzwerte.c.s
 
 Tests/master-cache-integer-test-largenum.o: Tests/master-cache-integer-test-largenum.c.o
 
@@ -706,13 +746,14 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
-	@echo "... hashtable-test"
+	@echo "... master-cache-integer-grenzwerte"
 	@echo "... hash-test"
 	@echo "... rebuild_cache"
 	@echo "... gmp-caching"
-	@echo "... caching-operations-test"
+	@echo "... hashtable-test"
+	@echo "... doc"
 	@echo "... caching-operations-test-many"
-	@echo "... COMMAND"
+	@echo "... caching-operations-test"
 	@echo "... caching-operations-test-advanced"
 	@echo "... master-cache-integer-test"
 	@echo "... mpz-cache-test"
@@ -732,6 +773,9 @@ help:
 	@echo "... Tests/hashtable-test.o"
 	@echo "... Tests/hashtable-test.i"
 	@echo "... Tests/hashtable-test.s"
+	@echo "... Tests/master-cache-integer-grenzwerte.o"
+	@echo "... Tests/master-cache-integer-grenzwerte.i"
+	@echo "... Tests/master-cache-integer-grenzwerte.s"
 	@echo "... Tests/master-cache-integer-test-largenum.o"
 	@echo "... Tests/master-cache-integer-test-largenum.i"
 	@echo "... Tests/master-cache-integer-test-largenum.s"

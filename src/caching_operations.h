@@ -22,6 +22,7 @@ extern "C" {
         /*! integer division*/  TDIV,
         /*! modulo*/            MOD, 
         /*! greatest common divisor*/       GCD,
+        /*! least common multiple*/         LCM,
         /*! modular multiplicative inverse*/INV
     };
 
@@ -53,6 +54,7 @@ extern "C" {
         lookup_table_binary* tdiv;  /**< lookup table for mpz_t integer division*/
         lookup_table_binary* mod;   /**< lookup table for mpz_t modulo*/
         lookup_table_binary* gcd;   /**< lookup table for mpz_t greatest common divisor*/
+        lookup_table_binary* lcm;   /**< lookup table for mpz_t modular multiplicative inverse*/
         lookup_table_binary* inv;   /**< lookup table for mpz_t modular multiplicative inverse*/
     } lookup;
     
@@ -82,6 +84,7 @@ extern "C" {
     uint64_t cached_mpz_mul(lookup* cache, mpz_t op1, mpz_t op2);
     uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2);
     uint64_t cached_mpz_mod(lookup* cache, mpz_t op, mpz_t mod);
+    uint64_t cached_mpz_lcm(lookup* cache, mpz_t op1, mpz_t op2);
     
     /* ggT, invert
      */

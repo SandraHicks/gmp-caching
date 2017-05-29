@@ -3,7 +3,22 @@ project (gmp-caching)
 set(IPO_VERSION_MAJOR 1)
 set(IPO_VERSION_MINOR 0)
 
+#### DOXYGEN ####
 
+find_package(Doxygen)
+IF(NOT DOXYGEN_FOUND)
+message(FATAL_ERROR "Doxygen is needed to build the documentation.")
+ENDIF()
+
+IF (DOXYGEN_FOUND)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile @ONLY)
+add_custom_target(doc ALL
+COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/src/Doxyfile
+WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+COMMENT "Generating API documentation with Doxygen"
+VERBATIM
+)
+ENDIF(DOXYGEN_FOUND)
 
 
 INCLUDE_DIRECTORIES(
@@ -87,21 +102,10 @@ include_directories(../src/)
 target_link_libraries(master-cache-integer-test-largenum gmp)
 target_link_libraries(master-cache-integer-test-largenum gmp-caching)
 
-#### DOXYGEN ####
-
-find_package(Doxygen)
-IF (DOXYGEN_FOUND)
-SET(DOXYGEN_INPUT src/Doxyfile)
-
-ADD_CUSTOM_TARGET(
-COMMAND ${CMAKE_COMMAND} -E echo_append "Building API Documentation..."
-COMMAND ${DOXYGEN_EXECUTABLE} ${DOXYGEN_INPUT}
-COMMAND ${CMAKE_COMMAND} -E echo "Done."
-WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}
-DEPENDS ${DOXYGEN_INPUT}
-)
-
-ENDIF(DOXYGEN_FOUND)
+add_executable(master-cache-integer-grenzwerte ${TEST_DIR}master-cache-integer-grenzwerte.c)
+include_directories(../src/)
+target_link_libraries(master-cache-integer-grenzwerte gmp)
+target_link_libraries(master-cache-integer-grenzwerte gmp-caching)
 
 #install(TARGETS gmp-caching   ARCHIVE DESTINATION lib   LIBRARY DESTINATION lib   COMPONENT library)
 #install(FILES ${GMP_CACHING_HEADERS} DESTINATION include/gmp-caching  COMPONENT headers)
