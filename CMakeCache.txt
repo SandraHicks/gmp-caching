@@ -171,6 +171,9 @@ DOXYGEN_DOT_EXECUTABLE:FILEPATH=/usr/bin/dot
 //Doxygen documentation generation tool (http://www.doxygen.org)
 DOXYGEN_EXECUTABLE:FILEPATH=/usr/bin/doxygen
 
+//Path from where to start to parse
+DOXY_DOC_INPUT_ROOT_DIRS:PATH=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src
+
 //Value Computed by CMake
 gmp-caching_BINARY_DIR:STATIC=/home/sandra/Documents/HiWi/GMPCache/gmp-caching
 

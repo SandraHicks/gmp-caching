@@ -12,9 +12,9 @@ extern "C" {
 #endif
 
 /*! maximum size of a cachedInt */
-#define cachedInt_MAX (int64_t)2^62-2
+#define cachedInt_MAX ((int64_t)1 << 62)-2
 /*! minimum size of a cachedInt */
-#define cachedInt_MIN (int64_t)-(2^62-2)
+#define cachedInt_MIN (((int64_t)1 << 62)-2)*(-1)
 
 /*! bitmask to get sign position of cachedInt */
 #define cachedInt_SIGN 63
@@ -27,7 +27,7 @@ extern "C" {
 /*! number of hash functions */
 #define NUMBER_HF 3
 
-/*! macro to detect the bit in a cachedInt which defines if it is an id or a number */
+/*! macro to detect the bit in a cachedInt which defines if it is an id or a number, also used as an error code if returned as number */
 #define SHIFT ((uint64_t)1 << cachedInt_IsID)
 /*! macro to detect the bit in a cachedInt which defines if it is positive or negative */
 #define NEG ((uint64_t)1 << cachedInt_SIGN)

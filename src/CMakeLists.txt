@@ -20,7 +20,6 @@ VERBATIM
 )
 ENDIF(DOXYGEN_FOUND)
 
-
 INCLUDE_DIRECTORIES(
   ${PROJECT_SOURCE_DIR}
 )
@@ -106,6 +105,11 @@ add_executable(master-cache-integer-grenzwerte ${TEST_DIR}master-cache-integer-g
 include_directories(../src/)
 target_link_libraries(master-cache-integer-grenzwerte gmp)
 target_link_libraries(master-cache-integer-grenzwerte gmp-caching)
+
+add_executable(master-cache-test ${TEST_DIR}master-cache-test.c)
+include_directories(../src/)
+target_link_libraries(master-cache-test gmp)
+target_link_libraries(master-cache-test gmp-caching)
 
 #install(TARGETS gmp-caching   ARCHIVE DESTINATION lib   LIBRARY DESTINATION lib   COMPONENT library)
 #install(FILES ${GMP_CACHING_HEADERS} DESTINATION include/gmp-caching  COMPONENT headers)

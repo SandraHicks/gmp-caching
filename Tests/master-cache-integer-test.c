@@ -31,8 +31,8 @@ int main(int argc, char** argv) {
 
   //TEST FOR MASTERCACHE
 
-  MasterCache* cache = malloc(sizeof(MasterCache));
-  cached_int_init_cache(cache, SIZE_C);
+  MasterCache* cache;
+  cached_int_init_cache(&cache, SIZE_C);
 
   //mpz_ts zum cachen
   mpz_t* integers;
@@ -122,6 +122,6 @@ int main(int argc, char** argv) {
   free(ids_mul_neg);
   free(ids_div);
   free(ids_mod);
-  cached_int_clear_cache(cache);
+  cached_int_clear_cache(&cache);
   return 0;
 }

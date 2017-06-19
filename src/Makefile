@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named master-cache-test
+
+# Build rule for target.
+master-cache-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 master-cache-test
+.PHONY : master-cache-test
+
+# fast build rule for target.
+master-cache-test/fast:
+	$(MAKE) -f CMakeFiles/master-cache-test.dir/build.make CMakeFiles/master-cache-test.dir/build
+.PHONY : master-cache-test/fast
+
+#=============================================================================
 # Target rules for targets named master-cache-integer-grenzwerte
 
 # Build rule for target.
@@ -577,6 +590,33 @@ home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.
 	$(MAKE) -f CMakeFiles/master-cache-integer-test.dir/build.make CMakeFiles/master-cache-integer-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.s
 .PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.s
 
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.o: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.o
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.o
+
+# target to build an object file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.o:
+	$(MAKE) -f CMakeFiles/master-cache-test.dir/build.make CMakeFiles/master-cache-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.o
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.o
+
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.i: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.i
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.i
+
+# target to preprocess a source file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.i:
+	$(MAKE) -f CMakeFiles/master-cache-test.dir/build.make CMakeFiles/master-cache-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.i
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.i
+
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.s: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.s
+
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.s
+
+# target to generate assembly for a file
+home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.s:
+	$(MAKE) -f CMakeFiles/master-cache-test.dir/build.make CMakeFiles/master-cache-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.s
+.PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.c.s
+
 home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.o: home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.c.o
 
 .PHONY : home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.o
@@ -746,6 +786,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... master-cache-test"
 	@echo "... master-cache-integer-grenzwerte"
 	@echo "... hash-test"
 	@echo "... rebuild_cache"
@@ -794,6 +835,9 @@ help:
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.o"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.i"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.s"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.o"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.i"
+	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-test.s"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.o"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.i"
 	@echo "... home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.s"

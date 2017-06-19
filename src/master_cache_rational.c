@@ -1,7 +1,8 @@
-/*
- * Master Cache for caching Rational values in mpq
- *
- */
+ /**
+  * @file master_cache_rational.c
+  * @author Sandra Hicks
+  * @brief Master Cache functions for caching Rational operations in gmp
+  */
 #include <gmp.h>
 #include <stdlib.h>
 
@@ -10,7 +11,11 @@
 #include "master_cache_rational.h"
 #include "master_cache_integer.h"
 
-
+void cached_rational_init(cachedRational** value){
+    (*value) = (cachedRational*)malloc(sizeof(cachedRational));
+    (*value)->counter = (cachedInt)0;
+    (*value)->denominator = (cachedInt)0;
+}
 /**
  * 
  * @param mstr MasterCache pointer
@@ -24,6 +29,15 @@ void cached_rational_set(MasterCache* mstr, mpz_t counter, mpz_t denominator, ca
 }
 /**
  * 
+ * @param mstr
+ * @param value
+ */
+void cached_rational_clear(MasterCache* mstr, cachedRational** value){
+    free(*value);
+    *value = NULL;
+}
+/**
+ * 
  * @param mstr MasterCache pointer
  * @param number
  * @param value
@@ -31,6 +45,19 @@ void cached_rational_set(MasterCache* mstr, mpz_t counter, mpz_t denominator, ca
 void cached_rational_set_mpq(MasterCache* mstr, mpq_t number, cachedRational* value){
     cached_rational_set(mstr, &(number->_mp_num), &(number->_mp_den), value);
 }
+
+/**
+ * 
+ * @param mstr MasterCache pointer
+ * @param counter
+ * @param denominator
+ * @param value
+ */
+void cached_rational_set_cached(MasterCache* mstr, cachedInt counter, cachedInt denominator, cachedRational* value){
+    value->counter = counter;
+    value->denominator = denominator;
+}
+
 /**
  * 
  * @param mstr MasterCache pointer
@@ -192,4 +219,21 @@ void cached_rational_neg(MasterCache* mstr, cachedRational* val){
         val->counter & ~NEG;
     else
         val->counter | NEG;
+}
+/**
+ * @brief get the sign of the cachedRational
+ * @param mstr MasterCache pointer
+ * @param val cachedRational value
+ * @return 1 if positive, 0 if negative
+ */
+int cached_rational_sgn(MasterCache* mstr, cachedRational* val){
+    if((val->counter & NEG) >= 1 && (val->denominator & NEG) >= 1){
+        return 1;
+    }
+    else if((val->counter & NEG) == 0 && (val->denominator & NEG) == 0){
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }

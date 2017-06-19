@@ -111,6 +111,19 @@ depend:
 .PHONY : depend
 
 #=============================================================================
+# Target rules for targets named master-cache-test
+
+# Build rule for target.
+master-cache-test: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 master-cache-test
+.PHONY : master-cache-test
+
+# fast build rule for target.
+master-cache-test/fast:
+	$(MAKE) -f CMakeFiles/master-cache-test.dir/build.make CMakeFiles/master-cache-test.dir/build
+.PHONY : master-cache-test/fast
+
+#=============================================================================
 # Target rules for targets named master-cache-integer-grenzwerte
 
 # Build rule for target.
@@ -469,6 +482,33 @@ Tests/master-cache-integer-test.c.s:
 	$(MAKE) -f CMakeFiles/master-cache-integer-test.dir/build.make CMakeFiles/master-cache-integer-test.dir/Tests/master-cache-integer-test.c.s
 .PHONY : Tests/master-cache-integer-test.c.s
 
+Tests/master-cache-test.o: Tests/master-cache-test.c.o
+
+.PHONY : Tests/master-cache-test.o
+
+# target to build an object file
+Tests/master-cache-test.c.o:
+	$(MAKE) -f CMakeFiles/master-cache-test.dir/build.make CMakeFiles/master-cache-test.dir/Tests/master-cache-test.c.o
+.PHONY : Tests/master-cache-test.c.o
+
+Tests/master-cache-test.i: Tests/master-cache-test.c.i
+
+.PHONY : Tests/master-cache-test.i
+
+# target to preprocess a source file
+Tests/master-cache-test.c.i:
+	$(MAKE) -f CMakeFiles/master-cache-test.dir/build.make CMakeFiles/master-cache-test.dir/Tests/master-cache-test.c.i
+.PHONY : Tests/master-cache-test.c.i
+
+Tests/master-cache-test.s: Tests/master-cache-test.c.s
+
+.PHONY : Tests/master-cache-test.s
+
+# target to generate assembly for a file
+Tests/master-cache-test.c.s:
+	$(MAKE) -f CMakeFiles/master-cache-test.dir/build.make CMakeFiles/master-cache-test.dir/Tests/master-cache-test.c.s
+.PHONY : Tests/master-cache-test.c.s
+
 Tests/mpz-cache-test.o: Tests/mpz-cache-test.c.o
 
 .PHONY : Tests/mpz-cache-test.o
@@ -746,6 +786,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... edit_cache"
+	@echo "... master-cache-test"
 	@echo "... master-cache-integer-grenzwerte"
 	@echo "... hash-test"
 	@echo "... rebuild_cache"
@@ -782,6 +823,9 @@ help:
 	@echo "... Tests/master-cache-integer-test.o"
 	@echo "... Tests/master-cache-integer-test.i"
 	@echo "... Tests/master-cache-integer-test.s"
+	@echo "... Tests/master-cache-test.o"
+	@echo "... Tests/master-cache-test.i"
+	@echo "... Tests/master-cache-test.s"
 	@echo "... Tests/mpz-cache-test.o"
 	@echo "... Tests/mpz-cache-test.i"
 	@echo "... Tests/mpz-cache-test.s"

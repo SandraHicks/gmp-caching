@@ -30,7 +30,7 @@ int additionOverflow(cachedInt op1, cachedInt op2){
     //first check based on msb
     int msb_op1 = MSB(op1);
     int msb_op2 = MSB(op2);
-    if(msb_op1 < 62 && msb_op2 < 62){
+    if(msb_op1 < 61 && msb_op2 < 61){
         return 0;
     }
     
@@ -38,8 +38,7 @@ int additionOverflow(cachedInt op1, cachedInt op2){
     op1 = deleteIdBit(op1);
     op2 = deleteIdBit(op2);
     cachedInt res = op1 + op2;
-    cachedInt backwards = res - op1;
-    if(backwards != op2){
+    if(res > cachedInt_MAX){
         return 1;
     }
     return 0;
@@ -57,19 +56,14 @@ int multiplicationOverflow(cachedInt op1, cachedInt op2){
     //first check based on msb
     int msb_op1 = MSB(op1);
     int msb_op2 = MSB(op2);
-    if(msb_op1*msb_op2 < 62){
+    if(msb_op1*msb_op2 < 61){
         return 0;
     }
     //second check based on result
     op1 = deleteIdBit(op1);
     op2 = deleteIdBit(op2);
     cachedInt res = op1*op2;
-    cachedInt backwards;
-    if(op1 != 0)
-        backwards = (uint64_t)res/op1;
-    else
-        backwards = res;
-    if(backwards != op2){
+    if(res > cachedInt_MAX){
         return 1;
     }
     return 0;
@@ -86,7 +80,7 @@ int exponentiationOverflow(cachedInt base, cachedInt exp){
     //first check based on msb
     int msb_op1 = MSB(base);
     if(!multiplicationOverflow(msb_op1, exp)){
-        if(msb_op1*exp < 62)
+        if(msb_op1*exp < 61)
             return 0;
         
         //check based on result
@@ -112,6 +106,7 @@ uint32_t MSB(cachedInt val){
   
   //get size of a long long on the current machine
   int size_ll = sizeof(unsigned long long);
+  size_ll = size_ll*8;
   unsigned long long check = (unsigned long long)val;
   
   //built-in function of gcc, param unsigned long long, returns number of leading zeros

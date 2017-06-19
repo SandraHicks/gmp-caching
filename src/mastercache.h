@@ -20,19 +20,12 @@ extern "C" {
         lookup* cache;      /**< cache for integer caching*/
     } MasterCacheInt;
     
-    /**
-     * Master cache for rationals
-     */
-    typedef struct MasterCacheRational{
-        
-    } MasterCacheRational;
     
     /**
      * @brief MasterCache
      */
     typedef struct MasterCache {
         MasterCacheInt* _integers;          /**< cache for integer caching*/
-        MasterCacheRational* _rationals;    /**< cache for rational caching*/
     } MasterCache;
 
 /** cachedInt can be either an id to a cached mpz_t (indicated by MSB) or an actual number,
@@ -48,6 +41,9 @@ typedef struct cache_rational {
     cachedInt denominator;  /**< denominator*/
 } cachedRational;
 
+
+void cache_init(MasterCache** mstr, uint64_t cache_size);
+void cache_clear(MasterCache* mstr);
 
 #ifdef __cplusplus
 }

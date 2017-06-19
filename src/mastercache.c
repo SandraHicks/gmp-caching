@@ -8,41 +8,19 @@
 #include <gmp.h>
 
 #include "mastercache.h"
+#include "master_cache_integer.h"
 
 /**
  * @brief Init function for master cache
  * @param mstr MasterCache pointer to be initialized
  * @param cache_size size of the cache for mpz_t
  */
-void cache_init(MasterCache* mstr, uint64_t cache_size){
-    
+void cache_init(MasterCache** mstr, uint64_t cache_size){
+    MasterCache* tmp;
+    cached_int_init_cache(&tmp, cache_size);
+    *mstr = tmp;
 }
 
-/**
- * @brief add function for master cache
- * @param mstr MasterCache pointer
- * @param new mpz_t to be added to cache
- */
-cachedInt cache_add(MasterCache* mstr, mpz_t new){
-    return 0;
-}
-
-/**
- * @brief function for master cache to check if an item exists
- * @param mstr MasterCache pointer
- * @param element mpz_t to be added to cache
- */
-int cache_exists(MasterCache* mstr, mpz_t element){
-    
-    return 0;
-}
-
-/**
- * @brief function for master cache to get an item back from cache as mpq_t
- * @param mstr MasterCache pointer
- * @param element id of the element to get from cache
- * @param result
- */
-void cache_get(MasterCache* mstr, cachedInt element, mpz_t result){
-
+void cache_clear(MasterCache* mstr){
+    cached_int_clear_cache(&mstr);
 }

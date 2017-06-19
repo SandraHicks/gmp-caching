@@ -37,88 +37,31 @@ void ext_euclid(cachedInt val1, cachedInt val2, cachedInt* d, cachedInt* s, cach
  * @param mstr MasterCache pointer
  * @param cachesize uint64_t with user defined size of the cache
  */
-void cached_int_init_cache(MasterCache* mstr, uint64_t cachesize){
+void cached_int_init_cache(MasterCache** mstr, uint64_t cachesize){
+    (*mstr) = (MasterCache*)malloc(sizeof(MasterCache));
     MasterCacheInt* integers = malloc(sizeof(MasterCacheInt));
-    mstr->_integers = integers;
+    (*mstr)->_integers = integers;
     
     lookup* cache  = malloc(sizeof(lookup));
     init_cache(cache, cachesize);
-    mstr->_integers->cache = cache;
+    (*mstr)->_integers->cache = cache;
 }
 
 /**
  * @brief function for master cache to clear all background data before free
  * @param mstr MasterCache pointer
  */
-void cached_int_clear_cache(MasterCache* mstr){
-    delete_cache(mstr->_integers->cache);
-    free(mstr->_integers->cache);
-    mstr->_integers->cache = NULL;
-    free(mstr->_integers);
-    mstr->_integers = NULL;
+void cached_int_clear_cache(MasterCache** mstr){
+    delete_cache((*mstr)->_integers->cache);
+    free((*mstr)->_integers->cache);
+    (*mstr)->_integers->cache = NULL;
+    free((*mstr)->_integers);
+    (*mstr)->_integers = NULL;
+    free(*mstr);
+    (*mstr) = NULL;
 }
 
-/**
- * (for internal use only!)
- * @param number
- * @return 
- */
-uint64_t mpz_cached_int(mpz_t number){
-    int64_t cmp = cachedInt_MAX;
-    int limbs = number->_mp_size;
-    limbs = (limbs < 0) ? limbs*(-1) : limbs;
-    if(limbs > 2)
-        return 0;
-    
-#if (GMP_NAIL_BITS == 0)
-    uint64_t data = number->_mp_d[0];
-    #if (GMP_LIMB_BITS < 62)
-        //also get second limb
-        data = data + (uint64_t)(number->_mp_d[1] << GMP_LIMB_BITS);
-        if(data <= cachedInt_MAX)
-            return data;
-    #else
-        if(limbs > 1)
-            return 0;
-        if(data <= cachedInt_MAX)
-            return data;
-    #endif
-#else //nail bits are enabled in GMP, nail bits are most significant
-    uint64_t data = number->_mp_d[0];
-    data = data & GMP_NUMB_MASK;
-    
-    #if (GMP_NUMB_BITS < 62)
-        //also get second limb
-        data = data + (uint64_t)((number->_mp_d[1] & GMP_NUMB_MASK) << GMP_NUMB_BITS);
-        if(data <= cachedInt_MAX)
-            return data
-    #else
-        if(limbs > 1)
-            return 0;
-        if(data <= cachedInt_MAX)
-            return data;
-    #endif
-#endif
-    return 0;
-}
 
-/**
- * (for internal use only!)
- * @param id
- * @param number
- */
-void cached_int_mpz(cachedInt id, mpz_t number){
-    id = id & (~SHIFT);
-    if(id & NEG){
-        id = id & ~NEG;
-        int64_t input = (int64_t)id*(-1);
-        mpz_import(number, 1, 1, sizeof(int64_t), 0, 0, &input);
-    }
-    else{
-        int64_t input = (int64_t)id;
-        mpz_import(number, 1, 1, sizeof(int64_t), 0, 0, &input);
-    }    
-}
 
 /**
  * (for internal use only!)
@@ -144,11 +87,10 @@ void get_mpz_from_id(MasterCache* mstr, cachedInt id, mpz_t mpz){
 cachedInt cached_int_set(MasterCache* mstr, mpz_t number){
     cachedInt id = mpz_cached_int(number);
     
-    if((id==0) && (number->_mp_size!=0)){
+    if((id==SHIFT) && (number->_mp_size!=0)){
         id = cache_insert_mpz(mstr->_integers->cache, number);
         return id;
     }
-    
     if(number->_mp_size < 0)
         return id | NEG;
     else
@@ -220,6 +162,19 @@ cachedInt cached_int_abs(MasterCache* mstr, cachedInt val){
     else
         return val;
 }
+
+/**
+ * @brief function to get the sign of a cachedInt
+ * @param mstr MasterCache pointer
+ * @param val cachedInt id
+ * @return 1 if positive, 0 if negative
+ */
+int cached_int_sgn(MasterCache* mstr, cachedInt val){
+    if((val & NEG) >= 1)
+        return 0;
+    else
+        return 1;
+}
 /**
  * (internal use only!)
  * @param val
@@ -246,19 +201,10 @@ cachedInt cached_int_add(MasterCache* mstr, cachedInt val1, cachedInt val2){
     //if result > maxResult: cache and return ID
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         result = direct_add(val1, val2);
-        if((result & SHIFT) == 0){
+        if(result != SHIFT){
             return result;
         }
-        mpz_t op1;
-        mpz_t op2;
-        mpz_init(op1);
-        mpz_init(op2);
-        cached_int_mpz(val1, op1);
-        cached_int_mpz(val2, op2);
-        
-        result = cached_mpz_add(mstr->_integers->cache, op1, op2);
-        
-        return result;
+        //in case of overflow go on to cached addition
     }
     
   //else: directly cache add
@@ -354,20 +300,11 @@ cachedInt cached_int_mul(MasterCache* mstr, cachedInt val1, cachedInt val2){
     
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         result = direct_mul(val1, val2);
-        if((result & SHIFT) == 0){
+        if(result != SHIFT){
             return result;
         }
         
-        mpz_t op1;
-        mpz_t op2;
-        mpz_init(op1);
-        mpz_init(op2);
-        cached_int_mpz(val1, op1);
-        cached_int_mpz(val2, op2);
-        
-        result = cached_mpz_mul(mstr->_integers->cache, op1, op2);
-        
-        return result;
+        //in case of overflow go on to cached multiplication
     }
     
   //else: directly cache mul
@@ -425,22 +362,13 @@ cachedInt cached_int_tdiv(MasterCache* mstr, cachedInt divident, cachedInt divis
     cachedInt mod;
     if(((divident & SHIFT) == 0) && ((divisor & SHIFT) == 0)){
         result = direct_div(divident, divisor);
-        if((result & SHIFT) == 0){
+        if(result != SHIFT){
             mod = direct_mod(divident, divisor);
             *rest = mod;
             return result;
         }
         
-        mpz_t op1;
-        mpz_t op2;
-        mpz_init(op1);
-        mpz_init(op2);
-        cached_int_mpz(divident, op1);
-        cached_int_mpz(divisor, op2);
-        
-        result = cached_mpz_tdiv(mstr->_integers->cache, rest, op1, op2);
-        
-        return result;
+        //in case of overflow go on to cached division
     }
     
 //else: directly cache div
@@ -471,7 +399,6 @@ cachedInt direct_div(cachedInt val1, cachedInt val2){
         val2neg = 1;
         val2 = val2 & ~NEG;
     }
-    
     if(val2!=0){
         if(val1neg < val2neg || val1neg > val2neg)
             return (val1 / val2) | NEG;
@@ -495,7 +422,6 @@ cachedInt direct_mod(cachedInt val1, cachedInt val2){
     if((val2 & NEG) >= 1){
         val2 = val2 & ~NEG;
     }
-    
     return val1 % val2;
 }
 
@@ -578,14 +504,23 @@ cachedInt direct_gcd(cachedInt val1, cachedInt val2){
     return direct_gcd(val2, val1 % val2);
 }
 
+/**
+ * @brief function for master cache to calculate the least common multiple of two cached values and cache the result if large.
+ * @param mstr MasterCaceh pointer
+ * @param val1 id of the first operand
+ * @param val2 id of the second operand
+ * @return result id
+ */
 cachedInt cached_int_lcm(MasterCache* mstr, cachedInt val1, cachedInt val2){
     uint64_t result;
     
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         result = direct_lcm(val1, val2);
-        return result;
+        if(result != SHIFT){
+            return result;
+        }
         
-        //as lcm is always smaller equals the operands, it cannot overflow in direct calculation
+        //in case of overflow go to cached lcm
     }
     
     mpz_t op1;
@@ -598,7 +533,12 @@ cachedInt cached_int_lcm(MasterCache* mstr, cachedInt val1, cachedInt val2){
    
     return result;
 }
-
+/**
+ * (for internal use only!)
+ * @param val1
+ * @param val2
+ * @return cachedInt result
+ */
 cachedInt direct_lcm(cachedInt val1, cachedInt val2){
     cachedInt mul = direct_mul(val1, val2);
     mul = direct_abs(mul);
@@ -625,12 +565,18 @@ int cached_int_invert(MasterCache* mstr, cachedInt val1, cachedInt val2, cachedI
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         *result = direct_invert(val1, val2);
         //check for overflow
-        if((*result & SHIFT) == 0)
-            return 1;
-        else
-            *result = 0;
+        if(*result != SHIFT)
+            if(*result != 0){
+                return 1;
+            }
+            else{
+                return 0;
+            }
+        else{
+            //there was an overflow when calculating the inverse
+        }
         
-        //as the integer division rest is always smaller equals the number, it cannot overflow
+        
     }
     
     cachedInt gcd = cached_int_gcd(mstr, val1, val2);

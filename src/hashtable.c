@@ -135,7 +135,7 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
     int i;
     for(i=0; i < NUMBER_HF; ++i){
         if(ht->counter[(hashes[i] % ht->size)] < 1){
-            return 0;
+            return SHIFT;
         }
         if(ht->counter[(hashes[i] % ht->size)] 
                 < ht->counter[(hashes[min] % ht->size)]){
@@ -195,7 +195,7 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
         
         curr_min = curr_min->next;
     }
-    return 0;
+    return SHIFT;
 }
 
 /**
@@ -403,7 +403,7 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
     int i;
     for(i=0; i < NUMBER_HF; ++i){
         if(ht->counter[(hashes[i] % ht->size)] < 1){
-            return 0;
+            return SHIFT;
         }
         if(ht->counter[(hashes[i] % ht->size)] 
                 < ht->counter[(hashes[min] % ht->size)]){
@@ -469,5 +469,5 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
         
         curr_min = curr_min->next;
     }
-    return 0;
+    return SHIFT;
 }

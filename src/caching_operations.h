@@ -63,6 +63,12 @@ extern "C" {
     void delete_cache(lookup* cache);
     /* INTEGER CACHING */
     
+    /* Conversions & Comparisons
+     */
+    uint64_t mpz_cached_int(mpz_t number);
+    void cached_int_mpz(uint64_t id, mpz_t number);
+    int mpz_is_id(mpz_t number);
+    
     /* Direct Data Caching
      */
     void get_mpz(lookup* cache, uint64_t id, mpz_t val);

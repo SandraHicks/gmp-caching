@@ -42,6 +42,7 @@ CMakeFiles/gmp-caching.dir/master_cache_rational.c.o: src/mpz_caching.h
 CMakeFiles/gmp-caching.dir/mastercache.c.o: src/caching_operations.h
 CMakeFiles/gmp-caching.dir/mastercache.c.o: src/defines.h
 CMakeFiles/gmp-caching.dir/mastercache.c.o: src/hashtable.h
+CMakeFiles/gmp-caching.dir/mastercache.c.o: src/master_cache_integer.h
 CMakeFiles/gmp-caching.dir/mastercache.c.o: src/mastercache.c
 CMakeFiles/gmp-caching.dir/mastercache.c.o: src/mastercache.h
 CMakeFiles/gmp-caching.dir/mastercache.c.o: src/mpz_caching.h
