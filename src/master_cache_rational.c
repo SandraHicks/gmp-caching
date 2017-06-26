@@ -11,39 +11,44 @@
 #include "master_cache_rational.h"
 #include "master_cache_integer.h"
 
-void cached_rational_init(cachedRational** value){
-    (*value) = (cachedRational*)malloc(sizeof(cachedRational));
-    (*value)->counter = (cachedInt)0;
-    (*value)->denominator = (cachedInt)0;
-}
 /**
  * 
  * @param mstr MasterCache pointer
  * @param counter
  * @param denominator
- * @param value
+ * @return cachedRational
  */
-void cached_rational_set(MasterCache* mstr, mpz_t counter, mpz_t denominator, cachedRational* value){
-    value->counter = cached_int_set(mstr, counter);
-    value->denominator = cached_int_set(mstr, denominator);
+cachedRational cached_rational_set(MasterCache* mstr, mpz_t counter, mpz_t denominator){
+    cachedRational val;
+    val.counter = cached_int_set(mstr, counter);
+    val.denominator = cached_int_set(mstr, denominator);
+    
+    return val;
 }
-/**
- * 
- * @param mstr
- * @param value
- */
-void cached_rational_clear(MasterCache* mstr, cachedRational** value){
-    free(*value);
-    *value = NULL;
-}
+
 /**
  * 
  * @param mstr MasterCache pointer
  * @param number
- * @param value
+ * @return cachedRational
  */
-void cached_rational_set_mpq(MasterCache* mstr, mpq_t number, cachedRational* value){
-    cached_rational_set(mstr, &(number->_mp_num), &(number->_mp_den), value);
+cachedRational cached_rational_set_mpq(MasterCache* mstr, mpq_t number){
+    return cached_rational_set(mstr, &(number->_mp_num), &(number->_mp_den));
+}
+
+/**
+ * 
+ * @param mstr MasterCache pointer
+ * @param counter
+ * @param denominator
+ * @return cachedRational
+ */
+cachedRational cached_rational_set_cached(MasterCache* mstr, cachedInt counter, cachedInt denominator){
+    cachedRational val;
+    val.counter = counter;
+    val.denominator = denominator;
+    
+    return val;
 }
 
 /**
@@ -53,7 +58,29 @@ void cached_rational_set_mpq(MasterCache* mstr, mpq_t number, cachedRational* va
  * @param denominator
  * @param value
  */
-void cached_rational_set_cached(MasterCache* mstr, cachedInt counter, cachedInt denominator, cachedRational* value){
+void cached_rational_reset(MasterCache* mstr, mpz_t counter, mpz_t denominator, cachedRational* value){
+    value->counter = cached_int_set(mstr, counter);
+    value->denominator = cached_int_set(mstr, denominator);
+    cached_rational_reduce_inplace(mstr, value);
+}
+/**
+ * 
+ * @param mstr MasterCache pointer
+ * @param number
+ * @param value
+ */
+void cached_rational_reset_mpq(MasterCache* mstr, mpq_t number, cachedRational* value){
+    cached_rational_reset(mstr, &(number->_mp_num), &(number->_mp_den), value);
+}
+
+/**
+ * 
+ * @param mstr MasterCache pointer
+ * @param counter
+ * @param denominator
+ * @param value
+ */
+void cached_rational_reset_cached(MasterCache* mstr, cachedInt counter, cachedInt denominator, cachedRational* value){
     value->counter = counter;
     value->denominator = denominator;
 }
@@ -103,7 +130,7 @@ double cached_rational_get_d(MasterCache* mstr, cachedRational* id){
  * @param val2
  * @param result
  */
-void cached_rational_add(MasterCache* mstr, cachedRational* val1, cachedRational* val2, cachedRational* result){
+cachedRational cached_rational_add(MasterCache* mstr, cachedRational* val1, cachedRational* val2){
     //bring to same denominator
     
     cachedInt lcm = cached_int_lcm(mstr, val1->denominator, val2->denominator);
@@ -117,21 +144,22 @@ void cached_rational_add(MasterCache* mstr, cachedRational* val1, cachedRational
     
     //add counters
     cachedInt added_ctr = cached_int_add(mstr, n1, n2);
-    
-    //result = malloc(sizeof(cachedRational));
-    result->counter = added_ctr;
-    result->denominator = lcm;
+   
+    cachedRational res;
+    res.counter = added_ctr;
+    res.denominator = lcm;
     
     //reduce before returning
-    cached_rational_reduce(mstr, result);
+    cached_rational_reduce_inplace(mstr, &res);
+    return res;
 }
 
 /**
- * reduce a rational
+ * reduce a rational inplace
  * @param mstr MasterCache pointer
  * @param val value to reduce
  */
-void cached_rational_reduce(MasterCache* mstr, cachedRational* val){
+void cached_rational_reduce_inplace(MasterCache* mstr, cachedRational* val){
     //gcd of counter/denominator
     cachedInt gcd = cached_int_gcd(mstr, val->counter, val->denominator);
     //divide with gcd
@@ -143,6 +171,27 @@ void cached_rational_reduce(MasterCache* mstr, cachedRational* val){
     val->counter = ctr;
     val->denominator = den;
 }
+/**
+ * reduce a rational
+ * @param mstr MasterCache pointer
+ * @param val value to reduce
+ */
+cachedRational cached_rational_reduce(MasterCache* mstr, cachedRational* val){
+    //gcd of counter/denominator
+    cachedInt gcd = cached_int_gcd(mstr, val->counter, val->denominator);
+    //divide with gcd
+    cachedInt rest;
+    cachedInt ctr = cached_int_tdiv(mstr, val->counter, gcd, &rest);
+    cachedInt den = cached_int_tdiv(mstr, val->denominator, gcd, &rest);
+    
+    cachedRational res;
+    
+    res.counter = ctr;
+    res.denominator = den;
+    
+    return res;
+}
+
 
 /**
  * Subtraction
@@ -151,9 +200,9 @@ void cached_rational_reduce(MasterCache* mstr, cachedRational* val){
  * @param val2
  * @param result
  */
-void cached_rational_sub(MasterCache* mstr, cachedRational* val1, cachedRational* val2, cachedRational* result){
-    cached_rational_neg(mstr, val2);
-    cached_rational_add(mstr, val1, val2, result);
+cachedRational cached_rational_sub(MasterCache* mstr, cachedRational* val1, cachedRational* val2){
+    cached_rational_neg_inplace(mstr, val2);
+    return cached_rational_add(mstr, val1, val2);
 }
 
 /**
@@ -163,12 +212,17 @@ void cached_rational_sub(MasterCache* mstr, cachedRational* val1, cachedRational
  * @param val2
  * @param result 
  */
-void cached_rational_mul(MasterCache* mstr, cachedRational* val1, cachedRational* val2, cachedRational* result){
+cachedRational cached_rational_mul(MasterCache* mstr, cachedRational* val1, cachedRational* val2){
     cachedInt ctr = cached_int_mul(mstr, val1->counter, val2->counter);
     cachedInt den = cached_int_mul(mstr, val1->denominator, val2->denominator);
     
-    result->counter = ctr;
-    result->denominator = den;
+    cachedRational res;
+    
+    res.counter = ctr;
+    res.denominator = den;
+    cached_rational_reduce_inplace(mstr, &res);
+    
+    return res;
 }
 
 /**
@@ -178,12 +232,17 @@ void cached_rational_mul(MasterCache* mstr, cachedRational* val1, cachedRational
  * @param val2
  * @param result 
  */
-void cached_rational_div(MasterCache* mstr, cachedRational* val1, cachedRational* val2, cachedRational* result){
+cachedRational cached_rational_div(MasterCache* mstr, cachedRational* val1, cachedRational* val2){
     cachedInt ctr = cached_int_mul(mstr, val1->counter, val2->denominator);
     cachedInt den = cached_int_mul(mstr, val1->denominator, val2->counter);
     
-    result->counter = ctr;
-    result->denominator = den;
+    cachedRational res;
+    
+    res.counter = ctr;
+    res.denominator = den;
+    cached_rational_reduce_inplace(mstr, &res);
+    
+    return res;
 }
 
 /**
@@ -192,33 +251,55 @@ void cached_rational_div(MasterCache* mstr, cachedRational* val1, cachedRational
  * @param val cachedRational value
  * @param result pointer for result
  */
-void cached_rational_abs(MasterCache* mstr, cachedRational* val, cachedRational* result){
+cachedRational cached_rational_abs(MasterCache* mstr, cachedRational* val){
     cachedInt ctr = cached_int_abs(mstr, val->counter);
     cachedInt den = cached_int_abs(mstr, val->denominator);
     
-    result->counter = ctr;
-    result->denominator = den;
+    cachedRational res;
+    
+    res.counter = ctr;
+    res.denominator = den;
+    cached_rational_reduce_inplace(mstr, &res);
+    
+    return res;
 }
 /**
  * @brief inverse of cachedRational
  * @param mstr MasterCache pointer
  * @param val cachedRational value
  */
-void cached_rational_inv(MasterCache* mstr, cachedRational* val){
-    cachedInt temp = val->denominator;
-    val->denominator = val->counter;
-    val->counter = temp;
+cachedRational cached_rational_inv(MasterCache* mstr, cachedRational* val){
+    cachedRational res;
+    
+    res.counter = val->denominator;
+    res.denominator = val->counter;
+    cached_rational_reduce_inplace(mstr, &res);
+    
+    return res;
 }
+/**
+ * @brief negation of cachedRational inplace
+ * @param mstr MasterCache pointer
+ * @param val cachedRational value
+ */
+void cached_rational_neg_inplace(MasterCache* mstr, cachedRational* val){
+    if((val->counter & NEG) >= 1)
+        val->counter = val->counter & ~NEG;
+    else
+        val->counter = val->counter | NEG;
+}
+
 /**
  * @brief negation of cachedRational
  * @param mstr MasterCache pointer
  * @param val cachedRational value
  */
-void cached_rational_neg(MasterCache* mstr, cachedRational* val){
+cachedRational cached_rational_neg(MasterCache* mstr, cachedRational* val){
+    cachedRational res;
     if((val->counter & NEG) >= 1)
-        val->counter & ~NEG;
+        res.counter = val->counter & ~NEG;
     else
-        val->counter | NEG;
+        res.denominator = val->counter | NEG;
 }
 /**
  * @brief get the sign of the cachedRational
