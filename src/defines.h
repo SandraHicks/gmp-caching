@@ -32,6 +32,11 @@ extern "C" {
 /*! macro to detect the bit in a cachedInt which defines if it is positive or negative */
 #define NEG ((uint64_t)1 << cachedInt_SIGN)
 
+/*! macro to express positive infinity*/
+#define PLUSINFTY SHIFT
+/*! macro to express negative infinity*/
+#define MINUSINFTY SHIFT | NEG
+    
 #ifdef __cplusplus
 }
 #endif
