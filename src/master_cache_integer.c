@@ -114,10 +114,10 @@ void cached_int_get(MasterCache* mstr, cachedInt id, mpz_t number){
 }
 
 /**
- * @brief function for master cache to get a previously cached mpz_t as double from an id
+ * @brief function for master cache to get a previously cached mpz_t as double from an id, has the same behaviour as the mpz_get_double
  * @param mstr MasterCache pointer
  * @param id cachedInt id that was cached
- * @return double the double representation of the mpz cached with id
+ * @return double the double representation of the mpz_t cached with id
  */
 double cached_int_get_d(MasterCache* mstr, cachedInt id){
     //convert cachedInt to mpz if it is no id

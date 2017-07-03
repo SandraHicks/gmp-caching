@@ -46,8 +46,10 @@ void delete_mpz_cache(mpz_t_cache* cache){
  * @return id of inserted element
  */
 int64_t insert_mpz(mpz_t_cache* cache, mpz_t val){
-    if(cache->next_id >= cache->size)
+    if(cache->next_id >= cache->size){
+        printf("Cache is full!\n");
         return -1;
+    }
     
     double fp_rep = mpz_get_d(val);
     

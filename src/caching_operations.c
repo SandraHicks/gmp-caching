@@ -293,6 +293,10 @@ uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val){
     if(id >= 0)
         insert_element(cache->ht, (uint64_t)id, hashes);
     
+    if(id < 0){
+        //negative number returned: set to 0 as is is unsigned. 0 | SHIFT is the error code.
+        id = 0;
+    }
     free(hashes);
     hashes = NULL;
     mpz_clear(temp);
