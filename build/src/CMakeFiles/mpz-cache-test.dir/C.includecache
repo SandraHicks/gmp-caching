@@ -1,0 +1,30 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+../src/../src/mpz_caching.h
+stdint.h
+-
+gmp.h
+-
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz-cache-test.c
+gmp.h
+-
+stdint.h
+-
+inttypes.h
+-
+stdio.h
+-
+stdlib.h
+-
+string.h
+-
+mpz_caching.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz_caching.h
+

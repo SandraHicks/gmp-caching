@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC   CMakeFiles/master-cache-integer-grenzwerte.dir/__/Tests/master-cache-integer-grenzwerte.c.o  -o master-cache-integer-grenzwerte -rdynamic -lgmp libgmp-caching.a -lgmp 

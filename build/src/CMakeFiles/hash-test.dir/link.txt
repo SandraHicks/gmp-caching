@@ -1,0 +1,1 @@
+/usr/bin/cc  -fPIC   CMakeFiles/hash-test.dir/__/Tests/hash-test.c.o  -o hash-test -rdynamic -lgmp libgmp-caching.a -lgmp 

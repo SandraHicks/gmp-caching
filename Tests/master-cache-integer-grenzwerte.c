@@ -15,7 +15,7 @@
 int main(int argc, char** argv) {
   //init cache
   MasterCache* cache = malloc(sizeof(MasterCache));
-  cache_init(cache, SIZE_C);
+  cache_init(&cache, SIZE_C);
 
   //init mpz_ts
   mpz_t large;

@@ -1,0 +1,4 @@
+install:
+go to build folder
+cmake ..
+make

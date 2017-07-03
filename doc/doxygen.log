@@ -1,0 +1,90 @@
+error: the type 'dirs' is not supported for the entry tag within a navindex! Check your layout file!
+warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/doc/images is not a readable file or directory... skipping.
+warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/gen-images is not a readable file or directory... skipping.
+warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/ipo is not a readable file or directory... skipping.
+warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/mainpage.dox is not a readable file or directory... skipping.
+warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/references.dox is not a readable file or directory... skipping.
+error: Tag file `/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/libstdc++.tag' does not exist or is not a file. Skipping it...
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.cpp:17: warning: no matching class member found for 
+  caching::CachedInt::CachedInt()
+Possible candidates:
+  caching::CachedInt::CachedInt(const mpz_t &z, Mastercache &cache)
+  caching::CachedInt::CachedInt(const int &i, Mastercache &cache)
+  caching::CachedInt::CachedInt(const long &l, Mastercache &cache)
+  caching::CachedInt::CachedInt(const CachedInt &ci)
+  caching::CachedInt::CachedInt(cachedInt val, Mastercache &cache)
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.cpp:21: warning: no matching class member found for 
+  caching::CachedInt::CachedInt(uint64_t val, MasterCache &cache)
+Possible candidates:
+  caching::CachedInt::CachedInt(const mpz_t &z, Mastercache &cache)
+  caching::CachedInt::CachedInt(const int &i, Mastercache &cache)
+  caching::CachedInt::CachedInt(const long &l, Mastercache &cache)
+  caching::CachedInt::CachedInt(const CachedInt &ci)
+  caching::CachedInt::CachedInt(cachedInt val, Mastercache &cache)
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.cpp:26: warning: no matching class member found for 
+  caching::CachedInt::CachedInt(const mpz_t &z, MasterCache &cache)
+Possible candidates:
+  caching::CachedInt::CachedInt(const mpz_t &z, Mastercache &cache)
+  caching::CachedInt::CachedInt(const int &i, Mastercache &cache)
+  caching::CachedInt::CachedInt(const long &l, Mastercache &cache)
+  caching::CachedInt::CachedInt(const CachedInt &ci)
+  caching::CachedInt::CachedInt(cachedInt val, Mastercache &cache)
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.cpp:31: warning: no matching class member found for 
+  caching::CachedInt::CachedInt(const int &i, MasterCache &cache)
+Possible candidates:
+  caching::CachedInt::CachedInt(const mpz_t &z, Mastercache &cache)
+  caching::CachedInt::CachedInt(const int &i, Mastercache &cache)
+  caching::CachedInt::CachedInt(const long &l, Mastercache &cache)
+  caching::CachedInt::CachedInt(const CachedInt &ci)
+  caching::CachedInt::CachedInt(cachedInt val, Mastercache &cache)
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.cpp:36: warning: no matching class member found for 
+  caching::CachedInt::CachedInt(const long &l, MasterCache &cache)
+Possible candidates:
+  caching::CachedInt::CachedInt(const mpz_t &z, Mastercache &cache)
+  caching::CachedInt::CachedInt(const int &i, Mastercache &cache)
+  caching::CachedInt::CachedInt(const long &l, Mastercache &cache)
+  caching::CachedInt::CachedInt(const CachedInt &ci)
+  caching::CachedInt::CachedInt(cachedInt val, Mastercache &cache)
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:63: warning: no uniquely matching class member found for 
+  CachedRational & caching::CachedRational::operator=(std::pair< mpz_t, mpz_t > z)
+Possible candidates:
+  CachedRational & caching::CachedRational::operator=(const CachedRational &ci)' at line 33 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const mpq_t &q)' at line 35 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const mpz_t &z1, const mpz_t z2)' at line 37 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const int &i1, const int &i2)' at line 39 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const long &l1, const long &l2)' at line 41 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:67: warning: no uniquely matching class member found for 
+  CachedRational & caching::CachedRational::operator=(std::pair< int, int > i)
+Possible candidates:
+  CachedRational & caching::CachedRational::operator=(const CachedRational &ci)' at line 33 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const mpq_t &q)' at line 35 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const mpz_t &z1, const mpz_t z2)' at line 37 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const int &i1, const int &i2)' at line 39 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const long &l1, const long &l2)' at line 41 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:71: warning: no uniquely matching class member found for 
+  CachedRational & caching::CachedRational::operator=(std::pair< long, long > l)
+Possible candidates:
+  CachedRational & caching::CachedRational::operator=(const CachedRational &ci)' at line 33 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const mpq_t &q)' at line 35 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const mpz_t &z1, const mpz_t z2)' at line 37 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const int &i1, const int &i2)' at line 39 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+  CachedRational & caching::CachedRational::operator=(const long &l1, const long &l2)' at line 41 of file /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
+
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:126: warning: documented symbol `caching::operator CachedRational::double' was not declared or defined.
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:127: warning: argument 'result' of command @param is not found in the argument list of cached_rational_add(MasterCache *mstr, cachedRational *val1, cachedRational *val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:197: warning: argument 'result' of command @param is not found in the argument list of cached_rational_sub(MasterCache *mstr, cachedRational *val1, cachedRational *val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:209: warning: argument 'result' of command @param is not found in the argument list of cached_rational_mul(MasterCache *mstr, cachedRational *val1, cachedRational *val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:229: warning: argument 'result' of command @param is not found in the argument list of cached_rational_div(MasterCache *mstr, cachedRational *val1, cachedRational *val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:249: warning: argument 'result' of command @param is not found in the argument list of cached_rational_abs(MasterCache *mstr, cachedRational *val)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:127: warning: argument 'result' of command @param is not found in the argument list of cached_rational_add(MasterCache *mstr, cachedRational *val1, cachedRational *val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:197: warning: argument 'result' of command @param is not found in the argument list of cached_rational_sub(MasterCache *mstr, cachedRational *val1, cachedRational *val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:209: warning: argument 'result' of command @param is not found in the argument list of cached_rational_mul(MasterCache *mstr, cachedRational *val1, cachedRational *val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:229: warning: argument 'result' of command @param is not found in the argument list of cached_rational_div(MasterCache *mstr, cachedRational *val1, cachedRational *val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:249: warning: argument 'result' of command @param is not found in the argument list of cached_rational_abs(MasterCache *mstr, cachedRational *val)

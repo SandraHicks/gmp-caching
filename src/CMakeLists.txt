@@ -1,31 +1,14 @@
 cmake_minimum_required (VERSION 2.6)
-project (gmp-caching)
+
+#project name and version
+set(PROJECT_NAME "Caching GMP numbers")
 set(IPO_VERSION_MAJOR 1)
 set(IPO_VERSION_MINOR 0)
 
-#### DOXYGEN ####
-
-find_package(Doxygen)
-IF(NOT DOXYGEN_FOUND)
-message(FATAL_ERROR "Doxygen is needed to build the documentation.")
-ENDIF()
-
-IF (DOXYGEN_FOUND)
-configure_file(${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile.in ${CMAKE_CURRENT_SOURCE_DIR}/Doxyfile @ONLY)
-add_custom_target(doc ALL
-COMMAND ${DOXYGEN_EXECUTABLE} ${CMAKE_CURRENT_BINARY_DIR}/src/Doxyfile
-WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
-COMMENT "Generating API documentation with Doxygen"
-VERBATIM
-)
-ENDIF(DOXYGEN_FOUND)
 
 INCLUDE_DIRECTORIES(
   ${PROJECT_SOURCE_DIR}
 )
-
-SET(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall")
-#SET(CMAKE_MODULE_PATH gmp-caching/cmake/)
 
 set(TEST_DIR ../Tests/)
 
@@ -111,5 +94,6 @@ include_directories(../src/)
 target_link_libraries(master-cache-test gmp)
 target_link_libraries(master-cache-test gmp-caching)
 
+#install(FILES ${GMP_CACHING_HEADERS}                    DESTINATION include/ipo  COMPONENT headers)
 #install(TARGETS gmp-caching   ARCHIVE DESTINATION lib   LIBRARY DESTINATION lib   COMPONENT library)
 #install(FILES ${GMP_CACHING_HEADERS} DESTINATION include/gmp-caching  COMPONENT headers)
