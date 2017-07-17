@@ -4,27 +4,27 @@
   * @brief wrapper class header for cachedRationals
   */
 
-#include "master-cache-rational.h"
+#include "master_cache_rational.h"
 
-namespace gmp-caching{
+namespace gmpcaching{
 
   class CachedRational
   {
     private:
       cachedRational value;
-      Mastercache* cache;
+      MasterCache* cache;
 
     public:
 
-      CachedRational(mpq_t q, Mastercache& cache);
+      CachedRational(mpq_t q, const MasterCache& cache);
 
-      CachedRational(mpz_t z1, mpz_t z2, Mastercache& cache);
+      CachedRational(mpz_t z1, mpz_t z2, const MasterCache& cache);
 
-      CachedRational(cachedInt c1, cachedInt c2, Mastercache& cache);
+      CachedRational(cachedInt c1, cachedInt c2, const MasterCache& cache);
 
-      CachedRational(CachedInt* c1, CachedInt* c2, Mastercache& cache);
+      CachedRational(CachedInt* c1, CachedInt* c2, const MasterCache& cache);
 
-      CachedRational(cachedRational* val, Mastercache& cache);
+      CachedRational(cachedRational* val, const MasterCache& cache);
 
       CachedRational(CachedRational* val);
 
@@ -54,11 +54,11 @@ namespace gmp-caching{
       CachedRational& neg();
       int sign();
 
-      explicit operator double() const;
+      explicit operator double();
 
-      MasterCache& getCache();
+      MasterCache* getCache() const;
 
-      cachedRational getValue();
-  }
+      cachedRational getValue() const;
+  };
 
 }

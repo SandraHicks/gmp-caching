@@ -33,9 +33,14 @@ extern "C" {
 #define NEG ((uint64_t)1 << cachedInt_SIGN)
 
 /*! macro to express positive infinity*/
-#define PLUSINFTY SHIFT
+#define PLUS_INFINITY (SHIFT + 1)
 /*! macro to express negative infinity*/
-#define MINUSINFTY SHIFT | NEG
+#define MINUS_INFINITY ((SHIFT | NEG) + 1)
+    
+#define CACHE_START_ID 2
+    
+#define ERROR SHIFT
+#define NaN (SHIFT | NEG)
     
 #ifdef __cplusplus
 }

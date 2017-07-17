@@ -20,7 +20,7 @@
 
 
 /*local definitions*/
-void get_mpz_from_id(MasterCache* mstr, cachedInt id, mpz_t mpz);
+void get_mpz_from_id(const MasterCache* mstr, cachedInt id, mpz_t mpz);
 
 cachedInt direct_add(cachedInt val1, cachedInt val2);
 cachedInt direct_mul(cachedInt val1, cachedInt val2);
@@ -69,7 +69,10 @@ void cached_int_clear_cache(MasterCache** mstr){
  * @param id
  * @param mpz
  */
-void get_mpz_from_id(MasterCache* mstr, cachedInt id, mpz_t mpz){
+void get_mpz_from_id(const MasterCache* mstr, cachedInt id, mpz_t mpz){
+    if(id == NaN || id == PLUS_INFINITY || id == MINUS_INFINITY){
+        return;
+    }
     if((id & SHIFT) == 0){
         cached_int_mpz(id, mpz);
     }
@@ -84,7 +87,7 @@ void get_mpz_from_id(MasterCache* mstr, cachedInt id, mpz_t mpz){
  * @param number number to cache
  * @return cachedInt id for cached mpz_t
  */
-cachedInt cached_int_set(MasterCache* mstr, mpz_t number){
+cachedInt cached_int_set(const MasterCache* mstr, mpz_t number){
     cachedInt id = mpz_cached_int(number);
     
     if((id==SHIFT) && (number->_mp_size!=0)){
@@ -102,7 +105,10 @@ cachedInt cached_int_set(MasterCache* mstr, mpz_t number){
  * @param id cachedInt id that was cached
  * @param number mpz_t number to set
  */
-void cached_int_get(MasterCache* mstr, cachedInt id, mpz_t number){
+void cached_int_get(const MasterCache* mstr, cachedInt id, mpz_t number){
+    if(id == NaN || id == PLUS_INFINITY || id == MINUS_INFINITY){
+        return;
+    }
     //convert cachedInt to mpz if it is no id
     if((id & SHIFT) == 0){
         mpz_init(number);
@@ -119,8 +125,11 @@ void cached_int_get(MasterCache* mstr, cachedInt id, mpz_t number){
  * @param id cachedInt id that was cached
  * @return double the double representation of the mpz_t cached with id
  */
-double cached_int_get_d(MasterCache* mstr, cachedInt id){
+double cached_int_get_d(const MasterCache* mstr, cachedInt id){
     //convert cachedInt to mpz if it is no id
+    if(id == NaN || id == PLUS_INFINITY || id == MINUS_INFINITY){
+        return 0.0;
+    }
     if((id & SHIFT) == 0){
         int64_t signed_id;
         if((id & NEG) >= 1){
@@ -143,7 +152,7 @@ double cached_int_get_d(MasterCache* mstr, cachedInt id){
  * @param val cachedInt id of value to negate
  * @return negated id
  */
-cachedInt cached_int_neg(MasterCache* mstr, cachedInt val){
+cachedInt cached_int_neg(const MasterCache* mstr, cachedInt val){
     if((val & NEG) >= 1)
         return val & ~NEG;
     else
@@ -156,7 +165,7 @@ cachedInt cached_int_neg(MasterCache* mstr, cachedInt val){
  * @param val cachedInt id of value to get absolute value
  * @return absolute value
  */
-cachedInt cached_int_abs(MasterCache* mstr, cachedInt val){
+cachedInt cached_int_abs(const MasterCache* mstr, cachedInt val){
     if((val & NEG) >= 1)
         return val & ~NEG;
     else
@@ -169,7 +178,7 @@ cachedInt cached_int_abs(MasterCache* mstr, cachedInt val){
  * @param val cachedInt id
  * @return 1 if positive, 0 if negative
  */
-int cached_int_sgn(MasterCache* mstr, cachedInt val){
+int cached_int_sgn(const MasterCache* mstr, cachedInt val){
     if((val & NEG) >= 1)
         return 0;
     else
@@ -194,9 +203,30 @@ cachedInt direct_abs(cachedInt val){
  * @param val2 id of the second operand
  * @return cachedInt returns caching id or result for addtion
  */
-cachedInt cached_int_add(MasterCache* mstr, cachedInt val1, cachedInt val2){
+cachedInt cached_int_add(const MasterCache* mstr, cachedInt val1, cachedInt val2){
+    if(val1 == NaN || val2 == NaN){
+        return NaN;
+    }
     //add integers
     uint64_t result;
+    
+    //check for infinities
+    if(val1 == PLUS_INFINITY){
+        if(val2 == MINUS_INFINITY){
+            return SHIFT | NEG;
+        }
+        else{
+            return PLUS_INFINITY;
+        }
+    }
+    if(val1 == MINUS_INFINITY){
+        if(val2 == PLUS_INFINITY){
+            return SHIFT | NEG;
+        }
+        else{
+            return MINUS_INFINITY;
+        }
+    }
     //if val1 and val2 small: return Result as number if result < maxResult
     //if result > maxResult: cache and return ID
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
@@ -279,7 +309,7 @@ cachedInt direct_add(cachedInt val1, cachedInt val2){
  * @param val2 id of the second operand
  * @return cachedInt returns caching id or result for subtraction
  */
-cachedInt cached_int_sub(MasterCache* mstr, cachedInt val1, cachedInt val2){
+cachedInt cached_int_sub(const MasterCache* mstr, cachedInt val1, cachedInt val2){
     if((val2 & NEG) >= 1){
         return cached_int_add(mstr, val1, (val2 & ~NEG));
     }
@@ -295,8 +325,29 @@ cachedInt cached_int_sub(MasterCache* mstr, cachedInt val1, cachedInt val2){
  * @param val2 id of the second operand
  * @return cachedInt returns caching id or result for multiplication
  */
-cachedInt cached_int_mul(MasterCache* mstr, cachedInt val1, cachedInt val2){
+cachedInt cached_int_mul(const MasterCache* mstr, cachedInt val1, cachedInt val2){
+    if(val1 == NaN || val2 == NaN){
+        return NaN;
+    }
     uint64_t result;
+    
+    //check for infinities
+    // inf*(sign)x = (sign)inf, -inf*(sign)x = -(sign)inf
+    
+    //at least one number is infinity
+    if((val1 == PLUS_INFINITY) || (val2 == PLUS_INFINITY) || (val1 == MINUS_INFINITY) || (val2 == MINUS_INFINITY)){
+        //both are negative
+        if(((val1 & NEG) > 0) && ((val2 & NEG) > 0)){
+            return PLUS_INFINITY;
+        }
+        
+        if(((val1 & NEG) > 0) || ((val2 & NEG) > 0)){
+            return MINUS_INFINITY;
+        }
+        return PLUS_INFINITY;
+    }
+    
+    
     
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         result = direct_mul(val1, val2);
@@ -354,9 +405,25 @@ cachedInt direct_mul(cachedInt val1, cachedInt val2){
  * @param rest pointer to id for rest of division
  * @return cachedInt returns caching id or result for division
  */
-cachedInt cached_int_tdiv(MasterCache* mstr, cachedInt divident, cachedInt divisor, cachedInt* rest){
+cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt divisor, cachedInt* rest){
+    if(divident == NaN || divisor == NaN){
+        return NaN;
+    }
+    
     if(divisor == 0)
-        return SHIFT;
+        return NaN;
+    
+    //check for inifinity on divident
+    if(((divident == PLUS_INFINITY) || (divident == MINUS_INFINITY)) && ((divisor != PLUS_INFINITY) && (divisor != MINUS_INFINITY))){
+        return divident;
+    }
+    if(((divident == PLUS_INFINITY) || (divident == MINUS_INFINITY)) && ((divisor == PLUS_INFINITY) || (divisor == MINUS_INFINITY))){
+        return NaN;
+    }
+    //only infinity on divisor -> 0
+    if((divisor == PLUS_INFINITY) || (divisor == MINUS_INFINITY)){
+        return 0;
+    }
     
     cachedInt result;
     cachedInt mod;
@@ -432,8 +499,16 @@ cachedInt direct_mod(cachedInt val1, cachedInt val2){
  * @param n id of the second operand
  * @return cachedInt returns caching id or result for mod
  */
-cachedInt cached_int_mod(MasterCache* mstr, cachedInt number, cachedInt n){
+cachedInt cached_int_mod(const MasterCache* mstr, cachedInt number, cachedInt n){
+    if(number == NaN || n == NaN){
+        return NaN;
+    }
+    
     uint64_t result;
+    //check for infinity
+    if(((number == PLUS_INFINITY) || (number == MINUS_INFINITY)) || ((n == PLUS_INFINITY) || (n == MINUS_INFINITY))){
+        return NaN;
+    }
     
     if(((number & SHIFT) == 0) && ((n & SHIFT) == 0)){
         result = direct_mod(number, n);
@@ -463,8 +538,16 @@ cachedInt cached_int_mod(MasterCache* mstr, cachedInt number, cachedInt n){
  * @param val2 id of the second operand
  * @return cachedInt returns caching id or result for gcd
  */
-cachedInt cached_int_gcd(MasterCache* mstr, cachedInt val1, cachedInt val2){
+cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2){
+    if(val1 == NaN || val2 == NaN){
+        return NaN;
+    }
+    
     uint64_t result;
+    
+    if(((val1 == PLUS_INFINITY) || (val1 == MINUS_INFINITY)) || ((val2 == PLUS_INFINITY) || (val2 == MINUS_INFINITY))){
+        return NaN;
+    }
     
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         result = direct_gcd(val1, val2);
@@ -511,8 +594,16 @@ cachedInt direct_gcd(cachedInt val1, cachedInt val2){
  * @param val2 id of the second operand
  * @return result id
  */
-cachedInt cached_int_lcm(MasterCache* mstr, cachedInt val1, cachedInt val2){
+cachedInt cached_int_lcm(const MasterCache* mstr, cachedInt val1, cachedInt val2){
+    if(val1 == NaN || val2 == NaN){
+        return NaN;
+    }
+    
     uint64_t result;
+    
+    if(((val1 == PLUS_INFINITY) || (val1 == MINUS_INFINITY)) || ((val2 == PLUS_INFINITY) || (val2 == MINUS_INFINITY))){
+        return NaN;
+    }
     
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         result = direct_lcm(val1, val2);
@@ -560,7 +651,14 @@ cachedInt direct_lcm(cachedInt val1, cachedInt val2){
  * @param result pointer for returning result
  * @return int returns 0 if inverse does not exists, 1 if result is defined
  */
-int cached_int_invert(MasterCache* mstr, cachedInt val1, cachedInt val2, cachedInt* result){
+int cached_int_invert(const MasterCache* mstr, cachedInt val1, cachedInt val2, cachedInt* result){
+    if(val1 == NaN || val2 == NaN){
+        return NaN;
+    }
+    
+    if(((val1 == PLUS_INFINITY) || (val1 == MINUS_INFINITY)) || ((val2 == PLUS_INFINITY) || (val2 == MINUS_INFINITY))){
+        return NaN;
+    }
     
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         *result = direct_invert(val1, val2);

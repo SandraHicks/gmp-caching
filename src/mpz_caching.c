@@ -3,6 +3,10 @@
   * @author Sandra Hicks
   * @brief cache for mpz_t
   */
+#ifdef __cplusplus
+extern "C" {
+#endif
+
 #include "mpz_caching.h"
 #include "mastercache.h"
 #include <stdlib.h>
@@ -11,7 +15,9 @@
 #include <stdio.h>
 #include <inttypes.h>
 
-//keine ID 0, fange an bei 1 zu zählen weil praktischer bei Abfragen
+
+    
+//keine ID 0, fange an bei 2 zu zählen weil praktischer bei Abfragen
 
 /**
  * @brief initialization of the cache
@@ -20,7 +26,7 @@
  */
 void init_mpz_cache(mpz_t_cache* cache, uint64_t size){
     cache->cache = malloc(sizeof(cached_mpz_t) * size);
-    cache->next_id = 1;
+    cache->next_id = CACHE_START_ID;
     cache->size = size;
 }
 
@@ -29,8 +35,8 @@ void init_mpz_cache(mpz_t_cache* cache, uint64_t size){
  * @param cache pointer to cache
  */
 void delete_mpz_cache(mpz_t_cache* cache){
-    int i = 1;
-    for(i=1; i<cache->next_id; i++){
+    int i = CACHE_START_ID;
+    for(i=CACHE_START_ID; i<cache->next_id; i++){
         cached_mpz_t* curr = &(cache->cache[i]);
         mpz_clear(curr->integer);
     }
@@ -40,7 +46,7 @@ void delete_mpz_cache(mpz_t_cache* cache){
 
 //insert new mpz_t at the end, return ID
 /**
- * @brief insert a new mpz_t in cache, no check for double, start at id=1 (0 is reserved for errors)
+ * @brief insert a new mpz_t in cache, no check for double, start at id=2 (0 is reserved for errors, 1 for infinity)
  * @param cache pointer to cache
  * @param val mpz_t to insert
  * @return id of inserted element
@@ -103,3 +109,7 @@ double get_cached_double(mpz_t_cache* cache, uint64_t i){
     cached_mpz_t* element = &cache->cache[i];
     return element->fp;
 }
+
+#ifdef __cplusplus
+}
+#endif

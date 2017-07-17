@@ -4,35 +4,35 @@
   * @brief wrapper class header for cachedInts
   */
 
-#include "master-cache-integer.h"
+#include "master_cache_integer.h"
 #include "mastercache.h"
 
-namespace gmp-caching{
+namespace gmpcaching{
 
   class CachedInt
   {
     private:
       cachedInt value;
-      Mastercache* cache;
+      const MasterCache* cache;
 
     public:
       /*
         Constructors
       */
 
-      CachedInt(const mpz_t& z, Mastercache& cache);
+      CachedInt(mpz_t z, const MasterCache* cache);
 
-      CachedInt(const int& i, Mastercache& cache);
+      CachedInt(int i, const MasterCache* cache);
 
-      CachedInt(const long& l, Mastercache& cache);
+      CachedInt(long l, const MasterCache* cache);
 
       CachedInt(const CachedInt& ci);
 
-      CachedInt(cachedInt val, Mastercache& cache);
+      CachedInt(cachedInt val, const MasterCache* cache);
 
       ~CachedInt();
 
-      MasterCache& getCache();
+      const MasterCache* getCache() const;
 
       /*
         Operators and Functions
@@ -40,31 +40,31 @@ namespace gmp-caching{
 
       CachedInt& operator=(const CachedInt& ci);
 
-      CachedInt& operator=(const mpz_t& z);
+      CachedInt& operator=(mpz_t& z);
 
-      CachedInt& operator=(const int& i);
+      CachedInt& operator=(int i);
 
-      CachedInt& operator=(const long& l);
+      CachedInt& operator=(long l);
 
-      CachedInt operator+(const CachedInt& i) const;
+      CachedInt operator+(const CachedInt& i);
 
-      CachedInt operator-(const CachedInt& i) const;
+      CachedInt operator-(const CachedInt& i);
 
-      CachedInt operator*(const CachedInt& i) const;
+      CachedInt operator*(const CachedInt& i);
 
-      CachedInt operator/(const CachedInt& i) const;
+      CachedInt operator/(const CachedInt& i);
 
-      CachedInt operator%(const CachedInt& i) const;
+      CachedInt operator%(const CachedInt& i);
 
-      CachedInt& invert(const CachedInt& m);
-      CachedInt& gcd(const CachedInt& i);
-      CachedInt& lcm(const CachedInt& i);
-      CachedInt& abs();
-      CachedInt& neg();
+      int invert(CachedInt* res, CachedInt& m);
+      CachedInt gcd(CachedInt& i);
+      CachedInt lcm(CachedInt& i);
+      CachedInt abs();
+      CachedInt neg();
       int sign();
 
-      explicit operator double() const;
+      explicit operator double();
 
-      cachedInt getValue();
-  }
+      cachedInt getValue() const;
+  };
 }

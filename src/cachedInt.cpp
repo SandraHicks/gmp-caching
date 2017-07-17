@@ -7,38 +7,35 @@
 
 #include "cachedInt.h"
 #include "assert.h"
-#include <stdint>
+#include <cstdint>
 
-namespace gmp-caching{
+namespace gmpcaching{
 
 /*
 constructors
 */
-CachedInt::CachedInt(){
-  this->value = (uint64_t)0;
-}
 
-CachedInt::CachedInt(cachedInt val, MasterCache& cache){
+CachedInt::CachedInt(cachedInt val, const MasterCache* cache){
   this->value = val;
   this->cache = cache;
 }
 
-CachedInt::CachedInt(const mpz_t& z, MasterCache& cache){
-  this->value = cached_int_set();
+CachedInt::CachedInt(mpz_t z, const MasterCache* cache){
+  this->value = cached_int_set(cache, z);
   this->cache = cache;
 }
 
-CachedInt::CachedInt(const int& i, MasterCache& cache){
+CachedInt::CachedInt(int i, const MasterCache* cache){
   this->value = (uint64_t)i;
   this->cache = cache;
 }
 
-CachedInt::CachedInt(const long& l, MasterCache& cache){
+CachedInt::CachedInt(long l, const MasterCache* cache){
   this->value = (uint64_t)l;
   this->cache = cache;
 }
 
-CachedInt::CachedInt(const CachedInt& ci);
+CachedInt::CachedInt(const CachedInt& ci){
   this->value = ci.getValue();
   this->cache = ci.getCache();
 }
@@ -47,7 +44,8 @@ CachedInt::~CachedInt(){
 
 }
 
-MasterCache& CachedInt::getCache(){
+const MasterCache* CachedInt::getCache() const{
+	//return address to cache
   return this->cache;
 }
 
@@ -55,33 +53,35 @@ MasterCache& CachedInt::getCache(){
 assignment
 */
 CachedInt& CachedInt::operator=(const CachedInt& ci){
-  assert(this->cache == i.getCache());
+  assert(this->cache == ci.getCache());
 
   this->value = ci.getValue();
 
   return *this;
 }
 
-CachedInt& CachedInt::operator=(const mpz_t& z){
-  this->value = cached_int_set(this->cache, *z);;
+CachedInt& CachedInt::operator=(mpz_t& z){
+  this->value = cached_int_set(this->getCache(), z);
 
   return *this;
 }
 
-CachedInt& CachedInt::operator=(const int& i){
+CachedInt& CachedInt::operator=(int i){
   this->value = (uint64_t)i;
 
-  if(i < 0)
-    this->value = cached_int_neg(this->cache, this->value);
+  if(i < 0){
+    this->value = cached_int_neg(this->getCache(), this->value);
+  }
 
   return *this;
 }
 
-CachedInt& CachedInt::operator=(const long& l){
+CachedInt& CachedInt::operator=(long l){
   this->value = (uint64_t)l;
 
-  if(l < 0)
-    this->value = cached_int_neg(this->cache, this->value);
+  if(l < 0){
+    this->value = cached_int_neg(this->getCache(), this->value);
+  }
 
   return *this;
 }
@@ -90,53 +90,65 @@ CachedInt& CachedInt::operator=(const long& l){
 operators
 */
 
-CachedInt::operator double() const{
-  return cached_int_get_d(this->cache, this->value);
+CachedInt::operator double(){
+  return cached_int_get_d(this->getCache(), this->value);
 }
 
 
-CachedInt CachedInt::operator+(const CachedInt& i) const{
-  assert(this->cache == i.getCache());
+CachedInt CachedInt::operator+(const CachedInt& i){
+  assert(this->getCache() == i.getCache());
+  cachedInt op = i.getValue();
 
-  cachedInt result = cached_int_add(this->cache, this->value, i.getValue());
-  return CachedInt(result, this->cache);
+  cachedInt result = cached_int_add(this->getCache(), this->value, op);
+  const MasterCache* cache = this->getCache();
+  CachedInt res = CachedInt(result, cache);
+  return res;
 }
 
-CachedInt CachedInt::operator-(const CachedInt& i) const{
-  assert(this->cache == i.getCache());
+CachedInt CachedInt::operator-(const CachedInt& i){
+  assert(this->getCache() == i.getCache());
 
-  cachedInt result = cached_int_sub(this->cache, this->value, i.getValue());
-  return CachedInt(result, this->cache);
+  cachedInt result = cached_int_sub(this->getCache(), this->value, i.getValue());
+  const MasterCache* cache = this->getCache();
+  CachedInt res = CachedInt(result, cache);
+  return res;
 }
 
-CachedInt CachedInt::operator*(const CachedInt& i) const{
-  assert(this->cache == i.getCache());
+CachedInt CachedInt::operator*(const CachedInt& i){
+  assert(this->getCache() == i.getCache());
 
-  cachedInt result = cached_int_mul(this->cache, this->value, i.getValue());
-  return CachedInt(result, this->cache);
+  cachedInt result = cached_int_mul(this->getCache(), this->value, i.getValue());
+  const MasterCache* cache = this->getCache();
+  CachedInt res = CachedInt(result, cache);
+  return res;
 }
 
-CachedInt CachedInt::operator/(const CachedInt& i) const{
-  assert(this->cache == i.getCache());
+CachedInt CachedInt::operator/(const CachedInt& i){
+  assert(this->getCache() == i.getCache());
   cachedInt* rest;
-  cachedInt result = cached_int_tdiv(this->cache, this->value, i.getValue(), rest);
-  return CachedInt(result, this->cache);
+  cachedInt result = cached_int_tdiv(this->getCache(), this->value, i.getValue(), rest);
+  const MasterCache* cache = this->getCache();
+  CachedInt res = CachedInt(result, cache);
+  return res;
 }
 
-CachedInt CachedInt::operator%(const CachedInt& i) const{
-  assert(this->cache == i.getCache());
+CachedInt CachedInt::operator%(const CachedInt& i){
+  assert(this->getCache() == i.getCache());
 
-  cachedInt result = cached_int_mod(this->cache, this->value, i.getValue());
-  return CachedInt(result, this->cache);
+  cachedInt result = cached_int_mod(this->getCache(), this->value, i.getValue());
+  const MasterCache* cache = this->getCache();
+  return CachedInt(result, cache);
 }
 
-int CachedInt::invert(CachedInt* res, const CachedInt& m){
-  assert(this->cache == m.getCache());
+int CachedInt::invert(CachedInt* res, CachedInt& m){
+  assert(this->getCache() == m.getCache());
 
   cachedInt result;
-  int hasInverse = cached_int_invert(this->cache, this->value, m.getValue(), &result);
+  int hasInverse = cached_int_invert(this->getCache(), this->value, m.getValue(), &result);
   if(hasInverse > 0){
-    res = CachedInt(result, this->cache);
+    const MasterCache* cache = this->getCache();
+    CachedInt r = CachedInt(result, cache);
+    res = &r;
     return 1;
   }
   else{
@@ -144,37 +156,43 @@ int CachedInt::invert(CachedInt* res, const CachedInt& m){
   }
 }
 
-CachedInt& CachedInt::gcd(const CachedInt& i){
-  assert(this->cache == i.getCache());
-  assert(this->cache == m.getCache());
+CachedInt CachedInt::gcd(CachedInt& i){
+  assert(this->getCache() == i.getCache());
 
-  cachedInt result = cached_int_gcd(this->cache, this->value, i.getValue());
-  return CachedInt(result, this->cache);
+  cachedInt result = cached_int_gcd(this->getCache(), this->value, i.getValue());
+  const MasterCache* cache = this->getCache();
+  CachedInt resultWrapper = CachedInt(result, cache);
+  return resultWrapper;
 }
 
-CachedInt& CachedInt::lcm(const CachedInt& i){
-  assert(this->cache == i.getCache());
-  assert(this->cache == m.getCache());
+CachedInt CachedInt::lcm(CachedInt& i){
+  assert(this->getCache() == i.getCache());
 
-  cachedInt result = cached_int_lcm(this->cache, this->value, i.getValue());
-  return CachedInt(result, this->cache);
+  cachedInt result = cached_int_lcm(this->getCache(), this->value, i.getValue());
+  const MasterCache* cache = this->getCache();
+  CachedInt res = CachedInt(result, cache);
+  return res;
 }
 
-CachedInt& CachedInt::abs()
-  cachedInt result = cached_int_abs(this->cache, this->value);
-  return CachedInt(result, this->cache);
+CachedInt CachedInt::abs(){
+  cachedInt result = cached_int_abs(this->getCache(), this->value);
+  const MasterCache* cache = this->getCache();
+  CachedInt res = CachedInt(result, cache);
+  return res;
 }
 
-CachedInt& CachedInt::neg()
-  cachedInt result = cached_int_neg(this->cache, this->value);
-  return CachedInt(result, this->cache);
+CachedInt CachedInt::neg(){
+  cachedInt result = cached_int_neg(this->getCache(), this->value);
+  const MasterCache* cache = this->getCache();
+  CachedInt res = CachedInt(result, cache);
+  return res;
 }
 
-int CachedInt::sign()
-  return cached_int_sgn(this->cache, this->value);
+int CachedInt::sign(){
+  return cached_int_sgn(this->getCache(), this->value);
 }
 
-cachedInt CachedInt::getValue(){
+cachedInt CachedInt::getValue() const{
   return this->value;
 }
 

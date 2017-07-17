@@ -545,6 +545,60 @@ __/Tests/mpz-cache-test.c.s:
 	cd /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build && $(MAKE) -f src/CMakeFiles/mpz-cache-test.dir/build.make src/CMakeFiles/mpz-cache-test.dir/__/Tests/mpz-cache-test.c.s
 .PHONY : __/Tests/mpz-cache-test.c.s
 
+cachedInt.o: cachedInt.cpp.o
+
+.PHONY : cachedInt.o
+
+# target to build an object file
+cachedInt.cpp.o:
+	cd /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build && $(MAKE) -f src/CMakeFiles/gmp-caching.dir/build.make src/CMakeFiles/gmp-caching.dir/cachedInt.cpp.o
+.PHONY : cachedInt.cpp.o
+
+cachedInt.i: cachedInt.cpp.i
+
+.PHONY : cachedInt.i
+
+# target to preprocess a source file
+cachedInt.cpp.i:
+	cd /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build && $(MAKE) -f src/CMakeFiles/gmp-caching.dir/build.make src/CMakeFiles/gmp-caching.dir/cachedInt.cpp.i
+.PHONY : cachedInt.cpp.i
+
+cachedInt.s: cachedInt.cpp.s
+
+.PHONY : cachedInt.s
+
+# target to generate assembly for a file
+cachedInt.cpp.s:
+	cd /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build && $(MAKE) -f src/CMakeFiles/gmp-caching.dir/build.make src/CMakeFiles/gmp-caching.dir/cachedInt.cpp.s
+.PHONY : cachedInt.cpp.s
+
+cachedRational.o: cachedRational.cpp.o
+
+.PHONY : cachedRational.o
+
+# target to build an object file
+cachedRational.cpp.o:
+	cd /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build && $(MAKE) -f src/CMakeFiles/gmp-caching.dir/build.make src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.o
+.PHONY : cachedRational.cpp.o
+
+cachedRational.i: cachedRational.cpp.i
+
+.PHONY : cachedRational.i
+
+# target to preprocess a source file
+cachedRational.cpp.i:
+	cd /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build && $(MAKE) -f src/CMakeFiles/gmp-caching.dir/build.make src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.i
+.PHONY : cachedRational.cpp.i
+
+cachedRational.s: cachedRational.cpp.s
+
+.PHONY : cachedRational.s
+
+# target to generate assembly for a file
+cachedRational.cpp.s:
+	cd /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build && $(MAKE) -f src/CMakeFiles/gmp-caching.dir/build.make src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.s
+.PHONY : cachedRational.cpp.s
+
 caching_operations.o: caching_operations.c.o
 
 .PHONY : caching_operations.o
@@ -837,6 +891,12 @@ help:
 	@echo "... __/Tests/mpz-cache-test.o"
 	@echo "... __/Tests/mpz-cache-test.i"
 	@echo "... __/Tests/mpz-cache-test.s"
+	@echo "... cachedInt.o"
+	@echo "... cachedInt.i"
+	@echo "... cachedInt.s"
+	@echo "... cachedRational.o"
+	@echo "... cachedRational.i"
+	@echo "... cachedRational.s"
 	@echo "... caching_operations.o"
 	@echo "... caching_operations.i"
 	@echo "... caching_operations.s"

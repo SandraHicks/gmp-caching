@@ -1,1 +1,1 @@
-/usr/bin/cc  -fPIC   CMakeFiles/mpz-cache-test.dir/__/Tests/mpz-cache-test.c.o  -o mpz-cache-test -rdynamic -lgmp libgmp-caching.a -lgmp 
+/usr/bin/c++    -Wall -std=c++11 -Wall   CMakeFiles/mpz-cache-test.dir/__/Tests/mpz-cache-test.c.o  -o mpz-cache-test -rdynamic -lgmp libgmp-caching.a -lgmp 

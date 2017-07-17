@@ -7,11 +7,14 @@
 #ifndef MPZ_CACHING_H
 #define MPZ_CACHING_H
 
+
+
 #ifdef __cplusplus
+#include <gmpxx.h>
 extern "C" {
 #endif
-#include <stdint.h>
 #include <gmp.h>
+#include <stdint.h>
 
     
     /**

@@ -22,6 +22,8 @@ set(GMP_CACHING_SOURCES
   ${GMP_CACHING_SRC_DIR}master_cache_rational.c
   ${GMP_CACHING_SRC_DIR}mpz_caching.c
   ${GMP_CACHING_SRC_DIR}overflow_detection.c
+  ${GMP_CACHING_SRC_DIR}cachedInt.cpp
+  ${GMP_CACHING_SRC_DIR}cachedRational.cpp
 )
 
 set(GMP_CACHING_HEADERS
@@ -36,10 +38,16 @@ set(GMP_CACHING_HEADERS
   ${GMP_CACHING_SRC_DIR}master_cache_rational.h
   ${GMP_CACHING_SRC_DIR}mpz_caching.h
   ${GMP_CACHING_SRC_DIR}overflow_detection.h
+  ${GMP_CACHING_SRC_DIR}cachedInt.h
+  ${GMP_CACHING_SRC_DIR}cachedRational.h
 )
 
 add_library(gmp-caching STATIC ${GMP_CACHING_SOURCES})
 target_link_libraries(gmp-caching gmp)
+#target_compile_options(gmp-caching PUBLIC -std=c++11)
+set(CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++11 -Wall")
+
+#set(CMAKE_REQUIRED_INCLUDES stdint.h)
 
 #### TESTS ####
 

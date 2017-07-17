@@ -1,1 +1,1 @@
-/usr/bin/cc  -fPIC   CMakeFiles/caching-operations-test.dir/__/Tests/caching-operations-test.c.o  -o caching-operations-test -rdynamic -lgmp libgmp-caching.a -lgmp 
+/usr/bin/c++    -Wall -std=c++11 -Wall   CMakeFiles/caching-operations-test.dir/__/Tests/caching-operations-test.c.o  -o caching-operations-test -rdynamic -lgmp libgmp-caching.a -lgmp 

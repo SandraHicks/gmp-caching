@@ -8,11 +8,13 @@ file(REMOVE_RECURSE
   "CMakeFiles/gmp-caching.dir/master_cache_rational.c.o"
   "CMakeFiles/gmp-caching.dir/mpz_caching.c.o"
   "CMakeFiles/gmp-caching.dir/overflow_detection.c.o"
+  "CMakeFiles/gmp-caching.dir/cachedInt.cpp.o"
+  "CMakeFiles/gmp-caching.dir/cachedRational.cpp.o"
   "libgmp-caching.pdb"
   "libgmp-caching.a"
 )
 
 # Per-language clean rules from dependency scanning.
-foreach(lang C)
+foreach(lang C CXX)
   include(CMakeFiles/gmp-caching.dir/cmake_clean_${lang}.cmake OPTIONAL)
 endforeach()
