@@ -9,7 +9,10 @@
 #define MASTER_CACHE_RATIONAL_H
 
 #ifdef __cplusplus
+#include <gmp.h>
 extern "C" {
+#else
+#include <gmp.h>
 #endif
 
 cachedRational cached_rational_set(MasterCache* mstr, mpz_t counter, mpz_t denominator);

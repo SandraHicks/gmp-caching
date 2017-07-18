@@ -8,10 +8,13 @@
 #define MASTER_CACHE_INTEGER_H
 
 #ifdef __cplusplus
+#include <gmp.h>
 extern "C" {
+#else
+#include <gmp.h>
 #endif
-
 #include "mastercache.h"
+
 
 void cached_int_init_cache(MasterCache** mstr, uint64_t cachesize);
 void cached_int_clear_cache(MasterCache** mstr);

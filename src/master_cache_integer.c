@@ -653,11 +653,13 @@ cachedInt direct_lcm(cachedInt val1, cachedInt val2){
  */
 int cached_int_invert(const MasterCache* mstr, cachedInt val1, cachedInt val2, cachedInt* result){
     if(val1 == NaN || val2 == NaN){
-        return NaN;
+        *result = NaN;
+        return 0;
     }
     
     if(((val1 == PLUS_INFINITY) || (val1 == MINUS_INFINITY)) || ((val2 == PLUS_INFINITY) || (val2 == MINUS_INFINITY))){
-        return NaN;
+        *result = NaN;
+        return 0;
     }
     
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){

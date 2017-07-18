@@ -8,7 +8,10 @@
 #define MASTERCACHE_H
 
 #ifdef __cplusplus
+#include <gmp.h>
 extern "C" {
+#else
+#include <gmp.h>
 #endif
 
 #include "defines.h"

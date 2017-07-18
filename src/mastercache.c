@@ -5,7 +5,6 @@
   */
 
 #include <stdint.h>
-#include <gmp.h>
 
 #include "mastercache.h"
 #include "master_cache_integer.h"

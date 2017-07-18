@@ -8,11 +8,15 @@
 #define CACHING_OPERATIONS_H
 
 #ifdef __cplusplus
+#include <gmp.h>
 extern "C" {
+#else
+#include <gmp.h>
 #endif
 #include "hashtable.h"
 #include "mpz_caching.h"
 #include "defines.h"
+
 
     /*! identifiers for operations applied to mpz_t's*/
     enum Operation {

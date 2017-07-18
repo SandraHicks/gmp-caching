@@ -8,12 +8,16 @@
 #define HASHTABLE_H
 
 #ifdef __cplusplus
+#include <cstdint>
+#include <gmp.h>
 extern "C" {
+#else
+#include <stdint.h>
+    #include <gmp.h>
 #endif
-    #include <stdint.h>
     #include "defines.h"
     #include "mpz_caching.h"
-    #include <gmp.h>
+
 
     /* MPZ-T */
     typedef struct cachedIntElement cachedIntElement;

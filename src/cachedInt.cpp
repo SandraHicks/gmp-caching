@@ -6,7 +6,7 @@
 
 
 #include "cachedInt.h"
-#include "assert.h"
+#include <cassert>
 #include <cstdint>
 
 namespace gmpcaching{
@@ -125,8 +125,8 @@ CachedInt CachedInt::operator*(const CachedInt& i){
 
 CachedInt CachedInt::operator/(const CachedInt& i){
   assert(this->getCache() == i.getCache());
-  cachedInt* rest;
-  cachedInt result = cached_int_tdiv(this->getCache(), this->value, i.getValue(), rest);
+  cachedInt rest;
+  cachedInt result = cached_int_tdiv(this->getCache(), this->value, i.getValue(), &rest);
   const MasterCache* cache = this->getCache();
   CachedInt res = CachedInt(result, cache);
   return res;

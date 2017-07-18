@@ -5,6 +5,7 @@
   */
 
 #include "master_cache_rational.h"
+#include "mastercache.h"
 
 namespace gmpcaching{
 

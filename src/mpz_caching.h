@@ -10,11 +10,14 @@
 
 
 #ifdef __cplusplus
-#include <gmpxx.h>
+#include <gmp.h>
+#include <cstdint>
 extern "C" {
-#endif
+#else
 #include <gmp.h>
 #include <stdint.h>
+#endif
+
 
     
     /**

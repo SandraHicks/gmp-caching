@@ -273,6 +273,54 @@ CMakeFiles/gmp-caching.dir/overflow_detection.c.o.provides: CMakeFiles/gmp-cachi
 CMakeFiles/gmp-caching.dir/overflow_detection.c.o.provides.build: CMakeFiles/gmp-caching.dir/overflow_detection.c.o
 
 
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o: CMakeFiles/gmp-caching.dir/flags.make
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o: src/cachedInt.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Building CXX object CMakeFiles/gmp-caching.dir/cachedInt.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gmp-caching.dir/cachedInt.cpp.o -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.cpp
+
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gmp-caching.dir/cachedInt.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.cpp > CMakeFiles/gmp-caching.dir/cachedInt.cpp.i
+
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gmp-caching.dir/cachedInt.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.cpp -o CMakeFiles/gmp-caching.dir/cachedInt.cpp.s
+
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o.requires:
+
+.PHONY : CMakeFiles/gmp-caching.dir/cachedInt.cpp.o.requires
+
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o.provides: CMakeFiles/gmp-caching.dir/cachedInt.cpp.o.requires
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/cachedInt.cpp.o.provides.build
+.PHONY : CMakeFiles/gmp-caching.dir/cachedInt.cpp.o.provides
+
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o.provides.build: CMakeFiles/gmp-caching.dir/cachedInt.cpp.o
+
+
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: CMakeFiles/gmp-caching.dir/flags.make
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/cachedRational.cpp
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_11) "Building CXX object CMakeFiles/gmp-caching.dir/cachedRational.cpp.o"
+	/usr/bin/c++   $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -o CMakeFiles/gmp-caching.dir/cachedRational.cpp.o -c /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp
+
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/gmp-caching.dir/cachedRational.cpp.i"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp > CMakeFiles/gmp-caching.dir/cachedRational.cpp.i
+
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/gmp-caching.dir/cachedRational.cpp.s"
+	/usr/bin/c++  $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp -o CMakeFiles/gmp-caching.dir/cachedRational.cpp.s
+
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o.requires:
+
+.PHONY : CMakeFiles/gmp-caching.dir/cachedRational.cpp.o.requires
+
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o.provides: CMakeFiles/gmp-caching.dir/cachedRational.cpp.o.requires
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/cachedRational.cpp.o.provides.build
+.PHONY : CMakeFiles/gmp-caching.dir/cachedRational.cpp.o.provides
+
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o.provides.build: CMakeFiles/gmp-caching.dir/cachedRational.cpp.o
+
+
 # Object files for target gmp-caching
 gmp__caching_OBJECTS = \
 "CMakeFiles/gmp-caching.dir/caching_operations.c.o" \
@@ -283,7 +331,9 @@ gmp__caching_OBJECTS = \
 "CMakeFiles/gmp-caching.dir/master_cache_integer.c.o" \
 "CMakeFiles/gmp-caching.dir/master_cache_rational.c.o" \
 "CMakeFiles/gmp-caching.dir/mpz_caching.c.o" \
-"CMakeFiles/gmp-caching.dir/overflow_detection.c.o"
+"CMakeFiles/gmp-caching.dir/overflow_detection.c.o" \
+"CMakeFiles/gmp-caching.dir/cachedInt.cpp.o" \
+"CMakeFiles/gmp-caching.dir/cachedRational.cpp.o"
 
 # External object files for target gmp-caching
 gmp__caching_EXTERNAL_OBJECTS =
@@ -297,9 +347,11 @@ libgmp-caching.a: CMakeFiles/gmp-caching.dir/master_cache_integer.c.o
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/master_cache_rational.c.o
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/mpz_caching.c.o
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/overflow_detection.c.o
+libgmp-caching.a: CMakeFiles/gmp-caching.dir/cachedInt.cpp.o
+libgmp-caching.a: CMakeFiles/gmp-caching.dir/cachedRational.cpp.o
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/build.make
 libgmp-caching.a: CMakeFiles/gmp-caching.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_10) "Linking C static library libgmp-caching.a"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/home/sandra/Documents/HiWi/GMPCache/gmp-caching/CMakeFiles --progress-num=$(CMAKE_PROGRESS_12) "Linking CXX static library libgmp-caching.a"
 	$(CMAKE_COMMAND) -P CMakeFiles/gmp-caching.dir/cmake_clean_target.cmake
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/gmp-caching.dir/link.txt --verbose=$(VERBOSE)
 
@@ -317,6 +369,8 @@ CMakeFiles/gmp-caching.dir/requires: CMakeFiles/gmp-caching.dir/master_cache_int
 CMakeFiles/gmp-caching.dir/requires: CMakeFiles/gmp-caching.dir/master_cache_rational.c.o.requires
 CMakeFiles/gmp-caching.dir/requires: CMakeFiles/gmp-caching.dir/mpz_caching.c.o.requires
 CMakeFiles/gmp-caching.dir/requires: CMakeFiles/gmp-caching.dir/overflow_detection.c.o.requires
+CMakeFiles/gmp-caching.dir/requires: CMakeFiles/gmp-caching.dir/cachedInt.cpp.o.requires
+CMakeFiles/gmp-caching.dir/requires: CMakeFiles/gmp-caching.dir/cachedRational.cpp.o.requires
 
 .PHONY : CMakeFiles/gmp-caching.dir/requires
 
