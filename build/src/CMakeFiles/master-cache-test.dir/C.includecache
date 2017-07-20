@@ -7,6 +7,10 @@
 #IncludeRegexTransform: 
 
 ../src/../src/caching_operations.h
+gmp.h
+-
+gmp.h
+-
 hashtable.h
 ../src/../src/hashtable.h
 mpz_caching.h
@@ -31,12 +35,30 @@ mpz_caching.h
 ../src/../src/mpz_caching.h
 
 ../src/../src/master_cache_integer.h
+gmp.h
+-
+gmp.h
+-
 mastercache.h
 ../src/../src/mastercache.h
 
 ../src/../src/master_cache_rational.h
+gmp.h
+-
+gmp.h
+-
+mastercache.h
+../src/../src/mastercache.h
+master_cache_integer.h
+../src/../src/master_cache_integer.h
+defines.h
+../src/../src/defines.h
 
 ../src/../src/mastercache.h
+gmp.h
+-
+gmp.h
+-
 defines.h
 ../src/../src/defines.h
 caching_operations.h

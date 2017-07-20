@@ -7,6 +7,10 @@
 #IncludeRegexTransform: 
 
 ../src/../src/caching_operations.h
+gmp.h
+-
+gmp.h
+-
 hashtable.h
 ../src/../src/hashtable.h
 mpz_caching.h

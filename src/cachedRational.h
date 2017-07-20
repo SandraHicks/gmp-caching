@@ -6,6 +6,9 @@
 
 #include "master_cache_rational.h"
 #include "mastercache.h"
+#include "cachedInt.h"
+
+#include <utility>
 
 namespace gmpcaching{
 
@@ -13,51 +16,53 @@ namespace gmpcaching{
   {
     private:
       cachedRational value;
-      MasterCache* cache;
+      const MasterCache* cache;
 
     public:
 
-      CachedRational(mpq_t q, const MasterCache& cache);
+      CachedRational();
 
-      CachedRational(mpz_t z1, mpz_t z2, const MasterCache& cache);
+      CachedRational(mpq_t q, const MasterCache* cache);
 
-      CachedRational(cachedInt c1, cachedInt c2, const MasterCache& cache);
+      CachedRational(mpz_t z1, mpz_t z2, const MasterCache* cache);
 
-      CachedRational(CachedInt* c1, CachedInt* c2, const MasterCache& cache);
+      CachedRational(cachedInt c1, cachedInt c2, const MasterCache* cache);
 
-      CachedRational(cachedRational* val, const MasterCache& cache);
+      CachedRational(CachedInt& c1, CachedInt& c2, const MasterCache* cache);
 
-      CachedRational(CachedRational* val);
+      CachedRational(cachedRational val, const MasterCache* cache);
+
+      CachedRational(CachedRational& val);
 
       ~CachedRational();
 
       CachedRational& operator=(const CachedRational& ci);
 
-      CachedRational& operator=(const mpq_t& q);
+      CachedRational& operator=(mpq_t& q);
 
-      CachedRational& operator=(const mpz_t& z1, const mpz_t z2);
+      CachedRational& operator=(std::pair<mpz_t&, mpz_t&> mpzts);
 
-      CachedRational& operator=(const int& i1, const int& i2);
+      CachedRational& operator=(std::pair<int, int> ints);
 
-      CachedRational& operator=(const long& l1, const long& l2);
+      CachedRational& operator=(std::pair<long, long> longs);
 
-      CachedRational operator+(const CachedRational& i) const;
+      CachedRational operator+(const CachedRational& i);
 
-      CachedRational operator-(const CachedRational& i) const;
+      CachedRational operator-(const CachedRational& i);
 
-      CachedRational operator*(const CachedRational& i) const;
+      CachedRational operator*(const CachedRational& i);
 
-      CachedRational operator/(const CachedRational& i) const;
+      CachedRational operator/(const CachedRational& i);
 
-      CachedRational& reduce();
-      CachedRational& inv();
-      CachedRational& abs();
-      CachedRational& neg();
+      CachedRational reduce();
+      CachedRational inv();
+      CachedRational abs();
+      CachedRational neg();
       int sign();
 
-      explicit operator double();
+      operator double();
 
-      MasterCache* getCache() const;
+      const MasterCache* getCache() const;
 
       cachedRational getValue() const;
   };

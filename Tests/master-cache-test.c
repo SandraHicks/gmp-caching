@@ -472,10 +472,10 @@ cachedRational* s1, cachedRational* s2, cachedRational* l1, cachedRational* l2, 
   cachedRational l1l2;
   cachedRational l1n1;
 
-  s1s1 = cached_rational_add(cache, s1, s1);
-  s1s2 = cached_rational_add(cache, s1, s2);
-  l1l2 = cached_rational_add(cache, l1, l2);
-  l1n1 = cached_rational_add(cache, l1, n1);
+  s1s1 = cached_rational_add(cache, *s1, *s1);
+  s1s2 = cached_rational_add(cache, *s1, *s2);
+  l1l2 = cached_rational_add(cache, *l1, *l2);
+  l1n1 = cached_rational_add(cache, *l1, *n1);
 
   printf("s1s1.c: %" PRIu64 " without id bit: %" PRIu64 " without sign bit: %" PRIu64 " without both: %" PRIu64 "\n", s1s1.counter, (s1s1.counter & ~SHIFT), (s1s1.counter & ~NEG), ((s1s1.counter & ~NEG) & ~SHIFT));
   printf("s1s1.d: %" PRIu64 " without id bit: %" PRIu64 " without sign bit: %" PRIu64 " without both: %" PRIu64 "\n", s1s1.denominator, (s1s1.denominator & ~SHIFT), (s1s1.denominator & ~NEG), ((s1s1.denominator & ~NEG) & ~SHIFT));
@@ -495,9 +495,9 @@ cachedRational* s1, cachedRational* s2, cachedRational* l1, cachedRational* l2, 
   cachedRational s1s1;
   cachedRational l1l2;
   cachedRational l1n1;
-  s1s1 = cached_rational_mul(cache, s1, s1);
-  l1l2 = cached_rational_mul(cache, l1, l2);
-  l1n1 = cached_rational_mul(cache, l1, n1);
+  s1s1 = cached_rational_mul(cache, *s1, *s1);
+  l1l2 = cached_rational_mul(cache, *l1, *l2);
+  l1n1 = cached_rational_mul(cache, *l1, *n1);
 
   //which NEG bits were expected to be set?
 
@@ -514,8 +514,8 @@ cachedRational* s1, cachedRational* s2, cachedRational* l1, cachedRational* l2, 
   cachedRational rs1;
   cachedRational rl2;
 
-  rs1 = cached_rational_reduce(cache, s1);
-  rl2 = cached_rational_reduce(cache, l2);
+  rs1 = cached_rational_reduce(cache, *s1);
+  rl2 = cached_rational_reduce(cache, *l2);
 
   //which NEG bits were expected to be set?
 
@@ -531,7 +531,7 @@ cachedRational* s1, cachedRational* s2, cachedRational* l1, cachedRational* l2, 
   printf("\n--Test 206 Results (abs):--\n");
   cachedRational as1;
 
-  as1 = cached_rational_inv(cache, s1);
+  as1 = cached_rational_inv(cache, *s1);
 
   //what numerical results should we have?
 }
@@ -542,8 +542,8 @@ cachedRational* s1, cachedRational* s2, cachedRational* l1, cachedRational* l2, 
   cachedRational as1;
   cachedRational an1;
 
-  as1 = cached_rational_abs(cache, s1);
-  an1 = cached_rational_abs(cache, n1);
+  as1 = cached_rational_abs(cache, *s1);
+  an1 = cached_rational_abs(cache, *n1);
 
   //which NEG bits were expected to be set?
 }
@@ -554,8 +554,8 @@ cachedRational* s1, cachedRational* s2, cachedRational* l1, cachedRational* l2, 
   cachedRational as1;
   cachedRational an1;
 
-  as1 = cached_rational_neg(cache, s1);
-  an1 = cached_rational_neg(cache, n1);
+  as1 = cached_rational_neg(cache, *s1);
+  an1 = cached_rational_neg(cache, *n1);
 
   //which NEG bits were expected to be set?
 }
@@ -566,8 +566,8 @@ cachedRational* s1, cachedRational* s2, cachedRational* l1, cachedRational* l2, 
   int as1;
   int an1;
 
-  as1 = cached_rational_sgn(cache, s1);
-  an1 = cached_rational_sgn(cache, n1);
+  as1 = cached_rational_sgn(cache, *s1);
+  an1 = cached_rational_sgn(cache, *n1);
 
   printf("s1: %d\n",as1);
   printf("n1: %d\n",an1);

@@ -36,20 +36,26 @@ extern "C" {
  */
 typedef uint64_t cachedInt; //max: 1073741823 (2^62 - 2)
 
-/**
- * cached Rational
- */
-typedef struct cache_rational {
-    cachedInt counter;      /**< counter*/
-    cachedInt denominator;  /**< denominator*/
-} cachedRational;
-
-
 void cache_init(MasterCache** mstr, uint64_t cache_size);
 void cache_clear(MasterCache* mstr);
 
 #ifdef __cplusplus
 }
+#endif
+
+/**
+ * cached Rational
+ */
+#ifdef __cplusplus
+struct cachedRational {
+    cachedInt counter;      /**< counter*/
+    cachedInt denominator;  /**< denominator*/
+};
+#else
+typedef struct cache_rational {
+    cachedInt counter;      /**< counter*/
+    cachedInt denominator;  /**< denominator*/
+} cachedRational;
 #endif
 
 #endif /* MASTERCACHE_H */
