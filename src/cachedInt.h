@@ -7,12 +7,20 @@
 #include "master_cache_integer.h"
 #include "mastercache.h"
 
-namespace gmpcaching{
+#include <exception>
+#include <cinttypes>
+#include <string>
 
+namespace gmpcaching{
+  /**
+   * C++ Wrapper Class for cachedInt type
+   */
   class CachedInt
   {
     private:
+      /// C-type value of cached Integer
       cachedInt value;
+      ///link to cache
       const MasterCache* cache;
 
     public:
@@ -66,5 +74,20 @@ namespace gmpcaching{
       explicit operator double();
 
       cachedInt getValue() const;
+  };
+  
+  class IntegerCacheNotSetException: public std::exception{
+  private:
+      cachedInt data;
+  public:
+      IntegerCacheNotSetException(cachedInt i){
+          this->data = i;
+      }
+    virtual const char* what() const throw(){
+        std::string ret = "The Cache was not initialized for ";
+        ret += std::to_string(this->data);
+        ret += ".";
+        return ret.c_str();
+    }
   };
 }

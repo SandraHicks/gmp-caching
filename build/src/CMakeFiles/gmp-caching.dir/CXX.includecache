@@ -19,6 +19,12 @@ master_cache_integer.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_integer.h
 mastercache.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mastercache.h
+exception
+-
+cinttypes
+-
+string
+-
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp
 cachedRational.h
@@ -36,6 +42,8 @@ mastercache.h
 cachedInt.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h
 utility
+-
+exception
 -
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/caching_operations.h

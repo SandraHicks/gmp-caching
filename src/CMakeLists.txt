@@ -24,8 +24,6 @@ set(GMP_CACHING_SOURCES
   ${GMP_CACHING_SRC_DIR}overflow_detection.c
   ${GMP_CACHING_SRC_DIR}cachedInt.cpp
   ${GMP_CACHING_SRC_DIR}cachedRational.cpp
-  #${GMP_CACHING_SRC_DIR}foo.cpp
-  #${GMP_CACHING_SRC_DIR}foo2.cpp
 )
 
 set(GMP_CACHING_HEADERS
@@ -42,8 +40,7 @@ set(GMP_CACHING_HEADERS
   ${GMP_CACHING_SRC_DIR}overflow_detection.h
   ${GMP_CACHING_SRC_DIR}cachedInt.h
   ${GMP_CACHING_SRC_DIR}cachedRational.h
-  #${GMP_CACHING_SRC_DIR}foo.h
-  #${GMP_CACHING_SRC_DIR}foo2.h
+  ${GMP_CACHING_SRC_DIR}gmpcachingxx.h
 )
 
 add_library(gmp-caching STATIC ${GMP_CACHING_SOURCES})

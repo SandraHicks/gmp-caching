@@ -741,3 +741,11 @@ void ext_euclid(cachedInt val1, cachedInt val2, cachedInt* d, cachedInt* s, cach
     *s = t_;
     *t = s_ - (val1 / val2) * t_;
 }
+
+
+int cached_int_isID(cachedInt val){
+    if((val & SHIFT) == 0)
+        return 0;
+    else
+        return 1;
+}

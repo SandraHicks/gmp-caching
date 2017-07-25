@@ -7,10 +7,13 @@
       <logicalFolder name="src" displayName="src" projectFiles="true">
         <logicalFolder name="gmp-caching" displayName="gmp-caching" projectFiles="true">
         </logicalFolder>
+        <itemPath>../cachedInt.h</itemPath>
+        <itemPath>../cachedRational.h</itemPath>
         <itemPath>../caching_operations.h</itemPath>
         <itemPath>../config.h</itemPath>
         <itemPath>../debug.h</itemPath>
         <itemPath>../defines.h</itemPath>
+        <itemPath>../gmpcachingxx.h</itemPath>
         <itemPath>../hashing.h</itemPath>
         <itemPath>../hashtable.h</itemPath>
         <itemPath>../master_cache_integer.h</itemPath>
@@ -23,6 +26,8 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>../cachedInt.cpp</itemPath>
+      <itemPath>../cachedRational.cpp</itemPath>
       <itemPath>../caching_operations.c</itemPath>
       <itemPath>../debug.c</itemPath>
       <itemPath>../hashing.c</itemPath>
@@ -59,6 +64,14 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="../cachedInt.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../cachedInt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../cachedRational.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../cachedRational.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../caching_operations.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../caching_operations.h" ex="false" tool="3" flavor2="0">
@@ -70,6 +83,8 @@
       <item path="../debug.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../defines.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../gmpcachingxx.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../hashing.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -122,6 +137,14 @@
         <archiverTool>
         </archiverTool>
       </compileType>
+      <item path="../cachedInt.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../cachedInt.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../cachedRational.cpp" ex="false" tool="1" flavor2="0">
+      </item>
+      <item path="../cachedRational.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="../caching_operations.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="../caching_operations.h" ex="false" tool="3" flavor2="0">
@@ -133,6 +156,8 @@
       <item path="../debug.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../defines.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../gmpcachingxx.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../hashing.c" ex="false" tool="0" flavor2="0">
       </item>

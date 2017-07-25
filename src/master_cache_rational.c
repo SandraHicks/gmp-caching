@@ -23,6 +23,19 @@ cachedRational cached_rational_set(const MasterCache* mstr, mpz_t counter, mpz_t
     
     return val;
 }
+cachedRational cached_rational_set_i(const MasterCache* mstr, int i){
+    cachedRational val;
+    if(i>0){
+            val.counter = (uint64_t)i;
+            val.denominator = 0;
+    }
+    else{
+        val.counter = (uint64_t)(i*-1);
+        val.counter |= (uint64_t)1 << NEG;
+        val.denominator = 0;
+    }
+    return val;
+}
 
 /**
  * 
@@ -315,4 +328,11 @@ int cached_rational_sgn(const MasterCache* mstr, cachedRational val){
     else{
         return 0;
     }
+}
+
+int cached_rational_isID(cachedRational val){
+    if((val.counter & SHIFT) == 0 && (val.denominator & SHIFT) == 0)
+        return 0;
+    else
+        return 1;
 }

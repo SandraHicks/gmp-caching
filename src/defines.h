@@ -39,7 +39,7 @@ extern "C" {
     
 #define CACHE_START_ID 2
     
-#define ERROR SHIFT
+#define GMPCACHING_ERROR SHIFT
 #define NaN (SHIFT | NEG)
     
 #ifdef __cplusplus

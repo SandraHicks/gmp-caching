@@ -20,6 +20,7 @@ extern "C" {
 #include "defines.h"
 
 cachedRational cached_rational_set(const MasterCache* mstr, mpz_t counter, mpz_t denominator);
+cachedRational cached_rational_set_i(const MasterCache* mstr, int i);
 cachedRational cached_rational_set_mpq(const MasterCache* mstr, mpq_t number);
 cachedRational cached_rational_set_cached(const MasterCache* mstr, cachedInt counter, cachedInt denominator);
 
@@ -27,6 +28,7 @@ void cached_rational_reset_mpq(const MasterCache* mstr, mpq_t number, cachedRati
 void cached_rational_reset(const MasterCache* mstr, mpz_t counter, mpz_t denominator, cachedRational* value);
 void cached_rational_reset_cached(const MasterCache* mstr, cachedInt counter, cachedInt denominator, cachedRational* value);
 
+int cached_rational_isID(cachedRational val);
 
 void cached_rational_get(const MasterCache* mstr, cachedRational id, mpz_t counter, mpz_t denominator);
 void cached_rational_get_mpq(const MasterCache* mstr, cachedRational id, mpq_t number);
