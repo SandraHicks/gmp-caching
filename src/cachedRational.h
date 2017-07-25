@@ -165,7 +165,8 @@ namespace gmpcaching{
        */
       int sign();
 
-      operator double();
+      operator double() const;
+      operator long double() const;
 
       const MasterCache* getCache() const;
 

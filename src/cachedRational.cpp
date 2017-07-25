@@ -281,8 +281,14 @@ int CachedRational::sign(){
   return cached_rational_sgn(this->cache, this->value);
 }
 
-CachedRational::operator double(){
+CachedRational::operator double() const{
   return cached_rational_get_d(this->cache, this->value);
+}
+
+CachedRational::operator long double() const{
+    double val = cached_rational_get_d(this->cache, this->value);
+    long double nval = static_cast<long double>(val);
+    return nval;
 }
 
 const MasterCache* CachedRational::getCache() const{
