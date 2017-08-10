@@ -67,6 +67,7 @@ CachedRational::CachedRational(const double& r, const MasterCache* cache){
         mpq_init(value);
         mpq_set_d(value, r);
         val = cached_rational_set_mpq(this->cache, value);
+        mpq_clear(value);
     }
     else{
         this->cache = cache;
@@ -74,6 +75,7 @@ CachedRational::CachedRational(const double& r, const MasterCache* cache){
         mpq_init(value);
         mpq_set_d(value, r);
         val = cached_rational_set_mpq(this->cache, value);
+        mpq_clear(value);
     }
     this->value = val;
 }
@@ -95,6 +97,7 @@ CachedRational::CachedRational(const long double& r, const MasterCache* cache){
         mpq_init(value);
         mpq_set_d(value, double(r));
         val = cached_rational_set_mpq(this->cache, value);
+        mpq_clear(value);
     }
     else{
         this->cache = cache;
@@ -102,6 +105,7 @@ CachedRational::CachedRational(const long double& r, const MasterCache* cache){
         mpq_init(value);
         mpq_set_d(value, double(r));
         val = cached_rational_set_mpq(this->cache, value);
+        mpq_clear(value);
     }
     this->value = val;
 }
@@ -248,6 +252,7 @@ CachedRational& CachedRational::operator=(const long double &r){
     mpq_init(value);
     mpq_set_d(value, double(r));
     this->value = cached_rational_set_mpq(this->cache, value);
+    mpq_clear(value);
     return *this;
 }
 
@@ -257,6 +262,7 @@ CachedRational& CachedRational::operator=(const double &r){
     mpq_init(value);
     mpq_set_d(value, r);
     this->value = cached_rational_set_mpq(this->cache, value);
+    mpq_clear(value);
     return *this;
 }
 
@@ -601,51 +607,163 @@ bool operator>=(const long double& r, const CachedRational& s){
 }
 
 CachedRational operator+(const double& d, const CachedRational& r){
-    //TODO
-    return r;
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(r.cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_add(r.cache, r.value, val);
+    CachedRational returnValue;
+    returnValue.cache = r.cache;
+    returnValue.value = result;
+    return returnValue;
 }
 CachedRational operator-(const double& d, const CachedRational& r){
-    //TODO
-    return r;
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(r.cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_sub(r.cache, r.value, val);
+    CachedRational returnValue;
+    returnValue.cache = r.cache;
+    returnValue.value = result;
+    return returnValue;
 }
 CachedRational operator*(const double& d, const CachedRational& r){
-    //TODO
-    return r;
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(r.cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_mul(r.cache, r.value, val);
+    CachedRational returnValue;
+    returnValue.cache = r.cache;
+    returnValue.value = result;
+    return returnValue;
 }
 CachedRational operator/(const double& d, const CachedRational& r){
-    //TODO
-    return r;
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(r.cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_div(r.cache, r.value, val);
+    CachedRational returnValue;
+    returnValue.cache = r.cache;
+    returnValue.value = result;
+    return returnValue;
 }
-CachedRational CachedRational::operator+(const double& d){
-    //TODO
-    return *this;
+CachedRational CachedRational::operator+(const double& d) const{
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(this->cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_add(this->cache, this->value, val);
+    CachedRational returnValue;
+    returnValue.cache = this->cache;
+    returnValue.value = result;
+    return returnValue;
 }
-CachedRational CachedRational::operator-(const double& d){
-    //TODO
-    return *this;
+CachedRational CachedRational::operator-(const double& d) const{
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(this->cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_sub(this->cache, this->value, val);
+    CachedRational returnValue;
+    returnValue.cache = this->cache;
+    returnValue.value = result;
+    return returnValue;
 }
-CachedRational CachedRational::operator*(const double& d){
-    //TODO
-    return *this;
+CachedRational CachedRational::operator*(const double& d) const{
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(this->cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_mul(this->cache, this->value, val);
+    CachedRational returnValue;
+    returnValue.cache = this->cache;
+    returnValue.value = result;
+    return returnValue;
 }
-CachedRational CachedRational::operator/(const double& d){
-    //TODO
-    return *this;
+CachedRational CachedRational::operator/(const double& d) const{
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(this->cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_div(this->cache, this->value, val);
+    CachedRational returnValue;
+    returnValue.cache = this->cache;
+    returnValue.value = result;
+    return returnValue;
 }
 CachedRational CachedRational::operator+=(const double& d){
-    //TODO
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(this->cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_add(this->cache, this->value, val);
+    this->value = result;
     return *this;
 }
 CachedRational CachedRational::operator-=(const double& d){
-    //TODO
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(this->cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_sub(this->cache, this->value, val);
+    this->value = result;
     return *this;
 }
 CachedRational CachedRational::operator*=(const double& d){
-    //TODO
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(this->cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_mul(this->cache, this->value, val);
+    this->value = result;
     return *this;
 }
 CachedRational CachedRational::operator/=(const double& d){
-    //TODO
+    cachedRational val;
+    mpq_t value;
+    mpq_init(value);
+    mpq_set_d(value, d);
+    val = cached_rational_set_mpq(this->cache, value);
+    mpq_clear(value);
+    
+    cachedRational result = cached_rational_div(this->cache, this->value, val);
+    this->value = result;
     return *this;
 }
 
@@ -756,7 +874,7 @@ CachedRational operator/(const int& d, const CachedRational& r){
   returnValue.value = result;
   return returnValue;
 }
-CachedRational CachedRational::operator+(const int& d){
+CachedRational CachedRational::operator+(const int& d) const{
     cachedRational intval;
     if(d <= 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
@@ -770,7 +888,7 @@ CachedRational CachedRational::operator+(const int& d){
   returnValue.value = result;
   return returnValue;
 }
-CachedRational CachedRational::operator-(const int& d){
+CachedRational CachedRational::operator-(const int& d) const{
     cachedRational intval;
     if(d <= 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
@@ -784,7 +902,7 @@ CachedRational CachedRational::operator-(const int& d){
   returnValue.value = result;
   return returnValue;
 }
-CachedRational CachedRational::operator*(const int& d){
+CachedRational CachedRational::operator*(const int& d) const{
     cachedRational intval;
     if(d <= 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
@@ -798,7 +916,7 @@ CachedRational CachedRational::operator*(const int& d){
   returnValue.value = result;
   return returnValue;
 }
-CachedRational CachedRational::operator/(const int& d){
+CachedRational CachedRational::operator/(const int& d) const{
     cachedRational intval;
     if(d <= 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};

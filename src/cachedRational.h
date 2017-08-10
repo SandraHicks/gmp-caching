@@ -140,6 +140,23 @@ namespace gmpcaching{
       CachedRational operator/(const CachedRational& i) const;
       CachedRational operator/=(const CachedRational& i);
       
+      CachedRational operator+(const double& d) const;
+      CachedRational operator-(const double& d) const;
+      CachedRational operator*(const double& d) const;
+      CachedRational operator/(const double& d) const;
+      CachedRational operator+=(const double& d);
+      CachedRational operator-=(const double& d);
+      CachedRational operator*=(const double& d);
+      CachedRational operator/=(const double& d);
+      
+      CachedRational operator+(const int& d) const;
+      CachedRational operator-(const int& d) const;
+      CachedRational operator*(const int& d) const;
+      CachedRational operator/(const int& d) const;
+      CachedRational operator+=(const int& d);
+      CachedRational operator-=(const int& d);
+      CachedRational operator*=(const int& d);
+      CachedRational operator/=(const int& d);
       
       /// add product of two rationals
       CachedRational& addProduct(const CachedRational& r, const CachedRational& s);
@@ -289,14 +306,6 @@ namespace gmpcaching{
       friend CachedRational operator-(const double& d, const CachedRational& r);
       friend CachedRational operator*(const double& d, const CachedRational& r);
       friend CachedRational operator/(const double& d, const CachedRational& r);
-      CachedRational operator+(const double& d);
-      CachedRational operator-(const double& d);
-      CachedRational operator*(const double& d);
-      CachedRational operator/(const double& d);
-      CachedRational operator+=(const double& d);
-      CachedRational operator-=(const double& d);
-      CachedRational operator*=(const double& d);
-      CachedRational operator/=(const double& d);
 
       friend bool operator!=(const CachedRational& r, const int& s);
       friend bool operator==(const CachedRational& r, const int& s);
@@ -316,14 +325,6 @@ namespace gmpcaching{
       friend CachedRational operator-(const int& d, const CachedRational& r);
       friend CachedRational operator*(const int& d, const CachedRational& r);
       friend CachedRational operator/(const int& d, const CachedRational& r);
-      CachedRational operator+(const int& d);
-      CachedRational operator-(const int& d);
-      CachedRational operator*(const int& d);
-      CachedRational operator/(const int& d);
-      CachedRational operator+=(const int& d);
-      CachedRational operator-=(const int& d);
-      CachedRational operator*=(const int& d);
-      CachedRational operator/=(const int& d);
       //*******************************************************//
       
       //*******************************************************//
