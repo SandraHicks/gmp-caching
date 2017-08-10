@@ -38,6 +38,9 @@ cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2
 cachedInt cached_int_lcm(const MasterCache* mstr, cachedInt val1, cachedInt val2);
 int cached_int_invert(const MasterCache* mstr, cachedInt val1, cachedInt val2, cachedInt* result);
 
+int cached_int_cmp(const MasterCache* mstr, cachedInt val1, cachedInt val2);
+int cached_int_cmp_d(const MasterCache* mstr, cachedInt val1, double val2);
+int cached_int_cmp_i(const MasterCache* mstr, cachedInt val1, int val2);
 
 #ifdef __cplusplus
 }

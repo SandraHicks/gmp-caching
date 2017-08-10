@@ -749,3 +749,55 @@ int cached_int_isID(cachedInt val){
     else
         return 1;
 }
+
+int cached_int_cmp(const MasterCache* mstr, cachedInt val1, cachedInt val2){
+    if(val1 == NaN || val2 == NaN){
+        return 2;
+    }
+    if(val1 == PLUS_INFINITY && val2 == MINUS_INFINITY){
+        return 1;
+    }
+    else if(val1 == MINUS_INFINITY && val2 == PLUS_INFINITY){
+        return -1;
+    }
+    else if(val1 == PLUS_INFINITY || val2 == PLUS_INFINITY || val2 == MINUS_INFINITY || val1 == MINUS_INFINITY){
+        return 2;
+    }
+    
+    cachedInt diff = cached_int_sub(mstr, val1, val2);
+    if((diff & NEG) >= 1){
+        return -1;
+    }
+    else if(diff == 0){
+        return 0;
+    }
+    else{
+        return 1;
+    }
+    
+}
+
+int cached_int_cmp_i(const MasterCache* mstr, cachedInt val1, int val2){
+    if(cached_int_isID(val1))
+        return 1;
+    
+    uint64_t convert;
+    if(val2 < 0){
+        val2 = val2 * (-1);
+        convert = (uint64_t) val2 | NEG;
+    }
+    return cached_int_cmp(mstr, val1, convert);
+}
+int cached_int_cmp_d(const MasterCache* mstr, cachedInt val1, double val2){
+    double d = cached_int_get_d(mstr, val1);
+    double diff = d - val2;
+    if(diff > 0){
+        return 1;
+    }
+    else if(diff < 0){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+}

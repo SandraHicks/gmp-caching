@@ -76,6 +76,7 @@ src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: ../src/cachedRational.cpp
 src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: ../src/cachedRational.h
 src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: ../src/caching_operations.h
 src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: ../src/defines.h
+src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: ../src/gmpcachingxx.h
 src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: ../src/hashtable.h
 src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: ../src/master_cache_integer.h
 src/CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: ../src/master_cache_rational.h

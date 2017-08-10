@@ -11,7 +11,7 @@
 #include "mastercache.h"
 namespace gmpcaching{
     
-    extern MasterCache* globalcache = NULL;
+    extern MasterCache* globalcache;
     
     class GMPCaching{
     public:

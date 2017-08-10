@@ -14,8 +14,11 @@ extern "C" {
 //debug
 #include <stdio.h>
 #include <inttypes.h>
+    
+#define DOUBLE_BITS 1019
 
 
+int is_double_castable(mpz_t m);
     
 //keine ID 0, fange an bei 2 zu zählen weil praktischer bei Abfragen
 
@@ -57,7 +60,13 @@ int64_t insert_mpz(mpz_t_cache* cache, mpz_t val){
         return -1;
     }
     
-    double fp_rep = mpz_get_d(val);
+    double fp_rep;
+    if(is_double_castable(val)){
+        fp_rep = mpz_get_d(val);
+    }
+    else{
+        fp_rep = 0.0;
+    }
     
     uint64_t id = cache->next_id;
     cached_mpz_t* new = &cache->cache[id];
@@ -108,6 +117,21 @@ void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
 double get_cached_double(mpz_t_cache* cache, uint64_t i){
     cached_mpz_t* element = &cache->cache[i];
     return element->fp;
+}
+
+//max number of double can be put into approx 1019
+int is_double_castable(mpz_t m){
+    int longsize = sizeof(long) * 8;
+    //maximum value of a long fits into 1019 bits (conservative)
+    int maxlimbs = DOUBLE_BITS / longsize;
+    int size = m->_mp_size;
+    if(size < 0)
+        size = size * (-1);
+    if(size > maxlimbs)
+        return 0;
+    else
+        return 1;
+    
 }
 
 #ifdef __cplusplus

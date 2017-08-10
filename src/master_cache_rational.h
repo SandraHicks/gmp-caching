@@ -46,6 +46,10 @@ cachedRational cached_rational_neg(const MasterCache* mstr, cachedRational val);
 void cached_rational_neg_inplace(const MasterCache* mstr, cachedRational* val);
 int cached_rational_sgn(const MasterCache* mstr, cachedRational val);
 
+int cached_rational_cmp(const MasterCache* mstr, cachedRational val1, cachedRational val2);
+int cached_rational_cmp_d(const MasterCache* mstr, cachedRational val1, double val2);
+int cached_rational_cmp_i(const MasterCache* mstr, cachedRational val1, int val2);
+
 #ifdef __cplusplus
 }
 #endif

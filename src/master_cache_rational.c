@@ -30,8 +30,7 @@ cachedRational cached_rational_set_i(const MasterCache* mstr, int i){
             val.denominator = 0;
     }
     else{
-        val.counter = (uint64_t)(i*-1);
-        val.counter |= (uint64_t)1 << NEG;
+        val.counter = (uint64_t)(i*-1) | NEG;
         val.denominator = 0;
     }
     return val;
@@ -335,4 +334,58 @@ int cached_rational_isID(cachedRational val){
         return 0;
     else
         return 1;
+}
+
+int cached_rational_cmp(const MasterCache* mstr, cachedRational val1, cachedRational val2){
+//bring to same denominator
+    
+    cachedInt lcm = cached_int_lcm(mstr, val1.denominator, val2.denominator);
+    
+    cachedInt rest;
+    cachedInt f_1 = cached_int_tdiv(mstr, lcm, val1.denominator, &rest);
+    cachedInt f_2 = cached_int_tdiv(mstr, lcm, val2.denominator, &rest);
+    
+    cachedInt n1 = cached_int_mul(mstr, val1.counter, f_1);
+    cachedInt n2 = cached_int_mul(mstr, val2.counter, f_2);
+    
+    //compare counters
+    int cmp = cached_int_cmp(mstr, n1, n2);
+    return cmp;
+}
+
+int cached_rational_cmp_d(const MasterCache* mstr, cachedRational val1, double val2){
+//bring to same denominator
+    int cmp;
+    double c = cached_int_get_d(mstr, val1.counter);
+    double d = cached_int_get_d(mstr, val1.denominator);
+    double diff = (c/d) - val2;
+    
+    if(diff > 0){
+        return 1;
+    }
+    else if(diff < 0){
+        return -1;
+    }
+    else{
+        return 0;
+    }
+    
+    return cmp;
+}
+
+int cached_rational_cmp_i(const MasterCache* mstr, cachedRational val1, int val2){
+//bring to same denominator
+    if((val1.counter & SHIFT) == 0 ){
+        ;
+    }
+    uint64_t convert;
+    if(val2 < 0){
+        val2 = val2 * (-1);
+        convert = (uint64_t) val2 | NEG;
+    }
+    else{
+        convert = (uint64_t) val2;
+    }
+    cachedRational v2 = {convert, (uint64_t)1};
+    return cached_rational_cmp(mstr, val1, v2);
 }
