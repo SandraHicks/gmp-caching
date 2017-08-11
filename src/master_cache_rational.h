@@ -21,10 +21,10 @@ extern "C" {
 
 cachedRational cached_rational_set(const MasterCache* mstr, mpz_t counter, mpz_t denominator);
 cachedRational cached_rational_set_i(const MasterCache* mstr, int i);
-cachedRational cached_rational_set_mpq(const MasterCache* mstr, mpq_t number);
+cachedRational cached_rational_set_mpq(const MasterCache* mstr, const mpq_t number);
 cachedRational cached_rational_set_cached(const MasterCache* mstr, cachedInt counter, cachedInt denominator);
 
-void cached_rational_reset_mpq(const MasterCache* mstr, mpq_t number, cachedRational* value);
+void cached_rational_reset_mpq(const MasterCache* mstr, const mpq_t number, cachedRational* value);
 void cached_rational_reset(const MasterCache* mstr, mpz_t counter, mpz_t denominator, cachedRational* value);
 void cached_rational_reset_cached(const MasterCache* mstr, cachedInt counter, cachedInt denominator, cachedRational* value);
 
@@ -33,6 +33,7 @@ int cached_rational_isID(cachedRational val);
 void cached_rational_get(const MasterCache* mstr, cachedRational id, mpz_t counter, mpz_t denominator);
 void cached_rational_get_mpq(const MasterCache* mstr, cachedRational id, mpq_t number);
 double cached_rational_get_d(const MasterCache* mstr, cachedRational id);
+void cached_rational_get_str(const MasterCache* mstr, cachedRational id, char* str, int precision);
 
 cachedRational cached_rational_add(const MasterCache* mstr, cachedRational val1, cachedRational val2);
 cachedRational cached_rational_reduce(const MasterCache* mstr, cachedRational val);

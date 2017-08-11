@@ -5,6 +5,7 @@
   */
 #include <gmp.h>
 #include <stdlib.h>
+#include <stdio.h>
 
 #include "master_cache_rational.h"
 
@@ -42,7 +43,7 @@ cachedRational cached_rational_set_i(const MasterCache* mstr, int i){
  * @param number
  * @return cachedRational
  */
-cachedRational cached_rational_set_mpq(const MasterCache* mstr, mpq_t number){
+cachedRational cached_rational_set_mpq(const MasterCache* mstr, const mpq_t number){
     return cached_rational_set(mstr, &(number->_mp_num), &(number->_mp_den));
 }
 
@@ -79,7 +80,7 @@ void cached_rational_reset(const MasterCache* mstr, mpz_t counter, mpz_t denomin
  * @param number
  * @param value
  */
-void cached_rational_reset_mpq(const MasterCache* mstr, mpq_t number, cachedRational* value){
+void cached_rational_reset_mpq(const MasterCache* mstr, const mpq_t number, cachedRational* value){
     cached_rational_reset(mstr, &(number->_mp_num), &(number->_mp_den), value);
 }
 
@@ -131,6 +132,27 @@ double cached_rational_get_d(const MasterCache* mstr, cachedRational id){
     double ctr = cached_int_get_d(mstr, id.counter);
     double den = cached_int_get_d(mstr, id.denominator);
     return ctr/den;
+}
+/**
+ * 
+ * @param mstr MasterCache pointer
+ * @param id
+ * @param str
+ * @return 
+ */
+void cached_rational_get_str(const MasterCache* mstr, cachedRational id, char* str, int precision){
+    mpf_t tmpFloat;
+    FILE* tmpStream;
+    mpq_t gmpval;
+    cached_rational_get_mpq(mstr, id, gmpval);
+    
+    tmpStream = fmemopen(str, 63, "w");
+    mpf_init2(tmpFloat, 256);
+    mpf_set_q(tmpFloat, gmpval);
+    mpf_out_str(tmpStream, 10, precision, tmpFloat);
+    mpf_clear(tmpFloat);
+
+    fflush(tmpStream);
 }
 
 /**

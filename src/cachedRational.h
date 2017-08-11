@@ -58,7 +58,7 @@ namespace gmpcaching{
        *
        * Constructs the CachedRational from mpq_t and sets the MasterCache.
        */
-      CachedRational(mpq_t q, const MasterCache* cache = NULL);
+      CachedRational(const mpq_t& q, const MasterCache* cache = NULL);
 
       /**
        * @rief Constructs the CachedRational from two mpz_t's.
@@ -108,7 +108,7 @@ namespace gmpcaching{
        */
       CachedRational& operator=(const CachedRational& ci);
 
-      CachedRational& operator=(mpq_t& q);
+      CachedRational& operator=(const mpq_t& q);
 
       CachedRational& operator=(std::pair<mpz_t&, mpz_t&> mpzts);
 
@@ -158,6 +158,16 @@ namespace gmpcaching{
       CachedRational operator*=(const int& d);
       CachedRational operator/=(const int& d);
       
+      friend CachedRational operator+(const double& d, const CachedRational& r);
+      friend CachedRational operator-(const double& d, const CachedRational& r);
+      friend CachedRational operator*(const double& d, const CachedRational& r);
+      friend CachedRational operator/(const double& d, const CachedRational& r);
+      
+      friend CachedRational operator+(const int& d, const CachedRational& r);
+      friend CachedRational operator-(const int& d, const CachedRational& r);
+      friend CachedRational operator*(const int& d, const CachedRational& r);
+      friend CachedRational operator/(const int& d, const CachedRational& r);
+      
       /// add product of two rationals
       CachedRational& addProduct(const CachedRational& r, const CachedRational& s);
 
@@ -194,24 +204,53 @@ namespace gmpcaching{
        */
       CachedRational neg();
       /**
+       * Function to get the negative value of a fraction.
+       * @param r CachedRational to negate
+       * @return negative rational
+       */
+      friend CachedRational operator-(const CachedRational& r);
+      /**
        * Function to get sign of a fraction.
        * @return 1 if positive, 0 if negative
        */
       friend int sign(const CachedRational& r);
-
-      explicit operator double() const;
-      explicit operator long double() const;
+      /**
+       * explicit double conversion
+       * @return double representation
+       */
+      //explicit operator double() const;
+      /**
+       * explicit long double conversion
+       * @return long double representation
+       */
+      //explicit operator long double() const;
       
-      //operator double() const;
-      //operator long double() const;
+      operator double() const;
+      operator long double() const;
       
       //*******************************************************//
       //Cache related
+      /**
+       * getter for the associated cache
+       * @return MasterCache pointer
+       */
       const MasterCache* getCache() const;
 
+      /**
+       * getter for cachedRational struct
+       * @return cachedRational struct
+       */
       cachedRational getValue() const;
+      /**
+       * (re)set the value of the CachedRational
+       * @param val cachedRational C-type
+       */
       void setValue(cachedRational val);
-      
+      /**
+       * 
+       * @param i CachedRational
+       * @return boolean true if same cache
+       */
       bool hasSameCache(CachedRational& i) const;
       //*******************************************************//
       
@@ -219,9 +258,7 @@ namespace gmpcaching{
       
       //*******************************************************//
       //rational interface methods
-      friend CachedRational operator-(const CachedRational& r);
       
-      //precision
       static int precision();
       /// Size in specified base (bit size for base 2)
       int sizeInBase(const int base = 2) const;
@@ -233,19 +270,6 @@ namespace gmpcaching{
       
       CachedRational& powRound();
       //*******************************************************//
-      
-      
-      
-      
-      //*******************************************************//
-      //String conversions
-      bool readString(const char* s);
-
-      friend std::string rationalToString(const CachedRational& r, const int precision);
-      friend bool readStringRational(const char* s, CachedRational& value);
-      friend std::ostream& operator<<(std::ostream& os, const CachedRational& q);
-      //*******************************************************//
-      
       
       //*******************************************************//
       /// provides read-only access to underlying mpq_t
@@ -265,7 +289,19 @@ namespace gmpcaching{
       
       
       //*******************************************************//
-      //friend comparisons and operators
+      //String conversions
+      bool readString(const char* s);
+
+      friend std::string rationalToString(const CachedRational& r, const int precision);
+      friend bool readStringRational(const char* s, CachedRational& value);
+      friend std::ostream& operator<<(std::ostream& os, const CachedRational& q);
+      //*******************************************************//
+      
+      
+      
+      
+      //*******************************************************//
+      //friend comparisons
       friend int compareRational(const CachedRational& r, const CachedRational& s);
       friend bool operator!=(const CachedRational& r, const CachedRational& s);
       friend bool operator==(const CachedRational& r, const CachedRational& s);
@@ -302,11 +338,6 @@ namespace gmpcaching{
       friend bool operator>(const long double& r, const CachedRational& s);
       friend bool operator>=(const long double& r, const CachedRational& s);
 
-      friend CachedRational operator+(const double& d, const CachedRational& r);
-      friend CachedRational operator-(const double& d, const CachedRational& r);
-      friend CachedRational operator*(const double& d, const CachedRational& r);
-      friend CachedRational operator/(const double& d, const CachedRational& r);
-
       friend bool operator!=(const CachedRational& r, const int& s);
       friend bool operator==(const CachedRational& r, const int& s);
       friend bool operator<(const CachedRational& r, const int& s);
@@ -321,24 +352,23 @@ namespace gmpcaching{
       friend bool operator>(const int& r, const CachedRational& s);
       friend bool operator>=(const int& r, const CachedRational& s);
 
-      friend CachedRational operator+(const int& d, const CachedRational& r);
-      friend CachedRational operator-(const int& d, const CachedRational& r);
-      friend CachedRational operator*(const int& d, const CachedRational& r);
-      friend CachedRational operator/(const int& d, const CachedRational& r);
       //*******************************************************//
       
       //*******************************************************//
       //not sure if required
       
-      //static void enableListMem();
+      static void enableListMem();
       
-      //static void freeListMem();
+      static void freeListMem();
       
-      //static void disableListMem();
+      static void disableListMem();
       
       //*******************************************************//
   };
 
+  /**
+   * Exception class for the case that the Cache was not set before the number is initialized
+   */
   class RationalCacheNotSetException: public std::exception{
   private:
       cachedInt counter;
@@ -361,8 +391,6 @@ namespace gmpcaching{
         return ret.c_str();
     }
   };
-  CachedRational operator/(const CachedRational& r, const int& d);
-  CachedRational operator/(const CachedRational& r, const double& d);
    /// Negation.
    CachedRational operator-(const CachedRational& r);
    CachedRational spxAbs(const CachedRational& r);

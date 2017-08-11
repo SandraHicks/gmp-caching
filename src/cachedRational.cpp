@@ -110,7 +110,7 @@ CachedRational::CachedRational(const long double& r, const MasterCache* cache){
     this->value = val;
 }
 
-CachedRational::CachedRational(mpq_t q, const MasterCache* cache){
+CachedRational::CachedRational(const mpq_t& q, const MasterCache* cache){
     cachedRational val;
     if(cache == NULL){
         if(globalcache == NULL){
@@ -220,7 +220,7 @@ CachedRational& CachedRational::operator=(const CachedRational& ci){
   return *this;
 }
 
-CachedRational& CachedRational::operator=(mpq_t& q){
+CachedRational& CachedRational::operator=(const mpq_t& q){
   if(!this->cache){
       throw new RationalCacheNotSetException(this->value.counter, this->value.denominator);
   }
@@ -999,14 +999,7 @@ std::ostream& operator<<(std::ostream& os, const CachedRational& r)
    return os;
 }
 
-std::string rationalToString(const CachedRational& r, const int precision){
-    //TODO
-    return "";
-}
-bool readStringRational(const char* s, CachedRational& value){
-    //TODO
-    return 1;
-}
+
 
 #define MAX_STR_LEN 10000
 bool CachedRational::readString(const char* s){
@@ -1014,6 +1007,24 @@ bool CachedRational::readString(const char* s){
     assert(strlen(s) <= MAX_STR_LEN);
     mpq_t rational;
     
+    //TODO
+    return 1;
+}
+
+std::string rationalToString(const CachedRational& r, const int precision){
+#if defined(_WIN32) || defined(_WIN64) || defined(__APPLE__)
+    std::stringstream sstream;
+    sstream << r;
+    return sstream.str();
+#else
+    char cstring[64];
+    cached_rational_get_str(r.cache, r.value, cstring, precision);
+    std::string retString = std::string(cstring);
+    return retString;
+#endif
+}
+
+bool readStringRational(const char* s, CachedRational& value){
     //TODO
     return 1;
 }
@@ -1094,5 +1105,21 @@ mpq_t& CachedRational::getMpqRef_w() const {
    return value;
 }
 
+
+//those functions are empty in soplex as well, just their existence is required
+void CachedRational::enableListMem()
+{
+   // because list memory is not used when SOPLEX_WITH_GMP is not defined, there is nothing to do here
+}
+
+void CachedRational::freeListMem()
+{
+   // because list memory is not used when SOPLEX_WITH_GMP is not defined, there is nothing to do here
+}
+
+void CachedRational::disableListMem()
+{
+   // because list memory is not used when SOPLEX_WITH_GMP is not defined, there is nothing to do here
+}
 
 }
