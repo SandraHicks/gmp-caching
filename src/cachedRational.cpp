@@ -16,7 +16,7 @@
 
 
 namespace gmpcaching{
-
+MasterCache* globalcache;
 /*
 constructors
 */
@@ -1106,6 +1106,7 @@ mpq_t& CachedRational::getMpqRef_w() const {
 }
 
 
+
 //those functions are empty in soplex as well, just their existence is required
 void CachedRational::enableListMem()
 {
@@ -1120,6 +1121,45 @@ void CachedRational::freeListMem()
 void CachedRational::disableListMem()
 {
    // because list memory is not used when SOPLEX_WITH_GMP is not defined, there is nothing to do here
+}
+
+/// Total size of rational vector.
+int totalSizeRational(const CachedRational* vector, const int length, const int base)
+{
+   assert(vector != 0);
+   assert(length >= 0);
+   assert(base >= 0);
+
+   int size = 0;
+
+   for( int i = 0; i < length; i++ )
+      size += vector[i].sizeInBase(base);
+
+   return size;
+}
+
+
+
+/// Size of least common multiple of denominators in rational vector.
+int dlcmSizeRational(const CachedRational* vector, const int length, const int base)
+{
+   assert(vector != 0);
+   assert(length >= 0);
+   assert(base >= 0);
+
+   return 0;
+}
+
+
+
+/// Size of largest denominator in rational vector.
+int dmaxSizeRational(const CachedRational* vector, const int length, const int base)
+{
+   assert(vector != 0);
+   assert(length >= 0);
+   assert(base >= 0);
+
+   return 0;
 }
 
 }

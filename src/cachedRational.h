@@ -283,6 +283,7 @@ namespace gmpcaching{
 
       /// provides write access to underlying mpq_t; use with care
       mpq_t& getMpqRef_w() const;
+      
       //*******************************************************//
       
       
