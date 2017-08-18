@@ -30,6 +30,7 @@
       <itemPath>../cachedRational.cpp</itemPath>
       <itemPath>../caching_operations.c</itemPath>
       <itemPath>../debug.c</itemPath>
+      <itemPath>../gmpcachingxx.cpp</itemPath>
       <itemPath>../hashing.c</itemPath>
       <itemPath>../hashtable.c</itemPath>
       <itemPath>../master_cache_integer.c</itemPath>
@@ -83,6 +84,8 @@
       <item path="../debug.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../defines.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../gmpcachingxx.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../gmpcachingxx.h" ex="false" tool="3" flavor2="0">
       </item>
@@ -156,6 +159,8 @@
       <item path="../debug.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="../defines.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="../gmpcachingxx.cpp" ex="false" tool="1" flavor2="0">
       </item>
       <item path="../gmpcachingxx.h" ex="false" tool="3" flavor2="0">
       </item>

@@ -43,6 +43,7 @@ set(GMP_CACHING_SOURCES
   ${GMP_CACHING_SRC_DIR}src/overflow_detection.c
   ${GMP_CACHING_SRC_DIR}src/cachedInt.cpp
   ${GMP_CACHING_SRC_DIR}src/cachedRational.cpp
+  ${GMP_CACHING_SRC_DIR}src/gmpcachingxx.cpp
 )
 
 set(GMP_CACHING_HEADERS

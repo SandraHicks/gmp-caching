@@ -1,1 +1,0 @@
-/usr/bin/cc  -fPIC   CMakeFiles/master-cache-integer-grenzwerte.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-grenzwerte.c.o  -o master-cache-integer-grenzwerte -rdynamic -lgmp libgmp-caching.a -lgmp 

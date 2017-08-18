@@ -5,6 +5,7 @@
     <path>/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/</path>
     <filename>cachedInt_8cpp</filename>
     <includes id="cachedInt_8h" name="cachedInt.h" local="yes" imported="no">cachedInt.h</includes>
+    <includes id="gmpcachingxx_8h" name="gmpcachingxx.h" local="yes" imported="no">gmpcachingxx.h</includes>
     <member kind="function">
       <type>CachedInt</type>
       <name>operator-</name>
@@ -20,6 +21,7 @@
     <includes id="master__cache__integer_8h" name="master_cache_integer.h" local="yes" imported="no">master_cache_integer.h</includes>
     <includes id="mastercache_8h" name="mastercache.h" local="yes" imported="no">mastercache.h</includes>
     <class kind="class">gmpcaching::CachedInt</class>
+    <class kind="class">gmpcaching::IntegerCacheNotSetException</class>
     <member kind="function">
       <type>CachedInt</type>
       <name>operator-</name>
@@ -103,13 +105,6 @@
       <anchorfile>cachedRational_8cpp.html</anchorfile>
       <anchor>ac95c0c4c1c3deca2d27978bbcfa13052</anchor>
       <arglist>(const CachedRational *vector, const int length, const int base)</arglist>
-    </member>
-    <member kind="variable">
-      <type>MasterCache *</type>
-      <name>globalcache</name>
-      <anchorfile>cachedRational_8cpp.html</anchorfile>
-      <anchor>abc7dc05f551eed1188d726e3d466cf60</anchor>
-      <arglist></arglist>
     </member>
   </compound>
   <compound kind="file">
@@ -2268,9 +2263,23 @@
     </member>
     <member kind="function">
       <type>int</type>
+      <name>invert</name>
+      <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
+      <anchor>ad6cf0ee8a0e04ee1a0b6867bafd8b191</anchor>
+      <arglist>(CachedInt *res, CachedInt &amp;m)</arglist>
+    </member>
+    <member kind="function">
+      <type>int</type>
       <name>sign</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
       <anchor>a5e3525c9aed00a8fb5ee76ced558c7c4</anchor>
+      <arglist>()</arglist>
+    </member>
+    <member kind="function">
+      <type>CachedInt</type>
+      <name>neg</name>
+      <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
+      <anchor>a236754858b7f9c1a8aac3eee5048c70a</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
@@ -2680,6 +2689,10 @@
       <anchor>a7ce01bbb38a9001bbfd5c6737850c34e</anchor>
       <arglist>()</arglist>
     </member>
+  </compound>
+  <compound kind="class">
+    <name>gmpcaching::IntegerCacheNotSetException</name>
+    <filename>classgmpcaching_1_1IntegerCacheNotSetException.html</filename>
   </compound>
   <compound kind="class">
     <name>gmpcaching::RationalCacheNotSetException</name>

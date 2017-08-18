@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.11"/>
-<title>src/cachedInt.cpp File Reference</title>
+<title>gmpcaching::IntegerCacheNotSetException Class Reference</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -26,8 +26,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="annotated.html"><span>Classes</span></a></li>
-      <li class="current"><a href="files.html"><span>Files</span></a></li>
+      <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
+      <li><a href="files.html"><span>Files</span></a></li>
       <li>
         <div id="MSearchBox" class="MSearchBoxInactive">
         <span class="left">
@@ -48,8 +48,10 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   </div>
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
-      <li><a href="files.html"><span>File&#160;List</span></a></li>
-      <li><a href="globals.html"><span>File&#160;Members</span></a></li>
+      <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
+      <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
+      <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
 <!-- window showing the filter options -->
@@ -68,47 +70,22 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+<li class="navelem"><b>gmpcaching</b></li><li class="navelem"><a class="el" href="classgmpcaching_1_1IntegerCacheNotSetException.html">IntegerCacheNotSetException</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="classgmpcaching_1_1IntegerCacheNotSetException-members.html">List of all members</a>  </div>
   <div class="headertitle">
-<div class="title">cachedInt.cpp File Reference</div>  </div>
+<div class="title">gmpcaching::IntegerCacheNotSetException Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><dl class="section author"><dt>Author</dt><dd>Sandra Hicks </dd></dl>
-</div><div class="textblock"><code>#include &quot;<a class="el" href="cachedInt_8h.html">cachedInt.h</a>&quot;</code><br />
-<code>#include &quot;<a class="el" href="gmpcachingxx_8h.html">gmpcachingxx.h</a>&quot;</code><br />
-<code>#include &lt;cassert&gt;</code><br />
-<code>#include &lt;cstdint&gt;</code><br />
-</div><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
-Functions</h2></td></tr>
-<tr class="memitem:a10c8e15399dc8f10fbecffe4759301a8"><td class="memItemLeft" align="right" valign="top">CachedInt&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cachedInt_8cpp.html#a10c8e15399dc8f10fbecffe4759301a8">gmpcaching::operator-</a> (const CachedInt &amp;r)</td></tr>
-<tr class="memdesc:a10c8e15399dc8f10fbecffe4759301a8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Negation.  <a href="cachedInt_8cpp.html#a10c8e15399dc8f10fbecffe4759301a8">More...</a><br /></td></tr>
-<tr class="separator:a10c8e15399dc8f10fbecffe4759301a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table>
-<h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="file_a10c8e15399dc8f10fbecffe4759301a8"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">CachedInt gmpcaching::operator- </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> &amp;&#160;</td>
-          <td class="paramname"><em>r</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>negation operator </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<div class="textblock"><p>Exception for the case that the Integer Cache was not set </p>
+</div>
+<p><code>#include &lt;src/cachedInt.h&gt;</code></p>
 
-</div>
-</div>
+<p>Inherits std::exception.</p>
 </div><!-- contents -->
 
 <hr class="footer"/><address class="footer"><small>

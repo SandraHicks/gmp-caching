@@ -10,6 +10,7 @@ file(REMOVE_RECURSE
   "CMakeFiles/gmp-caching.dir/src/overflow_detection.c.o"
   "CMakeFiles/gmp-caching.dir/src/cachedInt.cpp.o"
   "CMakeFiles/gmp-caching.dir/src/cachedRational.cpp.o"
+  "CMakeFiles/gmp-caching.dir/src/gmpcachingxx.cpp.o"
   "libgmp-caching.pdb"
   "libgmp-caching.a"
 )

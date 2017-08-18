@@ -644,6 +644,33 @@ src/debug.c.s:
 	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/src/debug.c.s
 .PHONY : src/debug.c.s
 
+src/gmpcachingxx.o: src/gmpcachingxx.cpp.o
+
+.PHONY : src/gmpcachingxx.o
+
+# target to build an object file
+src/gmpcachingxx.cpp.o:
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/src/gmpcachingxx.cpp.o
+.PHONY : src/gmpcachingxx.cpp.o
+
+src/gmpcachingxx.i: src/gmpcachingxx.cpp.i
+
+.PHONY : src/gmpcachingxx.i
+
+# target to preprocess a source file
+src/gmpcachingxx.cpp.i:
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/src/gmpcachingxx.cpp.i
+.PHONY : src/gmpcachingxx.cpp.i
+
+src/gmpcachingxx.s: src/gmpcachingxx.cpp.s
+
+.PHONY : src/gmpcachingxx.s
+
+# target to generate assembly for a file
+src/gmpcachingxx.cpp.s:
+	$(MAKE) -f CMakeFiles/gmp-caching.dir/build.make CMakeFiles/gmp-caching.dir/src/gmpcachingxx.cpp.s
+.PHONY : src/gmpcachingxx.cpp.s
+
 src/hashing.o: src/hashing.c.o
 
 .PHONY : src/hashing.o
@@ -895,6 +922,9 @@ help:
 	@echo "... src/debug.o"
 	@echo "... src/debug.i"
 	@echo "... src/debug.s"
+	@echo "... src/gmpcachingxx.o"
+	@echo "... src/gmpcachingxx.i"
+	@echo "... src/gmpcachingxx.s"
 	@echo "... src/hashing.o"
 	@echo "... src/hashing.i"
 	@echo "... src/hashing.s"

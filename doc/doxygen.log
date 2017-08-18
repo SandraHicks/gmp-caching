@@ -4,9 +4,9 @@ warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/gen-i
 warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/mainpage.dox is not a readable file or directory... skipping.
 warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/references.dox is not a readable file or directory... skipping.
 error: Tag file `/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/libstdc++.tag' does not exist or is not a file. Skipping it...
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1097: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1121: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1121: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1091: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1115: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1115: warning: Found unknown command `\TODO'
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:143: warning: The following parameters of cached_rational_get_str(const MasterCache *mstr, cachedRational id, char *str, int precision) are not documented:
   parameter 'precision'
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:159: warning: argument 'result' of command @param is not found in the argument list of cached_rational_add(const MasterCache *mstr, cachedRational val1, cachedRational val2)
@@ -27,9 +27,9 @@ error: Tag file `/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/libs
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h:122: warning: argument 'r' of command @param is not found in the argument list of gmpcaching::CachedInt::operator=(const long double &d)
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h:126: warning: The following parameters of gmpcaching::CachedInt::operator=(const long double &d) are not documented:
   parameter 'd'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1121: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1115: warning: Found unknown command `\TODO'
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h:65: warning: Found unknown command `\rief'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1142: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1159: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1176: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1193: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1136: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1153: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1170: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1187: warning: Found unknown command `\TODO'

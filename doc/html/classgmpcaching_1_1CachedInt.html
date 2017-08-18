@@ -161,8 +161,12 @@ Public Member Functions</h2></td></tr>
 <a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgmpcaching_1_1CachedInt.html#a98277213e1e3294ff33ecd55d1a67708">subQuotient</a> (const <a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> &amp;r, const <a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> &amp;s)</td></tr>
 <tr class="memdesc:a98277213e1e3294ff33ecd55d1a67708"><td class="mdescLeft">&#160;</td><td class="mdescRight">subtract quotient of two rationals, r divided by s <br /></td></tr>
 <tr class="separator:a98277213e1e3294ff33ecd55d1a67708"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad6cf0ee8a0e04ee1a0b6867bafd8b191"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgmpcaching_1_1CachedInt.html#ad6cf0ee8a0e04ee1a0b6867bafd8b191">invert</a> (<a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> *res, <a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> &amp;m)</td></tr>
+<tr class="separator:ad6cf0ee8a0e04ee1a0b6867bafd8b191"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5e3525c9aed00a8fb5ee76ced558c7c4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgmpcaching_1_1CachedInt.html#a5e3525c9aed00a8fb5ee76ced558c7c4">sign</a> ()</td></tr>
 <tr class="separator:a5e3525c9aed00a8fb5ee76ced558c7c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a236754858b7f9c1a8aac3eee5048c70a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgmpcaching_1_1CachedInt.html#a236754858b7f9c1a8aac3eee5048c70a">neg</a> ()</td></tr>
+<tr class="separator:a236754858b7f9c1a8aac3eee5048c70a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0a96372e2cbf9c82878c09fe582a349c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgmpcaching_1_1CachedInt.html#a0a96372e2cbf9c82878c09fe582a349c">operator double</a> () const </td></tr>
 <tr class="separator:a0a96372e2cbf9c82878c09fe582a349c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34cf4c5a74e3e22ceca3d2fd6fb3bf0f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgmpcaching_1_1CachedInt.html#a34cf4c5a74e3e22ceca3d2fd6fb3bf0f">operator long double</a> () const </td></tr>
@@ -189,9 +193,8 @@ const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td><t
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="friends"></a>
 Friends</h2></td></tr>
-<tr class="memitem:a5d643b8b9eafa493495d4cc8f6c0b3a5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5d643b8b9eafa493495d4cc8f6c0b3a5"></a>
-<a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgmpcaching_1_1CachedInt.html#a5d643b8b9eafa493495d4cc8f6c0b3a5">operator-</a> (const <a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> &amp;r)</td></tr>
-<tr class="memdesc:a5d643b8b9eafa493495d4cc8f6c0b3a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Negation. <br /></td></tr>
+<tr class="memitem:a5d643b8b9eafa493495d4cc8f6c0b3a5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgmpcaching_1_1CachedInt.html#a5d643b8b9eafa493495d4cc8f6c0b3a5">operator-</a> (const <a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> &amp;r)</td></tr>
+<tr class="memdesc:a5d643b8b9eafa493495d4cc8f6c0b3a5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Negation.  <a href="#a5d643b8b9eafa493495d4cc8f6c0b3a5">More...</a><br /></td></tr>
 <tr class="separator:a5d643b8b9eafa493495d4cc8f6c0b3a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
@@ -750,6 +753,40 @@ Friends</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad6cf0ee8a0e04ee1a0b6867bafd8b191"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gmpcaching::CachedInt::invert </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> *&#160;</td>
+          <td class="paramname"><em>res</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>invert the <a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> modulo m </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">res</td><td>storage for the result </td></tr>
+    <tr><td class="paramname">m</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if invertible, 0 if not </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a5e3525c9aed00a8fb5ee76ced558c7c4"></a>
 <div class="memitem">
 <div class="memproto">
@@ -762,7 +799,23 @@ Friends</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>sign </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
+<p>sign </p><dl class="section return"><dt>Returns</dt><dd>1 if positive, 0 if negative </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a236754858b7f9c1a8aac3eee5048c70a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> gmpcaching::CachedInt::neg </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>get the negated version of this <a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>
@@ -872,6 +925,32 @@ Friends</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>boolean true if same cache </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Friends And Related Function Documentation</h2>
+<a class="anchor" id="a5d643b8b9eafa493495d4cc8f6c0b3a5"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgmpcaching_1_1CachedInt.html">CachedInt</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">friend</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>negation operator </p><dl class="section return"><dt>Returns</dt><dd></dd></dl>
 
 </div>
 </div>

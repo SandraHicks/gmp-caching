@@ -231,18 +231,32 @@ namespace gmpcaching{
       /// subtract quotient of two rationals, r divided by s
       CachedInt& subQuotient(const CachedInt& r, const CachedInt& s);
       
+      /**
+       * invert the CachedInt modulo m
+       * @param res storage for the result
+       * @param m 
+       * @return 1 if invertible, 0 if not
+       */
       int invert(CachedInt* res, CachedInt& m);
       CachedInt gcd(CachedInt& i);
       CachedInt lcm(CachedInt& i);
       CachedInt abs();
       /**
        * sign
-       * @return 
+       * @return 1 if positive, 0 if negative
        */
       int sign();
       
+      /**
+       * get the negated version of this CachedInt
+       * @return 
+       */
       CachedInt neg();
 
+      /**
+       * negation operator
+       * @return 
+       */
       friend CachedInt operator-(const CachedInt& r);
 
       /**
@@ -338,11 +352,16 @@ namespace gmpcaching{
 
       //*******************************************************//
   };
-  
+  /**
+   * Exception for the case that the Integer Cache was not set
+   */
   class IntegerCacheNotSetException: public std::exception{
   private:
       cachedInt data;
   public:
+      IntegerCacheNotSetException(){
+          this->data = 0;
+      }
       IntegerCacheNotSetException(cachedInt i){
           this->data = i;
       }

@@ -6,6 +6,7 @@
 
 
 #include "cachedInt.h"
+#include "gmpcachingxx.h"
 #include <cassert>
 #include <cstdint>
 
@@ -20,26 +21,93 @@ CachedInt::CachedInt(const MasterCache* cache){
 }
     
 CachedInt::CachedInt(cachedInt val, const MasterCache* cache){
-  this->value = val;
-  this->cache = cache;
+    //check for NULL cache
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new IntegerCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
+    this->value = val;
 }
 
 CachedInt::CachedInt(const mpz_t &z, const MasterCache* cache){
-  this->value = cached_int_set(cache, z);
-  this->cache = cache;
+    //check for NULL cache
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new IntegerCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
+    this->value = cached_int_set(this->cache, z);
 }
 
 CachedInt::CachedInt(const int &i, const MasterCache* cache){
-  this->value = (uint64_t)i;
-  this->cache = cache;
+    //check for NULL cache
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new IntegerCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
+    this->value = (uint64_t)i;
 }
 
 CachedInt::CachedInt(const long &l, const MasterCache* cache){
-  this->value = (uint64_t)l;
-  this->cache = cache;
+    //check for NULL cache
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new IntegerCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
+    this->value = (uint64_t)l;
 }
 
 CachedInt::CachedInt(const double &d, const MasterCache* cache){
+    //check for NULL cache
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new IntegerCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
+    
     mpz_t value;
     mpz_init(value);
     mpz_set_d(value, d);
@@ -47,7 +115,6 @@ CachedInt::CachedInt(const double &d, const MasterCache* cache){
     mpz_clear(value);
     
     this->value = val;
-    this->cache = cache;
 }
 
 CachedInt::CachedInt(const CachedInt& ci){
@@ -85,32 +152,88 @@ CachedInt& CachedInt::operator=(const CachedInt& ci){
 }
 
 CachedInt& CachedInt::operator=(const mpz_t& z){
-  this->value = cached_int_set(this->getCache(), z);
+    //check for NULL cache
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new IntegerCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
+    this->value = cached_int_set(this->getCache(), z);
 
-  return *this;
+    return *this;
 }
 
 CachedInt& CachedInt::operator=(const int &i){
-  this->value = (uint64_t)i;
+  //check for NULL cache
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new IntegerCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
+    this->value = (uint64_t)i;
 
-  if(i < 0){
-    this->value = cached_int_neg(this->getCache(), this->value);
-  }
+    if(i < 0){
+      this->value = cached_int_neg(this->getCache(), this->value);
+    }
 
-  return *this;
+    return *this;
 }
 
 CachedInt& CachedInt::operator=(const long &l){
-  this->value = (uint64_t)l;
+    //check for NULL cache
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new IntegerCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
+    this->value = (uint64_t)l;
 
-  if(l < 0){
-    this->value = cached_int_neg(this->getCache(), this->value);
-  }
+    if(l < 0){
+      this->value = cached_int_neg(this->getCache(), this->value);
+    }
 
-  return *this;
+    return *this;
 }
 
 CachedInt& CachedInt::operator=(const double &d){
+    //check for NULL cache
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new IntegerCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
     mpz_t value;
     mpz_init(value);
     mpz_set_d(value, d);
@@ -118,11 +241,24 @@ CachedInt& CachedInt::operator=(const double &d){
     mpz_clear(value);
     
     this->value = val;
-    this->cache = cache;
     return *this;
 }
 
 CachedInt& CachedInt::operator=(const long double &d){
+    //check for NULL cache
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new IntegerCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
     mpz_t value;
     mpz_init(value);
     mpz_set_d(value, double(d));
@@ -130,7 +266,6 @@ CachedInt& CachedInt::operator=(const long double &d){
     mpz_clear(value);
     
     this->value = val;
-    this->cache = cache;
     return *this;
 }
 
@@ -540,6 +675,9 @@ cachedInt CachedInt::getValue() const{
   return this->value;
 }
 void CachedInt::setValue(cachedInt val){
+    if(this->cache == NULL){
+        throw new IntegerCacheNotSetException(val);
+    }
     this->value = val;
 }
 

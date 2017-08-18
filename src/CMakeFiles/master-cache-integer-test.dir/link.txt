@@ -1,1 +1,0 @@
-/usr/bin/cc  -fPIC   CMakeFiles/master-cache-integer-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.o  -o master-cache-integer-test -rdynamic -lgmp libgmp-caching.a -lgmp 

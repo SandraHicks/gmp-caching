@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/_ext/5c0/cachedRational.o \
 	${OBJECTDIR}/_ext/5c0/caching_operations.o \
 	${OBJECTDIR}/_ext/5c0/debug.o \
+	${OBJECTDIR}/_ext/5c0/gmpcachingxx.o \
 	${OBJECTDIR}/_ext/5c0/hashing.o \
 	${OBJECTDIR}/_ext/5c0/hashtable.o \
 	${OBJECTDIR}/_ext/5c0/master_cache_integer.o \
@@ -93,6 +94,11 @@ ${OBJECTDIR}/_ext/5c0/debug.o: ../debug.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
 	${RM} "$@.d"
 	$(COMPILE.c) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/debug.o ../debug.c
+
+${OBJECTDIR}/_ext/5c0/gmpcachingxx.o: ../gmpcachingxx.cpp
+	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
+	${RM} "$@.d"
+	$(COMPILE.cc) -g -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/_ext/5c0/gmpcachingxx.o ../gmpcachingxx.cpp
 
 ${OBJECTDIR}/_ext/5c0/hashing.o: ../hashing.c
 	${MKDIR} -p ${OBJECTDIR}/_ext/5c0
