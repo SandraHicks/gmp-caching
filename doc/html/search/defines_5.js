@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['plusinfty',['PLUSINFTY',['../defines_8h.html#a32c24060f7e736dc85153f325ccdc7e6',1,'defines.h']]]
+  ['plus_5finfinity',['PLUS_INFINITY',['../defines_8h.html#a2d1730b0e135a85bba7eb5d65fa7b9a7',1,'defines.h']]]
 ];

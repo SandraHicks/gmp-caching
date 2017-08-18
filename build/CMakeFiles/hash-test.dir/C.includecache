@@ -6,6 +6,12 @@
 
 #IncludeRegexTransform: 
 
+../src/hashing.h
+stdint.h
+-
+gmp.h
+-
+
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hash-test.c
 hashing.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hashing.h
@@ -20,11 +26,5 @@ stdio.h
 stdlib.h
 -
 string.h
--
-
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashing.h
-stdint.h
--
-gmp.h
 -
 

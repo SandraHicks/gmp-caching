@@ -4,7 +4,7 @@
 # compile C with /usr/bin/cc
 C_FLAGS = -fPIC  
 
-C_DEFINES = 
+C_DEFINES = -DGMPCACHING_CACHESIZE=400
 
-C_INCLUDES = -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/../src 
+C_INCLUDES = -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build 
 

@@ -23,8 +23,12 @@ mpz_caching.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/mpz_caching.h
 
 src/mpz_caching.h
-stdint.h
+gmp.h
+-
+cstdint
 -
 gmp.h
+-
+stdint.h
 -
 

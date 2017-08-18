@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['hashtable',['Hashtable',['../structHashtable.html',1,'']]],
-  ['hashtable_5fbinary',['Hashtable_binary',['../structHashtable__binary.html',1,'']]]
+  ['gmpcaching',['GMPCaching',['../classgmpcaching_1_1GMPCaching.html',1,'gmpcaching']]]
 ];

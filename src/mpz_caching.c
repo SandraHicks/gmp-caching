@@ -60,6 +60,10 @@ int64_t insert_mpz(mpz_t_cache* cache, mpz_t val){
         return -1;
     }
     
+    if(cache->next_id >= cache->size/2){
+        printf("Cache is half full!\n");
+    }
+    
     double fp_rep;
     if(is_double_castable(val)){
         fp_rep = mpz_get_d(val);

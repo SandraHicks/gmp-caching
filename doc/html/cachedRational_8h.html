@@ -72,14 +72,146 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div>
 </div><!-- top -->
 <div class="header">
+  <div class="summary">
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">cachedRational.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Sandra Hicks </dd></dl>
-</div><div class="textblock"><code>#include &quot;master-cache-rational.h&quot;</code><br />
-</div></div><!-- contents -->
+</div><div class="textblock"><code>#include &quot;<a class="el" href="master__cache__rational_8h.html">master_cache_rational.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="mastercache_8h.html">mastercache.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="cachedInt_8h.html">cachedInt.h</a>&quot;</code><br />
+<code>#include &lt;utility&gt;</code><br />
+<code>#include &lt;exception&gt;</code><br />
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgmpcaching_1_1CachedRational.html">gmpcaching::CachedRational</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classgmpcaching_1_1RationalCacheNotSetException.html">gmpcaching::RationalCacheNotSetException</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a1276b57d59799f0cb0f6a1321bdd186b"><td class="memItemLeft" align="right" valign="top">CachedRational&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cachedRational_8cpp.html#a1276b57d59799f0cb0f6a1321bdd186b">gmpcaching::operator-</a> (const CachedRational &amp;r)</td></tr>
+<tr class="memdesc:a1276b57d59799f0cb0f6a1321bdd186b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Negation.  <a href="cachedRational_8cpp.html#a1276b57d59799f0cb0f6a1321bdd186b">More...</a><br /></td></tr>
+<tr class="separator:a1276b57d59799f0cb0f6a1321bdd186b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5a8852bab23abeba4787bd11f90c837d"><td class="memItemLeft" align="right" valign="top">CachedRational&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cachedRational_8cpp.html#a5a8852bab23abeba4787bd11f90c837d">gmpcaching::spxAbs</a> (const CachedRational &amp;r)</td></tr>
+<tr class="separator:a5a8852bab23abeba4787bd11f90c837d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a70e5eea69f5669dd83ecba430795b2e7"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cachedRational_8cpp.html#a70e5eea69f5669dd83ecba430795b2e7">gmpcaching::sign</a> (const CachedRational &amp;r)</td></tr>
+<tr class="separator:a70e5eea69f5669dd83ecba430795b2e7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7bbba69429ce6dc527f5067df533e9e9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a7bbba69429ce6dc527f5067df533e9e9"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cachedRational_8cpp.html#a7bbba69429ce6dc527f5067df533e9e9">gmpcaching::rationalToString</a> (const CachedRational &amp;r, const int precision=32)</td></tr>
+<tr class="memdesc:a7bbba69429ce6dc527f5067df533e9e9"><td class="mdescLeft">&#160;</td><td class="mdescRight">convert rational number to string <br /></td></tr>
+<tr class="separator:a7bbba69429ce6dc527f5067df533e9e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7268b8737e8f9b667ef45528622b7d40"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cachedRational_8cpp.html#a7268b8737e8f9b667ef45528622b7d40">gmpcaching::readStringRational</a> (const char *s, CachedRational &amp;value)</td></tr>
+<tr class="separator:a7268b8737e8f9b667ef45528622b7d40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae508585d1a7d07c9b80dea3a4754283c"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae508585d1a7d07c9b80dea3a4754283c"></a>
+std::ostream &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cachedRational_8cpp.html#ae508585d1a7d07c9b80dea3a4754283c">gmpcaching::operator&lt;&lt;</a> (std::ostream &amp;os, const CachedRational &amp;r)</td></tr>
+<tr class="memdesc:ae508585d1a7d07c9b80dea3a4754283c"><td class="mdescLeft">&#160;</td><td class="mdescRight">print Rational <br /></td></tr>
+<tr class="separator:ae508585d1a7d07c9b80dea3a4754283c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04314491b09971f4008e968a902c0781"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a04314491b09971f4008e968a902c0781"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cachedRational_8cpp.html#a04314491b09971f4008e968a902c0781">gmpcaching::totalSizeRational</a> (const CachedRational *vector, const int length, const int base)</td></tr>
+<tr class="memdesc:a04314491b09971f4008e968a902c0781"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total size of rational vector. <br /></td></tr>
+<tr class="separator:a04314491b09971f4008e968a902c0781"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a708355c2109e0668161ca0e3cdf7358d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a708355c2109e0668161ca0e3cdf7358d"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cachedRational_8cpp.html#a708355c2109e0668161ca0e3cdf7358d">gmpcaching::dlcmSizeRational</a> (const CachedRational *vector, const int length, const int base)</td></tr>
+<tr class="memdesc:a708355c2109e0668161ca0e3cdf7358d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of least common multiple of denominators in rational vector. <br /></td></tr>
+<tr class="separator:a708355c2109e0668161ca0e3cdf7358d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac95c0c4c1c3deca2d27978bbcfa13052"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac95c0c4c1c3deca2d27978bbcfa13052"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cachedRational_8cpp.html#ac95c0c4c1c3deca2d27978bbcfa13052">gmpcaching::dmaxSizeRational</a> (const CachedRational *vector, const int length, const int base)</td></tr>
+<tr class="memdesc:ac95c0c4c1c3deca2d27978bbcfa13052"><td class="mdescLeft">&#160;</td><td class="mdescRight">Size of largest denominator in rational vector. <br /></td></tr>
+<tr class="separator:ac95c0c4c1c3deca2d27978bbcfa13052"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="file_a1276b57d59799f0cb0f6a1321bdd186b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CachedRational gmpcaching::operator- </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgmpcaching_1_1CachedRational.html">CachedRational</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to get the negative value of a fraction. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">r</td><td><a class="el" href="classgmpcaching_1_1CachedRational.html">CachedRational</a> to negate </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>negative rational </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="file_a5a8852bab23abeba4787bd11f90c837d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">CachedRational gmpcaching::spxAbs </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgmpcaching_1_1CachedRational.html">CachedRational</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to get the absolute value of a fraction. </p><dl class="section return"><dt>Returns</dt><dd>absolute rational </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="file_a70e5eea69f5669dd83ecba430795b2e7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int gmpcaching::sign </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classgmpcaching_1_1CachedRational.html">CachedRational</a> &amp;&#160;</td>
+          <td class="paramname"><em>r</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Function to get sign of a fraction. </p><dl class="section return"><dt>Returns</dt><dd>1 if positive, 0 if negative </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="file_a7268b8737e8f9b667ef45528622b7d40"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool gmpcaching::readStringRational </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classgmpcaching_1_1CachedRational.html">CachedRational</a> &amp;&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>read Rational from string </p>
+
+</div>
+</div>
+</div><!-- contents -->
 
 <hr class="footer"/><address class="footer"><small>
 Generated by &#160;<a href="http://www.doxygen.org/index.html">

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/hash-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/hash-test.c.o"
+  "CMakeFiles/hash-test.dir/Tests/hash-test.c.o"
   "hash-test.pdb"
   "hash-test"
 )

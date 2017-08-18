@@ -30,6 +30,7 @@ namespace gmpcaching{
        * @brief Constructs the CachedRational.
        *
        * Constructs the CachedRational without setting properties.
+       * @param cache
        */
       CachedRational(const MasterCache* cache = NULL);
       
@@ -106,23 +107,60 @@ namespace gmpcaching{
       /*
        assignments
        */
+      
+      /**
+       * assignment operator from CachedRational
+       * @param ci
+       * @return 
+       */
       CachedRational& operator=(const CachedRational& ci);
 
+      /**
+       * assignment operator from mpq_t
+       * @param q
+       * @return 
+       */
       CachedRational& operator=(const mpq_t& q);
 
+      /**
+       * assignment operator from pair of mpz_t
+       * @param mpzts
+       * @return 
+       */
       CachedRational& operator=(std::pair<mpz_t&, mpz_t&> mpzts);
-
+      /**
+       * assignment operator from pair of int
+       * @param ints
+       * @return 
+       */
       CachedRational& operator=(std::pair<int, int> ints);
 
+      /**
+       * assignment operator from pair of long
+       * @param longs
+       * @return 
+       */
       CachedRational& operator=(std::pair<long, long> longs);
      
-      /// assignment operator from long double
+      /**
+       * assignment operator from long double
+       * @param r
+       * @return 
+       */
       CachedRational& operator=(const long double &r);
 
-      /// assignment operator from double
+      /**
+       * assignment operator from double
+       * @param r
+       * @return 
+       */
       CachedRational& operator=(const double &r);
 
-      /// assignment operator from int
+      /**
+       * assignment operator from int
+       * @param i
+       * @return 
+       */
       CachedRational& operator=(const int &i);
 
       /*
@@ -251,13 +289,12 @@ namespace gmpcaching{
        * @param i CachedRational
        * @return boolean true if same cache
        */
-      bool hasSameCache(CachedRational& i) const;
+      bool hasSameCache(const CachedRational& i) const;
       //*******************************************************//
       
       
-      
       //*******************************************************//
-      //rational interface methods
+      //soplex::Rational interface methods
       
       static int precision();
       /// Size in specified base (bit size for base 2)
@@ -272,6 +309,7 @@ namespace gmpcaching{
       //*******************************************************//
       
       //*******************************************************//
+      // more soplex::Rational interface methods which should return the mpq_t, not yet working here
       /// provides read-only access to underlying mpq_t
       const mpq_t* getMpqPtr() const;
 
@@ -356,7 +394,8 @@ namespace gmpcaching{
       //*******************************************************//
       
       //*******************************************************//
-      //not sure if required
+      //functions from soplex::Rational interface which do nothing (here and there)
+      //unfortunately they are required to make SoPlex compile
       
       static void enableListMem();
       

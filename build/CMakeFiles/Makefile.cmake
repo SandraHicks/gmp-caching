@@ -11,9 +11,7 @@ set(CMAKE_MAKEFILE_DEPENDS
   "CMakeFiles/3.5.2/CMakeCCompiler.cmake"
   "CMakeFiles/3.5.2/CMakeCXXCompiler.cmake"
   "CMakeFiles/3.5.2/CMakeSystem.cmake"
-  "../doc/CMakeLists.txt"
   "../doc/Doxyfile.in"
-  "../src/CMakeLists.txt"
   "/usr/share/cmake-3.5/Modules/CMakeCInformation.cmake"
   "/usr/share/cmake-3.5/Modules/CMakeCXXInformation.cmake"
   "/usr/share/cmake-3.5/Modules/CMakeCommonLanguageInclude.cmake"
@@ -43,23 +41,22 @@ set(CMAKE_MAKEFILE_OUTPUTS
 
 # Byproducts of CMake generate step:
 set(CMAKE_MAKEFILE_PRODUCTS
+  "doc/Doxyfile"
   "CMakeFiles/CMakeDirectoryInformation.cmake"
-  "doc/CMakeFiles/CMakeDirectoryInformation.cmake"
-  "src/CMakeFiles/CMakeDirectoryInformation.cmake"
   )
 
 # Dependency information for all targets:
 set(CMAKE_DEPEND_INFO_FILES
-  "doc/CMakeFiles/doc.dir/DependInfo.cmake"
-  "src/CMakeFiles/master-cache-test.dir/DependInfo.cmake"
-  "src/CMakeFiles/hashtable-test.dir/DependInfo.cmake"
-  "src/CMakeFiles/hash-test.dir/DependInfo.cmake"
-  "src/CMakeFiles/gmp-caching.dir/DependInfo.cmake"
-  "src/CMakeFiles/caching-operations-test.dir/DependInfo.cmake"
-  "src/CMakeFiles/caching-operations-test-many.dir/DependInfo.cmake"
-  "src/CMakeFiles/caching-operations-test-advanced.dir/DependInfo.cmake"
-  "src/CMakeFiles/master-cache-integer-test.dir/DependInfo.cmake"
-  "src/CMakeFiles/mpz-cache-test.dir/DependInfo.cmake"
-  "src/CMakeFiles/master-cache-integer-test-largenum.dir/DependInfo.cmake"
-  "src/CMakeFiles/master-cache-integer-grenzwerte.dir/DependInfo.cmake"
+  "CMakeFiles/master-cache-test.dir/DependInfo.cmake"
+  "CMakeFiles/master-cache-integer-grenzwerte.dir/DependInfo.cmake"
+  "CMakeFiles/hash-test.dir/DependInfo.cmake"
+  "CMakeFiles/gmp-caching.dir/DependInfo.cmake"
+  "CMakeFiles/hashtable-test.dir/DependInfo.cmake"
+  "CMakeFiles/documentary.dir/DependInfo.cmake"
+  "CMakeFiles/caching-operations-test-many.dir/DependInfo.cmake"
+  "CMakeFiles/caching-operations-test.dir/DependInfo.cmake"
+  "CMakeFiles/caching-operations-test-advanced.dir/DependInfo.cmake"
+  "CMakeFiles/master-cache-integer-test.dir/DependInfo.cmake"
+  "CMakeFiles/mpz-cache-test.dir/DependInfo.cmake"
+  "CMakeFiles/master-cache-integer-test-largenum.dir/DependInfo.cmake"
   )

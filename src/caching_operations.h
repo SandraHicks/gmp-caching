@@ -69,7 +69,7 @@ extern "C" {
     
     /* Conversions & Comparisons
      */
-    uint64_t mpz_cached_int(mpz_t number);
+    uint64_t mpz_cached_int(const mpz_t number);
     void cached_int_mpz(uint64_t id, mpz_t number);
     int mpz_is_id(mpz_t number);
     
@@ -77,7 +77,7 @@ extern "C" {
      */
     void get_mpz(lookup* cache, uint64_t id, mpz_t val);
     double get_double(lookup* cache, uint64_t id);
-    uint64_t cache_insert_mpz(lookup* lu, mpz_t val);
+    uint64_t cache_insert_mpz(lookup* lu, const mpz_t val);
     
     //later local only
     uint64_t cache_exists_mpz(lookup* lu, mpz_t val);

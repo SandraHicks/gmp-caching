@@ -1,1 +1,1 @@
-/usr/bin/cc  -fPIC   CMakeFiles/master-cache-integer-test-largenum.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.o  -o master-cache-integer-test-largenum -rdynamic -lgmp libgmp-caching.a -lgmp 
+/usr/bin/c++    -Wall -std=c++11 -Wall   CMakeFiles/master-cache-integer-test-largenum.dir/Tests/master-cache-integer-test-largenum.c.o  -o master-cache-integer-test-largenum -rdynamic -lgmp libgmp-caching.a -lgmp 

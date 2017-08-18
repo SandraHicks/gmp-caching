@@ -62,3 +62,24 @@ CMakeFiles/gmp-caching.dir/overflow_detection.c.o: src/mpz_caching.h
 CMakeFiles/gmp-caching.dir/overflow_detection.c.o: src/overflow_detection.c
 CMakeFiles/gmp-caching.dir/overflow_detection.c.o: src/overflow_detection.h
 
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o: src/cachedInt.cpp
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o: src/cachedInt.h
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o: src/caching_operations.h
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o: src/defines.h
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o: src/hashtable.h
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o: src/master_cache_integer.h
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o: src/mastercache.h
+CMakeFiles/gmp-caching.dir/cachedInt.cpp.o: src/mpz_caching.h
+
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/cachedInt.h
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/cachedRational.cpp
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/cachedRational.h
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/caching_operations.h
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/defines.h
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/gmpcachingxx.h
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/hashtable.h
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/master_cache_integer.h
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/master_cache_rational.h
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/mastercache.h
+CMakeFiles/gmp-caching.dir/cachedRational.cpp.o: src/mpz_caching.h
+

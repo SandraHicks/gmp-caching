@@ -31,6 +31,10 @@ assert.h
 -
 
 src/caching_operations.h
+gmp.h
+-
+gmp.h
+-
 hashtable.h
 src/hashtable.h
 mpz_caching.h
@@ -41,30 +45,56 @@ src/defines.h
 src/defines.h
 
 src/hashtable.h
+cstdint
+-
+gmp.h
+-
 stdint.h
+-
+gmp.h
 -
 defines.h
 src/defines.h
 mpz_caching.h
 src/mpz_caching.h
-gmp.h
--
 
 src/master_cache_integer.h
+gmp.h
+-
+gmp.h
+-
 mastercache.h
 src/mastercache.h
 
 src/master_cache_rational.h
+gmp.h
+-
+gmp.h
+-
+mastercache.h
+src/mastercache.h
+master_cache_integer.h
+src/master_cache_integer.h
+defines.h
+src/defines.h
 
 src/mastercache.h
+gmp.h
+-
+gmp.h
+-
 defines.h
 src/defines.h
 caching_operations.h
 src/caching_operations.h
 
 src/mpz_caching.h
-stdint.h
+gmp.h
+-
+cstdint
 -
 gmp.h
+-
+stdint.h
 -
 

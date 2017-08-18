@@ -11,7 +11,17 @@ var searchData=
   ['get_5fk_5fhashes_5fcpf',['get_k_hashes_cpf',['../hashtable_8c.html#af267b5c3e0669ad9844482299eb9dce0',1,'get_k_hashes_cpf(mpz_t val1, mpz_t val2, uint64_t *hashes):&#160;hashtable.c'],['../hashtable_8h.html#af267b5c3e0669ad9844482299eb9dce0',1,'get_k_hashes_cpf(mpz_t val1, mpz_t val2, uint64_t *hashes):&#160;hashtable.c']]],
   ['get_5flookup3_5fhash',['get_lookup3_hash',['../hashing_8c.html#a3418cd49ff87c091e401df5c1745f8c0',1,'get_lookup3_hash(mpz_t myval):&#160;hashing.c'],['../hashing_8h.html#a3418cd49ff87c091e401df5c1745f8c0',1,'get_lookup3_hash(mpz_t myval):&#160;hashing.c']]],
   ['get_5fmpz',['get_mpz',['../caching__operations_8c.html#a14dba9d2bb5513f288c13a42127aa5d8',1,'get_mpz(lookup *cache, uint64_t id, mpz_t val):&#160;caching_operations.c'],['../caching__operations_8h.html#a14dba9d2bb5513f288c13a42127aa5d8',1,'get_mpz(lookup *cache, uint64_t id, mpz_t val):&#160;caching_operations.c']]],
-  ['get_5fmpz_5ffrom_5fid',['get_mpz_from_id',['../master__cache__integer_8c.html#a571d2709b7ba70de2e4e7a6027215f0e',1,'master_cache_integer.c']]],
+  ['get_5fmpz_5ffrom_5fid',['get_mpz_from_id',['../master__cache__integer_8c.html#a9f86c5ceb110c605dcc42830199d13c1',1,'master_cache_integer.c']]],
   ['get_5fmurmur_5fhash',['get_Murmur_hash',['../hashing_8c.html#ae1fc6aab0474de396ac9abe0ef6e6466',1,'get_Murmur_hash(mpz_t myval):&#160;hashing.c'],['../hashing_8h.html#ae1fc6aab0474de396ac9abe0ef6e6466',1,'get_Murmur_hash(mpz_t myval):&#160;hashing.c']]],
-  ['get_5fsip_5fhash',['get_Sip_hash',['../hashing_8c.html#a8c95fa7a682da0f000d85afbaaf28d83',1,'get_Sip_hash(mpz_t myval):&#160;hashing.c'],['../hashing_8h.html#a8c95fa7a682da0f000d85afbaaf28d83',1,'get_Sip_hash(mpz_t myval):&#160;hashing.c']]]
+  ['get_5fsip_5fhash',['get_Sip_hash',['../hashing_8c.html#a8c95fa7a682da0f000d85afbaaf28d83',1,'get_Sip_hash(mpz_t myval):&#160;hashing.c'],['../hashing_8h.html#a8c95fa7a682da0f000d85afbaaf28d83',1,'get_Sip_hash(mpz_t myval):&#160;hashing.c']]],
+  ['getcache',['getCache',['../classgmpcaching_1_1CachedInt.html#ae3817bfde2d215cb173ce4e2a67ccdd3',1,'gmpcaching::CachedInt::getCache()'],['../classgmpcaching_1_1CachedRational.html#acdcdc7df09ee7b97582d15556828802c',1,'gmpcaching::CachedRational::getCache()']]],
+  ['getmpqptr',['getMpqPtr',['../classgmpcaching_1_1CachedRational.html#a6da3b5202ef262a71c61af180108ae40',1,'gmpcaching::CachedRational']]],
+  ['getmpqptr_5fw',['getMpqPtr_w',['../classgmpcaching_1_1CachedRational.html#ab824d484703f1d872ee683bbdd6e14f1',1,'gmpcaching::CachedRational']]],
+  ['getmpqref',['getMpqRef',['../classgmpcaching_1_1CachedRational.html#add511466adf53431bf99032f860ce93a',1,'gmpcaching::CachedRational']]],
+  ['getmpqref_5fw',['getMpqRef_w',['../classgmpcaching_1_1CachedRational.html#a461421c423bc8b9b616902ae6bf9607a',1,'gmpcaching::CachedRational']]],
+  ['getvalue',['getValue',['../classgmpcaching_1_1CachedInt.html#a6becb979a35cb800cb707d79e6bf0df4',1,'gmpcaching::CachedInt::getValue()'],['../classgmpcaching_1_1CachedRational.html#a4e2b507a58d8881d7b8fe18c815a27f6',1,'gmpcaching::CachedRational::getValue()']]],
+  ['globalcache',['globalcache',['../cachedRational_8cpp.html#abc7dc05f551eed1188d726e3d466cf60',1,'gmpcaching']]],
+  ['globalcache_5fsize',['globalcache_size',['../gmpcachingxx_8h.html#ac20edd02e15310809ef6c2569521cf9a',1,'gmpcaching']]],
+  ['gmpcaching',['GMPCaching',['../classgmpcaching_1_1GMPCaching.html',1,'gmpcaching']]],
+  ['gmpcachingxx_2eh',['gmpcachingxx.h',['../gmpcachingxx_8h.html',1,'']]]
 ];

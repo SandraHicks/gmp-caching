@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "CMakeFiles/master-cache-integer-test-largenum.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test-largenum.c.o"
+  "CMakeFiles/master-cache-integer-test-largenum.dir/Tests/master-cache-integer-test-largenum.c.o"
   "master-cache-integer-test-largenum.pdb"
   "master-cache-integer-test-largenum"
 )

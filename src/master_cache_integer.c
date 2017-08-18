@@ -87,7 +87,7 @@ void get_mpz_from_id(const MasterCache* mstr, cachedInt id, mpz_t mpz){
  * @param number number to cache
  * @return cachedInt id for cached mpz_t
  */
-cachedInt cached_int_set(const MasterCache* mstr, mpz_t number){
+cachedInt cached_int_set(const MasterCache* mstr, const mpz_t number){
     cachedInt id = mpz_cached_int(number);
     
     if((id==SHIFT) && (number->_mp_size!=0)){
@@ -742,7 +742,11 @@ void ext_euclid(cachedInt val1, cachedInt val2, cachedInt* d, cachedInt* s, cach
     *t = s_ - (val1 / val2) * t_;
 }
 
-
+/**
+ * check if a cachedInt is a number or points to a cache
+ * @param val
+ * @return true if the cachedInt is an ID to the cache
+ */
 int cached_int_isID(cachedInt val){
     if((val & SHIFT) == 0)
         return 0;
@@ -750,6 +754,13 @@ int cached_int_isID(cachedInt val){
         return 1;
 }
 
+/**
+ * comparison function for cachedInts
+ * @param mstr MasterCache
+ * @param val1
+ * @param val2
+ * @return 1 if val1 > val2, 0 if equals, -1 if val2 > val2, 2 if NaN passed or comparing infinities with same sign
+ */
 int cached_int_cmp(const MasterCache* mstr, cachedInt val1, cachedInt val2){
     if(val1 == NaN || val2 == NaN){
         return 2;
@@ -777,6 +788,13 @@ int cached_int_cmp(const MasterCache* mstr, cachedInt val1, cachedInt val2){
     
 }
 
+/**
+ * compare cachedInt with int
+ * @param mstr
+ * @param val1 cachedInt
+ * @param val2 int
+ * @return 1 if val1 > val2, 0 if equals and -1 if val2 > val1
+ */
 int cached_int_cmp_i(const MasterCache* mstr, cachedInt val1, int val2){
     if(cached_int_isID(val1))
         return 1;
@@ -788,6 +806,14 @@ int cached_int_cmp_i(const MasterCache* mstr, cachedInt val1, int val2){
     }
     return cached_int_cmp(mstr, val1, convert);
 }
+
+/**
+ * compare cachedInt with double
+ * @param mstr
+ * @param val1 cachedInt
+ * @param val2 double
+ * @return 1 if val1 > val2, 0 if equals and -1 if val2 > val1
+ */
 int cached_int_cmp_d(const MasterCache* mstr, cachedInt val1, double val2){
     double d = cached_int_get_d(mstr, val1);
     double diff = d - val2;

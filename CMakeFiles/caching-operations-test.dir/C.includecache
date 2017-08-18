@@ -23,6 +23,10 @@ string.h
 -
 
 src/caching_operations.h
+gmp.h
+-
+gmp.h
+-
 hashtable.h
 src/hashtable.h
 mpz_caching.h
@@ -33,18 +37,26 @@ src/defines.h
 src/defines.h
 
 src/hashtable.h
+cstdint
+-
+gmp.h
+-
 stdint.h
+-
+gmp.h
 -
 defines.h
 src/defines.h
 mpz_caching.h
 src/mpz_caching.h
-gmp.h
--
 
 src/mpz_caching.h
-stdint.h
+gmp.h
+-
+cstdint
 -
 gmp.h
+-
+stdint.h
 -
 

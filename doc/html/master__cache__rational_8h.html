@@ -80,64 +80,70 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="contents">
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><dl class="section author"><dt>Author</dt><dd>Sandra Hicks </dd></dl>
+</div><div class="textblock"><code>#include &lt;gmp.h&gt;</code><br />
+<code>#include &quot;<a class="el" href="mastercache_8h.html">mastercache.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="master__cache__integer_8h.html">master_cache_integer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="defines_8h.html">defines.h</a>&quot;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:aafcd96ffb4f1982192696a84480eec9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#aafcd96ffb4f1982192696a84480eec9a">cached_rational_set</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, mpz_t counter, mpz_t denominator)</td></tr>
-<tr class="separator:aafcd96ffb4f1982192696a84480eec9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebbcc317ee4d0ddf591a0133685bb7f5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#aebbcc317ee4d0ddf591a0133685bb7f5">cached_rational_set_mpq</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, mpq_t number)</td></tr>
-<tr class="separator:aebbcc317ee4d0ddf591a0133685bb7f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a76f7529a1cfce6321f0e9acfcfd9cd5c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a76f7529a1cfce6321f0e9acfcfd9cd5c">cached_rational_set_cached</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> counter, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> denominator)</td></tr>
-<tr class="separator:a76f7529a1cfce6321f0e9acfcfd9cd5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac09bde1d4e9c80fcc0f6d8a010a4f450"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#ac09bde1d4e9c80fcc0f6d8a010a4f450">cached_rational_reset_mpq</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, mpq_t number, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *value)</td></tr>
-<tr class="separator:ac09bde1d4e9c80fcc0f6d8a010a4f450"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a02240fa4a43aba01ca1002d607f531d6"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a02240fa4a43aba01ca1002d607f531d6">cached_rational_reset</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, mpz_t counter, mpz_t denominator, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *value)</td></tr>
-<tr class="separator:a02240fa4a43aba01ca1002d607f531d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a259c99e89785d15c79d51ffb9c9e6ece"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a259c99e89785d15c79d51ffb9c9e6ece">cached_rational_reset_cached</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> counter, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> denominator, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *value)</td></tr>
-<tr class="separator:a259c99e89785d15c79d51ffb9c9e6ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5b456f687d953c2c656969de0a13dd13"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a5b456f687d953c2c656969de0a13dd13">cached_rational_get</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *id, mpz_t counter, mpz_t denominator)</td></tr>
-<tr class="separator:a5b456f687d953c2c656969de0a13dd13"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afc815744e1ee8fe59c0fe8659d09821d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#afc815744e1ee8fe59c0fe8659d09821d">cached_rational_get_mpq</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *id, mpq_t number)</td></tr>
-<tr class="separator:afc815744e1ee8fe59c0fe8659d09821d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a730ec1ddcbbef0cd1855c930d0615e90"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a730ec1ddcbbef0cd1855c930d0615e90">cached_rational_get_d</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *id)</td></tr>
-<tr class="separator:a730ec1ddcbbef0cd1855c930d0615e90"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad2e8b5adb77e0da7b287c65cbfdd5f6f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#ad2e8b5adb77e0da7b287c65cbfdd5f6f">cached_rational_add</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val1, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val2)</td></tr>
-<tr class="separator:ad2e8b5adb77e0da7b287c65cbfdd5f6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5ca6f556d5829bf6146c2ef70ec12a76"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a5ca6f556d5829bf6146c2ef70ec12a76">cached_rational_reduce</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val)</td></tr>
-<tr class="separator:a5ca6f556d5829bf6146c2ef70ec12a76"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aefd009fd65e95dd1318dd3263b150f12"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#aefd009fd65e95dd1318dd3263b150f12">cached_rational_reduce_inplace</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val)</td></tr>
-<tr class="separator:aefd009fd65e95dd1318dd3263b150f12"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af56650361ac0a50dec1c8339b2d63a78"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#af56650361ac0a50dec1c8339b2d63a78">cached_rational_sub</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val1, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val2)</td></tr>
-<tr class="separator:af56650361ac0a50dec1c8339b2d63a78"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3d9ea13255b254a7eea5604573b54083"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a3d9ea13255b254a7eea5604573b54083">cached_rational_mul</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val1, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val2)</td></tr>
-<tr class="separator:a3d9ea13255b254a7eea5604573b54083"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af87cafcad9565ebccb92ea78f2487a9a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#af87cafcad9565ebccb92ea78f2487a9a">cached_rational_div</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val1, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val2)</td></tr>
-<tr class="separator:af87cafcad9565ebccb92ea78f2487a9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad9c400a7fb516b9440c845251555b103"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#ad9c400a7fb516b9440c845251555b103">cached_rational_abs</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val)</td></tr>
-<tr class="memdesc:ad9c400a7fb516b9440c845251555b103"><td class="mdescLeft">&#160;</td><td class="mdescRight">absolute value of cachedRational  <a href="#ad9c400a7fb516b9440c845251555b103">More...</a><br /></td></tr>
-<tr class="separator:ad9c400a7fb516b9440c845251555b103"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4103eadf67188467b1c4faae7ef8e852"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a4103eadf67188467b1c4faae7ef8e852">cached_rational_inv</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val)</td></tr>
-<tr class="memdesc:a4103eadf67188467b1c4faae7ef8e852"><td class="mdescLeft">&#160;</td><td class="mdescRight">inverse of cachedRational  <a href="#a4103eadf67188467b1c4faae7ef8e852">More...</a><br /></td></tr>
-<tr class="separator:a4103eadf67188467b1c4faae7ef8e852"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af6ecb2e2731332648fd4601d0ca8882c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#af6ecb2e2731332648fd4601d0ca8882c">cached_rational_neg</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val)</td></tr>
-<tr class="memdesc:af6ecb2e2731332648fd4601d0ca8882c"><td class="mdescLeft">&#160;</td><td class="mdescRight">negation of cachedRational  <a href="#af6ecb2e2731332648fd4601d0ca8882c">More...</a><br /></td></tr>
-<tr class="separator:af6ecb2e2731332648fd4601d0ca8882c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62e7f9ad81746c5536945cf5a86f3117"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a62e7f9ad81746c5536945cf5a86f3117">cached_rational_neg_inplace</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val)</td></tr>
-<tr class="memdesc:a62e7f9ad81746c5536945cf5a86f3117"><td class="mdescLeft">&#160;</td><td class="mdescRight">negation of cachedRational inplace  <a href="#a62e7f9ad81746c5536945cf5a86f3117">More...</a><br /></td></tr>
-<tr class="separator:a62e7f9ad81746c5536945cf5a86f3117"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03bf1a170c0462446d55bfebcaf36375"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a03bf1a170c0462446d55bfebcaf36375">cached_rational_sgn</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val)</td></tr>
-<tr class="memdesc:a03bf1a170c0462446d55bfebcaf36375"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the sign of the cachedRational  <a href="#a03bf1a170c0462446d55bfebcaf36375">More...</a><br /></td></tr>
-<tr class="separator:a03bf1a170c0462446d55bfebcaf36375"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3151cc7100144ebe51bfb7ba6e161dc5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a3151cc7100144ebe51bfb7ba6e161dc5">cached_rational_set</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, mpz_t counter, mpz_t denominator)</td></tr>
+<tr class="separator:a3151cc7100144ebe51bfb7ba6e161dc5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc00cad10bb8e8fdeea707c472505879"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#acc00cad10bb8e8fdeea707c472505879">cached_rational_set_mpq</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, const mpq_t number)</td></tr>
+<tr class="separator:acc00cad10bb8e8fdeea707c472505879"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:add87b40214ffce650a6a4db52b99cf77"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#add87b40214ffce650a6a4db52b99cf77">cached_rational_set_cached</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> counter, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> denominator)</td></tr>
+<tr class="separator:add87b40214ffce650a6a4db52b99cf77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af139674f4286215baa1c225e4b89538c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#af139674f4286215baa1c225e4b89538c">cached_rational_reset_mpq</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, const mpq_t number, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *value)</td></tr>
+<tr class="separator:af139674f4286215baa1c225e4b89538c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adbb909a5ef03e60e9109e0c763b8ad3d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#adbb909a5ef03e60e9109e0c763b8ad3d">cached_rational_reset</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, mpz_t counter, mpz_t denominator, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *value)</td></tr>
+<tr class="separator:adbb909a5ef03e60e9109e0c763b8ad3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8bd18e745ed923e36ee59d0445558cf4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a8bd18e745ed923e36ee59d0445558cf4">cached_rational_reset_cached</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> counter, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> denominator, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *value)</td></tr>
+<tr class="separator:a8bd18e745ed923e36ee59d0445558cf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a221f3f9dae99d002bb4af3b5df02ad2e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a221f3f9dae99d002bb4af3b5df02ad2e">cached_rational_get</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> id, mpz_t counter, mpz_t denominator)</td></tr>
+<tr class="separator:a221f3f9dae99d002bb4af3b5df02ad2e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5b9520ea3e9f64779d215e6279d7ca9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#ad5b9520ea3e9f64779d215e6279d7ca9">cached_rational_get_mpq</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> id, mpq_t number)</td></tr>
+<tr class="separator:ad5b9520ea3e9f64779d215e6279d7ca9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abfc901f65220a92c6e9bd33da265f25e"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#abfc901f65220a92c6e9bd33da265f25e">cached_rational_get_d</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> id)</td></tr>
+<tr class="separator:abfc901f65220a92c6e9bd33da265f25e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefd86035e765f37d3d3d729c8b22ec27"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#aefd86035e765f37d3d3d729c8b22ec27">cached_rational_get_str</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> id, char *str, int precision)</td></tr>
+<tr class="separator:aefd86035e765f37d3d3d729c8b22ec27"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8cc5005ed547c3fd1b615ed3749c2276"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a8cc5005ed547c3fd1b615ed3749c2276">cached_rational_add</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val1, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val2)</td></tr>
+<tr class="separator:a8cc5005ed547c3fd1b615ed3749c2276"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa035f2b43e0b1c216a3f290c6057930c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#aa035f2b43e0b1c216a3f290c6057930c">cached_rational_reduce</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val)</td></tr>
+<tr class="separator:aa035f2b43e0b1c216a3f290c6057930c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5237eb113206855f781e587ea325f217"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a5237eb113206855f781e587ea325f217">cached_rational_reduce_inplace</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val)</td></tr>
+<tr class="separator:a5237eb113206855f781e587ea325f217"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad4d23873c4ad2cc63bea935a0d6746bc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#ad4d23873c4ad2cc63bea935a0d6746bc">cached_rational_sub</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val1, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val2)</td></tr>
+<tr class="separator:ad4d23873c4ad2cc63bea935a0d6746bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac20c14a68c149b3a8466cd9555ed0031"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#ac20c14a68c149b3a8466cd9555ed0031">cached_rational_mul</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val1, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val2)</td></tr>
+<tr class="separator:ac20c14a68c149b3a8466cd9555ed0031"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed617b23804a6c7c3b01cdaa577444b4"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#aed617b23804a6c7c3b01cdaa577444b4">cached_rational_div</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val1, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val2)</td></tr>
+<tr class="separator:aed617b23804a6c7c3b01cdaa577444b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3416b632637326d129ee6baaea594532"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a3416b632637326d129ee6baaea594532">cached_rational_abs</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val)</td></tr>
+<tr class="memdesc:a3416b632637326d129ee6baaea594532"><td class="mdescLeft">&#160;</td><td class="mdescRight">absolute value of cachedRational  <a href="#a3416b632637326d129ee6baaea594532">More...</a><br /></td></tr>
+<tr class="separator:a3416b632637326d129ee6baaea594532"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac81fc7a7c21d16ea3812a6bb3764cb70"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#ac81fc7a7c21d16ea3812a6bb3764cb70">cached_rational_inv</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val)</td></tr>
+<tr class="memdesc:ac81fc7a7c21d16ea3812a6bb3764cb70"><td class="mdescLeft">&#160;</td><td class="mdescRight">inverse of cachedRational  <a href="#ac81fc7a7c21d16ea3812a6bb3764cb70">More...</a><br /></td></tr>
+<tr class="separator:ac81fc7a7c21d16ea3812a6bb3764cb70"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff0509058e7b0ed72321029ae7fd771c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#aff0509058e7b0ed72321029ae7fd771c">cached_rational_neg</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val)</td></tr>
+<tr class="memdesc:aff0509058e7b0ed72321029ae7fd771c"><td class="mdescLeft">&#160;</td><td class="mdescRight">negation of cachedRational  <a href="#aff0509058e7b0ed72321029ae7fd771c">More...</a><br /></td></tr>
+<tr class="separator:aff0509058e7b0ed72321029ae7fd771c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad511051a4bd9f5915c10129bcd39533"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#aad511051a4bd9f5915c10129bcd39533">cached_rational_neg_inplace</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *val)</td></tr>
+<tr class="memdesc:aad511051a4bd9f5915c10129bcd39533"><td class="mdescLeft">&#160;</td><td class="mdescRight">negation of cachedRational inplace  <a href="#aad511051a4bd9f5915c10129bcd39533">More...</a><br /></td></tr>
+<tr class="separator:aad511051a4bd9f5915c10129bcd39533"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2a38c37b24c89356d3315b6307cfab4e"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__rational_8h.html#a2a38c37b24c89356d3315b6307cfab4e">cached_rational_sgn</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> val)</td></tr>
+<tr class="memdesc:a2a38c37b24c89356d3315b6307cfab4e"><td class="mdescLeft">&#160;</td><td class="mdescRight">get the sign of the cachedRational  <a href="#a2a38c37b24c89356d3315b6307cfab4e">More...</a><br /></td></tr>
+<tr class="separator:a2a38c37b24c89356d3315b6307cfab4e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="aafcd96ffb4f1982192696a84480eec9a"></a>
+<a class="anchor" id="a3151cc7100144ebe51bfb7ba6e161dc5"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_set </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -171,20 +177,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aebbcc317ee4d0ddf591a0133685bb7f5"></a>
+<a class="anchor" id="acc00cad10bb8e8fdeea707c472505879"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_set_mpq </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">mpq_t&#160;</td>
+          <td class="paramtype">const mpq_t&#160;</td>
           <td class="paramname"><em>number</em>&#160;</td>
         </tr>
         <tr>
@@ -205,14 +211,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a76f7529a1cfce6321f0e9acfcfd9cd5c"></a>
+<a class="anchor" id="add87b40214ffce650a6a4db52b99cf77"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_set_cached </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -246,20 +252,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac09bde1d4e9c80fcc0f6d8a010a4f450"></a>
+<a class="anchor" id="af139674f4286215baa1c225e4b89538c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void cached_rational_reset_mpq </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">mpq_t&#160;</td>
+          <td class="paramtype">const mpq_t&#160;</td>
           <td class="paramname"><em>number</em>, </td>
         </tr>
         <tr>
@@ -286,14 +292,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a02240fa4a43aba01ca1002d607f531d6"></a>
+<a class="anchor" id="adbb909a5ef03e60e9109e0c763b8ad3d"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void cached_rational_reset </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -333,14 +339,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a259c99e89785d15c79d51ffb9c9e6ece"></a>
+<a class="anchor" id="a8bd18e745ed923e36ee59d0445558cf4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void cached_rational_reset_cached </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -380,20 +386,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5b456f687d953c2c656969de0a13dd13"></a>
+<a class="anchor" id="a221f3f9dae99d002bb4af3b5df02ad2e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void cached_rational_get </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -427,20 +433,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="afc815744e1ee8fe59c0fe8659d09821d"></a>
+<a class="anchor" id="ad5b9520ea3e9f64779d215e6279d7ca9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void cached_rational_get_mpq </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>id</em>, </td>
         </tr>
         <tr>
@@ -467,20 +473,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a730ec1ddcbbef0cd1855c930d0615e90"></a>
+<a class="anchor" id="abfc901f65220a92c6e9bd33da265f25e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">double cached_rational_get_d </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>id</em>&#160;</td>
         </tr>
         <tr>
@@ -501,26 +507,73 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad2e8b5adb77e0da7b287c65cbfdd5f6f"></a>
+<a class="anchor" id="aefd86035e765f37d3d3d729c8b22ec27"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void cached_rational_get_str </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramname"><em>mstr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
+          <td class="paramname"><em>id</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char *&#160;</td>
+          <td class="paramname"><em>str</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>precision</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mstr</td><td><a class="el" href="structMasterCache.html" title="MasterCache. ">MasterCache</a> pointer </td></tr>
+    <tr><td class="paramname">id</td><td></td></tr>
+    <tr><td class="paramname">str</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd></dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8cc5005ed547c3fd1b615ed3749c2276"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_add </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val2</em>&#160;</td>
         </tr>
         <tr>
@@ -542,20 +595,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5ca6f556d5829bf6146c2ef70ec12a76"></a>
+<a class="anchor" id="aa035f2b43e0b1c216a3f290c6057930c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_reduce </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val</em>&#160;</td>
         </tr>
         <tr>
@@ -575,14 +628,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aefd009fd65e95dd1318dd3263b150f12"></a>
+<a class="anchor" id="a5237eb113206855f781e587ea325f217"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void cached_rational_reduce_inplace </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -608,26 +661,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af56650361ac0a50dec1c8339b2d63a78"></a>
+<a class="anchor" id="ad4d23873c4ad2cc63bea935a0d6746bc"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_sub </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val2</em>&#160;</td>
         </tr>
         <tr>
@@ -649,26 +702,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a3d9ea13255b254a7eea5604573b54083"></a>
+<a class="anchor" id="ac20c14a68c149b3a8466cd9555ed0031"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_mul </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val2</em>&#160;</td>
         </tr>
         <tr>
@@ -690,26 +743,26 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af87cafcad9565ebccb92ea78f2487a9a"></a>
+<a class="anchor" id="aed617b23804a6c7c3b01cdaa577444b4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_div </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val1</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val2</em>&#160;</td>
         </tr>
         <tr>
@@ -731,20 +784,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad9c400a7fb516b9440c845251555b103"></a>
+<a class="anchor" id="a3416b632637326d129ee6baaea594532"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_abs </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val</em>&#160;</td>
         </tr>
         <tr>
@@ -765,20 +818,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4103eadf67188467b1c4faae7ef8e852"></a>
+<a class="anchor" id="ac81fc7a7c21d16ea3812a6bb3764cb70"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_inv </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val</em>&#160;</td>
         </tr>
         <tr>
@@ -798,20 +851,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af6ecb2e2731332648fd4601d0ca8882c"></a>
+<a class="anchor" id="aff0509058e7b0ed72321029ae7fd771c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> cached_rational_neg </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val</em>&#160;</td>
         </tr>
         <tr>
@@ -831,14 +884,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a62e7f9ad81746c5536945cf5a86f3117"></a>
+<a class="anchor" id="aad511051a4bd9f5915c10129bcd39533"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void cached_rational_neg_inplace </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -864,20 +917,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a03bf1a170c0462446d55bfebcaf36375"></a>
+<a class="anchor" id="a2a38c37b24c89356d3315b6307cfab4e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int cached_rational_sgn </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a273202caad9157b97f14a5b3cb4ca1b9">cachedRational</a>&#160;</td>
           <td class="paramname"><em>val</em>&#160;</td>
         </tr>
         <tr>

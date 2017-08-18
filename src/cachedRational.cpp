@@ -16,7 +16,12 @@
 
 
 namespace gmpcaching{
+    
 MasterCache* globalcache;
+#ifdef GMPCACHING_CACHESIZE
+int globalcache_size = GMPCACHING_CACHESIZE;
+#endif
+
 /*
 constructors
 */
@@ -35,7 +40,7 @@ CachedRational::CachedRational(const int i, const MasterCache* cache){
     if(cache == NULL){
         if(globalcache == NULL){
             #ifdef GMPCACHING_CACHESIZE
-                GMPCaching.init_MasterCache(GMPCACHING_CACHESIZE);
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
             #else
                 throw new RationalCacheNotSetException();
             #endif
@@ -57,7 +62,7 @@ CachedRational::CachedRational(const double& r, const MasterCache* cache){
     if(cache == NULL){
         if(globalcache == NULL){
             #ifdef GMPCACHING_CACHESIZE
-                GMPCaching.init_MasterCache(GMPCACHING_CACHESIZE);
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
             #else
                 throw new RationalCacheNotSetException();
             #endif
@@ -87,7 +92,7 @@ CachedRational::CachedRational(const long double& r, const MasterCache* cache){
     if(cache == NULL){
         if(globalcache == NULL){
             #ifdef GMPCACHING_CACHESIZE
-                GMPCaching.init_MasterCache(GMPCACHING_CACHESIZE);
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
             #else
                 throw new RationalCacheNotSetException();
             #endif
@@ -115,7 +120,7 @@ CachedRational::CachedRational(const mpq_t& q, const MasterCache* cache){
     if(cache == NULL){
         if(globalcache == NULL){
             #ifdef GMPCACHING_CACHESIZE
-                GMPCaching.init_MasterCache(GMPCACHING_CACHESIZE);
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
             #else
                 throw new RationalCacheNotSetException();
             #endif
@@ -136,7 +141,7 @@ CachedRational::CachedRational(mpz_t z1, mpz_t z2, const MasterCache* cache){
     if(cache == NULL){
         if(globalcache == NULL){
             #ifdef GMPCACHING_CACHESIZE
-                GMPCaching.init_MasterCache(GMPCACHING_CACHESIZE);
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
             #else
                 throw new RationalCacheNotSetException();
             #endif
@@ -158,7 +163,7 @@ CachedRational::CachedRational(cachedInt c1, cachedInt c2, const MasterCache* ca
     if(cache == NULL){
         if(globalcache == NULL){
             #ifdef GMPCACHING_CACHESIZE
-                GMPCaching.init_MasterCache(GMPCACHING_CACHESIZE);
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
             #else
                 throw new RationalCacheNotSetException();
             #endif
@@ -188,7 +193,7 @@ CachedRational::CachedRational(const cachedRational val, const MasterCache* cach
     if(cache == NULL){
         if(globalcache == NULL){
             #ifdef GMPCACHING_CACHESIZE
-                GMPCaching.init_MasterCache(GMPCACHING_CACHESIZE);
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
             #else
                 throw new RationalCacheNotSetException();
             #endif
@@ -221,33 +226,91 @@ CachedRational& CachedRational::operator=(const CachedRational& ci){
 }
 
 CachedRational& CachedRational::operator=(const mpq_t& q){
-  if(!this->cache){
-      throw new RationalCacheNotSetException(this->value.counter, this->value.denominator);
-  }
+  if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new RationalCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
   this->value = cached_rational_set_mpq(this->cache, q);
   return *this;
 }
 
 CachedRational& CachedRational::operator=(std::pair<mpz_t&, mpz_t&> mpzts){
-  assert(this->cache != NULL);
+  if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new RationalCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
   this->value = cached_rational_set(this->cache, mpzts.first, mpzts.second);
   return *this;
 }
 
 CachedRational& CachedRational::operator=(std::pair<int, int> ints){
-  assert(this->cache != NULL);
+  if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new RationalCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
   this->value = cached_rational_set_cached(this->cache, (uint64_t)ints.first, (uint64_t)ints.second);
   return *this;
 }
 
 CachedRational& CachedRational::operator=(std::pair<long, long> longs){
-  assert(this->cache != NULL);
+  if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new RationalCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
   this->value = cached_rational_set_cached(this->cache, (uint64_t)longs.first, (uint64_t)longs.second);
   return *this;
 }
 
 CachedRational& CachedRational::operator=(const long double &r){
-    assert(this->cache != NULL);
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new RationalCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
     mpq_t value;
     mpq_init(value);
     mpq_set_d(value, double(r));
@@ -257,7 +320,19 @@ CachedRational& CachedRational::operator=(const long double &r){
 }
 
 CachedRational& CachedRational::operator=(const double &r){
-    assert(this->cache != NULL);
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new RationalCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
     mpq_t value;
     mpq_init(value);
     mpq_set_d(value, r);
@@ -267,7 +342,19 @@ CachedRational& CachedRational::operator=(const double &r){
 }
 
 CachedRational& CachedRational::operator=(const int &i){
-    assert(this->cache != NULL);
+    if(cache == NULL){
+        if(globalcache == NULL){
+            #ifdef GMPCACHING_CACHESIZE
+                GMPCaching::init_MasterCache(GMPCACHING_CACHESIZE);
+            #else
+                throw new RationalCacheNotSetException();
+            #endif
+        }
+        this->cache = globalcache;
+    }
+    else{
+        this->cache = cache;
+    }
     this->value = cached_rational_set_cached(this->cache, (uint64_t)i, (uint64_t)0);
     return *this;
 }
@@ -340,8 +427,8 @@ CachedRational CachedRational::operator/=(const CachedRational& i){
 
 
 CachedRational& CachedRational::addProduct(const CachedRational& r, const CachedRational& s){
-    assert(r.cache == s.cache);
-    assert(this->cache == r.cache);
+    assert(r.hasSameCache(s));
+    assert(this->hasSameCache(r));
     cachedRational product = cached_rational_mul(r.cache, r.value, s.getValue());
     cachedRational sum = cached_rational_add(this->cache, this->value, product);
     this->value = sum;
@@ -349,8 +436,8 @@ CachedRational& CachedRational::addProduct(const CachedRational& r, const Cached
 }
 
 CachedRational& CachedRational::subProduct(const CachedRational& r, const CachedRational& s){
-    assert(r.cache == s.cache);
-    assert(this->cache == r.cache);
+    assert(r.hasSameCache(s));
+    assert(this->hasSameCache(r));
     cachedRational product = cached_rational_mul(r.cache, r.value, s.getValue());
     cachedRational sub = cached_rational_sub(this->cache, this->value, product);
     this->value = sub;
@@ -358,7 +445,7 @@ CachedRational& CachedRational::subProduct(const CachedRational& r, const Cached
 }
 
 CachedRational& CachedRational::addQuotient(const CachedRational& r, const CachedRational& s){
-    assert(r.cache == s.cache);
+    assert(r.hasSameCache(s));
     assert(this->cache == r.cache);
     cachedRational product = cached_rational_div(r.cache, r.value, s.getValue());
     cachedRational sum = cached_rational_add(this->cache, this->value, product);
@@ -367,8 +454,8 @@ CachedRational& CachedRational::addQuotient(const CachedRational& r, const Cache
 }
 
 CachedRational& CachedRational::subQuotient(const CachedRational& r, const CachedRational& s){
-    assert(r.cache == s.cache);
-    assert(this->cache == r.cache);
+    assert(r.hasSameCache(s));
+    assert(this->hasSameCache(r));
     cachedRational product = cached_rational_div(r.cache, r.value, s.getValue());
     cachedRational sub = cached_rational_sub(this->cache, this->value, product);
     this->value = sub;
@@ -434,7 +521,7 @@ void CachedRational::setValue(cachedRational val){
    this->value = val;
 }
 
-bool CachedRational::hasSameCache(CachedRational& i) const{
+bool CachedRational::hasSameCache(const CachedRational& i) const{
     if(this->cache == i.cache){
         return true;
     }
@@ -453,7 +540,7 @@ CachedRational operator-(const CachedRational& r)
 }
 
 CachedRational& CachedRational::powRound(){
-    //not implemented in rational
+    //not implemented in soplex::Rational
     return *this;
 }
 
@@ -472,35 +559,42 @@ bool CachedRational::isNextTo(const double& d){
 
 
 int compareRational(const CachedRational& r, const CachedRational& s){
+    assert(r.hasSameCache(s));
     return cached_rational_cmp(r.cache, s.value, s.value);
 }
 
 bool operator!=(const CachedRational& r, const CachedRational& s){
+    assert(r.hasSameCache(s));
     int cmp = cached_rational_cmp(r.cache, s.value, s.value);
     return cmp != 0;
 }
       
 bool operator==(const CachedRational& r, const CachedRational& s){
+    assert(r.hasSameCache(s));
     int cmp = cached_rational_cmp(r.cache, r.value, s.value);
     return cmp == 0;
 }
 
 bool operator<(const CachedRational& r, const CachedRational& s){
+    assert(r.hasSameCache(s));
     int cmp = cached_rational_cmp(r.cache, r.value, s.value);
     return cmp == -1;
 }
 
 bool operator<=(const CachedRational& r, const CachedRational& s){
+    assert(r.hasSameCache(s));
     int cmp = cached_rational_cmp(r.cache, r.value, s.value);
     return cmp <= 0;
 }
 
 bool operator>(const CachedRational& r, const CachedRational& s){
+    assert(r.hasSameCache(s));
     int cmp = cached_rational_cmp(r.cache, r.value, s.value);
     return cmp == 1;
 }
 
 bool operator>=(const CachedRational& r, const CachedRational& s){
+    assert(r.hasSameCache(s));
     int cmp = cached_rational_cmp(r.cache, r.value, s.value);
     return cmp >= 0;
     //attention: this function also returns true if NaN or bad inifinities are given
@@ -820,7 +914,7 @@ bool operator>=(const int& r, const CachedRational& s){
 
 CachedRational operator+(const int& d, const CachedRational& r){
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -834,7 +928,7 @@ CachedRational operator+(const int& d, const CachedRational& r){
 }
 CachedRational operator-(const int& d, const CachedRational& r){
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -848,7 +942,7 @@ CachedRational operator-(const int& d, const CachedRational& r){
 }
 CachedRational operator*(const int& d, const CachedRational& r){
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -862,7 +956,7 @@ CachedRational operator*(const int& d, const CachedRational& r){
 }
 CachedRational operator/(const int& d, const CachedRational& r){
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -876,7 +970,7 @@ CachedRational operator/(const int& d, const CachedRational& r){
 }
 CachedRational CachedRational::operator+(const int& d) const{
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -890,7 +984,7 @@ CachedRational CachedRational::operator+(const int& d) const{
 }
 CachedRational CachedRational::operator-(const int& d) const{
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -904,7 +998,7 @@ CachedRational CachedRational::operator-(const int& d) const{
 }
 CachedRational CachedRational::operator*(const int& d) const{
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -918,7 +1012,7 @@ CachedRational CachedRational::operator*(const int& d) const{
 }
 CachedRational CachedRational::operator/(const int& d) const{
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -932,7 +1026,7 @@ CachedRational CachedRational::operator/(const int& d) const{
 }
 CachedRational CachedRational::operator+=(const int& d){
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -944,7 +1038,7 @@ CachedRational CachedRational::operator+=(const int& d){
 }
 CachedRational CachedRational::operator-=(const int& d){
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -956,7 +1050,7 @@ CachedRational CachedRational::operator-=(const int& d){
 }
 CachedRational CachedRational::operator*=(const int& d){
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -968,7 +1062,7 @@ CachedRational CachedRational::operator*=(const int& d){
 }
 CachedRational CachedRational::operator/=(const int& d){
     cachedRational intval;
-    if(d <= 0){
+    if(d < 0){
         intval = {((uint64_t)(d * (-1)) | NEG), (uint64_t)1};
     }
     else{
@@ -1000,7 +1094,7 @@ std::ostream& operator<<(std::ostream& os, const CachedRational& r)
 }
 
 
-
+///@TODO
 #define MAX_STR_LEN 10000
 bool CachedRational::readString(const char* s){
     assert(s != 0);
@@ -1024,6 +1118,7 @@ std::string rationalToString(const CachedRational& r, const int precision){
 #endif
 }
 
+///@TODO
 bool readStringRational(const char* s, CachedRational& value){
     //TODO
     return 1;
@@ -1044,6 +1139,7 @@ int CachedRational::sizeInBase(const int base) const
 
 
 /// provides read-only access to underlying mpq_t
+///@TODO
 const mpq_t* CachedRational::getMpqPtr() const {
    mpz_t d;
    mpz_t c;
@@ -1060,6 +1156,7 @@ const mpq_t* CachedRational::getMpqPtr() const {
 
 
 /// provides read-only access to underlying mpq_t
+///@TODO
 const mpq_t& CachedRational::getMpqRef() const {
    mpz_t d;
    mpz_t c;
@@ -1076,6 +1173,7 @@ const mpq_t& CachedRational::getMpqRef() const {
 
 
 /// provides write access to underlying mpq_t; use with care
+///@TODO
 mpq_t* CachedRational::getMpqPtr_w() const {
    mpz_t d;
    mpz_t c;
@@ -1092,6 +1190,7 @@ mpq_t* CachedRational::getMpqPtr_w() const {
 
 
 /// provides write access to underlying mpq_t; use with care
+///@TODO
 mpq_t& CachedRational::getMpqRef_w() const {
    mpz_t d;
    mpz_t c;

@@ -21,7 +21,7 @@ void cached_int_clear_cache(MasterCache** mstr);
 
 int cached_int_isID(cachedInt val);
 
-cachedInt cached_int_set(const MasterCache* mstr, mpz_t number);
+cachedInt cached_int_set(const MasterCache* mstr, const mpz_t number);
 void cached_int_get(const MasterCache* mstr, cachedInt id, mpz_t number);
 double cached_int_get_d(const MasterCache* mstr, cachedInt id);
 

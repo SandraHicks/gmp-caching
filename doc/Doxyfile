@@ -89,10 +89,9 @@ WARN_LOGFILE           = doxygen.log
 # configuration options related to the input files
 #---------------------------------------------------------------------------
 INPUT                  = "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/doc" \
-                         "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/ipo" \
+                         "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src" \
                          "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/mainpage.dox" \
-                         "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/references.dox"  \
-                         "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src"
+                         "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/references.dox"
 INPUT_ENCODING         = UTF-8
 FILE_PATTERNS          = *.h \
                          *.cc \

@@ -94,8 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:a571d2709b7ba70de2e4e7a6027215f0e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a571d2709b7ba70de2e4e7a6027215f0e">get_mpz_from_id</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> id, mpz_t mpz)</td></tr>
-<tr class="separator:a571d2709b7ba70de2e4e7a6027215f0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f86c5ceb110c605dcc42830199d13c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a9f86c5ceb110c605dcc42830199d13c1">get_mpz_from_id</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> id, mpz_t mpz)</td></tr>
+<tr class="separator:a9f86c5ceb110c605dcc42830199d13c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acf48c6c064be125bfc2e3daf62f10177"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#acf48c6c064be125bfc2e3daf62f10177">direct_add</a> (<a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
 <tr class="separator:acf48c6c064be125bfc2e3daf62f10177"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa558a557fa5371fc35597dc52fd824e5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#aa558a557fa5371fc35597dc52fd824e5">direct_mul</a> (<a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
@@ -120,58 +120,66 @@ Functions</h2></td></tr>
 <tr class="memitem:a63c4967e9b2432632f4215488e49195b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a63c4967e9b2432632f4215488e49195b">cached_int_clear_cache</a> (<a class="el" href="structMasterCache.html">MasterCache</a> **mstr)</td></tr>
 <tr class="memdesc:a63c4967e9b2432632f4215488e49195b"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to clear all background data before free  <a href="#a63c4967e9b2432632f4215488e49195b">More...</a><br /></td></tr>
 <tr class="separator:a63c4967e9b2432632f4215488e49195b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e8ed43761ae3945335b89102db422fd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a2e8ed43761ae3945335b89102db422fd">cached_int_set</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, mpz_t number)</td></tr>
-<tr class="memdesc:a2e8ed43761ae3945335b89102db422fd"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to set a mpz_t and get back an id  <a href="#a2e8ed43761ae3945335b89102db422fd">More...</a><br /></td></tr>
-<tr class="separator:a2e8ed43761ae3945335b89102db422fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a70e68c14bd00b07597b31dba34aba997"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a70e68c14bd00b07597b31dba34aba997">cached_int_get</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> id, mpz_t number)</td></tr>
-<tr class="memdesc:a70e68c14bd00b07597b31dba34aba997"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to get a previously cached mpz_t from an id  <a href="#a70e68c14bd00b07597b31dba34aba997">More...</a><br /></td></tr>
-<tr class="separator:a70e68c14bd00b07597b31dba34aba997"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af0c42f55a0674b42df4ce45322c33198"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#af0c42f55a0674b42df4ce45322c33198">cached_int_get_d</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> id)</td></tr>
-<tr class="memdesc:af0c42f55a0674b42df4ce45322c33198"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to get a previously cached mpz_t as double from an id, has the same behaviour as the mpz_get_double  <a href="#af0c42f55a0674b42df4ce45322c33198">More...</a><br /></td></tr>
-<tr class="separator:af0c42f55a0674b42df4ce45322c33198"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0554d6cc2b779f43cacb2d1fe95efdc2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a0554d6cc2b779f43cacb2d1fe95efdc2">cached_int_neg</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val)</td></tr>
-<tr class="memdesc:a0554d6cc2b779f43cacb2d1fe95efdc2"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to negate a cachedInt  <a href="#a0554d6cc2b779f43cacb2d1fe95efdc2">More...</a><br /></td></tr>
-<tr class="separator:a0554d6cc2b779f43cacb2d1fe95efdc2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a156b95f33adc0b39fc5b37c86023028a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a156b95f33adc0b39fc5b37c86023028a">cached_int_abs</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val)</td></tr>
-<tr class="memdesc:a156b95f33adc0b39fc5b37c86023028a"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to get the absolute of a cachedInt  <a href="#a156b95f33adc0b39fc5b37c86023028a">More...</a><br /></td></tr>
-<tr class="separator:a156b95f33adc0b39fc5b37c86023028a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a398a6b9dd17c9e3e457184f8f7f417f2"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a398a6b9dd17c9e3e457184f8f7f417f2">cached_int_sgn</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val)</td></tr>
-<tr class="memdesc:a398a6b9dd17c9e3e457184f8f7f417f2"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to get the sign of a cachedInt  <a href="#a398a6b9dd17c9e3e457184f8f7f417f2">More...</a><br /></td></tr>
-<tr class="separator:a398a6b9dd17c9e3e457184f8f7f417f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c77389b27a3a9c47f580cc52b6bbe62"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a2c77389b27a3a9c47f580cc52b6bbe62">cached_int_add</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
-<tr class="memdesc:a2c77389b27a3a9c47f580cc52b6bbe62"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to add two cached values and cache the result if large.  <a href="#a2c77389b27a3a9c47f580cc52b6bbe62">More...</a><br /></td></tr>
-<tr class="separator:a2c77389b27a3a9c47f580cc52b6bbe62"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af3fa99a34d3f8f474ca5cb1caf45b0dc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#af3fa99a34d3f8f474ca5cb1caf45b0dc">cached_int_sub</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
-<tr class="memdesc:af3fa99a34d3f8f474ca5cb1caf45b0dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to subtract two cached values and cache the result if large.  <a href="#af3fa99a34d3f8f474ca5cb1caf45b0dc">More...</a><br /></td></tr>
-<tr class="separator:af3fa99a34d3f8f474ca5cb1caf45b0dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a418f697aefb1a082369940b69ef21758"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a418f697aefb1a082369940b69ef21758">cached_int_mul</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
-<tr class="memdesc:a418f697aefb1a082369940b69ef21758"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to multiply two cached values and cache the result if large.  <a href="#a418f697aefb1a082369940b69ef21758">More...</a><br /></td></tr>
-<tr class="separator:a418f697aefb1a082369940b69ef21758"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a65de9b96c7568d2a4bc8a6a05749be04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a65de9b96c7568d2a4bc8a6a05749be04">cached_int_tdiv</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> divident, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> divisor, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> *rest)</td></tr>
-<tr class="memdesc:a65de9b96c7568d2a4bc8a6a05749be04"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to divide two cached values and cache the result if large.  <a href="#a65de9b96c7568d2a4bc8a6a05749be04">More...</a><br /></td></tr>
-<tr class="separator:a65de9b96c7568d2a4bc8a6a05749be04"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac95bf4ec8ac8cdfc09f81dc6ab3f7954"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#ac95bf4ec8ac8cdfc09f81dc6ab3f7954">cached_int_mod</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> number, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> n)</td></tr>
-<tr class="memdesc:ac95bf4ec8ac8cdfc09f81dc6ab3f7954"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to calculate the modulo of two cached values and cache the result if large.  <a href="#ac95bf4ec8ac8cdfc09f81dc6ab3f7954">More...</a><br /></td></tr>
-<tr class="separator:ac95bf4ec8ac8cdfc09f81dc6ab3f7954"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aee6e62d1fc9500706bd768db8e2a5af3"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#aee6e62d1fc9500706bd768db8e2a5af3">cached_int_gcd</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
-<tr class="memdesc:aee6e62d1fc9500706bd768db8e2a5af3"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to calculate the greatest common divisor of two cached values and cache the result if large.  <a href="#aee6e62d1fc9500706bd768db8e2a5af3">More...</a><br /></td></tr>
-<tr class="separator:aee6e62d1fc9500706bd768db8e2a5af3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa220bc67a8c28874c008e7558cbec79d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#aa220bc67a8c28874c008e7558cbec79d">cached_int_lcm</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
-<tr class="memdesc:aa220bc67a8c28874c008e7558cbec79d"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to calculate the least common multiple of two cached values and cache the result if large.  <a href="#aa220bc67a8c28874c008e7558cbec79d">More...</a><br /></td></tr>
-<tr class="separator:aa220bc67a8c28874c008e7558cbec79d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaabedd43537e5425aebea90933ccaa75"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#aaabedd43537e5425aebea90933ccaa75">cached_int_invert</a> (<a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> *result)</td></tr>
-<tr class="memdesc:aaabedd43537e5425aebea90933ccaa75"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to calculate the inverse of a cached value mod n and cache the result if large.  <a href="#aaabedd43537e5425aebea90933ccaa75">More...</a><br /></td></tr>
-<tr class="separator:aaabedd43537e5425aebea90933ccaa75"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e560bc6b4fcf1eed0c559549db60a60"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a6e560bc6b4fcf1eed0c559549db60a60">cached_int_set</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, const mpz_t number)</td></tr>
+<tr class="memdesc:a6e560bc6b4fcf1eed0c559549db60a60"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to set a mpz_t and get back an id  <a href="#a6e560bc6b4fcf1eed0c559549db60a60">More...</a><br /></td></tr>
+<tr class="separator:a6e560bc6b4fcf1eed0c559549db60a60"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b062425295ca616c3fb1079f861c674"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a3b062425295ca616c3fb1079f861c674">cached_int_get</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> id, mpz_t number)</td></tr>
+<tr class="memdesc:a3b062425295ca616c3fb1079f861c674"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to get a previously cached mpz_t from an id  <a href="#a3b062425295ca616c3fb1079f861c674">More...</a><br /></td></tr>
+<tr class="separator:a3b062425295ca616c3fb1079f861c674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a866b7d63ed27decc5d65f247ac4d4c8c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a866b7d63ed27decc5d65f247ac4d4c8c">cached_int_get_d</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> id)</td></tr>
+<tr class="memdesc:a866b7d63ed27decc5d65f247ac4d4c8c"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to get a previously cached mpz_t as double from an id, has the same behaviour as the mpz_get_double  <a href="#a866b7d63ed27decc5d65f247ac4d4c8c">More...</a><br /></td></tr>
+<tr class="separator:a866b7d63ed27decc5d65f247ac4d4c8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e148407789de18d50da975e968336de"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a7e148407789de18d50da975e968336de">cached_int_neg</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val)</td></tr>
+<tr class="memdesc:a7e148407789de18d50da975e968336de"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to negate a cachedInt  <a href="#a7e148407789de18d50da975e968336de">More...</a><br /></td></tr>
+<tr class="separator:a7e148407789de18d50da975e968336de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac42af9b314f47cc6b66da6f01964b749"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#ac42af9b314f47cc6b66da6f01964b749">cached_int_abs</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val)</td></tr>
+<tr class="memdesc:ac42af9b314f47cc6b66da6f01964b749"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to get the absolute of a cachedInt  <a href="#ac42af9b314f47cc6b66da6f01964b749">More...</a><br /></td></tr>
+<tr class="separator:ac42af9b314f47cc6b66da6f01964b749"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a87478647d84b88f0c5c3e32237103204"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a87478647d84b88f0c5c3e32237103204">cached_int_sgn</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val)</td></tr>
+<tr class="memdesc:a87478647d84b88f0c5c3e32237103204"><td class="mdescLeft">&#160;</td><td class="mdescRight">function to get the sign of a cachedInt  <a href="#a87478647d84b88f0c5c3e32237103204">More...</a><br /></td></tr>
+<tr class="separator:a87478647d84b88f0c5c3e32237103204"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3980252c8df5199149e30afb588b349c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a3980252c8df5199149e30afb588b349c">cached_int_add</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
+<tr class="memdesc:a3980252c8df5199149e30afb588b349c"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to add two cached values and cache the result if large.  <a href="#a3980252c8df5199149e30afb588b349c">More...</a><br /></td></tr>
+<tr class="separator:a3980252c8df5199149e30afb588b349c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a828300be9b4c3dd20d70e73803d0777c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a828300be9b4c3dd20d70e73803d0777c">cached_int_sub</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
+<tr class="memdesc:a828300be9b4c3dd20d70e73803d0777c"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to subtract two cached values and cache the result if large.  <a href="#a828300be9b4c3dd20d70e73803d0777c">More...</a><br /></td></tr>
+<tr class="separator:a828300be9b4c3dd20d70e73803d0777c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a243d8a87e6bf22da9dfb579fce250dab"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a243d8a87e6bf22da9dfb579fce250dab">cached_int_mul</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
+<tr class="memdesc:a243d8a87e6bf22da9dfb579fce250dab"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to multiply two cached values and cache the result if large.  <a href="#a243d8a87e6bf22da9dfb579fce250dab">More...</a><br /></td></tr>
+<tr class="separator:a243d8a87e6bf22da9dfb579fce250dab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adb9dffa8c34ea47d6a5cde1130e9a77b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#adb9dffa8c34ea47d6a5cde1130e9a77b">cached_int_tdiv</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> divident, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> divisor, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> *rest)</td></tr>
+<tr class="memdesc:adb9dffa8c34ea47d6a5cde1130e9a77b"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to divide two cached values and cache the result if large.  <a href="#adb9dffa8c34ea47d6a5cde1130e9a77b">More...</a><br /></td></tr>
+<tr class="separator:adb9dffa8c34ea47d6a5cde1130e9a77b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f2049e84b47bf02d0d8250fe551c61e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a8f2049e84b47bf02d0d8250fe551c61e">cached_int_mod</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> number, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> n)</td></tr>
+<tr class="memdesc:a8f2049e84b47bf02d0d8250fe551c61e"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to calculate the modulo of two cached values and cache the result if large.  <a href="#a8f2049e84b47bf02d0d8250fe551c61e">More...</a><br /></td></tr>
+<tr class="separator:a8f2049e84b47bf02d0d8250fe551c61e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80b8d00486c8442cac6df8bb65af0c1f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a80b8d00486c8442cac6df8bb65af0c1f">cached_int_gcd</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
+<tr class="memdesc:a80b8d00486c8442cac6df8bb65af0c1f"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to calculate the greatest common divisor of two cached values and cache the result if large.  <a href="#a80b8d00486c8442cac6df8bb65af0c1f">More...</a><br /></td></tr>
+<tr class="separator:a80b8d00486c8442cac6df8bb65af0c1f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca60a6d36f6f34ec01de9833f1f6d3d9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#aca60a6d36f6f34ec01de9833f1f6d3d9">cached_int_lcm</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
+<tr class="memdesc:aca60a6d36f6f34ec01de9833f1f6d3d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to calculate the least common multiple of two cached values and cache the result if large.  <a href="#aca60a6d36f6f34ec01de9833f1f6d3d9">More...</a><br /></td></tr>
+<tr class="separator:aca60a6d36f6f34ec01de9833f1f6d3d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a19cbcd987c69daf8557a2e2cf5ea7cc9"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a19cbcd987c69daf8557a2e2cf5ea7cc9">cached_int_invert</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> *result)</td></tr>
+<tr class="memdesc:a19cbcd987c69daf8557a2e2cf5ea7cc9"><td class="mdescLeft">&#160;</td><td class="mdescRight">function for master cache to calculate the inverse of a cached value mod n and cache the result if large.  <a href="#a19cbcd987c69daf8557a2e2cf5ea7cc9">More...</a><br /></td></tr>
+<tr class="separator:a19cbcd987c69daf8557a2e2cf5ea7cc9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a880ab22856ee543c88a51f11bf042fc3"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a880ab22856ee543c88a51f11bf042fc3">cached_int_isID</a> (<a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val)</td></tr>
+<tr class="separator:a880ab22856ee543c88a51f11bf042fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ecda55909e0a8daa78f17f7d099ba15"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a9ecda55909e0a8daa78f17f7d099ba15">cached_int_cmp</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val2)</td></tr>
+<tr class="separator:a9ecda55909e0a8daa78f17f7d099ba15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7375baffebcfeaaae58536868458c038"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a7375baffebcfeaaae58536868458c038">cached_int_cmp_i</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, int val2)</td></tr>
+<tr class="separator:a7375baffebcfeaaae58536868458c038"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a906187cddf9719dc125ddf401eafad1b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="master__cache__integer_8c.html#a906187cddf9719dc125ddf401eafad1b">cached_int_cmp_d</a> (const <a class="el" href="structMasterCache.html">MasterCache</a> *mstr, <a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> val1, double val2)</td></tr>
+<tr class="separator:a906187cddf9719dc125ddf401eafad1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="a571d2709b7ba70de2e4e7a6027215f0e"></a>
+<a class="anchor" id="a9f86c5ceb110c605dcc42830199d13c1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void get_mpz_from_id </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -574,20 +582,20 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2e8ed43761ae3945335b89102db422fd"></a>
+<a class="anchor" id="a6e560bc6b4fcf1eed0c559549db60a60"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> cached_int_set </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">mpz_t&#160;</td>
+          <td class="paramtype">const mpz_t&#160;</td>
           <td class="paramname"><em>number</em>&#160;</td>
         </tr>
         <tr>
@@ -608,14 +616,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a70e68c14bd00b07597b31dba34aba997"></a>
+<a class="anchor" id="a3b062425295ca616c3fb1079f861c674"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void cached_int_get </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -648,14 +656,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af0c42f55a0674b42df4ce45322c33198"></a>
+<a class="anchor" id="a866b7d63ed27decc5d65f247ac4d4c8c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">double cached_int_get_d </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -682,14 +690,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0554d6cc2b779f43cacb2d1fe95efdc2"></a>
+<a class="anchor" id="a7e148407789de18d50da975e968336de"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> cached_int_neg </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -716,14 +724,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a156b95f33adc0b39fc5b37c86023028a"></a>
+<a class="anchor" id="ac42af9b314f47cc6b66da6f01964b749"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> cached_int_abs </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -750,14 +758,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a398a6b9dd17c9e3e457184f8f7f417f2"></a>
+<a class="anchor" id="a87478647d84b88f0c5c3e32237103204"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int cached_int_sgn </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -784,14 +792,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a2c77389b27a3a9c47f580cc52b6bbe62"></a>
+<a class="anchor" id="a3980252c8df5199149e30afb588b349c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> cached_int_add </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -825,14 +833,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af3fa99a34d3f8f474ca5cb1caf45b0dc"></a>
+<a class="anchor" id="a828300be9b4c3dd20d70e73803d0777c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> cached_int_sub </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -866,14 +874,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a418f697aefb1a082369940b69ef21758"></a>
+<a class="anchor" id="a243d8a87e6bf22da9dfb579fce250dab"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> cached_int_mul </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -907,14 +915,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a65de9b96c7568d2a4bc8a6a05749be04"></a>
+<a class="anchor" id="adb9dffa8c34ea47d6a5cde1130e9a77b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> cached_int_tdiv </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -955,14 +963,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ac95bf4ec8ac8cdfc09f81dc6ab3f7954"></a>
+<a class="anchor" id="a8f2049e84b47bf02d0d8250fe551c61e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> cached_int_mod </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -996,14 +1004,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aee6e62d1fc9500706bd768db8e2a5af3"></a>
+<a class="anchor" id="a80b8d00486c8442cac6df8bb65af0c1f"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> cached_int_gcd </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -1037,14 +1045,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aa220bc67a8c28874c008e7558cbec79d"></a>
+<a class="anchor" id="aca60a6d36f6f34ec01de9833f1f6d3d9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a> cached_int_lcm </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -1078,14 +1086,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="aaabedd43537e5425aebea90933ccaa75"></a>
+<a class="anchor" id="a19cbcd987c69daf8557a2e2cf5ea7cc9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int cached_int_invert </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
           <td class="paramname"><em>mstr</em>, </td>
         </tr>
         <tr>
@@ -1123,6 +1131,152 @@ Functions</h2></td></tr>
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>int returns 0 if inverse does not exists, 1 if result is defined </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a880ab22856ee543c88a51f11bf042fc3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cached_int_isID </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
+          <td class="paramname"><em>val</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>check if a cachedInt is a number or points to a cache </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">val</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true if the cachedInt is an ID to the cache </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a9ecda55909e0a8daa78f17f7d099ba15"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cached_int_cmp </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramname"><em>mstr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
+          <td class="paramname"><em>val1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
+          <td class="paramname"><em>val2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>comparison function for cachedInts </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mstr</td><td><a class="el" href="structMasterCache.html" title="MasterCache. ">MasterCache</a> </td></tr>
+    <tr><td class="paramname">val1</td><td></td></tr>
+    <tr><td class="paramname">val2</td><td></td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if val1 &gt; val2, 0 if equals, -1 if val2 &gt; val2, 2 if NaN passed or comparing infinities with same sign </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7375baffebcfeaaae58536868458c038"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cached_int_cmp_i </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramname"><em>mstr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
+          <td class="paramname"><em>val1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>val2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>compare cachedInt with int </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mstr</td><td></td></tr>
+    <tr><td class="paramname">val1</td><td>cachedInt </td></tr>
+    <tr><td class="paramname">val2</td><td>int </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if val1 &gt; val2, 0 if equals and -1 if val2 &gt; val1 </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a906187cddf9719dc125ddf401eafad1b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int cached_int_cmp_d </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="structMasterCache.html">MasterCache</a> *&#160;</td>
+          <td class="paramname"><em>mstr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="mastercache_8h.html#a113c03970467afb459ed5ae157d0a870">cachedInt</a>&#160;</td>
+          <td class="paramname"><em>val1</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>val2</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>compare cachedInt with double </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">mstr</td><td></td></tr>
+    <tr><td class="paramname">val1</td><td>cachedInt </td></tr>
+    <tr><td class="paramname">val2</td><td>double </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if val1 &gt; val2, 0 if equals and -1 if val2 &gt; val1 </dd></dl>
 
 </div>
 </div>

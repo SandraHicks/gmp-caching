@@ -113,11 +113,11 @@ Functions</h2></td></tr>
 <tr class="separator:ab916e2c8a7127d6b8d2daa5723686313"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac054b43373a334ba0a65041d5b8d9035"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="caching__operations_8c.html#ac054b43373a334ba0a65041d5b8d9035">cached_int_mpz</a> (uint64_t id, mpz_t number)</td></tr>
 <tr class="separator:ac054b43373a334ba0a65041d5b8d9035"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8ad24c72fe1e1e7bcb71342763573276"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="caching__operations_8c.html#a8ad24c72fe1e1e7bcb71342763573276">mpz_cached_int</a> (mpz_t number)</td></tr>
-<tr class="separator:a8ad24c72fe1e1e7bcb71342763573276"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5be5a3ac60ee70c550943ca7210ed0ad"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="caching__operations_8c.html#a5be5a3ac60ee70c550943ca7210ed0ad">cache_insert_mpz</a> (<a class="el" href="structlookup.html">lookup</a> *lu, mpz_t val)</td></tr>
-<tr class="memdesc:a5be5a3ac60ee70c550943ca7210ed0ad"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache an mpz_t if it is large enough  <a href="#a5be5a3ac60ee70c550943ca7210ed0ad">More...</a><br /></td></tr>
-<tr class="separator:a5be5a3ac60ee70c550943ca7210ed0ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8d459f3ba656e9e00d1eef16daf1a84"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="caching__operations_8c.html#aa8d459f3ba656e9e00d1eef16daf1a84">mpz_cached_int</a> (const mpz_t number)</td></tr>
+<tr class="separator:aa8d459f3ba656e9e00d1eef16daf1a84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60ef0ebb6fbdbcd48b57f315cbbb0705"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="caching__operations_8c.html#a60ef0ebb6fbdbcd48b57f315cbbb0705">cache_insert_mpz</a> (<a class="el" href="structlookup.html">lookup</a> *lu, const mpz_t val)</td></tr>
+<tr class="memdesc:a60ef0ebb6fbdbcd48b57f315cbbb0705"><td class="mdescLeft">&#160;</td><td class="mdescRight">cache an mpz_t if it is large enough  <a href="#a60ef0ebb6fbdbcd48b57f315cbbb0705">More...</a><br /></td></tr>
+<tr class="separator:a60ef0ebb6fbdbcd48b57f315cbbb0705"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a56daf76d7d1d61b8c7616dc6b4879cb4"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="caching__operations_8c.html#a56daf76d7d1d61b8c7616dc6b4879cb4">cache_exists_mpz</a> (<a class="el" href="structlookup.html">lookup</a> *lu, mpz_t val)</td></tr>
 <tr class="memdesc:a56daf76d7d1d61b8c7616dc6b4879cb4"><td class="mdescLeft">&#160;</td><td class="mdescRight">check if an mpz_t already exists in cache  <a href="#a56daf76d7d1d61b8c7616dc6b4879cb4">More...</a><br /></td></tr>
 <tr class="separator:a56daf76d7d1d61b8c7616dc6b4879cb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -438,14 +438,14 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a8ad24c72fe1e1e7bcb71342763573276"></a>
+<a class="anchor" id="aa8d459f3ba656e9e00d1eef16daf1a84"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">uint64_t mpz_cached_int </td>
           <td>(</td>
-          <td class="paramtype">mpz_t&#160;</td>
+          <td class="paramtype">const mpz_t&#160;</td>
           <td class="paramname"><em>number</em></td><td>)</td>
           <td></td>
         </tr>
@@ -461,7 +461,7 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a5be5a3ac60ee70c550943ca7210ed0ad"></a>
+<a class="anchor" id="a60ef0ebb6fbdbcd48b57f315cbbb0705"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -474,7 +474,7 @@ Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">mpz_t&#160;</td>
+          <td class="paramtype">const mpz_t&#160;</td>
           <td class="paramname"><em>val</em>&#160;</td>
         </tr>
         <tr>

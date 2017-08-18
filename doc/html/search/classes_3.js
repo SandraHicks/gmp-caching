@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['mastercache',['MasterCache',['../structMasterCache.html',1,'']]],
-  ['mastercacheint',['MasterCacheInt',['../structMasterCacheInt.html',1,'']]],
-  ['mpz_5ft_5fcache',['mpz_t_cache',['../structmpz__t__cache.html',1,'']]]
+  ['lookup',['lookup',['../structlookup.html',1,'']]],
+  ['lookup_5ftable',['lookup_table',['../structlookup__table.html',1,'']]],
+  ['lookup_5ftable_5fbinary',['lookup_table_binary',['../structlookup__table__binary.html',1,'']]]
 ];

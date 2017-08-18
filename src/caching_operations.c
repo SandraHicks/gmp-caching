@@ -217,7 +217,7 @@ void cached_int_mpz(uint64_t id, mpz_t number){
  * @param number
  * @return 
  */
-uint64_t mpz_cached_int(mpz_t number){
+uint64_t mpz_cached_int(const mpz_t number){
     int limbs = number->_mp_size;
     limbs = (limbs < 0) ? limbs*(-1) : limbs;
     if(limbs > 2)
@@ -310,7 +310,7 @@ uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val){
  * @param val mpz_t which should be cached
  * @return id for cached mpz_t, , SHIFT if it did not work
  */
-uint64_t cache_insert_mpz(lookup* lu, mpz_t val){
+uint64_t cache_insert_mpz(lookup* lu, const mpz_t val){
     mpz_t temp;
     mpz_init(temp);
     mpz_set(temp, val);

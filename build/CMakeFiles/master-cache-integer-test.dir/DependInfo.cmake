@@ -4,14 +4,20 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c" "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/CMakeFiles/master-cache-integer-test.dir/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c.o"
+  "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/Tests/master-cache-integer-test.c" "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/CMakeFiles/master-cache-integer-test.dir/Tests/master-cache-integer-test.c.o"
   )
 set(CMAKE_C_COMPILER_ID "GNU")
 
+# Preprocessor definitions for this target.
+set(CMAKE_TARGET_DEFINITIONS_C
+  "GMPCACHING_CACHESIZE=400"
+  )
+
 # The include file search paths:
 set(CMAKE_C_TARGET_INCLUDE_PATH
-  "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src"
-  "/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/../src"
+  "../src"
+  "../"
+  "."
   )
 
 # Targets to which this target links.

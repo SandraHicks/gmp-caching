@@ -1,1 +1,0 @@
-/usr/bin/c++    -Wall -std=c++11 -Wall   CMakeFiles/master-cache-test.dir/__/Tests/master-cache-test.c.o  -o master-cache-test -rdynamic -lgmp libgmp-caching.a -lgmp 

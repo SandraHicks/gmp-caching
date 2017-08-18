@@ -99,10 +99,10 @@ Macros</h2></td></tr>
 <tr class="separator:ac179eef68bcc694aa0ef8dd1eb09950b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa27c29fc6f203aac29fb3632a0bafda5"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="defines_8h.html#aa27c29fc6f203aac29fb3632a0bafda5">NEG</a>&#160;&#160;&#160;((uint64_t)1 &lt;&lt; <a class="el" href="defines_8h.html#a18f2a1494a0d643f51839313f03ab1ea">cachedInt_SIGN</a>)</td></tr>
 <tr class="separator:aa27c29fc6f203aac29fb3632a0bafda5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a32c24060f7e736dc85153f325ccdc7e6"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="defines_8h.html#a32c24060f7e736dc85153f325ccdc7e6">PLUSINFTY</a>&#160;&#160;&#160;<a class="el" href="defines_8h.html#ac179eef68bcc694aa0ef8dd1eb09950b">SHIFT</a></td></tr>
-<tr class="separator:a32c24060f7e736dc85153f325ccdc7e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20adc40cb2e8ce80a3b1241a8905e8a9"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="defines_8h.html#a20adc40cb2e8ce80a3b1241a8905e8a9">MINUSINFTY</a>&#160;&#160;&#160;<a class="el" href="defines_8h.html#ac179eef68bcc694aa0ef8dd1eb09950b">SHIFT</a> | <a class="el" href="defines_8h.html#aa27c29fc6f203aac29fb3632a0bafda5">NEG</a></td></tr>
-<tr class="separator:a20adc40cb2e8ce80a3b1241a8905e8a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d1730b0e135a85bba7eb5d65fa7b9a7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="defines_8h.html#a2d1730b0e135a85bba7eb5d65fa7b9a7">PLUS_INFINITY</a>&#160;&#160;&#160;(<a class="el" href="defines_8h.html#ac179eef68bcc694aa0ef8dd1eb09950b">SHIFT</a> + 1)</td></tr>
+<tr class="separator:a2d1730b0e135a85bba7eb5d65fa7b9a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae711fa09ac2a2aacce6f094dc7d8b3b4"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="defines_8h.html#ae711fa09ac2a2aacce6f094dc7d8b3b4">MINUS_INFINITY</a>&#160;&#160;&#160;((<a class="el" href="defines_8h.html#ac179eef68bcc694aa0ef8dd1eb09950b">SHIFT</a> | <a class="el" href="defines_8h.html#aa27c29fc6f203aac29fb3632a0bafda5">NEG</a>) + 1)</td></tr>
+<tr class="separator:ae711fa09ac2a2aacce6f094dc7d8b3b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a class="anchor" id="a4ad9728365e70dea0b97d88a14c62710"></a>
@@ -209,12 +209,12 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a32c24060f7e736dc85153f325ccdc7e6"></a>
+<a class="anchor" id="a2d1730b0e135a85bba7eb5d65fa7b9a7"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define PLUSINFTY&#160;&#160;&#160;<a class="el" href="defines_8h.html#ac179eef68bcc694aa0ef8dd1eb09950b">SHIFT</a></td>
+          <td class="memname">#define PLUS_INFINITY&#160;&#160;&#160;(<a class="el" href="defines_8h.html#ac179eef68bcc694aa0ef8dd1eb09950b">SHIFT</a> + 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -222,12 +222,12 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a20adc40cb2e8ce80a3b1241a8905e8a9"></a>
+<a class="anchor" id="ae711fa09ac2a2aacce6f094dc7d8b3b4"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define MINUSINFTY&#160;&#160;&#160;<a class="el" href="defines_8h.html#ac179eef68bcc694aa0ef8dd1eb09950b">SHIFT</a> | <a class="el" href="defines_8h.html#aa27c29fc6f203aac29fb3632a0bafda5">NEG</a></td>
+          <td class="memname">#define MINUS_INFINITY&#160;&#160;&#160;((<a class="el" href="defines_8h.html#ac179eef68bcc694aa0ef8dd1eb09950b">SHIFT</a> | <a class="el" href="defines_8h.html#aa27c29fc6f203aac29fb3632a0bafda5">NEG</a>) + 1)</td>
         </tr>
       </table>
 </div><div class="memdoc">

@@ -1,4 +1,6 @@
 install:
 go to build folder
 cmake ..
-make
+make (CACHE_SIZE=42)
+
+for setting a default cache size for the globalcache, CACHE_SIZE=X, with X integer size of cache.
