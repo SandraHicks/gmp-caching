@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['printentry',['printEntry',['../mpz__caching_8c.html#a4ea9e1949f05c8ed0fa17421e156d7ba',1,'printEntry(mpz_t_cache *cache, uint64_t i):&#160;mpz_caching.c'],['../mpz__caching_8h.html#a4ea9e1949f05c8ed0fa17421e156d7ba',1,'printEntry(mpz_t_cache *cache, uint64_t i):&#160;mpz_caching.c']]]
+  ['neg',['neg',['../classgmpcaching_1_1CachedInt.html#a236754858b7f9c1a8aac3eee5048c70a',1,'gmpcaching::CachedInt::neg()'],['../classgmpcaching_1_1CachedRational.html#a3a724b3fe5a16c4a91fb2046cb347828',1,'gmpcaching::CachedRational::neg()']]]
 ];

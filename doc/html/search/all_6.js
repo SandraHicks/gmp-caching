@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['gcd',['gcd',['../structlookup.html#aaadaeeb9f694301aec3fe2c275c6201f',1,'lookup::gcd()'],['../caching__operations_8h.html#aa8f137f19095e0bdcf4f521e901f88bba1e01e015db0e95c2da032bb76f5ddcc1',1,'GCD():&#160;caching_operations.h']]],
+  ['gcd',['gcd',['../structlookup.html#aaadaeeb9f694301aec3fe2c275c6201f',1,'lookup::gcd()'],['../classgmpcaching_1_1CachedInt.html#a76632c3a665085a33e5e7c8b7208eb05',1,'gmpcaching::CachedInt::gcd()'],['../caching__operations_8h.html#aa8f137f19095e0bdcf4f521e901f88bba1e01e015db0e95c2da032bb76f5ddcc1',1,'GCD():&#160;caching_operations.h']]],
   ['get_5fcached_5fdouble',['get_cached_double',['../mpz__caching_8c.html#a1afc9ada65a26e6562e7eb6b24064f72',1,'get_cached_double(mpz_t_cache *cache, uint64_t i):&#160;mpz_caching.c'],['../mpz__caching_8h.html#a1afc9ada65a26e6562e7eb6b24064f72',1,'get_cached_double(mpz_t_cache *cache, uint64_t i):&#160;mpz_caching.c']]],
   ['get_5fcached_5fmpz',['get_cached_mpz',['../mpz__caching_8c.html#acfb7f476b995041bb4ba41e31f5220ae',1,'get_cached_mpz(mpz_t_cache *cache, uint64_t i, mpz_t val):&#160;mpz_caching.c'],['../mpz__caching_8h.html#acfb7f476b995041bb4ba41e31f5220ae',1,'get_cached_mpz(mpz_t_cache *cache, uint64_t i, mpz_t val):&#160;mpz_caching.c']]],
   ['get_5fcrc_5fhash',['get_CRC_hash',['../hashing_8c.html#a8a8dd73303711a6884acad72b0caa968',1,'get_CRC_hash(mpz_t myval):&#160;hashing.c'],['../hashing_8h.html#a8a8dd73303711a6884acad72b0caa968',1,'get_CRC_hash(mpz_t myval):&#160;hashing.c']]],
@@ -22,5 +22,6 @@ var searchData=
   ['getvalue',['getValue',['../classgmpcaching_1_1CachedInt.html#a6becb979a35cb800cb707d79e6bf0df4',1,'gmpcaching::CachedInt::getValue()'],['../classgmpcaching_1_1CachedRational.html#a4e2b507a58d8881d7b8fe18c815a27f6',1,'gmpcaching::CachedRational::getValue()']]],
   ['globalcache_5fsize',['globalcache_size',['../gmpcachingxx_8h.html#ac20edd02e15310809ef6c2569521cf9a',1,'gmpcaching']]],
   ['gmpcaching',['GMPCaching',['../classgmpcaching_1_1GMPCaching.html',1,'gmpcaching']]],
-  ['gmpcachingxx_2eh',['gmpcachingxx.h',['../gmpcachingxx_8h.html',1,'']]]
+  ['gmpcachingxx_2eh',['gmpcachingxx.h',['../gmpcachingxx_8h.html',1,'']]],
+  ['gmp_2dcaching',['GMP-Caching',['../index.html',1,'']]]
 ];

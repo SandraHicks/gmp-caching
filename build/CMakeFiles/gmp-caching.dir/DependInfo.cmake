@@ -19,7 +19,7 @@ set(CMAKE_C_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_C
-  "GMPCACHING_CACHESIZE=400"
+  "GMPCACHING_CACHESIZE=300000"
   )
 
 # The include file search paths:
@@ -37,7 +37,7 @@ set(CMAKE_CXX_COMPILER_ID "GNU")
 
 # Preprocessor definitions for this target.
 set(CMAKE_TARGET_DEFINITIONS_CXX
-  "GMPCACHING_CACHESIZE=400"
+  "GMPCACHING_CACHESIZE=300000"
   )
 
 # The include file search paths:

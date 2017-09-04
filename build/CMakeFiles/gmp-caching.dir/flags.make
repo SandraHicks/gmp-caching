@@ -5,13 +5,13 @@
 # compile CXX with /usr/bin/c++
 C_FLAGS = -fPIC  
 
-C_DEFINES = -DGMPCACHING_CACHESIZE=400
+C_DEFINES = -DGMPCACHING_CACHESIZE=300000
 
 C_INCLUDES = -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build 
 
 CXX_FLAGS =  -Wall -std=c++11 -Wall  
 
-CXX_DEFINES = -DGMPCACHING_CACHESIZE=400
+CXX_DEFINES = -DGMPCACHING_CACHESIZE=300000
 
 CXX_INCLUDES = -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching -I/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build 
 

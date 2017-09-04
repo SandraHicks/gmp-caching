@@ -2,7 +2,10 @@
   * @file cachedRational.h
   * @author Sandra Hicks
   * @brief wrapper class header for cachedRationals
+  * This class is compatible to the soplex::Rational class in the SoPlex project and can replace this class entirely.
   */
+#ifndef CACHED_RATIONAL_H
+#define CACHED_RATIONAL_H
 
 #include "master_cache_rational.h"
 #include "mastercache.h"
@@ -25,6 +28,9 @@ namespace gmpcaching{
       const MasterCache* cache;
 
     public:
+        static int global_cached_int_counter;
+    static int global_cached;
+    static int global_additions;
 
       /**
        * @brief Constructs the CachedRational.
@@ -166,34 +172,58 @@ namespace gmpcaching{
       /*
        calculations
        */
+      /// CachedRational addition
       CachedRational operator+(const CachedRational& i) const;
+      /// CachedRational inplace addition
       CachedRational operator+=(const CachedRational& i);
 
+      /// CachedRational subtraction
       CachedRational operator-(const CachedRational& i) const;
+      /// CachedRational inplace subtraction
       CachedRational operator-=(const CachedRational& i);
 
+      /// CachedRational multiplication
       CachedRational operator*(const CachedRational& i) const;
+      /// CachedRational inplace multiplication
       CachedRational operator*=(const CachedRational& i);
 
+      ///CachedRational division
       CachedRational operator/(const CachedRational& i) const;
+      ///CachedRational inplace division
       CachedRational operator/=(const CachedRational& i);
       
+      /// double addition
       CachedRational operator+(const double& d) const;
+      /// double subtraction
       CachedRational operator-(const double& d) const;
+      /// double multiplication
       CachedRational operator*(const double& d) const;
+      /// double division
       CachedRational operator/(const double& d) const;
+      /// double inplace addition
       CachedRational operator+=(const double& d);
+      /// double inplace subtraction
       CachedRational operator-=(const double& d);
+      /// double inplace multiplication
       CachedRational operator*=(const double& d);
+      /// double inplace division
       CachedRational operator/=(const double& d);
       
+      /// int addtion
       CachedRational operator+(const int& d) const;
+      /// int subtraction
       CachedRational operator-(const int& d) const;
+      /// int multiplication
       CachedRational operator*(const int& d) const;
+      /// int division
       CachedRational operator/(const int& d) const;
+      /// int inplace addition
       CachedRational operator+=(const int& d);
+      /// int inplace subtraction
       CachedRational operator-=(const int& d);
+      /// int inplace multiplication
       CachedRational operator*=(const int& d);
+      /// int inplace division
       CachedRational operator/=(const int& d);
       
       friend CachedRational operator+(const double& d, const CachedRational& r);
@@ -253,17 +283,14 @@ namespace gmpcaching{
        */
       friend int sign(const CachedRational& r);
       /**
-       * explicit double conversion
+       * double conversion
        * @return double representation
        */
-      //explicit operator double() const;
+      operator double() const;
       /**
-       * explicit long double conversion
+       * long double conversion
        * @return long double representation
        */
-      //explicit operator long double() const;
-      
-      operator double() const;
       operator long double() const;
       
       //*******************************************************//
@@ -296,6 +323,7 @@ namespace gmpcaching{
       //*******************************************************//
       //soplex::Rational interface methods
       
+      /// precision
       static int precision();
       /// Size in specified base (bit size for base 2)
       int sizeInBase(const int base = 2) const;
@@ -305,6 +333,7 @@ namespace gmpcaching{
       /// checks if \p d is exactly equal to the Rational and if not, if it is one of the two adjacent doubles
       bool isAdjacentTo(const double& d) const;
       
+      ///powRound soplex::Rational function
       CachedRational& powRound();
       //*******************************************************//
       
@@ -323,12 +352,19 @@ namespace gmpcaching{
       mpq_t& getMpqRef_w() const;
       
       //*******************************************************//
+      void set_den(mpz_t den);
+      void set_num(mpz_t num);
+      void get_den(mpz_t& den) const;
+      void get_num(mpz_t& num) const;
       
+      void canonicalize();
+      void copy_mpq(mpq_t& copy) const;
       
       
       
       //*******************************************************//
       //String conversions
+      ///read a cachedRational from a c-string
       bool readString(const char* s);
 
       friend std::string rationalToString(const CachedRational& r, const int precision);
@@ -397,10 +433,11 @@ namespace gmpcaching{
       //functions from soplex::Rational interface which do nothing (here and there)
       //unfortunately they are required to make SoPlex compile
       
+      ///does nothing, just for compatibility with soplex::Rational
       static void enableListMem();
-      
+      ///does nothing, just for compatibility with soplex::Rational
       static void freeListMem();
-      
+      ///does nothing, just for compatibility with soplex::Rational
       static void disableListMem();
       
       //*******************************************************//
@@ -414,14 +451,21 @@ namespace gmpcaching{
       cachedInt counter;
       cachedInt denominator;
   public:
+      /// Standard Constructor
       RationalCacheNotSetException(){
           this->counter = 0;
           this->denominator = 0;
       }
+      /**
+       * @brief Constructor with cachedInt tuple for location
+       * @param i cachedInt
+       * @param j cachedInt
+       */
       RationalCacheNotSetException(cachedInt i, cachedInt j){
           this->counter = i;
           this->denominator = j;
       }
+      /// get error message
     virtual const char* what() const throw(){
         std::string ret = "The Cache was not initialized for ";
         ret += std::to_string(this->counter);
@@ -433,61 +477,113 @@ namespace gmpcaching{
   };
    /// Negation.
    CachedRational operator-(const CachedRational& r);
+   /// absolute Value of CachedRational
    CachedRational spxAbs(const CachedRational& r);
+   /// sign of CachedRational (either 0 or 1)
    int sign(const CachedRational& r);
    
    //compare
+     /**
+      * compare CachedRationals
+      * @param r
+      * @param s
+      * @return 1 if r>s, 0 if equals, -1 if r<s
+      */
     int compareRational(const CachedRational& r, const CachedRational& s);
+    /// not equals CachedRationals
     bool operator!=(const CachedRational& r, const CachedRational& s);
+    /// equals CachedRationals
     bool operator==(const CachedRational& r, const CachedRational& s);
+    /// less than CachedRationals
     bool operator<(const CachedRational& r, const CachedRational& s);
+    /// less than equals CachedRationals
     bool operator<=(const CachedRational& r, const CachedRational& s);
+    /// greater than CachedRationals
     bool operator>(const CachedRational& r, const CachedRational& s);
+    /// greater than equals CachedRationals
     bool operator>=(const CachedRational& r, const CachedRational& s);
 
+    /// not equals CachedRational double
     bool operator!=(const CachedRational& r, const double& s);
+    /// equals CachedRational double
     bool operator==(const CachedRational& r, const double& s);
+    /// less than CachedRational double
     bool operator<(const CachedRational& r, const double& s);
+    /// less than equals CachedRational double
     bool operator<=(const CachedRational& r, const double& s);
+    /// greater than CachedRational double
     bool operator>(const CachedRational& r, const double& s);
+    /// greater than equals CachedRational double
     bool operator>=(const CachedRational& r, const double& s);
 
+    /// not equals double CachedRational
     bool operator!=(const double& r, const CachedRational& s);
+    /// equals double CachedRational
     bool operator==(const double& r, const CachedRational& s);
+    /// less than double CachedRational
     bool operator<(const double& r, const CachedRational& s);
+    /// less than equals double CachedRational
     bool operator<=(const double& r, const CachedRational& s);
+    /// greater than double CachedRational
     bool operator>(const double& r, const CachedRational& s);
+    /// greater than equals double CachedRational
     bool operator>=(const double& r, const CachedRational& s);
 
+    /// not equals CachedRational long double
     bool operator!=(const CachedRational& r, const long double& s);
+    /// equals CachedRational long double
     bool operator==(const CachedRational& r, const long double& s);
+    /// less than CachedRational long double
     bool operator<(const CachedRational& r, const long double& s);
+    /// less than equals CachedRational long double
     bool operator<=(const CachedRational& r, const long double& s);
+    /// greater than CachedRational long double
     bool operator>(const CachedRational& r, const long double& s);
+    /// greater than equals CachedRational long double
     bool operator>=(const CachedRational& r, const long double& s);
 
+    /// not equals long double CachedRational
     bool operator!=(const long double& r, const CachedRational& s);
+    /// equals long double CachedRational
     bool operator==(const long double& r, const CachedRational& s);
+    /// less than long double CachedRational
     bool operator<(const long double& r, const CachedRational& s);
+    /// less than equals long double CachedRational
     bool operator<=(const long double& r, const CachedRational& s);
+    /// greater than long double CachedRational
     bool operator>(const long double& r, const CachedRational& s);
+    /// greater than equals long double CachedRational
     bool operator>=(const long double& r, const CachedRational& s);
 
+    ///addition double CachedRational
     CachedRational operator+(const double& d, const CachedRational& r);
+    ///subtraction double CachedRational
     CachedRational operator-(const double& d, const CachedRational& r);
+    ///multiplication double CachedRational
     CachedRational operator*(const double& d, const CachedRational& r);
+    ///division double CachedRational
     CachedRational operator/(const double& d, const CachedRational& r);
 
+    /// not equals int CachedRational
     bool operator!=(const int& r, const CachedRational& s);
+    /// equals int CachedRational
     bool operator==(const int& r, const CachedRational& s);
+    /// less than int CachedRational
     bool operator<(const int& r, const CachedRational& s);
+    /// less than equals int CachedRational
     bool operator<=(const int& r, const CachedRational& s);
+    /// greater than int CachedRational
     bool operator>(const int& r, const CachedRational& s);
+    /// greater than equals int CachedRational
     bool operator>=(const int& r, const CachedRational& s);
 
+    ///addition int CachedRational
     CachedRational operator+(const int& d, const CachedRational& r);
+    ///subtraction int CachedRational
     CachedRational operator-(const int& d, const CachedRational& r);
+    ///multiplication int CachedRational
     CachedRational operator*(const int& d, const CachedRational& r);
+    ///division int CachedRational
     CachedRational operator/(const int& d, const CachedRational& r);
     
     /// convert rational number to string
@@ -508,3 +604,4 @@ namespace gmpcaching{
    /// Size of largest denominator in rational vector.
    int dmaxSizeRational(const CachedRational* vector, const int length, const int base = 2);
 }
+#endif /*CACHED_RATIONAL_H*/

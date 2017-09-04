@@ -99,6 +99,7 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
             cachedIntElement* this = malloc(sizeof(cachedIntElement));
             this->id = id;
             this->hash = hashes[i];
+            this->next = NULL;
             //insert in sorted List, sort by id. can attach to last pointer because ids are fortlaufend
             cachedIntList* list = &(ht->lists[h[i]]);
             int curr_count = ht->counter[h[i]];
@@ -109,6 +110,7 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
             else{
                 cachedIntElement* last = list->tail;
                 last->next = this;
+                this->prev = last;
                 list->tail = this;
             }
             
@@ -257,11 +259,12 @@ void get_k_hashes_cpf(mpz_t val1, mpz_t val2, uint64_t* hashes){
     hashes1 = malloc(sizeof(uint64_t)*NUMBER_HF);
     get_k_hashes(op1, hashes1);
 
+    
     uint64_t* hashes2;
     hashes2 = malloc(sizeof(uint64_t)*NUMBER_HF);
 
     get_k_hashes(op2, hashes2);
-
+  
     int i;
     for(i=0;i<NUMBER_HF;++i){
         hashes[i] = Cantor_pairing_function_int64(hashes1[i], hashes2[i]);
@@ -336,6 +339,7 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
     
     int i;
     for(i=0; i<number_hf; ++i){
+        
         uint64_t uh_temp = hashes[i];
         int64_t h_temp = (int64_t)uh_temp;
         if(h_temp > ht->size){
@@ -363,6 +367,7 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
             this->op1 = id_op1;
             this->op2 = id_op2;
             this->result = id_res;
+            this->next = NULL;
             if(extra_info != NULL)
                 this->extra_info = *extra_info;
             this->hash = hashes[i];
@@ -376,6 +381,7 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
             else{
                 cachedIntElement_binary* last = list->tail;
                 last->next = this;
+                this->prev = last;
                 list->tail = this;
             }
             
@@ -419,7 +425,6 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
     //1. find list of minimal size (previous loop)
     //2. find elements of minimal list in other lists
     
-    
     //sequential search, later binary search
     int index = (hashes[min] % ht->size);
     cachedIntList_binary* curr_list = &(ht->lists[index]);
@@ -439,11 +444,11 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
                         listfound = 1;
                         globalfound = 1;
                         statefulPointer[i] = curr_list;
+                        //printf("result: %"PRIu64" op1: %"PRIu64" op2: %"PRIu64" hash: %"PRIu64"\n", curr_list->result, curr_list->op1, curr_list->op2, curr_list->hash);
                         break;
                     }
                     curr_list = curr_list->next;
                 }
-                
                 //if the element was not found in the list, go to next element in minimal list
                 if(listfound == 0){
                     globalfound = 0;
@@ -457,6 +462,7 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
             mpz_init(cached_val);
             get_cached_mpz(cache, curr_min->op1, cached_val);
             int cmp1 = mpz_cmpabs(cached_val, op1);
+            mpz_init(cached_val);
             get_cached_mpz(cache, curr_min->op2, cached_val);
             int cmp2 = mpz_cmpabs(cached_val, op2);
             if(cmp1 == 0 && cmp2 == 0){
@@ -466,8 +472,12 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
                 return curr_id;
             }
         }
-        
-        curr_min = curr_min->next;
+        if(curr_min->next != NULL){
+            curr_min = curr_min->next;
+        }
+        else{
+            break;
+        }
     }
     return SHIFT;
 }

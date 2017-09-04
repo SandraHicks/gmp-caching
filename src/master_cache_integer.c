@@ -126,6 +126,8 @@ void cached_int_get(const MasterCache* mstr, cachedInt id, mpz_t number){
  * @return double the double representation of the mpz_t cached with id
  */
 double cached_int_get_d(const MasterCache* mstr, cachedInt id){
+    /*printf("get _ d id %" PRIu64 "\n", id);
+    printf("get _ d id %" PRIu64 "\n", id & ~SHIFT);*/
     //convert cachedInt to mpz if it is no id
     if(id == NaN || id == PLUS_INFINITY || id == MINUS_INFINITY){
         return 0.0;
@@ -350,6 +352,7 @@ cachedInt cached_int_mul(const MasterCache* mstr, cachedInt val1, cachedInt val2
     
     
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
+        //printf("direct mul: c=%"PRIu64" d=%"PRIu64"\n", val1, val2);
         result = direct_mul(val1, val2);
         if(result != SHIFT){
             return result;
@@ -388,7 +391,7 @@ cachedInt direct_mul(cachedInt val1, cachedInt val2){
     }
     
     if(!multiplicationOverflow(val1, val2)){
-        if(val1neg < val2neg || val1neg > val2neg)
+        if(val1neg != val2neg)
             return (val1 * val2) | NEG;
         else
             return (val1 * val2);
@@ -412,6 +415,11 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
     
     if(divisor == 0)
         return NaN;
+    
+    if(divident == 0){
+        *rest = (uint64_t)0;
+        return (uint64_t)0;
+    }
     
     //check for inifinity on divident
     if(((divident == PLUS_INFINITY) || (divident == MINUS_INFINITY)) && ((divisor != PLUS_INFINITY) && (divisor != MINUS_INFINITY))){
@@ -467,7 +475,7 @@ cachedInt direct_div(cachedInt val1, cachedInt val2){
         val2 = val2 & ~NEG;
     }
     if(val2!=0){
-        if(val1neg < val2neg || val1neg > val2neg)
+        if(val1neg != val2neg)
             return (val1 / val2) | NEG;
         else
             return (val1 / val2);

@@ -1,35 +1,38 @@
 error: the type 'dirs' is not supported for the entry tag within a navindex! Check your layout file!
 warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/doc/images is not a readable file or directory... skipping.
 warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/gen-images is not a readable file or directory... skipping.
-warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/mainpage.dox is not a readable file or directory... skipping.
 warning: source /home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/references.dox is not a readable file or directory... skipping.
 error: Tag file `/home/sandra/Documents/HiWi/GMPCache/gmp-caching/build/doc/libstdc++.tag' does not exist or is not a file. Skipping it...
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1091: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1115: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1115: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:143: warning: The following parameters of cached_rational_get_str(const MasterCache *mstr, cachedRational id, char *str, int precision) are not documented:
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1324: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1492: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1492: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:91: warning: The following parameters of cached_rational_reset_den(const MasterCache *mstr, mpz_t denominator, cachedRational *value) are not documented:
+  parameter 'value'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:201: warning: The following parameters of cached_rational_get_str(const MasterCache *mstr, cachedRational id, char *str, int precision) are not documented:
   parameter 'precision'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:159: warning: argument 'result' of command @param is not found in the argument list of cached_rational_add(const MasterCache *mstr, cachedRational val1, cachedRational val2)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:229: warning: argument 'result' of command @param is not found in the argument list of cached_rational_sub(const MasterCache *mstr, cachedRational val1, cachedRational val2)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:241: warning: argument 'result' of command @param is not found in the argument list of cached_rational_mul(const MasterCache *mstr, cachedRational val1, cachedRational val2)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:261: warning: argument 'result' of command @param is not found in the argument list of cached_rational_div(const MasterCache *mstr, cachedRational val1, cachedRational val2)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:281: warning: argument 'result' of command @param is not found in the argument list of cached_rational_abs(const MasterCache *mstr, cachedRational val)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.h:36: warning: The following parameters of cached_rational_get_str(const MasterCache *mstr, cachedRational id, char *str, int precision) are not documented:
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:220: warning: argument 'result' of command @param is not found in the argument list of cached_rational_add(const MasterCache *mstr, cachedRational val1, cachedRational val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:296: warning: argument 'result' of command @param is not found in the argument list of cached_rational_sub(const MasterCache *mstr, cachedRational val1, cachedRational val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:308: warning: argument 'result' of command @param is not found in the argument list of cached_rational_mul(const MasterCache *mstr, cachedRational val1, cachedRational val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:329: warning: argument 'result' of command @param is not found in the argument list of cached_rational_div(const MasterCache *mstr, cachedRational val1, cachedRational val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:349: warning: argument 'result' of command @param is not found in the argument list of cached_rational_abs(const MasterCache *mstr, cachedRational val)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.h:28: warning: The following parameters of cached_rational_reset_den(const MasterCache *mstr, mpz_t denominator, cachedRational *value) are not documented:
+  parameter 'value'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.h:40: warning: The following parameters of cached_rational_get_str(const MasterCache *mstr, cachedRational id, char *str, int precision) are not documented:
   parameter 'precision'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:159: warning: argument 'result' of command @param is not found in the argument list of cached_rational_add(const MasterCache *mstr, cachedRational val1, cachedRational val2)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:229: warning: argument 'result' of command @param is not found in the argument list of cached_rational_sub(const MasterCache *mstr, cachedRational val1, cachedRational val2)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:241: warning: argument 'result' of command @param is not found in the argument list of cached_rational_mul(const MasterCache *mstr, cachedRational val1, cachedRational val2)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:261: warning: argument 'result' of command @param is not found in the argument list of cached_rational_div(const MasterCache *mstr, cachedRational val1, cachedRational val2)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:281: warning: argument 'result' of command @param is not found in the argument list of cached_rational_abs(const MasterCache *mstr, cachedRational val)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h:115: warning: argument 'r' of command @param is not found in the argument list of gmpcaching::CachedInt::operator=(const double &d)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h:119: warning: The following parameters of gmpcaching::CachedInt::operator=(const double &d) are not documented:
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:220: warning: argument 'result' of command @param is not found in the argument list of cached_rational_add(const MasterCache *mstr, cachedRational val1, cachedRational val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:296: warning: argument 'result' of command @param is not found in the argument list of cached_rational_sub(const MasterCache *mstr, cachedRational val1, cachedRational val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:308: warning: argument 'result' of command @param is not found in the argument list of cached_rational_mul(const MasterCache *mstr, cachedRational val1, cachedRational val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:329: warning: argument 'result' of command @param is not found in the argument list of cached_rational_div(const MasterCache *mstr, cachedRational val1, cachedRational val2)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/master_cache_rational.c:349: warning: argument 'result' of command @param is not found in the argument list of cached_rational_abs(const MasterCache *mstr, cachedRational val)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h:119: warning: argument 'r' of command @param is not found in the argument list of gmpcaching::CachedInt::operator=(const double &d)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h:123: warning: The following parameters of gmpcaching::CachedInt::operator=(const double &d) are not documented:
   parameter 'd'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h:122: warning: argument 'r' of command @param is not found in the argument list of gmpcaching::CachedInt::operator=(const long double &d)
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h:126: warning: The following parameters of gmpcaching::CachedInt::operator=(const long double &d) are not documented:
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h:126: warning: argument 'r' of command @param is not found in the argument list of gmpcaching::CachedInt::operator=(const long double &d)
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedInt.h:130: warning: The following parameters of gmpcaching::CachedInt::operator=(const long double &d) are not documented:
   parameter 'd'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1115: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h:65: warning: Found unknown command `\rief'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1136: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1153: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1170: warning: Found unknown command `\TODO'
-/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1187: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1492: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h:71: warning: Found unknown command `\rief'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1515: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1533: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1551: warning: Found unknown command `\TODO'
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.cpp:1569: warning: Found unknown command `\TODO'

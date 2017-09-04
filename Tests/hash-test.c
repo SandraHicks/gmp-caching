@@ -29,10 +29,15 @@ int main(int argc, char** argv) {
   printf("Number: %d\n", number);
   mpz_set_si(val, number);
 
+printf("FNV1a\n");
   uint64_t hash = get_FNV1a_hash(val);
+printf("MurMur\n");
   uint64_t hash2 = get_Murmur_hash(val);
+printf("CRC\n");
   uint64_t hash3 = get_CRC_hash(val);
-  printf("H: %" PRIu64 "\n", hash3);
+  printf("H1: %" PRIu64 "\n", hash);
+  printf("H2: %" PRIu64 "\n", hash2);
+  printf("H3: %" PRIu64 "\n", hash3);
   printf("Test: ");
   printtoBinary(hash3);
 

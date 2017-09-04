@@ -16,6 +16,7 @@ var searchData=
   ['direct_5flcm',['direct_lcm',['../master__cache__integer_8c.html#ac189c1e54bc54e033333d7cd5371d46f',1,'master_cache_integer.c']]],
   ['direct_5fmod',['direct_mod',['../master__cache__integer_8c.html#abe0e4d423323534bba705a0e6fed30dc',1,'master_cache_integer.c']]],
   ['direct_5fmul',['direct_mul',['../master__cache__integer_8c.html#aa558a557fa5371fc35597dc52fd824e5',1,'master_cache_integer.c']]],
+  ['disablelistmem',['disableListMem',['../classgmpcaching_1_1CachedRational.html#a5e19e68ae937dafdf60c8756024c006d',1,'gmpcaching::CachedRational']]],
   ['dlcmsizerational',['dlcmSizeRational',['../cachedRational_8cpp.html#a708355c2109e0668161ca0e3cdf7358d',1,'gmpcaching']]],
   ['dmaxsizerational',['dmaxSizeRational',['../cachedRational_8cpp.html#ac95c0c4c1c3deca2d27978bbcfa13052',1,'gmpcaching']]]
 ];

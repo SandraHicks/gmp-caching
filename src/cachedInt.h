@@ -4,12 +4,16 @@
   * @brief wrapper class header for cachedInts
   */
 
+#ifndef CACHED_INT_H
+#define CACHED_INT_H
+
 #include "master_cache_integer.h"
 #include "mastercache.h"
 
 #include <exception>
 #include <cinttypes>
 #include <string>
+
 
 namespace gmpcaching{
   /**
@@ -190,23 +194,38 @@ namespace gmpcaching{
        * @return 
        */
       CachedInt operator%(const CachedInt& i) const;
-      
+      ///double addition
       CachedInt operator+(const double& d) const;
+      ///double subtraction
       CachedInt operator-(const double& d) const;
+      ///double multiplication
       CachedInt operator*(const double& d) const;
+      ///double division
       CachedInt operator/(const double& d) const;
+      ///double inplace addition
       CachedInt operator+=(const double& d);
+      ///double inplace subtraction
       CachedInt operator-=(const double& d);
+      ///double inplace multiplication
       CachedInt operator*=(const double& d);
+      ///double inplace division
       CachedInt operator/=(const double& d);
       
+      ///int addition
       CachedInt operator+(const int& d) const;
+      ///int subtraction
       CachedInt operator-(const int& d) const;
+      ///int multiplication
       CachedInt operator*(const int& d) const;
+      ///int division
       CachedInt operator/(const int& d) const;
+      ///int inplace addition
       CachedInt operator+=(const int& d);
+      ///int inplace subtraction
       CachedInt operator-=(const int& d);
+      ///int inplace multiplication
       CachedInt operator*=(const int& d);
+      ///int inplace division
       CachedInt operator/=(const int& d);
       
       friend CachedInt operator+(const double& d, const CachedInt& r);
@@ -238,8 +257,11 @@ namespace gmpcaching{
        * @return 1 if invertible, 0 if not
        */
       int invert(CachedInt* res, CachedInt& m);
+      ///greatest common divisor
       CachedInt gcd(CachedInt& i);
+      ///least common multiple
       CachedInt lcm(CachedInt& i);
+      ///absolute value
       CachedInt abs();
       /**
        * sign
@@ -359,12 +381,18 @@ namespace gmpcaching{
   private:
       cachedInt data;
   public:
+      ///Standard Constructor
       IntegerCacheNotSetException(){
           this->data = 0;
       }
+      /**
+       * @brief constructor with cachedInt for location
+       * @param i cachedInt
+       */
       IntegerCacheNotSetException(cachedInt i){
           this->data = i;
       }
+      /// get error message
     virtual const char* what() const throw(){
         std::string ret = "The Cache was not initialized for ";
         ret += std::to_string(this->data);
@@ -377,56 +405,107 @@ namespace gmpcaching{
    CachedInt operator-(const CachedInt& r);
    
     //compare
+   /**
+    * compare CachedInts
+    * @param r
+    * @param s
+    * @return 1 if r>s, 0 if equals, -1 if r<s
+    */
     int compareInt(const CachedInt& r, const CachedInt& s);
+    /// not equals CachedInts
     bool operator!=(const CachedInt& r, const CachedInt& s);
+    /// equals CachedInts
     bool operator==(const CachedInt& r, const CachedInt& s);
+    /// less than CachedInts
     bool operator<(const CachedInt& r, const CachedInt& s);
+    /// less than equals CachedInts
     bool operator<=(const CachedInt& r, const CachedInt& s);
+    /// greater than CachedInts
     bool operator>(const CachedInt& r, const CachedInt& s);
+    /// greater than equals CachedInts
     bool operator>=(const CachedInt& r, const CachedInt& s);
 
+    /// not equals CachedInt double
     bool operator!=(const CachedInt& r, const double& s);
+    /// equals CachedInt double
     bool operator==(const CachedInt& r, const double& s);
+    /// less than CachedInt double
     bool operator<(const CachedInt& r, const double& s);
+    /// less than equals CachedInt double
     bool operator<=(const CachedInt& r, const double& s);
+    /// greater than CachedInt double
     bool operator>(const CachedInt& r, const double& s);
+    /// greater than equals CachedInt double
     bool operator>=(const CachedInt& r, const double& s);
 
+    /// not equals double CachedInt
     bool operator!=(const double& r, const CachedInt& s);
+    /// equals double CachedInt
     bool operator==(const double& r, const CachedInt& s);
+    /// less than double CachedInt
     bool operator<(const double& r, const CachedInt& s);
+    /// less than equals double CachedInt
     bool operator<=(const double& r, const CachedInt& s);
+    /// greater than double CachedInt
     bool operator>(const double& r, const CachedInt& s);
+    /// greater than equals double CachedInt
     bool operator>=(const double& r, const CachedInt& s);
 
+    /// not equals CachedInt long double
     bool operator!=(const CachedInt& r, const long double& s);
+    /// equals CachedInt long double
     bool operator==(const CachedInt& r, const long double& s);
+    /// less than CachedInt long double
     bool operator<(const CachedInt& r, const long double& s);
+    /// less than equals CachedInt long double
     bool operator<=(const CachedInt& r, const long double& s);
+    /// greater than CachedInt long double
     bool operator>(const CachedInt& r, const long double& s);
+    /// greater than equals CachedInt long double
     bool operator>=(const CachedInt& r, const long double& s);
 
+    /// not equals long double CachedInt
     bool operator!=(const long double& r, const CachedInt& s);
+    /// equals long double CachedInt
     bool operator==(const long double& r, const CachedInt& s);
+    /// less than long double CachedInt
     bool operator<(const long double& r, const CachedInt& s);
+    /// less than equals long double CachedInt
     bool operator<=(const long double& r, const CachedInt& s);
+    /// greater than long double CachedInt
     bool operator>(const long double& r, const CachedInt& s);
+    /// greater than equals long double CachedInt
     bool operator>=(const long double& r, const CachedInt& s);
 
+    ///addition rhs double
     CachedInt operator+(const double& d, const CachedInt& r);
+    ///subtraction rhs double
     CachedInt operator-(const double& d, const CachedInt& r);
+    ///multiplication rhs double
     CachedInt operator*(const double& d, const CachedInt& r);
+    ///division rhs double
     CachedInt operator/(const double& d, const CachedInt& r);
 
+    /// not equals int CachedInt
     bool operator!=(const int& r, const CachedInt& s);
+    /// equals int CachedInt
     bool operator==(const int& r, const CachedInt& s);
+    /// less than int CachedInt
     bool operator<(const int& r, const CachedInt& s);
+    /// less than equals int CachedInt
     bool operator<=(const int& r, const CachedInt& s);
+    /// greater than int CachedInt
     bool operator>(const int& r, const CachedInt& s);
+    /// greater than equals int CachedInt
     bool operator>=(const int& r, const CachedInt& s);
 
+    ///addition rhs int
     CachedInt operator+(const int& d, const CachedInt& r);
+    ///subtraction rhs int
     CachedInt operator-(const int& d, const CachedInt& r);
+    ///multiplication rhs int
     CachedInt operator*(const int& d, const CachedInt& r);
+    ///division rhs int
     CachedInt operator/(const int& d, const CachedInt& r);
 }
+#endif /*CACHED_INT_H*/

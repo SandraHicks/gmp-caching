@@ -56,13 +56,13 @@ void delete_mpz_cache(mpz_t_cache* cache){
  */
 int64_t insert_mpz(mpz_t_cache* cache, mpz_t val){
     if(cache->next_id >= cache->size){
-        printf("Cache is full!\n");
+        printf("Cache is full! Size: %"PRIu64"\n", cache->size);
         return -1;
     }
     
-    if(cache->next_id >= cache->size/2){
+    /*if(cache->next_id >= cache->size/2){
         printf("Cache is half full!\n");
-    }
+    }*/
     
     double fp_rep;
     if(is_double_castable(val)){
@@ -79,6 +79,7 @@ int64_t insert_mpz(mpz_t_cache* cache, mpz_t val){
     new->fp = fp_rep;
     
     cache->next_id = id+1;
+    //printf("--Inserted new mpz_t--%" PRIu64 "\n", id);
     return id;
 }
 /**
@@ -98,12 +99,11 @@ void printEntry(mpz_t_cache* cache, uint64_t i){
  * @param val mpz_t to set for return
  */
 void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
-    if(i & SHIFT <= 0){
+    if((i & SHIFT) <= 0){
         int64_t input = (int64_t)i;
         mpz_import(val, 1, 1, sizeof(int64_t), 0, 0, &input);
         return;
-    }
-        
+    } 
     cached_mpz_t* element = &cache->cache[i];
     if(val == NULL){
         mpz_init_set(val, element->integer);
@@ -119,7 +119,9 @@ void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
  * @return double representation
  */
 double get_cached_double(mpz_t_cache* cache, uint64_t i){
+    //printf("double element %" PRIu64 "\n", i);
     cached_mpz_t* element = &cache->cache[i];
+    //printf("return fp\n");
     return element->fp;
 }
 

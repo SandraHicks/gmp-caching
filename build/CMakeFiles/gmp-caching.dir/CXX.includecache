@@ -45,6 +45,10 @@ cstring
 -
 string.h
 -
+cinttypes
+-
+cstdio
+-
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
 master_cache_rational.h
@@ -79,6 +83,8 @@ gmpcachingxx.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/gmpcachingxx.h
 mastercache.h
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/mastercache.h
+cachedRational.h
+/home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/cachedRational.h
 
 /home/sandra/Documents/HiWi/GMPCache/gmp-caching/src/hashtable.h
 cstdint

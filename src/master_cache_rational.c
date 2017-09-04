@@ -6,12 +6,13 @@
 #include <gmp.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <inttypes.h>
 
 #include "master_cache_rational.h"
 
 
 /**
- * 
+ *  set cachedRational from mpz_t tuple
  * @param mstr MasterCache pointer
  * @param counter
  * @param denominator
@@ -20,35 +21,49 @@
 cachedRational cached_rational_set(const MasterCache* mstr, mpz_t counter, mpz_t denominator){
     cachedRational val;
     val.counter = cached_int_set(mstr, counter);
-    val.denominator = cached_int_set(mstr, denominator);
+    int cmp = mpz_cmp_si(denominator, 0);
+    if(cmp == 0){
+        val.denominator = (uint64_t)1;
+    }
+    else{
+        val.denominator = cached_int_set(mstr, denominator);
+    }
     
     return val;
 }
+/**
+ * set cachedRational from integer value
+ * @param mstr
+ * @param i
+ * @return 
+ */
 cachedRational cached_rational_set_i(const MasterCache* mstr, int i){
     cachedRational val;
     if(i>0){
             val.counter = (uint64_t)i;
-            val.denominator = 0;
+            val.denominator = 1;
     }
     else{
         val.counter = (uint64_t)(i*-1) | NEG;
-        val.denominator = 0;
+        val.denominator = 1;
     }
+
     return val;
 }
 
 /**
- * 
+ *  set cachedRational from mpq_t
  * @param mstr MasterCache pointer
  * @param number
  * @return cachedRational
  */
 cachedRational cached_rational_set_mpq(const MasterCache* mstr, const mpq_t number){
-    return cached_rational_set(mstr, &(number->_mp_num), &(number->_mp_den));
+    cachedRational val = cached_rational_set(mstr, &(number->_mp_num), &(number->_mp_den));
+    return val;
 }
 
 /**
- * 
+ * set cachedRational from cachedInt tuple
  * @param mstr MasterCache pointer
  * @param counter
  * @param denominator
@@ -57,25 +72,56 @@ cachedRational cached_rational_set_mpq(const MasterCache* mstr, const mpq_t numb
 cachedRational cached_rational_set_cached(const MasterCache* mstr, cachedInt counter, cachedInt denominator){
     cachedRational val;
     val.counter = counter;
-    val.denominator = denominator;
+    if(denominator != 0){
+        val.denominator = denominator;
+    }
+    else{
+        val.denominator = 1;
+    }
     
     return val;
 }
 
 /**
  * 
+ * @param mstr
+ * @param denominator
+ * @return 
+ */
+void cached_rational_reset_den(const MasterCache* mstr, mpz_t denominator, cachedRational* value){
+    int cmp = mpz_cmp_si(denominator, 0);
+    if(cmp != 0){
+        value->denominator = cached_int_set(mstr, denominator);
+    }
+    else{
+        value->denominator = 1;
+    }
+}
+
+void cached_rational_reset_num(const MasterCache* mstr, mpz_t num, cachedRational* value){
+    value->counter = cached_int_set(mstr, num);
+}
+
+/**
+ * reset an initialized cachedRational from mpz_t tuple
  * @param mstr MasterCache pointer
  * @param counter
  * @param denominator
  * @param value
  */
 void cached_rational_reset(const MasterCache* mstr, mpz_t counter, mpz_t denominator, cachedRational* value){
+    int cmp = mpz_cmp_si(denominator, 0);
     value->counter = cached_int_set(mstr, counter);
-    value->denominator = cached_int_set(mstr, denominator);
+    if(cmp != 0){
+        value->denominator = cached_int_set(mstr, denominator);
+    }
+    else{
+        value->denominator = 1;
+    }
     cached_rational_reduce_inplace(mstr, value);
 }
 /**
- * 
+ * reset an initialized cachedRational from mpq_t
  * @param mstr MasterCache pointer
  * @param number
  * @param value
@@ -85,7 +131,7 @@ void cached_rational_reset_mpq(const MasterCache* mstr, const mpq_t number, cach
 }
 
 /**
- * 
+ * reset an initialized cachedRational from cachedInt tuple
  * @param mstr MasterCache pointer
  * @param counter
  * @param denominator
@@ -93,7 +139,12 @@ void cached_rational_reset_mpq(const MasterCache* mstr, const mpq_t number, cach
  */
 void cached_rational_reset_cached(const MasterCache* mstr, cachedInt counter, cachedInt denominator, cachedRational* value){
     value->counter = counter;
-    value->denominator = denominator;
+    if(denominator != 0){
+        value->denominator = denominator;
+    }
+    else{
+        value->denominator = 1;
+    }
 }
 
 /**
@@ -105,6 +156,9 @@ void cached_rational_reset_cached(const MasterCache* mstr, cachedInt counter, ca
  */
 void cached_rational_get(const MasterCache* mstr, cachedRational id, mpz_t counter, mpz_t denominator){
     cached_int_get(mstr, id.counter, counter);
+    if(id.denominator == 0){
+        id.denominator = 1;
+    }   
     cached_int_get(mstr, id.denominator, denominator);
 }
 /**
@@ -119,8 +173,12 @@ void cached_rational_get_mpq(const MasterCache* mstr, cachedRational id, mpq_t n
     mpz_init(num);
     mpz_init(den);
     cached_rational_get(mstr, id, num, den);
+    //printf("set_num get c: %" PRIu64 " d:%" PRIu64 "\n", id.counter, id.denominator);
     mpq_set_num(number, num);
     mpq_set_den(number, den);
+    //printf("set done\n");
+    mpz_clear(num);
+    mpz_clear(den);
 }
 /**
  * 
@@ -134,7 +192,7 @@ double cached_rational_get_d(const MasterCache* mstr, cachedRational id){
     return ctr/den;
 }
 /**
- * 
+ * get string representation of cachedRational
  * @param mstr MasterCache pointer
  * @param id
  * @param str
@@ -144,6 +202,8 @@ void cached_rational_get_str(const MasterCache* mstr, cachedRational id, char* s
     mpf_t tmpFloat;
     FILE* tmpStream;
     mpq_t gmpval;
+    mpq_init(gmpval);
+    //printf("get str\n");
     cached_rational_get_mpq(mstr, id, gmpval);
     
     tmpStream = fmemopen(str, 63, "w");
@@ -151,6 +211,7 @@ void cached_rational_get_str(const MasterCache* mstr, cachedRational id, char* s
     mpf_set_q(tmpFloat, gmpval);
     mpf_out_str(tmpStream, 10, precision, tmpFloat);
     mpf_clear(tmpFloat);
+    mpq_clear(gmpval);
 
     fflush(tmpStream);
 }
@@ -183,6 +244,10 @@ cachedRational cached_rational_add(const MasterCache* mstr, cachedRational val1,
     
     //reduce before returning
     cached_rational_reduce_inplace(mstr, &res);
+
+    if(res.denominator == 4612811918334230528){
+        printf("init add\n");
+    }
     return res;
 }
 
@@ -193,6 +258,8 @@ cachedRational cached_rational_add(const MasterCache* mstr, cachedRational val1,
  */
 void cached_rational_reduce_inplace(const MasterCache* mstr, cachedRational* val){
     //gcd of counter/denominator
+    cachedInt in_ctr = val->counter;
+    cachedInt in_den = val->denominator;
     cachedInt gcd = cached_int_gcd(mstr, val->counter, val->denominator);
     //divide with gcd
     cachedInt rest;
@@ -245,9 +312,10 @@ cachedRational cached_rational_sub(const MasterCache* mstr, cachedRational val1,
  * @param result 
  */
 cachedRational cached_rational_mul(const MasterCache* mstr, cachedRational val1, cachedRational val2){
+    //printf("mul: c1=%"PRIu64" d1=%"PRIu64" c2=%"PRIu64" d2=%"PRIu64"\n", val1.counter, val1.denominator, val2.counter, val2.denominator);
     cachedInt ctr = cached_int_mul(mstr, val1.counter, val2.counter);
     cachedInt den = cached_int_mul(mstr, val1.denominator, val2.denominator);
-    
+    //printf("mul: c=%"PRIu64" d=%"PRIu64"\n", ctr, den);
     cachedRational res;
     
     res.counter = ctr;
@@ -362,7 +430,6 @@ int cached_rational_cmp(const MasterCache* mstr, cachedRational val1, cachedRati
 //bring to same denominator
     
     cachedInt lcm = cached_int_lcm(mstr, val1.denominator, val2.denominator);
-    
     cachedInt rest;
     cachedInt f_1 = cached_int_tdiv(mstr, lcm, val1.denominator, &rest);
     cachedInt f_2 = cached_int_tdiv(mstr, lcm, val2.denominator, &rest);
@@ -380,8 +447,9 @@ int cached_rational_cmp_d(const MasterCache* mstr, cachedRational val1, double v
     int cmp;
     double c = cached_int_get_d(mstr, val1.counter);
     double d = cached_int_get_d(mstr, val1.denominator);
-    double diff = (c/d) - val2;
-    
+    double frac = c/d;
+    double diff = frac - val2;
+    printf("compare: %f / %f < %f, frac=%f, diff=%f\n", c, d, val2, frac, diff);
     if(diff > 0){
         return 1;
     }
@@ -409,5 +477,30 @@ int cached_rational_cmp_i(const MasterCache* mstr, cachedRational val1, int val2
         convert = (uint64_t) val2;
     }
     cachedRational v2 = {convert, (uint64_t)1};
+    printf("compare: %" PRIu64 "/%" PRIu64 " c %d = %" PRIu64 "/%" PRIu64 " \n", val1.counter, val1.denominator, val2, v2.counter, v2.denominator);
     return cached_rational_cmp(mstr, val1, v2);
+}
+
+/**
+ * todo make efficient
+ * @param mstr
+ * @param val
+ * @return 
+ */
+cachedRational cached_rational_canonicalize(const MasterCache* mstr, cachedRational val){
+    mpz_t counter;
+    mpz_t denominator;
+    mpz_init(counter);
+    mpz_init(denominator);
+    cached_int_get(mstr, val.counter, counter);
+    cached_int_get(mstr, val.denominator, denominator);
+    mpq_t result;
+    mpq_init(result);
+    //printf("set_num can\n");
+    mpq_set_num(result, counter);
+    mpq_set_den(result, denominator);
+    mpz_clear(counter);
+    mpz_clear(denominator);
+    mpq_canonicalize(result);
+    return cached_rational_set_mpq(mstr, result);
 }

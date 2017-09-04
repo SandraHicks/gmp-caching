@@ -24,6 +24,10 @@ cachedRational cached_rational_set_i(const MasterCache* mstr, int i);
 cachedRational cached_rational_set_mpq(const MasterCache* mstr, const mpq_t number);
 cachedRational cached_rational_set_cached(const MasterCache* mstr, cachedInt counter, cachedInt denominator);
 
+
+void cached_rational_reset_den(const MasterCache* mstr, mpz_t denominator, cachedRational* value);
+void cached_rational_reset_num(const MasterCache* mstr, mpz_t num, cachedRational* value);
+
 void cached_rational_reset_mpq(const MasterCache* mstr, const mpq_t number, cachedRational* value);
 void cached_rational_reset(const MasterCache* mstr, mpz_t counter, mpz_t denominator, cachedRational* value);
 void cached_rational_reset_cached(const MasterCache* mstr, cachedInt counter, cachedInt denominator, cachedRational* value);
@@ -50,6 +54,10 @@ int cached_rational_sgn(const MasterCache* mstr, cachedRational val);
 int cached_rational_cmp(const MasterCache* mstr, cachedRational val1, cachedRational val2);
 int cached_rational_cmp_d(const MasterCache* mstr, cachedRational val1, double val2);
 int cached_rational_cmp_i(const MasterCache* mstr, cachedRational val1, int val2);
+
+cachedRational cached_rational_canonicalize(const MasterCache* mstr, cachedRational val);
+    
+    
 
 #ifdef __cplusplus
 }

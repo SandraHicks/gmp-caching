@@ -1,9 +1,6 @@
 var searchData=
 [
-  ['setvalue',['setValue',['../classgmpcaching_1_1CachedInt.html#a04bd91c3997fb9c67e167a793dbeb1bf',1,'gmpcaching::CachedInt::setValue()'],['../classgmpcaching_1_1CachedRational.html#acb7cc431f6609f1416494546b9e8c318',1,'gmpcaching::CachedRational::setValue()']]],
-  ['sign',['sign',['../classgmpcaching_1_1CachedInt.html#a5e3525c9aed00a8fb5ee76ced558c7c4',1,'gmpcaching::CachedInt::sign()'],['../cachedRational_8cpp.html#a70e5eea69f5669dd83ecba430795b2e7',1,'gmpcaching::sign()']]],
-  ['sizeinbase',['sizeInBase',['../classgmpcaching_1_1CachedRational.html#ae99bde9d28ea246384672deff0db16dd',1,'gmpcaching::CachedRational']]],
-  ['spxabs',['spxAbs',['../cachedRational_8cpp.html#a5a8852bab23abeba4787bd11f90c837d',1,'gmpcaching']]],
-  ['subproduct',['subProduct',['../classgmpcaching_1_1CachedInt.html#af11568b4f98ff6859f1da2b383988c54',1,'gmpcaching::CachedInt::subProduct()'],['../classgmpcaching_1_1CachedRational.html#a11e0713b2a851ddf6f7824488b15b457',1,'gmpcaching::CachedRational::subProduct()']]],
-  ['subquotient',['subQuotient',['../classgmpcaching_1_1CachedInt.html#a98277213e1e3294ff33ecd55d1a67708',1,'gmpcaching::CachedInt::subQuotient()'],['../classgmpcaching_1_1CachedRational.html#ab2224520d02ed3241966d3cad14c69c3',1,'gmpcaching::CachedRational::subQuotient()']]]
+  ['powround',['powRound',['../classgmpcaching_1_1CachedRational.html#a0b56d5c2627a764378ba5743ab0b34be',1,'gmpcaching::CachedRational']]],
+  ['precision',['precision',['../classgmpcaching_1_1CachedRational.html#ae83a25bce241d8a4656d9057f923f80e',1,'gmpcaching::CachedRational']]],
+  ['printentry',['printEntry',['../mpz__caching_8c.html#a4ea9e1949f05c8ed0fa17421e156d7ba',1,'printEntry(mpz_t_cache *cache, uint64_t i):&#160;mpz_caching.c'],['../mpz__caching_8h.html#a4ea9e1949f05c8ed0fa17421e156d7ba',1,'printEntry(mpz_t_cache *cache, uint64_t i):&#160;mpz_caching.c']]]
 ];
