@@ -3477,8 +3477,8 @@
       <type>CachedInt</type>
       <name>operator+</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>acaf233bf78400edd3010a2a9b0f4d14c</anchor>
-      <arglist>(const CachedInt &amp;i) const </arglist>
+      <anchor>a9c7a0d20cd4c42d24fa8b4437cd15d9a</anchor>
+      <arglist>(const CachedInt &amp;i) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
@@ -3491,8 +3491,8 @@
       <type>CachedInt</type>
       <name>operator-</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>a2814dd4a6a7389bde831e17eb6ec7038</anchor>
-      <arglist>(const CachedInt &amp;i) const </arglist>
+      <anchor>a683eda8700c8f470f874ab3c77d248b0</anchor>
+      <arglist>(const CachedInt &amp;i) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
@@ -3505,8 +3505,8 @@
       <type>CachedInt</type>
       <name>operator*</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>ab28b69667d0164f633c87635586645af</anchor>
-      <arglist>(const CachedInt &amp;i) const </arglist>
+      <anchor>a2c3f4107f2af4be22a62e7ad2b8ea702</anchor>
+      <arglist>(const CachedInt &amp;i) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
@@ -3519,8 +3519,8 @@
       <type>CachedInt</type>
       <name>operator/</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>aaacc67076ee0f65bae6e912b04605ee9</anchor>
-      <arglist>(const CachedInt &amp;i) const </arglist>
+      <anchor>a6c544dcc3f030b8c48db0553748dcf8e</anchor>
+      <arglist>(const CachedInt &amp;i) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
@@ -3533,36 +3533,36 @@
       <type>CachedInt</type>
       <name>operator%</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>a4fc5b90626def401c890a9310aed5b1d</anchor>
-      <arglist>(const CachedInt &amp;i) const </arglist>
+      <anchor>a4e2e10b56ea05ec466c7cfaab0ec319c</anchor>
+      <arglist>(const CachedInt &amp;i) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
       <name>operator+</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>a2d1131f470eabab7faba3b16cce9f7fa</anchor>
-      <arglist>(const double &amp;d) const </arglist>
+      <anchor>a5d1a20862753bda5e028cbccd6da7da1</anchor>
+      <arglist>(const double &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
       <name>operator-</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>aa4717b9861b98203d0cd6a069f2667e7</anchor>
-      <arglist>(const double &amp;d) const </arglist>
+      <anchor>a61da1c1a773fd4517dffb4a4e3a7140f</anchor>
+      <arglist>(const double &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
       <name>operator*</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>a775231d80f067aa9ee87d56e5859032a</anchor>
-      <arglist>(const double &amp;d) const </arglist>
+      <anchor>a34ce1167576d482567bd5e9e73afdd3d</anchor>
+      <arglist>(const double &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
       <name>operator/</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>abe516cfe4ac249857b6116e6d9de1c7c</anchor>
-      <arglist>(const double &amp;d) const </arglist>
+      <anchor>a5b862133a46b94f0a4b7de084b59c4bc</anchor>
+      <arglist>(const double &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
@@ -3596,29 +3596,29 @@
       <type>CachedInt</type>
       <name>operator+</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>a1b8d84cc65186b634ac9c75137f90274</anchor>
-      <arglist>(const int &amp;d) const </arglist>
+      <anchor>a2c170f6bd3862d07693a81e8331d587b</anchor>
+      <arglist>(const int &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
       <name>operator-</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>a0dbc7c1bf83350b2aa122b5484950751</anchor>
-      <arglist>(const int &amp;d) const </arglist>
+      <anchor>a4bf6ad98694184bd5ce8bdca61715438</anchor>
+      <arglist>(const int &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
       <name>operator*</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>af5bbfa1686f73560732c3e6ab2230295</anchor>
-      <arglist>(const int &amp;d) const </arglist>
+      <anchor>a1c46ff9bb89e703fa6560f1336b85961</anchor>
+      <arglist>(const int &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
       <name>operator/</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>aedbb1428e9bc978c4d13953d27699ba4</anchor>
-      <arglist>(const int &amp;d) const </arglist>
+      <anchor>a9c86ee9ab5ba703b4d918e2f9b30b33a</anchor>
+      <arglist>(const int &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedInt</type>
@@ -3722,22 +3722,22 @@
       <type></type>
       <name>operator double</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>a0a96372e2cbf9c82878c09fe582a349c</anchor>
-      <arglist>() const </arglist>
+      <anchor>a9b994f9b14948cbc4e805c4a1478ef54</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>operator long double</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>a34cf4c5a74e3e22ceca3d2fd6fb3bf0f</anchor>
-      <arglist>() const </arglist>
+      <anchor>a7ec8db0827985ab02e7b84dac7072089</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>cachedInt</type>
       <name>getValue</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>a6becb979a35cb800cb707d79e6bf0df4</anchor>
-      <arglist>() const </arglist>
+      <anchor>a56163257e30edc67bf05ece8335eea0c</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -3750,15 +3750,15 @@
       <type>const MasterCache *</type>
       <name>getCache</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>ae3817bfde2d215cb173ce4e2a67ccdd3</anchor>
-      <arglist>() const </arglist>
+      <anchor>a7d1ffed9e4abc3d374120016a1852a23</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
       <name>hasSameCache</name>
       <anchorfile>classgmpcaching_1_1CachedInt.html</anchorfile>
-      <anchor>a7b0d07010570acb457a51b69a009c48e</anchor>
-      <arglist>(const CachedInt &amp;i) const </arglist>
+      <anchor>ad1e5abd79a953b6d65db5288e3815c78</anchor>
+      <arglist>(const CachedInt &amp;i) const</arglist>
     </member>
     <member kind="variable" protection="private">
       <type>cachedInt</type>
@@ -4195,8 +4195,8 @@
       <type>CachedRational &amp;</type>
       <name>operator=</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>af1c2d264ade7aafe8e487a54f64f9c92</anchor>
-      <arglist>(std::pair&lt; mpz_t &amp;, mpz_t &amp; &gt; mpzts)</arglist>
+      <anchor>a044a5ebeb496a89a5a192f2812fa3e0b</anchor>
+      <arglist>(std::pair&lt; mpz_t &amp;, mpz_t &amp;&gt; mpzts)</arglist>
     </member>
     <member kind="function">
       <type>CachedRational &amp;</type>
@@ -4237,8 +4237,8 @@
       <type>CachedRational</type>
       <name>operator+</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a455a3755a7f822d5f5899155b3a7af4e</anchor>
-      <arglist>(const CachedRational &amp;i) const </arglist>
+      <anchor>a6ea1d54d93912f2b72217bc575474500</anchor>
+      <arglist>(const CachedRational &amp;i) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
@@ -4251,8 +4251,8 @@
       <type>CachedRational</type>
       <name>operator-</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>abdd90768750fb7fa9aebace4e35de61b</anchor>
-      <arglist>(const CachedRational &amp;i) const </arglist>
+      <anchor>a16fbeec38b402c80ad0e78207776f90b</anchor>
+      <arglist>(const CachedRational &amp;i) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
@@ -4265,8 +4265,8 @@
       <type>CachedRational</type>
       <name>operator*</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a66a3a5141ec4585970cdfb6c11584700</anchor>
-      <arglist>(const CachedRational &amp;i) const </arglist>
+      <anchor>ab958d15c3cc843982b3afd600de2590d</anchor>
+      <arglist>(const CachedRational &amp;i) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
@@ -4279,8 +4279,8 @@
       <type>CachedRational</type>
       <name>operator/</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>ab3e36f968e93ac50487c830167d99889</anchor>
-      <arglist>(const CachedRational &amp;i) const </arglist>
+      <anchor>a2eb0b01de160a5f056b3693c7c661693</anchor>
+      <arglist>(const CachedRational &amp;i) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
@@ -4293,29 +4293,29 @@
       <type>CachedRational</type>
       <name>operator+</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a7cce2fe64042db3ceb9e3ce9a25bc77d</anchor>
-      <arglist>(const double &amp;d) const </arglist>
+      <anchor>adf4c599f17fbcb67a3dab042f39b1324</anchor>
+      <arglist>(const double &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
       <name>operator-</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a83c59369ecbbecbebf621a42a848373f</anchor>
-      <arglist>(const double &amp;d) const </arglist>
+      <anchor>a219fd2a6ba53a774e315d6675b4d0314</anchor>
+      <arglist>(const double &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
       <name>operator*</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>aadd56626feadcd97042ae63e2d77368f</anchor>
-      <arglist>(const double &amp;d) const </arglist>
+      <anchor>a124b3b83b894ba928db60466d49b52b0</anchor>
+      <arglist>(const double &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
       <name>operator/</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a4b370f596be1c32485d12df9ab442415</anchor>
-      <arglist>(const double &amp;d) const </arglist>
+      <anchor>a6b98bc0f94a6ae21c3fd8c4f593354bc</anchor>
+      <arglist>(const double &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
@@ -4349,29 +4349,29 @@
       <type>CachedRational</type>
       <name>operator+</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a457fa46b6530108d2e169051b03de7df</anchor>
-      <arglist>(const int &amp;d) const </arglist>
+      <anchor>abb76f0b3e9af26262fb076502e942728</anchor>
+      <arglist>(const int &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
       <name>operator-</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a44a93c684d186c24d44b38faedca5823</anchor>
-      <arglist>(const int &amp;d) const </arglist>
+      <anchor>a083b35510bb51d4c389257f5c3989832</anchor>
+      <arglist>(const int &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
       <name>operator*</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a8f9588af1e639b73dc4ef1b047147c4b</anchor>
-      <arglist>(const int &amp;d) const </arglist>
+      <anchor>a529d529451c6b48bbeb66855be4642e5</anchor>
+      <arglist>(const int &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
       <name>operator/</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>aa35de57df5c71110a3626e2a2899d6aa</anchor>
-      <arglist>(const int &amp;d) const </arglist>
+      <anchor>abee33e9a40f11216a586dce839cb9af4</anchor>
+      <arglist>(const int &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational</type>
@@ -4454,29 +4454,29 @@
       <type></type>
       <name>operator double</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>aa5772ef0b7b439e51aeedc4738f6ed5e</anchor>
-      <arglist>() const </arglist>
+      <anchor>a6ed7a15a526288946403402d2931a637</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type></type>
       <name>operator long double</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a22d5c5fd0b810aec0c7674e392202609</anchor>
-      <arglist>() const </arglist>
+      <anchor>a74b4204e76d56d64952fbd3e2f173eae</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const MasterCache *</type>
       <name>getCache</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>acdcdc7df09ee7b97582d15556828802c</anchor>
-      <arglist>() const </arglist>
+      <anchor>a02b13514d5eda21ee256f553256ef0fc</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>cachedRational</type>
       <name>getValue</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a4e2b507a58d8881d7b8fe18c815a27f6</anchor>
-      <arglist>() const </arglist>
+      <anchor>a416a570bbe37ee03be8afe531d5c4459</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>void</type>
@@ -4489,15 +4489,15 @@
       <type>bool</type>
       <name>hasSameCache</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a6564d13d1460d80b6dbb0fa879afed4d</anchor>
-      <arglist>(const CachedRational &amp;i) const </arglist>
+      <anchor>afa5fb6d3f53edf7d015ec8dad250bd2e</anchor>
+      <arglist>(const CachedRational &amp;i) const</arglist>
     </member>
     <member kind="function">
       <type>int</type>
       <name>sizeInBase</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>ae99bde9d28ea246384672deff0db16dd</anchor>
-      <arglist>(const int base=2) const </arglist>
+      <anchor>a81df90ca55d182115e4dd055c6a69a83</anchor>
+      <arglist>(const int base=2) const</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
@@ -4510,8 +4510,8 @@
       <type>bool</type>
       <name>isAdjacentTo</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>af2dee05aff1dde5f3a7af14fef9fe3e3</anchor>
-      <arglist>(const double &amp;d) const </arglist>
+      <anchor>af0be7321c34c9638447d05bba7d46a52</anchor>
+      <arglist>(const double &amp;d) const</arglist>
     </member>
     <member kind="function">
       <type>CachedRational &amp;</type>
@@ -4524,29 +4524,29 @@
       <type>const mpq_t *</type>
       <name>getMpqPtr</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a6da3b5202ef262a71c61af180108ae40</anchor>
-      <arglist>() const </arglist>
+      <anchor>a19ced788861eeda51a5dedc5a53f6bd7</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>const mpq_t &amp;</type>
       <name>getMpqRef</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>add511466adf53431bf99032f860ce93a</anchor>
-      <arglist>() const </arglist>
+      <anchor>aa4411c2b7402be76b1f4414dccdd2ed5</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>mpq_t *</type>
       <name>getMpqPtr_w</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>ab824d484703f1d872ee683bbdd6e14f1</anchor>
-      <arglist>() const </arglist>
+      <anchor>a7696b0f4fcf0c7b3fa64f71ab08db465</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>mpq_t &amp;</type>
       <name>getMpqRef_w</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a461421c423bc8b9b616902ae6bf9607a</anchor>
-      <arglist>() const </arglist>
+      <anchor>ac7764e5a054be873e1d967e5ba70e70f</anchor>
+      <arglist>() const</arglist>
     </member>
     <member kind="function">
       <type>bool</type>
@@ -4994,8 +4994,8 @@
       <type>virtual const char *</type>
       <name>what</name>
       <anchorfile>classgmpcaching_1_1IntegerCacheNotSetException.html</anchorfile>
-      <anchor>a014f281e2fe3283962202c8473f70c74</anchor>
-      <arglist>() const </arglist>
+      <anchor>a2b78dc2b40c786893f7297fff2825788</anchor>
+      <arglist>() const</arglist>
     </member>
   </compound>
   <compound kind="class">
@@ -5019,8 +5019,8 @@
       <type>virtual const char *</type>
       <name>what</name>
       <anchorfile>classgmpcaching_1_1RationalCacheNotSetException.html</anchorfile>
-      <anchor>acb926af9f67c48c646740a80f5a63cbf</anchor>
-      <arglist>() const </arglist>
+      <anchor>aeeb81d008d04b147628412a374373f18</anchor>
+      <arglist>() const</arglist>
     </member>
   </compound>
   <compound kind="struct">

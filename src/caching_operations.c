@@ -170,7 +170,7 @@ void delete_cache(lookup* cache){
  */
 void get_mpz(lookup* cache, uint64_t id, mpz_t val){
     id = id & ~SHIFT;
-    if(id & NEG){
+    if((id & NEG) > 0){
         id = id & ~NEG;
         get_cached_mpz(cache->lkup->cache, id, val);
         mpz_neg(val, val);
@@ -187,7 +187,7 @@ void get_mpz(lookup* cache, uint64_t id, mpz_t val){
 double get_double(lookup* cache, uint64_t id){
     //printf("double id %" PRIu64 "\n", id);
     id = id & ~SHIFT;
-    if(id & NEG){
+    if((id & NEG) > 0){
         id = id & ~NEG;
         return (-1.0)*get_cached_double(cache->lkup->cache, id);
     }
@@ -203,7 +203,7 @@ double get_double(lookup* cache, uint64_t id){
 void cached_int_mpz(uint64_t id, mpz_t number){
     //printf("Convert cachedInt to mpz\n");
     id = id & (~SHIFT);
-    if(id & NEG){
+    if((id & NEG) > 0){
         id = id & ~NEG;
         int64_t input = (int64_t)id*(-1);
         mpz_import(number, 1, 1, sizeof(int64_t), 0, 0, &input);
@@ -222,6 +222,10 @@ void cached_int_mpz(uint64_t id, mpz_t number){
  * @return 
  */
 uint64_t mpz_cached_int(const mpz_t number){
+    int cmp = mpz_cmp_si(number, 0L);
+    if(cmp == 0){
+        return (uint64_t)0;
+    }
     int limbs = number->_mp_size;
     limbs = (limbs < 0) ? limbs*(-1) : limbs;
     if(limbs > 2)
@@ -237,8 +241,9 @@ uint64_t mpz_cached_int(const mpz_t number){
     #else
         if(limbs > 1)
             return SHIFT;
-        if(data <= cachedInt_MAX)
+        if(data <= cachedInt_MAX){
             return data;
+        }
     #endif
 #else //nail bits are enabled in GMP, nail bits are most significant
     uint64_t data = number->_mp_d[0];

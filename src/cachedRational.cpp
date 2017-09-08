@@ -308,6 +308,7 @@ CachedRational& CachedRational::operator=(const CachedRational& ci){
   this->cache = ci.getCache();
   this->value = ci.getValue();
   //printf("=CachedRationalend\n");
+  
   return *this;
 }
 
@@ -345,6 +346,7 @@ CachedRational& CachedRational::operator=(std::pair<mpz_t&, mpz_t&> mpzts){
         this->cache = cache;
     }
   this->value = cached_rational_set(this->cache, mpzts.first, mpzts.second);
+  
   
   return *this;
 }
@@ -430,6 +432,7 @@ CachedRational& CachedRational::operator=(const double &r){
     mpq_t value;
     mpq_init(value);
     mpq_set_d(value, r);
+    double inter = mpq_get_d(value);
     this->value = cached_rational_set_mpq(this->cache, value);
     mpq_clear(value);
     
@@ -467,7 +470,7 @@ CachedRational CachedRational::operator+(const CachedRational& i) const{
   returnValue.cache = this->cache;
   returnValue.value = result;
   global_additions += 1;
-  printf(" +: %" PRIu64 "/%"PRIu64" + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
+  printf(" +: %" PRIu64 "/%" PRIu64 " + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
   return returnValue;
 }
 
@@ -475,7 +478,7 @@ CachedRational CachedRational::operator+=(const CachedRational& i){
     //printf("+=CachedRational\n");
   assert(this->cache == i.cache);
   cachedRational result = cached_rational_add(this->cache, this->value, i.getValue());
-  printf(" +: %" PRIu64 "/%"PRIu64" + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
+  printf(" +: %" PRIu64 "/%" PRIu64 " + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
   this->value = result;
   global_additions += 1;
   
@@ -489,7 +492,7 @@ CachedRational CachedRational::operator-(const CachedRational& i) const{
   CachedRational returnValue;
   returnValue.cache = this->cache;
   returnValue.value = result;
-  printf(" -: %" PRIu64 "/%"PRIu64" + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
+  printf(" -: %" PRIu64 "/%" PRIu64 " + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
   return returnValue;
 }
 
@@ -497,7 +500,7 @@ CachedRational CachedRational::operator-=(const CachedRational& i){
     //printf("-=CachedRational\n");
   assert(this->cache == i.cache);
   cachedRational result = cached_rational_sub(this->cache, this->value, i.getValue());
-  printf("-=: %" PRIu64 "/%"PRIu64" + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
+  printf("-=: %" PRIu64 "/%" PRIu64 " + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
   this->value = result;
   
   return *this;
@@ -510,7 +513,7 @@ CachedRational CachedRational::operator*(const CachedRational& i) const{
   CachedRational returnValue;
   returnValue.cache = this->cache;
   returnValue.value = result;
-  printf(" *: %" PRIu64 "/%"PRIu64" + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
+  printf(" *: %" PRIu64 "/%" PRIu64 " + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
   return returnValue;
 }
 
@@ -518,7 +521,7 @@ CachedRational CachedRational::operator*=(const CachedRational& i){
     //printf("*=CachedRational\n");
   assert(this->cache == i.cache);
   cachedRational result = cached_rational_mul(this->cache, this->value, i.getValue());
-  printf("*=: %" PRIu64 "/%"PRIu64" + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
+  printf("*=: %" PRIu64 "/%" PRIu64 " + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
   this->value = result;
   
   return *this;
@@ -531,14 +534,14 @@ CachedRational CachedRational::operator/(const CachedRational& i) const{
   CachedRational returnValue;
   returnValue.cache = this->cache;
   returnValue.value = result;
-  printf(" /: %" PRIu64 "/%"PRIu64" + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
+  printf(" /: %" PRIu64 "/%" PRIu64 " + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
   return returnValue;
 }
 CachedRational CachedRational::operator/=(const CachedRational& i){
     //printf("/=CachedRational\n");
   assert(this->cache == i.cache);
   cachedRational result = cached_rational_div(this->cache, this->value, i.getValue());
-  printf("/=: %" PRIu64 "/%"PRIu64" + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
+  printf("/=: %" PRIu64 "/%" PRIu64 " + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", this->value.counter,this->value.denominator, i.getValue().counter,i.getValue().denominator, result.counter, result.denominator);
   this->value = result;
   
   return *this;
@@ -877,7 +880,7 @@ CachedRational operator+(const double& d, const CachedRational& r){
     returnValue.cache = r.cache;
     returnValue.value = result;
     
-    printf(" + d: %f + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
+    printf(" + d: %f + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
     CachedRational::global_additions += 1;
     return returnValue;
 }
@@ -894,7 +897,7 @@ CachedRational operator-(const double& d, const CachedRational& r){
     CachedRational returnValue;
     returnValue.cache = r.cache;
     returnValue.value = result;
-    printf(" - d: %f + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
+    printf(" - d: %f + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
     return returnValue;
 }
 CachedRational operator*(const double& d, const CachedRational& r){
@@ -910,7 +913,7 @@ CachedRational operator*(const double& d, const CachedRational& r){
     CachedRational returnValue;
     returnValue.cache = r.cache;
     returnValue.value = result;
-    printf(" * d: %f + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
+    printf(" * d: %f + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
     return returnValue;
 }
 CachedRational operator/(const double& d, const CachedRational& r){
@@ -926,7 +929,7 @@ CachedRational operator/(const double& d, const CachedRational& r){
     CachedRational returnValue;
     returnValue.cache = r.cache;
     returnValue.value = result;
-    printf(" / d: %f + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
+    printf(" / d: %f + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
     return returnValue;
 }
 CachedRational CachedRational::operator+(const double& d) const{
@@ -940,7 +943,7 @@ CachedRational CachedRational::operator+(const double& d) const{
     
     cachedRational result = cached_rational_add(this->cache, this->value, val);
     CachedRational returnValue;
-    printf(" +: d %" PRIu64 "/%"PRIu64" + %f = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+    printf(" +: d %" PRIu64 "/%" PRIu64 " + %f = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
     returnValue.cache = this->cache;
     returnValue.value = result;
     
@@ -958,7 +961,7 @@ CachedRational CachedRational::operator-(const double& d) const{
     
     cachedRational result = cached_rational_sub(this->cache, this->value, val);
     CachedRational returnValue;
-    printf(" -: d %" PRIu64 "/%"PRIu64" + %f = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+    printf(" -: d %" PRIu64 "/%" PRIu64 " + %f = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
     returnValue.cache = this->cache;
     returnValue.value = result;
     return returnValue;
@@ -974,7 +977,7 @@ CachedRational CachedRational::operator*(const double& d) const{
     
     cachedRational result = cached_rational_mul(this->cache, this->value, val);
     CachedRational returnValue;
-    printf(" *: d %" PRIu64 "/%"PRIu64" + %f = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+    printf(" *: d %" PRIu64 "/%" PRIu64 " + %f = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
     returnValue.cache = this->cache;
     returnValue.value = result;
     return returnValue;
@@ -990,7 +993,7 @@ CachedRational CachedRational::operator/(const double& d) const{
     
     cachedRational result = cached_rational_div(this->cache, this->value, val);
     CachedRational returnValue;
-    printf(" /: d %" PRIu64 "/%"PRIu64" + %f = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+    printf(" /: d %" PRIu64 "/%" PRIu64 " + %f = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
     returnValue.cache = this->cache;
     returnValue.value = result;
     return returnValue;
@@ -1005,7 +1008,7 @@ CachedRational CachedRational::operator+=(const double& d){
     mpq_clear(value);
     
     cachedRational result = cached_rational_add(this->cache, this->value, val);
-    printf("+=: d %" PRIu64 "/%"PRIu64" + %f = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+    printf("+=: d %" PRIu64 "/%" PRIu64 " + %f = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
     this->value = result;
     
     global_additions += 1;
@@ -1021,7 +1024,7 @@ CachedRational CachedRational::operator-=(const double& d){
     mpq_clear(value);
     
     cachedRational result = cached_rational_sub(this->cache, this->value, val);
-    printf("-=: d %" PRIu64 "/%"PRIu64" + %f = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+    printf("-=: d %" PRIu64 "/%" PRIu64 " + %f = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
     this->value = result;
     return *this;
 }
@@ -1035,7 +1038,7 @@ CachedRational CachedRational::operator*=(const double& d){
     mpq_clear(value);
     
     cachedRational result = cached_rational_mul(this->cache, this->value, val);
-    printf("*=: d %" PRIu64 "/%"PRIu64" + %f = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+    printf("*=: d %" PRIu64 "/%" PRIu64 " + %f = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
     this->value = result;
     return *this;
 }
@@ -1049,7 +1052,7 @@ CachedRational CachedRational::operator/=(const double& d){
     mpq_clear(value);
     
     cachedRational result = cached_rational_div(this->cache, this->value, val);
-    printf("/=: d %" PRIu64 "/%"PRIu64" + %f = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+    printf("/=: d %" PRIu64 "/%" PRIu64 " + %f = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
     this->value = result;
     return *this;
 }
@@ -1119,7 +1122,7 @@ CachedRational operator+(const int& d, const CachedRational& r){
   returnValue.cache = r.cache;
   returnValue.value = result;
   
-  printf(" + i: %d + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
+  printf(" + i: %d + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
   CachedRational::global_additions += 1;
   //printf("--Cached Addition-- %d\n", CachedRational::global_additions);
   return returnValue;
@@ -1137,7 +1140,7 @@ CachedRational operator-(const int& d, const CachedRational& r){
   CachedRational returnValue;
   returnValue.cache = r.cache;
   returnValue.value = result;
-  printf(" - i: %d + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
+  printf(" - i: %d + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
   return returnValue;
 }
 CachedRational operator*(const int& d, const CachedRational& r){
@@ -1153,7 +1156,7 @@ CachedRational operator*(const int& d, const CachedRational& r){
   CachedRational returnValue;
   returnValue.cache = r.cache;
   returnValue.value = result;
-  printf(" * i: %d + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
+  printf(" * i: %d + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
   return returnValue;
 }
 CachedRational operator/(const int& d, const CachedRational& r){
@@ -1169,7 +1172,7 @@ CachedRational operator/(const int& d, const CachedRational& r){
   CachedRational returnValue;
   returnValue.cache = r.cache;
   returnValue.value = result;
-  printf(" / i: %d + %" PRIu64 "/%"PRIu64" = %" PRIu64 "/%"PRIu64"\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
+  printf(" / i: %d + %" PRIu64 "/%" PRIu64 " = %" PRIu64 "/%" PRIu64 "\n", d, r.getValue().counter,r.getValue().denominator, result.counter, result.denominator);
   return returnValue;
 }
 CachedRational CachedRational::operator+(const int& d) const{
@@ -1188,7 +1191,7 @@ CachedRational CachedRational::operator+(const int& d) const{
   
   global_additions += 1;
   //printf("--Cached Addition-- %d\n", CachedRational::global_additions);
-  printf(" +: i %" PRIu64 "/%"PRIu64" + %d = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+  printf(" +: i %" PRIu64 "/%" PRIu64 " + %d = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
   return returnValue;
 }
 CachedRational CachedRational::operator-(const int& d) const{
@@ -1204,7 +1207,7 @@ CachedRational CachedRational::operator-(const int& d) const{
   CachedRational returnValue;
   returnValue.cache = this->cache;
   returnValue.value = result;
-  printf(" -: i %" PRIu64 "/%"PRIu64" + %d = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+  printf(" -: i %" PRIu64 "/%" PRIu64 " + %d = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
   return returnValue;
 }
 CachedRational CachedRational::operator*(const int& d) const{
@@ -1220,7 +1223,7 @@ CachedRational CachedRational::operator*(const int& d) const{
   CachedRational returnValue;
   returnValue.cache = this->cache;
   returnValue.value = result;
-  printf(" *: i %" PRIu64 "/%"PRIu64" + %d = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+  printf(" *: i %" PRIu64 "/%" PRIu64 " + %d = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
   return returnValue;
 }
 CachedRational CachedRational::operator/(const int& d) const{
@@ -1236,7 +1239,7 @@ CachedRational CachedRational::operator/(const int& d) const{
   CachedRational returnValue;
   returnValue.cache = this->cache;
   returnValue.value = result;
-  printf(" /: i %" PRIu64 "/%"PRIu64" + %d = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+  printf(" /: i %" PRIu64 "/%" PRIu64 " + %d = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
   return returnValue;
 }
 CachedRational CachedRational::operator+=(const int& d){
@@ -1249,7 +1252,7 @@ CachedRational CachedRational::operator+=(const int& d){
        intval = {(uint64_t)d, (uint64_t)1}; 
     }
   cachedRational result = cached_rational_add(this->cache, this->value, intval);
-  printf("+=: i %" PRIu64 "/%"PRIu64" + %d = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+  printf("+=: i %" PRIu64 "/%" PRIu64 " + %d = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
   this->value = result;
   
   global_additions += 1;
@@ -1266,7 +1269,7 @@ CachedRational CachedRational::operator-=(const int& d){
        intval = {(uint64_t)d, (uint64_t)1}; 
     }
   cachedRational result = cached_rational_sub(this->cache, this->value, intval);
-  printf("-=: i %" PRIu64 "/%"PRIu64" + %d = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+  printf("-=: i %" PRIu64 "/%" PRIu64 " + %d = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
   this->value = result;
   return *this;
 }
@@ -1280,7 +1283,7 @@ CachedRational CachedRational::operator*=(const int& d){
        intval = {(uint64_t)d, (uint64_t)1}; 
     }
   cachedRational result = cached_rational_mul(this->cache, this->value, intval);
-  printf("*=: i %" PRIu64 "/%"PRIu64" + %d = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+  printf("*=: i %" PRIu64 "/%" PRIu64 " + %d = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
   this->value = result;
   return *this;
 }
@@ -1294,7 +1297,7 @@ CachedRational CachedRational::operator/=(const int& d){
        intval = {(uint64_t)d, (uint64_t)1}; 
     }
   cachedRational result = cached_rational_div(this->cache, this->value, intval);
-  printf("/=: i %" PRIu64 "/%"PRIu64" + %d = %" PRIu64 "/%"PRIu64"\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
+  printf("/=: i %" PRIu64 "/%" PRIu64 " + %d = %" PRIu64 "/%" PRIu64 "\n", this->getValue().counter,this->getValue().denominator, d,result.counter, result.denominator);
   this->value = result;
   return *this;
 }
@@ -1510,76 +1513,6 @@ int CachedRational::sizeInBase(const int base) const
    return precision();
 }
 
-
-/// provides read-only access to underlying mpq_t
-///@TODO
-const mpq_t* CachedRational::getMpqPtr() const {
-    printf("getMpqPtr\n");
-   mpz_t d;
-   mpz_t c;
-   mpz_init(c);
-   mpz_init(d);
-   cached_int_get(this->cache, this->value.counter, c);
-   cached_int_get(this->cache, this->value.denominator, d);
-   mpq_t value;
-   mpz_set(&(value->_mp_den), d);
-   mpz_set(&(value->_mp_num), c);
-   return &(value);
-}
-
-
-
-/// provides read-only access to underlying mpq_t
-///@TODO
-const mpq_t& CachedRational::getMpqRef() const {
-    printf("getMpqRef\n");
-   mpz_t d;
-   mpz_t c;
-   mpz_init(c);
-   mpz_init(d);
-   cached_int_get(this->cache, this->value.counter, c);
-   cached_int_get(this->cache, this->value.denominator, d);
-   mpq_t value;
-   mpz_set(&(value->_mp_den), d);
-   mpz_set(&(value->_mp_num), c);
-   return value;
-}
-
-
-
-/// provides write access to underlying mpq_t; use with care
-///@TODO
-mpq_t* CachedRational::getMpqPtr_w() const {
-    printf("getMpqPtr_w\n");
-   mpz_t d;
-   mpz_t c;
-   mpz_init(c);
-   mpz_init(d);
-   cached_int_get(this->cache, this->value.counter, c);
-   cached_int_get(this->cache, this->value.denominator, d);
-   mpq_t value;
-   mpz_set(&(value->_mp_den), d);
-   mpz_set(&(value->_mp_num), c);
-   return &(value);
-}
-
-
-
-/// provides write access to underlying mpq_t; use with care
-///@TODO
-mpq_t& CachedRational::getMpqRef_w() const {
-    printf("getMpqRef_w\n");
-   mpz_t d;
-   mpz_t c;
-   mpz_init(c);
-   mpz_init(d);
-   cached_int_get(this->cache, this->value.counter, c);
-   cached_int_get(this->cache, this->value.denominator, d);
-   mpq_t value;
-   mpz_set(&(value->_mp_den), d);
-   mpz_set(&(value->_mp_num), c);
-   return value;
-}
 
 void CachedRational::set_den(mpz_t den){
     cached_rational_reset_den(this->cache, den,&(this->value));

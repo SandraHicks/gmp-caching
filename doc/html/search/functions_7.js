@@ -10,6 +10,6 @@ var searchData=
   ['insert_5fmpz',['insert_mpz',['../mpz__caching_8c.html#ab93e1f89e6a97ba347b58bd7955d02ba',1,'insert_mpz(mpz_t_cache *cache, mpz_t val):&#160;mpz_caching.c'],['../mpz__caching_8h.html#ab93e1f89e6a97ba347b58bd7955d02ba',1,'insert_mpz(mpz_t_cache *cache, mpz_t val):&#160;mpz_caching.c']]],
   ['integercachenotsetexception',['IntegerCacheNotSetException',['../classgmpcaching_1_1IntegerCacheNotSetException.html#ab9d56c2959a90e121e03791cf1dd9ec0',1,'gmpcaching::IntegerCacheNotSetException::IntegerCacheNotSetException()'],['../classgmpcaching_1_1IntegerCacheNotSetException.html#ae1a7855621f0a30d739352b023cc3a91',1,'gmpcaching::IntegerCacheNotSetException::IntegerCacheNotSetException(cachedInt i)']]],
   ['invert',['invert',['../classgmpcaching_1_1CachedInt.html#ad6cf0ee8a0e04ee1a0b6867bafd8b191',1,'gmpcaching::CachedInt::invert()'],['../classgmpcaching_1_1CachedRational.html#ab16f0c4580ba71dd33d2bf5c5817a6ff',1,'gmpcaching::CachedRational::invert()']]],
-  ['isadjacentto',['isAdjacentTo',['../classgmpcaching_1_1CachedRational.html#af2dee05aff1dde5f3a7af14fef9fe3e3',1,'gmpcaching::CachedRational']]],
+  ['isadjacentto',['isAdjacentTo',['../classgmpcaching_1_1CachedRational.html#af0be7321c34c9638447d05bba7d46a52',1,'gmpcaching::CachedRational']]],
   ['isnextto',['isNextTo',['../classgmpcaching_1_1CachedRational.html#ac7adefe56af04832fddb8fea3bbfbe55',1,'gmpcaching::CachedRational']]]
 ];

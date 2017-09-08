@@ -209,6 +209,14 @@ cachedInt cached_int_add(const MasterCache* mstr, cachedInt val1, cachedInt val2
     if(val1 == NaN || val2 == NaN){
         return NaN;
     }
+    
+    if(val1 == 0){
+        return val2;
+    }
+    
+    if(val2 == 0){
+        return val1;
+    }
     //add integers
     uint64_t result;
     
@@ -331,6 +339,11 @@ cachedInt cached_int_mul(const MasterCache* mstr, cachedInt val1, cachedInt val2
     if(val1 == NaN || val2 == NaN){
         return NaN;
     }
+    
+    if(val1 == 0 || val2 == 0){
+        return 0;
+    }
+    
     uint64_t result;
     
     //check for infinities
@@ -413,8 +426,11 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
         return NaN;
     }
     
-    if(divisor == 0)
+    
+    if(divisor == 0){
+        *rest = (uint64_t)0;
         return NaN;
+    }
     
     if(divident == 0){
         *rest = (uint64_t)0;
@@ -512,6 +528,14 @@ cachedInt cached_int_mod(const MasterCache* mstr, cachedInt number, cachedInt n)
         return NaN;
     }
     
+    if(number == 0){
+        return 0;
+    }
+    
+    if(n == 0){
+        return NaN;
+    }
+    
     uint64_t result;
     //check for infinity
     if(((number == PLUS_INFINITY) || (number == MINUS_INFINITY)) || ((n == PLUS_INFINITY) || (n == MINUS_INFINITY))){
@@ -549,6 +573,10 @@ cachedInt cached_int_mod(const MasterCache* mstr, cachedInt number, cachedInt n)
 cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2){
     if(val1 == NaN || val2 == NaN){
         return NaN;
+    }
+    
+    if(val1 == 0 || val2 == 0){
+        return 0;
     }
     
     uint64_t result;
@@ -607,6 +635,10 @@ cachedInt cached_int_lcm(const MasterCache* mstr, cachedInt val1, cachedInt val2
         return NaN;
     }
     
+    if(val1 == 0 || val2 == 0){
+        return 0;
+    }
+    
     uint64_t result;
     
     if(((val1 == PLUS_INFINITY) || (val1 == MINUS_INFINITY)) || ((val2 == PLUS_INFINITY) || (val2 == MINUS_INFINITY))){
@@ -661,6 +693,16 @@ cachedInt direct_lcm(cachedInt val1, cachedInt val2){
  */
 int cached_int_invert(const MasterCache* mstr, cachedInt val1, cachedInt val2, cachedInt* result){
     if(val1 == NaN || val2 == NaN){
+        *result = NaN;
+        return 0;
+    }
+    
+    if(val1 == 0){
+        *result = 0;
+        return 0;
+    }
+    
+    if(val2 == 0){
         *result = NaN;
         return 0;
     }
