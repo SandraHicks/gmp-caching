@@ -33,15 +33,7 @@ int additionOverflow(cachedInt op1, cachedInt op2){
     if(msb_op1 < 61 && msb_op2 < 61){
         return 0;
     }
-    
-    //second check based on result
-    op1 = deleteIdBit(op1);
-    op2 = deleteIdBit(op2);
-    cachedInt res = op1 + op2;
-    if(res > cachedInt_MAX){
-        return 1;
-    }
-    return 0;
+    return 1;
 }
 
 //if the sign is constant, there is no subtraction overflow
@@ -56,17 +48,10 @@ int multiplicationOverflow(cachedInt op1, cachedInt op2){
     //first check based on msb
     int msb_op1 = MSB(op1);
     int msb_op2 = MSB(op2);
-    if(msb_op1*msb_op2 < 61){
+    if(msb_op1+msb_op2 <= 61){
         return 0;
     }
-    //second check based on result
-    op1 = deleteIdBit(op1);
-    op2 = deleteIdBit(op2);
-    cachedInt res = op1*op2;
-    if(res > cachedInt_MAX){
-        return 1;
-    }
-    return 0;
+    return 1;
 }
 
 //there is no integer division overflow
@@ -83,12 +68,6 @@ int exponentiationOverflow(cachedInt base, cachedInt exp){
         if(msb_op1*exp < 61)
             return 0;
         
-        //check based on result
-        cachedInt res = base^exp;
-        //backwards TODO
-        if(res){
-            return 0;
-        }
     }
     return 1;
 }

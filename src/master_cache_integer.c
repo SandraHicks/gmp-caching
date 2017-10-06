@@ -74,9 +74,11 @@ void get_mpz_from_id(const MasterCache* mstr, cachedInt id, mpz_t mpz){
         return;
     }
     if((id & SHIFT) == 0){
+        //printf("convert\n");
         cached_int_mpz(id, mpz);
     }
     else{
+        //printf("get from cache\n");
         get_mpz(mstr->_integers->cache, id, mpz);
     }
 }
@@ -89,7 +91,7 @@ void get_mpz_from_id(const MasterCache* mstr, cachedInt id, mpz_t mpz){
  */
 cachedInt cached_int_set(const MasterCache* mstr, const mpz_t number){
     cachedInt id = mpz_cached_int(number);
-    
+    //printf("id: %" PRIu64 "\n", id);
     if((id==SHIFT) && (number->_mp_size!=0)){
         id = cache_insert_mpz(mstr->_integers->cache, number);
         return id;
@@ -242,6 +244,7 @@ cachedInt cached_int_add(const MasterCache* mstr, cachedInt val1, cachedInt val2
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         result = direct_add(val1, val2);
         if(result != SHIFT){
+            //printf("direct result: %" PRIu64 "\n", result);
             return result;
         }
         //in case of overflow go on to cached addition
@@ -255,7 +258,7 @@ cachedInt cached_int_add(const MasterCache* mstr, cachedInt val1, cachedInt val2
     get_mpz_from_id(mstr, val1, op1);
     get_mpz_from_id(mstr, val2, op2);
     result = cached_mpz_add(mstr->_integers->cache, op1, op2);
-   
+    //printf("cached result: %" PRIu64 "\n", result);
     return result;
 }
 /**
@@ -286,7 +289,7 @@ cachedInt direct_add(cachedInt val1, cachedInt val2){
     }
     //case 2: both negative
     else if(val1neg == 1 && val2neg == 1){
-        if(!additionOverflow(val1, val2)){
+        if(additionOverflow(val1, val2) < 1){
             return (val1 + val2) | NEG;
         }
         else{
@@ -322,6 +325,12 @@ cachedInt direct_add(cachedInt val1, cachedInt val2){
 cachedInt cached_int_sub(const MasterCache* mstr, cachedInt val1, cachedInt val2){
     if((val2 & NEG) >= 1){
         return cached_int_add(mstr, val1, (val2 & ~NEG));
+    }
+    else if(val2 == 0){
+        return val1;
+    }
+    else if(val1 == 0){
+        return (val2 | NEG);
     }
     else{
         return cached_int_add(mstr, val1, (val2 | NEG));
@@ -403,7 +412,7 @@ cachedInt direct_mul(cachedInt val1, cachedInt val2){
         val2 = val2 & ~NEG;
     }
     
-    if(!multiplicationOverflow(val1, val2)){
+    if(multiplicationOverflow(val1, val2) < 1){
         if(val1neg != val2neg)
             return (val1 * val2) | NEG;
         else
@@ -429,6 +438,10 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
     
     if(divisor == 0){
         *rest = (uint64_t)0;
+        printf("div: c=%"PRIu64" d=%"PRIu64"\n", divident, divisor);
+        printf("Error: ------------ NaN!--------------7\n");
+        int i;
+        i = 20 / 0;
         return NaN;
     }
     
@@ -442,6 +455,7 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
         return divident;
     }
     if(((divident == PLUS_INFINITY) || (divident == MINUS_INFINITY)) && ((divisor == PLUS_INFINITY) || (divisor == MINUS_INFINITY))){
+        printf("Error: ------------ NaN!--------------6\n");
         return NaN;
     }
     //only infinity on divisor -> 0
@@ -456,6 +470,7 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
         if(result != SHIFT){
             mod = direct_mod(divident, divisor);
             *rest = mod;
+            //printf("div result: %" PRIu64 "\n", result);
             return result;
         }
         
@@ -471,6 +486,7 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
     get_mpz_from_id(mstr, divisor, op2);
     result = cached_mpz_tdiv(mstr->_integers->cache, rest, op1, op2);
    
+    //printf("div cached result: %" PRIu64 "\n", result);
     return result;
 }
 /**
@@ -490,6 +506,7 @@ cachedInt direct_div(cachedInt val1, cachedInt val2){
         val2neg = 1;
         val2 = val2 & ~NEG;
     }
+    
     if(val2!=0){
         if(val1neg != val2neg)
             return (val1 / val2) | NEG;
@@ -533,12 +550,14 @@ cachedInt cached_int_mod(const MasterCache* mstr, cachedInt number, cachedInt n)
     }
     
     if(n == 0){
+        printf("Error: ------------ NaN!--------------5\n");
         return NaN;
     }
     
     uint64_t result;
     //check for infinity
     if(((number == PLUS_INFINITY) || (number == MINUS_INFINITY)) || ((n == PLUS_INFINITY) || (n == MINUS_INFINITY))){
+        printf("Error: ------------ NaN!--------------4\n");
         return NaN;
     }
     
@@ -575,18 +594,26 @@ cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2
         return NaN;
     }
     
-    if(val1 == 0 || val2 == 0){
+    if(val1 == 0){
+        return val2 & ~NEG;
+    }
+    else if(val2 == 0){
+        return val1 & ~NEG;
+    }
+    else if(val1 == 0 && val2 == 0){
         return 0;
     }
     
     uint64_t result;
     
     if(((val1 == PLUS_INFINITY) || (val1 == MINUS_INFINITY)) || ((val2 == PLUS_INFINITY) || (val2 == MINUS_INFINITY))){
+        printf("Error: ------------ NaN!--------------3\n");
         return NaN;
     }
     
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         result = direct_gcd(val1, val2);
+        //printf("gcd result: %" PRIu64 "\n", result);
         return result;
         
         //as gcd is always smaller equals the operands, it cannot overflow in direct calculation
@@ -600,7 +627,7 @@ cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2
     get_mpz_from_id(mstr, val1, op1);
     get_mpz_from_id(mstr, val2, op2);
     result = cached_mpz_gcd(mstr->_integers->cache, op1, op2);
-   
+    //printf("gcd cached result: %" PRIu64 "\n", result);
     return result;
 }
 /**
@@ -642,6 +669,7 @@ cachedInt cached_int_lcm(const MasterCache* mstr, cachedInt val1, cachedInt val2
     uint64_t result;
     
     if(((val1 == PLUS_INFINITY) || (val1 == MINUS_INFINITY)) || ((val2 == PLUS_INFINITY) || (val2 == MINUS_INFINITY))){
+        printf("Error: ------------ NaN!--------------2\n");
         return NaN;
     }
     
@@ -694,6 +722,7 @@ cachedInt direct_lcm(cachedInt val1, cachedInt val2){
 int cached_int_invert(const MasterCache* mstr, cachedInt val1, cachedInt val2, cachedInt* result){
     if(val1 == NaN || val2 == NaN){
         *result = NaN;
+        printf("Error: ------------ NaN!--------------1\n");
         return 0;
     }
     
@@ -704,6 +733,7 @@ int cached_int_invert(const MasterCache* mstr, cachedInt val1, cachedInt val2, c
     
     if(val2 == 0){
         *result = NaN;
+        printf("Error: ------------ NaN!--------------1\n");
         return 0;
     }
     
@@ -813,6 +843,7 @@ int cached_int_isID(cachedInt val){
  */
 int cached_int_cmp(const MasterCache* mstr, cachedInt val1, cachedInt val2){
     if(val1 == NaN || val2 == NaN){
+        //printf("Error: ------------ NaN!--------------\n");
         return 2;
     }
     if(val1 == PLUS_INFINITY && val2 == MINUS_INFINITY){
@@ -821,15 +852,30 @@ int cached_int_cmp(const MasterCache* mstr, cachedInt val1, cachedInt val2){
     else if(val1 == MINUS_INFINITY && val2 == PLUS_INFINITY){
         return -1;
     }
-    else if(val1 == PLUS_INFINITY || val2 == PLUS_INFINITY || val2 == MINUS_INFINITY || val1 == MINUS_INFINITY){
-        return 2;
+    else if(val1 == PLUS_INFINITY && val2 != PLUS_INFINITY && val2 != MINUS_INFINITY){
+        return 1;
+    }
+    else if(val1 == MINUS_INFINITY && val2 != PLUS_INFINITY && val2 != MINUS_INFINITY){
+        return -1;
+    }
+    else if(val2 == PLUS_INFINITY && val1 != PLUS_INFINITY && val1 != MINUS_INFINITY){
+        return -1;
+    }
+    else if(val2 == MINUS_INFINITY && val1 != PLUS_INFINITY && val1 != MINUS_INFINITY){
+        return 1;
+    }
+    else if(val1 == PLUS_INFINITY && val2 == PLUS_INFINITY){
+        return 0;
+    }
+    else if(val1 == MINUS_INFINITY && val2 == MINUS_INFINITY){
+        return 0;
     }
     
     cachedInt diff = cached_int_sub(mstr, val1, val2);
-    if((diff & NEG) >= 1){
+    if((diff & NEG) >= 1 && ((diff & ~NEG) != 0)){
         return -1;
     }
-    else if(diff == 0){
+    else if((diff & ~NEG) == 0){
         return 0;
     }
     else{

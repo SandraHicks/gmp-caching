@@ -126,7 +126,7 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
  * @brief check existence of an element
  * @param ht pointer to hash table
  * @param hashes array of hash values for the element
- * @param element mpz_t to search for
+ * @param element mpz_t to search for, not negative!
  * @param cache pointer to singleton cache
  * @return id if existent, if not return 0
  */
@@ -189,7 +189,13 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
         if(globalfound == 1){
             mpz_t cached_val;
             mpz_init(cached_val);
-            get_cached_mpz(cache, curr_id, cached_val);
+            if((curr_id & SHIFT) > 0){
+                get_cached_mpz(cache, (curr_id & ~SHIFT), cached_val);
+            }
+            else{
+                int64_t input = (int64_t)curr_id;
+                mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, &input);
+            }
             int cmp = mpz_cmpabs(cached_val, element);
             if(cmp == 0)
                 return curr_id;
@@ -396,8 +402,8 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
  * @brief function to check if a mapping (mpz_t x mpz_t) -> mpz_t exists in the hash table
  * @param ht pointer to hash table
  * @param hashes array of hashes
- * @param op1 first operator
- * @param op2 second operator
+ * @param op1 first operator not neg
+ * @param op2 second operator not neg
  * @param cache pointer to singleton mpz_t cache
  * @param extra_info id of extra info of found element, stays null if none exists
  * @return id if found, 0 if not existent
@@ -460,10 +466,22 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
         if(globalfound == 1){
             mpz_t cached_val;
             mpz_init(cached_val);
-            get_cached_mpz(cache, curr_min->op1, cached_val);
+            if((curr_min->op1 & SHIFT) > 0){
+                get_cached_mpz(cache, (curr_min->op1 & ~SHIFT), cached_val);
+            }
+            else{
+                int64_t input = (int64_t)curr_min->op1;
+                mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, &input);
+            }
             int cmp1 = mpz_cmpabs(cached_val, op1);
             mpz_init(cached_val);
-            get_cached_mpz(cache, curr_min->op2, cached_val);
+            if((curr_min->op2 & SHIFT) > 0){
+                get_cached_mpz(cache, (curr_min->op2 & ~SHIFT), cached_val);
+            }
+            else{
+                int64_t input = (int64_t)curr_min->op2;
+                mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, &input);
+            }
             int cmp2 = mpz_cmpabs(cached_val, op2);
             if(cmp1 == 0 && cmp2 == 0){
                 if(extra_info != NULL){

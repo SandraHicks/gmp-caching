@@ -226,13 +226,17 @@ uint64_t mpz_cached_int(const mpz_t number){
     if(cmp == 0){
         return (uint64_t)0;
     }
+    //printf("cmp: %d\n", cmp);
     int limbs = number->_mp_size;
+    //printf("limbs: %d\n", limbs);
     limbs = (limbs < 0) ? limbs*(-1) : limbs;
+    //printf("limbs: %d\n", limbs);
     if(limbs > 2)
         return SHIFT;
     
 #if (GMP_NAIL_BITS == 0)
     uint64_t data = number->_mp_d[0];
+    //printf("data: %" PRIu64 "\n", data);
     #if (GMP_LIMB_BITS < 62)
         //also get second limb
         data = data + (uint64_t)(number->_mp_d[1] << GMP_LIMB_BITS);
@@ -290,7 +294,7 @@ uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val){
     uint64_t check_id = cache_exists_mpz_raw(lu, temp);
     if(check_id != SHIFT){
         mpz_clear(temp);
-        return check_id;
+        return check_id | SHIFT;
     }
     
     int64_t id = insert_mpz(cache->cache, temp);
@@ -715,6 +719,8 @@ uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
     mpz_init(op2_in);
     mpz_set(op1_in, op1);
     mpz_set(op2_in, op2);
+    //gmp_printf("op1: %Zd\n", op1);
+    //gmp_printf("op2: %Zd\n", op2);
 
     //check if exists in cache
     uint64_t id = cache_exists_mpz_binary_raw(cache, op1_in, op2_in, rest, TDIV);
@@ -752,6 +758,11 @@ uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
     uint64_t id_op2 = cache_insert_mpz_raw(cache, op2_in);
     uint64_t id_res_q = cache_insert_mpz_raw(cache, result_q);
     uint64_t id_res_r = cache_insert_mpz_raw(cache, result_r);
+    
+    /*printf("cached div: %" PRIu64 "\n", id_op1);
+    printf("cached div: %" PRIu64 "\n", id_op2);
+    printf("cached div: %" PRIu64 "\n", id_res_q);
+    printf("cached div: %" PRIu64 "\n", id_res_r);*/
     insert_element_binary(cache->tdiv->ht, id_op1, id_op2, id_res_q, &id_res_r, hashes);
     
     //free hashes

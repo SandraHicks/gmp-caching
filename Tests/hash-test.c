@@ -1,4 +1,6 @@
 #include "hashing.h"
+#include "overflow_detection.h"
+#include "defines.h"
 #include <gmp.h>
 #include <stdint.h>
 #include <inttypes.h>
@@ -22,8 +24,17 @@ void printtoBinary(uint64_t val){
   printf("\n");
 }
 
+void overflowTest(){
+  uint64_t val1 = 549755813888;
+  uint64_t val2 = 900719;
+
+  int of = multiplicationOverflow(val1, val2);
+  uint64_t res = val1 * val2;
+  printf("overflow? %d Result: %" PRIu64 "\n", of, (res & (~SHIFT) & (~NEG)));
+}
+
 int main(int argc, char** argv) {
-  mpz_t val;
+  /*mpz_t val;
   mpz_init(val);
   int number = atoi(argv[1]);
   printf("Number: %d\n", number);
@@ -47,8 +58,10 @@ printf("CRC\n");
   hash3 = get_CRC_hash(val);
   printf("H: %" PRIu64 "\n", hash3);
   printf("Test: ");
-  printtoBinary(hash3);
+  printtoBinary(hash3);*/
+  overflowTest();
   return 0;
 }
+
 
 

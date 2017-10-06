@@ -95,15 +95,17 @@ void printEntry(mpz_t_cache* cache, uint64_t i){
 /**
  * @brief get a cached mpz_t by id, set mpz_t to direct value if no ID
  * @param cache pointer to cache
- * @param i requested id
+ * @param i requested id,  must have deleted NEG and SHIFT bit!
  * @param val mpz_t to set for return
  */
 void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
-    if((i & SHIFT) <= 0){
+    /*if((i & SHIFT) <= 0){
         int64_t input = (int64_t)i;
         mpz_import(val, 1, 1, sizeof(int64_t), 0, 0, &input);
         return;
-    } 
+    }
+    i = i & ~SHIFT;*/
+    //printf("i: %" PRIu64 "\n", i);
     cached_mpz_t* element = &cache->cache[i];
     if(val == NULL){
         mpz_init_set(val, element->integer);

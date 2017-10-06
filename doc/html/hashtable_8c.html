@@ -242,7 +242,7 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">ht</td><td>pointer to hash table </td></tr>
     <tr><td class="paramname">hashes</td><td>array of hash values for the element </td></tr>
-    <tr><td class="paramname">element</td><td>mpz_t to search for </td></tr>
+    <tr><td class="paramname">element</td><td>mpz_t to search for, not negative! </td></tr>
     <tr><td class="paramname">cache</td><td>pointer to singleton cache </td></tr>
   </table>
   </dd>
@@ -503,8 +503,8 @@ Functions</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">ht</td><td>pointer to hash table </td></tr>
     <tr><td class="paramname">hashes</td><td>array of hashes </td></tr>
-    <tr><td class="paramname">op1</td><td>first operator </td></tr>
-    <tr><td class="paramname">op2</td><td>second operator </td></tr>
+    <tr><td class="paramname">op1</td><td>first operator not neg </td></tr>
+    <tr><td class="paramname">op2</td><td>second operator not neg </td></tr>
     <tr><td class="paramname">cache</td><td>pointer to singleton mpz_t cache </td></tr>
     <tr><td class="paramname">extra_info</td><td>id of extra info of found element, stays null if none exists </td></tr>
   </table>
