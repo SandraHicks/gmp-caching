@@ -193,8 +193,15 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
                 get_cached_mpz(cache, (curr_id & ~SHIFT), cached_val);
             }
             else{
-                int64_t input = (int64_t)curr_id;
-                mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, &input);
+                unsigned long l[4];
+                if(sizeof(long) < 8){
+                    //TODO
+                    l[0] = curr_id;
+                }
+                else{
+                    l[0] = curr_id;
+                }
+                mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, l);
             }
             int cmp = mpz_cmpabs(cached_val, element);
             if(cmp == 0)
@@ -470,8 +477,15 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
                 get_cached_mpz(cache, (curr_min->op1 & ~SHIFT), cached_val);
             }
             else{
-                int64_t input = (int64_t)curr_min->op1;
-                mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, &input);
+                unsigned long l[4];
+                if(sizeof(long) < 8){
+                    //TODO
+                    l[0] = curr_min->op1;
+                }
+                else{
+                    l[0] = curr_min->op1;
+                }
+                mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, l);
             }
             int cmp1 = mpz_cmpabs(cached_val, op1);
             mpz_init(cached_val);
@@ -479,8 +493,15 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
                 get_cached_mpz(cache, (curr_min->op2 & ~SHIFT), cached_val);
             }
             else{
-                int64_t input = (int64_t)curr_min->op2;
-                mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, &input);
+                unsigned long l[4];
+                if(sizeof(long) < 8){
+                    //TODO
+                    l[0] = curr_min->op2;
+                }
+                else{
+                    l[0] = curr_min->op2;
+                }
+                mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, l);
             }
             int cmp2 = mpz_cmpabs(cached_val, op2);
             if(cmp1 == 0 && cmp2 == 0){

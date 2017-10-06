@@ -73,6 +73,7 @@ void get_mpz_from_id(const MasterCache* mstr, cachedInt id, mpz_t mpz){
     if(id == NaN || id == PLUS_INFINITY || id == MINUS_INFINITY){
         return;
     }
+    //printf("get from id: %" PRIu64 " test %" PRIu64 "\n", id, (id & SHIFT));
     if((id & SHIFT) == 0){
         //printf("convert\n");
         cached_int_mpz(id, mpz);
@@ -383,6 +384,7 @@ cachedInt cached_int_mul(const MasterCache* mstr, cachedInt val1, cachedInt val2
         //in case of overflow go on to cached multiplication
     }
     
+    
   //else: directly cache mul
     mpz_t op1;
     mpz_t op2;
@@ -390,8 +392,10 @@ cachedInt cached_int_mul(const MasterCache* mstr, cachedInt val1, cachedInt val2
     mpz_init(op2);
     get_mpz_from_id(mstr, val1, op1);
     get_mpz_from_id(mstr, val2, op2);
+    //gmp_printf("mul op1: %Zd\n", op1);
+    //gmp_printf("mul op2: %Zd\n", op2);
     result = cached_mpz_mul(mstr->_integers->cache, op1, op2);
-   
+    //printf("mul res: c=%"PRIu64"\n", result);
     return result;
 }
 /**
@@ -438,10 +442,8 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
     
     if(divisor == 0){
         *rest = (uint64_t)0;
-        printf("div: c=%"PRIu64" d=%"PRIu64"\n", divident, divisor);
+        //printf("div: c=%"PRIu64" d=%"PRIu64"\n", divident, divisor);
         printf("Error: ------------ NaN!--------------7\n");
-        int i;
-        i = 20 / 0;
         return NaN;
     }
     
@@ -624,6 +626,8 @@ cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2
     mpz_t op2;
     mpz_init(op1);
     mpz_init(op2);
+    //printf("gcd op1: %"PRIu64"\n", val1);
+    //printf("gcd op2: %"PRIu64"\n", val2);
     get_mpz_from_id(mstr, val1, op1);
     get_mpz_from_id(mstr, val2, op2);
     result = cached_mpz_gcd(mstr->_integers->cache, op1, op2);

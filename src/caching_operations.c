@@ -205,13 +205,31 @@ void cached_int_mpz(uint64_t id, mpz_t number){
     id = id & (~SHIFT);
     if((id & NEG) > 0){
         id = id & ~NEG;
-        int64_t input = (int64_t)id*(-1);
-        mpz_import(number, 1, 1, sizeof(int64_t), 0, 0, &input);
+        //printf("id: %"PRIu64"\n", id);
+        unsigned long l[4];
+        if(sizeof(long) < 8){
+            //TODO
+            l[0] = id;
+        }
+        else{
+            l[0] = id;
+        }
+        mpz_import(number, 1, 1, sizeof(int64_t), 0, 0, l);
+        mpz_neg(number, number);
+        //gmp_printf("to mpz: %Zd\n", number);
     }
     else{
+        unsigned long l[4];
+        if(sizeof(long) < 8){
+            //TODO
+            l[0] = id;
+        }
+        else{
+            l[0] = id;
+        }
         //printf("import mpz\n");
         int64_t input = (int64_t)id;
-        mpz_import(number, 1, 1, sizeof(int64_t), 0, 0, &input);
+        mpz_import(number, 1, 1, sizeof(int64_t), 0, 0, l);
         //printf("imported mpz\n");
     }    
 }
@@ -662,7 +680,9 @@ uint64_t cached_mpz_mul(lookup* cache, mpz_t op1, mpz_t op2){
     mpz_init(result);
     
     mpz_mul(result, op1_in, op2_in);
-    
+    //gmp_printf("op1: %Zd\n", op1_in);
+    //gmp_printf("op2: %Zd\n", op2_in);
+    //gmp_printf("result: %Zd\n", result);
     
     int resNeg = 0;
     if(result->_mp_size < 0){
