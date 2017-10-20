@@ -169,9 +169,12 @@ void delete_cache(lookup* cache){
  * @param val for writing the result
  */
 void get_mpz(lookup* cache, uint64_t id, mpz_t val){
+    //printf("get_mpz id %" PRIu64 "\n", id);
     id = id & ~SHIFT;
+    //printf("get_mpz neg%" PRIu64 "\n", id);
     if((id & NEG) > 0){
         id = id & ~NEG;
+        //printf("get_mpz %" PRIu64 "\n", id);
         get_cached_mpz(cache->lkup->cache, id, val);
         mpz_neg(val, val);
     }
@@ -618,6 +621,8 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
     free(hashes);
     hashes=NULL;
     
+    //gmp_printf("cached_add: %Zd + %Zd = %Zd\n", op1, op2, result);
+    
     //return new id
     mpz_clear(op1);
     mpz_clear(op2);
@@ -761,6 +766,9 @@ uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
     mpz_init(result_r);
     
     mpz_tdiv_qr(result_q, result_r, op1_in, op2_in);
+    
+    //gmp_printf("cacheddiv result_q: %Zd\n", result_q);
+    //gmp_printf("cacheddiv result_R: %Zd\n", result_r);
     
     int resNeg = 0;
     if(result_q->_mp_size < 0){

@@ -74,13 +74,13 @@ void get_mpz_from_id(const MasterCache* mstr, cachedInt id, mpz_t mpz){
         return;
     }
     //printf("get from id: %" PRIu64 " test %" PRIu64 "\n", id, (id & SHIFT));
-    if((id & SHIFT) == 0){
-        //printf("convert\n");
-        cached_int_mpz(id, mpz);
-    }
-    else{
+    if((id & SHIFT) >= 1){
         //printf("get from cache\n");
         get_mpz(mstr->_integers->cache, id, mpz);
+    }
+    else{
+        //printf("convert\n");
+        cached_int_mpz(id, mpz);
     }
 }
 
@@ -452,6 +452,11 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
         return (uint64_t)0;
     }
     
+    if(divisor == 1){
+        *rest = (uint64_t)0;
+        return divident;
+    }
+    
     //check for inifinity on divident
     if(((divident == PLUS_INFINITY) || (divident == MINUS_INFINITY)) && ((divisor != PLUS_INFINITY) && (divisor != MINUS_INFINITY))){
         return divident;
@@ -486,6 +491,36 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
     mpz_init(op2);
     get_mpz_from_id(mstr, divident, op1);
     get_mpz_from_id(mstr, divisor, op2);
+    
+    /*printf("cached division: --");
+    int64_t d;
+    if((divident & NEG) >= 1){
+        d = (divident & (~NEG)) * (-1);
+    }
+    else{
+        d = divident;
+    }
+    if((divident & SHIFT) >= 1){
+        printf(" %" PRId64 " (id: %" PRIu64 ") \n", d, divident & ~(SHIFT | NEG));
+    }
+    else{
+        printf(" %" PRId64 " \n", d);
+    }
+    if((divisor & NEG) >= 1){
+        d = (divisor & (~NEG)) * (-1);
+    }
+    else{
+        d = divisor;
+    }
+    if((divisor & SHIFT) >= 1){
+        printf(" %" PRId64 " (id: %" PRIu64 ") \n", d, divisor & ~(SHIFT | NEG));
+    }
+    else{
+        printf(" %" PRId64 " \n", d);
+    }
+    gmp_printf("cacheddiv op1: %Zd\n", op1);
+    gmp_printf("cacheddiv op2: %Zd\n", op2);*/
+    
     result = cached_mpz_tdiv(mstr->_integers->cache, rest, op1, op2);
    
     //printf("div cached result: %" PRIu64 "\n", result);
