@@ -102,7 +102,7 @@ void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
     //printf("i: %" PRIu64 "\n", i);
     cached_mpz_t* element = &cache->cache[i];
     if(element == NULL){
-        printf("Something is really wrong\n");
+        //printf("Something is really wrong\n");
     }
     if(val == NULL){
         mpz_init_set(val, element->integer);

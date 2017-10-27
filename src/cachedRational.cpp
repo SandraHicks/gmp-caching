@@ -309,7 +309,7 @@ assignments
 */
 
 CachedRational& CachedRational::operator=(const CachedRational& ci){
-    //printf("=CachedRational\n");
+  //printf("=CachedRational=\n");
   this->cache = ci.getCache();
   this->value = ci.getValue();
   //printf("=CachedRationalend\n");
@@ -688,9 +688,7 @@ bool CachedRational::hasSameCache(const CachedRational& i) const{
 CachedRational operator-(const CachedRational& r){
     //printf("-neg\n");
    cachedRational val = cached_rational_neg(r.getCache(), r.getValue());
-   CachedRational res = r;
-   res.setValue(val);
-   return res;
+   return CachedRational(val, r.getCache());
 }
 
 CachedRational& CachedRational::powRound(){
@@ -1531,7 +1529,7 @@ bool CachedRational::readString(const char* s){
 }
 
 std::string rationalToString(const CachedRational& r, const int precision){
-    printf("rationalToString(): %" PRIu64 " / %" PRIu64 "\n", r.value.counter, r.value.denominator);
+    //printf("rationalToString(): %" PRIu64 " / %" PRIu64 "\n", r.value.counter, r.value.denominator);
 #if defined(_WIN32) || defined(_WIN64) || defined(__APPLE__)
     std::stringstream sstream;
     sstream << r;
@@ -1540,8 +1538,9 @@ std::string rationalToString(const CachedRational& r, const int precision){
     char cstring[64];
     cached_rational_get_str(r.cache, r.value, cstring, precision);
     std::string retString = std::string(cstring);
-    printf(cstring);
-    printf("\n");
+    
+    //printf(cstring);
+    //printf("\n");
     return retString;
 #endif
 }

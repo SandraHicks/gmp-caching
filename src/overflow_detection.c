@@ -48,7 +48,8 @@ int multiplicationOverflow(cachedInt op1, cachedInt op2){
     //first check based on msb
     int msb_op1 = MSB(op1);
     int msb_op2 = MSB(op2);
-    if(msb_op1+msb_op2 <= 61){
+    //printf("MSB: %d\n", msb_op1+msb_op2);
+    if(msb_op1+msb_op2 < 61){
         return 0;
     }
     return 1;
