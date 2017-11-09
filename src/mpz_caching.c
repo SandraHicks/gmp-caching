@@ -31,6 +31,7 @@ void init_mpz_cache(mpz_t_cache* cache, uint64_t size){
     cache->cache = malloc(sizeof(cached_mpz_t) * size);
     cache->next_id = CACHE_START_ID;
     cache->size = size;
+    printf("size: %" PRIu64 "\n", size);
 }
 
 /**

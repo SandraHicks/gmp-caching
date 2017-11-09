@@ -19,7 +19,7 @@ namespace gmpcaching{
     /**
      * global size of the global MasterCache
      */
-    extern int globalcache_size;
+    extern uint64_t globalcache_size;
     
     
     /**
@@ -29,7 +29,7 @@ namespace gmpcaching{
     public:
         static void init_MasterCache(){
             cache_init(&globalcache, globalcache_size);
-            printf("Initialized global cache...\n");
+            printf("Initialized global cache of size %" PRIu64 "... \n", globalcache_size);
         }
         /**
          * Initialization method for global MasterCache
@@ -37,6 +37,10 @@ namespace gmpcaching{
          */
         static void init_MasterCache(uint64_t size){
             cache_init(&globalcache, size);
+            printf("Initialized cache of size %" PRIu64 "... \n", size);
+        }
+        static void setGlobalCacheSize(uint64_t size){
+            globalcache_size=size;
         }
         /**
          * deletion of global MasterCache

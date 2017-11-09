@@ -174,7 +174,7 @@ uint64_t get_CRC_hash(mpz_t myval){
     else{
         //deal with other sizes > 8
         int i = 0;
-        for(i=0;i>mp_size;i++){
+        for(i=0;i<mp_size;i++){
             //begin with lsb
             //deal with every byte instead
             int b = 0;
@@ -200,6 +200,31 @@ uint64_t get_CRC_hash(mpz_t myval){
     //printf("H %" PRIu64 "\n", crc_result);
     //printtoBinary(crc_result);
     return crc_result;
+}
+
+uint64_t get_adler_hash(mpz_t myval){
+    //similar adler32
+    long mp_size = (myval->_mp_size > 0 ? myval->_mp_size : myval->_mp_size* (-1));
+    //long bits = mp_size * sizeof(mp_limb_t) * 8;
+    mp_limb_t* data = myval->_mp_d;
+    
+    int i = 0;
+    
+    uint64_t s1 = 1;
+    uint64_t s2 = 0;
+    
+    for(i=0;i<mp_size;i++){
+            //begin with lsb
+            //deal with every byte instead
+            int b = 0;
+            for(b=0;b<sizeof(mp_limb_t);b++){
+                uint8_t tval = (data[i] >> b);
+                s1 = (s1 + (uint64_t)tval) % 4294967295;
+                s2 = (s2 + s1) % 4294967295;
+            }
+        }
+    //printf("Hash: %" PRIu64 "\n", ((s2 << 32) | s1));
+    return (s2 << 32) | s1;
 }
 
 /**

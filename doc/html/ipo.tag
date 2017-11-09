@@ -1885,10 +1885,10 @@
     <includes id="cachedRational_8h" name="cachedRational.h" local="yes" imported="no">cachedRational.h</includes>
     <class kind="class">gmpcaching::GMPCaching</class>
     <member kind="variable">
-      <type>int</type>
+      <type>uint64_t</type>
       <name>globalcache_size</name>
       <anchorfile>gmpcachingxx_8h.html</anchorfile>
-      <anchor>ac20edd02e15310809ef6c2569521cf9a</anchor>
+      <anchor>abcb27c186c101e6478766a2134250bde</anchor>
       <arglist></arglist>
     </member>
   </compound>

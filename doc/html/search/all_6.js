@@ -20,7 +20,7 @@ var searchData=
   ['getmpqref',['getMpqRef',['../classgmpcaching_1_1CachedRational.html#aa4411c2b7402be76b1f4414dccdd2ed5',1,'gmpcaching::CachedRational']]],
   ['getmpqref_5fw',['getMpqRef_w',['../classgmpcaching_1_1CachedRational.html#ac7764e5a054be873e1d967e5ba70e70f',1,'gmpcaching::CachedRational']]],
   ['getvalue',['getValue',['../classgmpcaching_1_1CachedInt.html#a56163257e30edc67bf05ece8335eea0c',1,'gmpcaching::CachedInt::getValue()'],['../classgmpcaching_1_1CachedRational.html#a416a570bbe37ee03be8afe531d5c4459',1,'gmpcaching::CachedRational::getValue()']]],
-  ['globalcache_5fsize',['globalcache_size',['../gmpcachingxx_8h.html#ac20edd02e15310809ef6c2569521cf9a',1,'gmpcaching']]],
+  ['globalcache_5fsize',['globalcache_size',['../gmpcachingxx_8h.html#abcb27c186c101e6478766a2134250bde',1,'gmpcaching']]],
   ['gmpcaching',['GMPCaching',['../classgmpcaching_1_1GMPCaching.html',1,'gmpcaching']]],
   ['gmpcachingxx_2eh',['gmpcachingxx.h',['../gmpcachingxx_8h.html',1,'']]],
   ['gmp_2dcaching',['GMP-Caching',['../index.html',1,'']]]

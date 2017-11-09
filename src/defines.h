@@ -22,10 +22,10 @@ extern "C" {
 #define cachedInt_IsID 62
 
 /*! ratio of the size of the hashtable compared to size of cache */
-#define hashtable_RATIO 0.4
+#define hashtable_RATIO 0.05
 
 /*! number of hash functions */
-#define NUMBER_HF 3
+#define NUMBER_HF 4
 
 /*! macro to detect the bit in a cachedInt which defines if it is an id or a number, also used as an error code if returned as number */
 #define SHIFT ((uint64_t)1 << cachedInt_IsID)

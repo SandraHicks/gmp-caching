@@ -675,11 +675,15 @@ bool CachedRational::hasSameCache(const CachedRational& i) const{
         throw new RationalCacheNotSetException();
     }
     if(this->cache == i.cache){
-        //printf("hasSameCache true\n");
+        /*printf("hasSameCache true\n");
+        printf("this %" PRIu64 " / %" PRIu64 "\n", this->value.counter, this->value.denominator);
+        printf("other %" PRIu64 " / %" PRIu64 "\n", i.getValue().counter, i.getValue().denominator);*/
         return true;
     }
     else{
-        //printf("hasSameCache false\n");
+        /*printf("hasSameCache false\n");
+        printf("this %" PRIu64 " / %" PRIu64 "\n", this->value.counter, this->value.denominator);
+        printf("other %" PRIu64 " / %" PRIu64 "\n", i.getValue().counter, i.getValue().denominator);*/
         return false;
     }
 }

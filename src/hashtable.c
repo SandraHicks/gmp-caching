@@ -13,6 +13,9 @@
 #include <stdio.h>
 #include <inttypes.h>
 
+static unsigned int collisions_counter;
+static unsigned int inserted;
+
 /**
  * @brief initialization of the hash table
  * @param ht pointer to hash table
@@ -26,10 +29,13 @@ void init_hashtable(Hashtable* ht, uint64_t size){
     
     ht->counter = malloc(sizeof(int)*size);
     //init counter array with 0
-    int i = size;
+    unsigned int i = size;
     while(i--){
         ht->counter[i] = 0;
     }
+    collisions_counter=0;
+    inserted=0;
+    printf("ht-size: %" PRIu64 "\n", size);
 }
 
 /**
@@ -37,21 +43,29 @@ void init_hashtable(Hashtable* ht, uint64_t size){
  * @param ht pointer to hash table
  */
 void delete_hashtable(Hashtable* ht){
-    int i = 0;
+    unsigned int i = 0;
+    uint64_t size = ht->size;
+    int maxlength=0;
     for(i=0; i<ht->size; ++i){
+        int templength=1;
         cachedIntList* curr_list = &(ht->lists[i]);
         cachedIntElement* curr = curr_list->head;
         while(curr != curr_list->tail){
             cachedIntElement* next = curr->next;
             free(curr);
             curr = next;
+            templength++;
         }
         free(curr_list->tail);
+        if(templength > maxlength)
+            maxlength=templength;
     }
     free(ht->counter);
     free(ht->lists);
     ht->counter = NULL;
     ht->lists = NULL;
+    
+    printf("Collisions: %d Inserted: %d Collided Elements: %d, cache size: %" PRIu64 ", ht size: %" PRIu64 " maxlength = %d\n", collisions_counter, inserted, collisions_counter / NUMBER_HF, size * (uint64_t)(1/hashtable_RATIO), size, maxlength);
 }
 
 /**
@@ -63,7 +77,7 @@ void delete_hashtable(Hashtable* ht){
 void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
     //get all hashes mod size
     int64_t* h;
-    int number_hf = NUMBER_HF;
+    unsigned int number_hf = NUMBER_HF;
     h = malloc(sizeof(int64_t)*number_hf);
     
     uint64_t uh_temp1 = hashes[0];
@@ -71,7 +85,7 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
     h[0] = h_temp1;
     
     
-    int i;
+    unsigned int i;
     for(i=0; i<number_hf; ++i){
         uint64_t uh_temp = hashes[i];
         int64_t h_temp = (int64_t)uh_temp;
@@ -92,6 +106,7 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
             }
         }
     }
+    inserted++;
     //insert id into all hashed positions in hashtable
     for(i=0; i<NUMBER_HF; ++i){
         if(h[i]>=0){
@@ -108,6 +123,7 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
                 list->tail = this;
             }
             else{
+                collisions_counter++;
                 cachedIntElement* last = list->tail;
                 last->next = this;
                 this->prev = last;
@@ -133,8 +149,8 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
 uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_cache* cache){
     //check if counter at hash position >= 1 if not, return
     cachedIntElement* statefulPointer[NUMBER_HF];
-    int min=0;
-    int i;
+    unsigned int min=0;
+    unsigned int i;
     for(i=0; i < NUMBER_HF; ++i){
         if(ht->counter[(hashes[i] % ht->size)] < 1){
             return SHIFT;
@@ -155,7 +171,7 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
     
     
     //sequential search, later binary search
-    int index = (hashes[min] % ht->size);
+    unsigned int index = (hashes[min] % ht->size);
     cachedIntList* curr_list = &(ht->lists[index]);
     cachedIntElement* curr_min = curr_list->head;
     while(curr_min){
@@ -219,7 +235,7 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
  * @param hashes pointer to array of hashes to fill
  */
 void get_k_hashes(mpz_t val, uint64_t* hashes){
-    int number = (NUMBER_HF);
+    unsigned int number = (NUMBER_HF);
     switch(number){
         case 1: 
             hashes[0] = get_FNV1a_hash(val);
@@ -237,15 +253,21 @@ void get_k_hashes(mpz_t val, uint64_t* hashes){
             hashes[0] = get_FNV1a_hash(val);
             hashes[1] = get_Murmur_hash(val);
             hashes[2] = get_CRC_hash(val);
-            hashes[3] = get_Jenkins_hash(val);
+            hashes[3] = get_adler_hash(val);
             break;
         case 5: 
             hashes[0] = get_FNV1a_hash(val);
             hashes[1] = get_Murmur_hash(val);
             hashes[2] = get_CRC_hash(val);
-            hashes[3] = get_Jenkins_hash(val);
-            hashes[4] = get_Sip_hash(val);
+            hashes[3] = get_adler_hash(val);
+            hashes[4] = get_Jenkins_hash(val);
             break;
+        case 6:
+            hashes[0] = get_FNV1a_hash(val);
+            hashes[1] = get_Murmur_hash(val);
+            hashes[2] = get_CRC_hash(val);
+            hashes[4] = get_Jenkins_hash(val);
+            hashes[5] = get_Sip_hash(val);
         default:
             //ERROR
             break;
@@ -278,7 +300,7 @@ void get_k_hashes_cpf(mpz_t val1, mpz_t val2, uint64_t* hashes){
 
     get_k_hashes(op2, hashes2);
   
-    int i;
+    unsigned int i;
     for(i=0;i<NUMBER_HF;++i){
         hashes[i] = Cantor_pairing_function_int64(hashes1[i], hashes2[i]);
     }
@@ -304,7 +326,7 @@ void init_hashtable_binary(Hashtable_binary* ht, uint64_t size){
     
     ht->counter = malloc(sizeof(int)*size);
     //init counter array with 0
-    int i = size;
+    unsigned int i = size;
     while(i--){
         ht->counter[i] = 0;
     }
@@ -315,7 +337,7 @@ void init_hashtable_binary(Hashtable_binary* ht, uint64_t size){
  * @param ht pointer to hash table
  */
 void delete_hashtable_binary(Hashtable_binary* ht){
-    int i = 0;
+    unsigned int i = 0;
     for(i=0; i<ht->size; ++i){
         cachedIntList_binary* curr_list = &(ht->lists[i]);
         cachedIntElement_binary* curr = curr_list->head;
@@ -343,14 +365,14 @@ void delete_hashtable_binary(Hashtable_binary* ht){
 void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op2, uint64_t id_res, uint64_t* extra_info, uint64_t* hashes){
     //get all hashes mod size
     int64_t* h;
-    int number_hf = NUMBER_HF;
+    unsigned int number_hf = NUMBER_HF;
     h = malloc(sizeof(int64_t)*number_hf);
     
     uint64_t uh_temp1 = hashes[0];
     int64_t h_temp1 = (int64_t)uh_temp1;
     h[0] = h_temp1;
     
-    int i;
+    unsigned int i;
     for(i=0; i<number_hf; ++i){
         
         uint64_t uh_temp = hashes[i];
@@ -418,8 +440,8 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
 uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1, mpz_t op2, mpz_t_cache* cache, uint64_t* extra_info){
     //check if counter at hash position >= 1 if not, return
     cachedIntElement_binary* statefulPointer[NUMBER_HF];
-    int min=0;
-    int i;
+    unsigned int min=0;
+    unsigned int i;
     for(i=0; i < NUMBER_HF; ++i){
         if(ht->counter[(hashes[i] % ht->size)] < 1){
             return SHIFT;
@@ -439,7 +461,7 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
     //2. find elements of minimal list in other lists
     
     //sequential search, later binary search
-    int index = (hashes[min] % ht->size);
+    unsigned int index = (hashes[min] % ht->size);
     cachedIntList_binary* curr_list = &(ht->lists[index]);
     cachedIntElement_binary* curr_min = curr_list->head;
     while(curr_min){
