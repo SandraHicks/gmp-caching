@@ -19,6 +19,7 @@
 
 #ifdef SOPLEX_WITH_CACHING
 #include <gmpcachingxx.h>
+#include <cinttypes>
 #endif
 
 #ifndef SOPLEX_LEGACY
@@ -292,6 +293,35 @@ int main(int argc, char* argv[])
 
    int returnValue = 0;
 
+    //find out cache size before initializing Soplex Object
+
+      #ifdef SOPLEX_WITH_CACHING
+      uint64_t cache_size = 0;
+      for (optidx = 1; optidx < argc; optidx++){
+	char* option = argv[optidx];
+	if(option[1] == '-' && strstr(option, "cachesize=") != NULL){
+		uint64_t option_size = strlen(option);
+		uint64_t d_i = option_size-1;
+		cache_size=0;
+		static uint64_t pow10[11] = {
+        	1, 10, 100, 1000, 10000, 
+        	100000, 1000000, 10000000, 100000000, 1000000000, 10000000000
+		};
+		while(d_i >= 12){
+		  uint64_t val = (option[d_i] - '0');
+		  uint64_t tenth = ((option_size-1)-d_i);
+		  cache_size += val * pow10[tenth];
+		  d_i--;
+		}
+		printf("cache size=%" PRIu64 "\n", cache_size);
+
+		//init cache
+		gmpcaching::GMPCaching::setGlobalCacheSize(cache_size);
+		gmpcaching::GMPCaching::init_MasterCache();
+	}
+      }
+      #endif
+
    // create default timer (CPU time)
    readingTime = TimerFactory::createTimer(Timer::USER_TIME);
    soplex = 0;
@@ -437,6 +467,12 @@ int main(int argc, char* argv[])
                      soplex->setIntParam(SoPlex::SYNCMODE, SoPlex::SYNCMODE_AUTO);
                   }
                }
+#ifdef SOPLEX_WITH_CACHING
+		else if( strncmp(option, "cachesize=", 10) == 0){
+		  //do nothing, this case was handled before
+		  ;
+		}
+#endif
                // --<type>:<name>=<val> :  change parameter value using syntax of settings file entries
                else if( !soplex->parseSettingsString(option) )
                {
@@ -566,7 +602,6 @@ int main(int argc, char* argv[])
             // -c : perform final check of optimal solution in original problem
             checkSol = true;
             break;
-
             //lint -fallthrough
          default :
             {
@@ -633,6 +668,7 @@ int main(int argc, char* argv[])
       {
          soplex->setIntParam(SoPlex::SYNCMODE, SoPlex::SYNCMODE_AUTO);
       }
+std::cout << "reading time\n";
 
       // read LP from input file
       lpfilename = argv[optidx];
@@ -646,7 +682,7 @@ int main(int argc, char* argv[])
          returnValue = 1;
          goto TERMINATE_FREESTRINGS;
       }
-
+std::cout << "writing time\n";
       // write LP if specified
       if( writefilename != 0 )
       {
@@ -700,7 +736,7 @@ int main(int argc, char* argv[])
 
       MSG_INFO1( soplex->spxout, soplex->spxout << "LP has " << soplex->numRowsReal() << " rows "
          << soplex->numColsReal() << " columns and " << soplex->numNonzerosReal() << " nonzeros.\n\n" );
-
+std::cout << "optimize\n";
       // solve the LP
       soplex->optimize();
 
@@ -708,7 +744,6 @@ int main(int argc, char* argv[])
       int printwidth;
       printprec = (int) log10(1/Param::epsilon());
       printwidth = printprec + 10;
-
       // print solution, check solution, and display statistics
       if( printPrimal )
       {

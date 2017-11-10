@@ -27,7 +27,7 @@ void init_hashtable(Hashtable* ht, uint64_t size){
     cachedIntList* l = malloc(sizeof(cachedIntList)*(size));
     ht->lists = l;
     
-    ht->counter = malloc(sizeof(int)*size);
+    ht->counter = malloc(sizeof(unsigned int)*size);
     //init counter array with 0
     unsigned int i = size;
     while(i--){
@@ -44,10 +44,11 @@ void init_hashtable(Hashtable* ht, uint64_t size){
  */
 void delete_hashtable(Hashtable* ht){
     unsigned int i = 0;
+    unsigned int usedCells = 0;
     uint64_t size = ht->size;
-    int maxlength=0;
+    unsigned int maxlength=0;
     for(i=0; i<ht->size; ++i){
-        int templength=1;
+        unsigned int templength=1;
         cachedIntList* curr_list = &(ht->lists[i]);
         cachedIntElement* curr = curr_list->head;
         while(curr != curr_list->tail){
@@ -56,6 +57,9 @@ void delete_hashtable(Hashtable* ht){
             curr = next;
             templength++;
         }
+        if(ht->counter[i] > 0)
+            usedCells++;
+
         free(curr_list->tail);
         if(templength > maxlength)
             maxlength=templength;
@@ -65,7 +69,7 @@ void delete_hashtable(Hashtable* ht){
     ht->counter = NULL;
     ht->lists = NULL;
     
-    printf("Collisions: %d Inserted: %d Collided Elements: %d, cache size: %" PRIu64 ", ht size: %" PRIu64 " maxlength = %d\n", collisions_counter, inserted, collisions_counter / NUMBER_HF, size * (uint64_t)(1/hashtable_RATIO), size, maxlength);
+    printf("Collisions: %d Inserted: %d Collided Elements: %d, cache size: %" PRIu64 ", ht size: %" PRIu64 " maxlength = %d used cells; %d\n", collisions_counter, inserted, collisions_counter / NUMBER_HF, size * (uint64_t)(1/hashtable_RATIO), size, maxlength, usedCells);
 }
 
 /**
@@ -236,36 +240,38 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
  */
 void get_k_hashes(mpz_t val, uint64_t* hashes){
     unsigned int number = (NUMBER_HF);
+    
     switch(number){
         case 1: 
-            hashes[0] = get_FNV1a_hash(val);
+            hashes[0] = HASH0;
             break;
         case 2: 
-            hashes[0] = get_FNV1a_hash(val);
-            hashes[1] = get_Murmur_hash(val);
+            hashes[0] = HASH0;
+            hashes[1] = HASH1;
             break;
         case 3: 
-            hashes[0] = get_FNV1a_hash(val);
-            hashes[1] = get_Murmur_hash(val);
-            hashes[2] = get_CRC_hash(val);
+            hashes[0] = HASH0;
+            hashes[1] = HASH1;
+            hashes[2] = HASH2;
             break;
         case 4: 
-            hashes[0] = get_FNV1a_hash(val);
-            hashes[1] = get_Murmur_hash(val);
-            hashes[2] = get_CRC_hash(val);
-            hashes[3] = get_adler_hash(val);
+            hashes[0] = HASH0;
+            hashes[1] = HASH1;
+            hashes[2] = HASH2;
+            hashes[3] = HASH3;
             break;
         case 5: 
-            hashes[0] = get_FNV1a_hash(val);
-            hashes[1] = get_Murmur_hash(val);
-            hashes[2] = get_CRC_hash(val);
-            hashes[3] = get_adler_hash(val);
+            hashes[0] = HASH0;
+            hashes[1] = HASH1;
+            hashes[2] = HASH2;
+            hashes[3] = HASH3;
             hashes[4] = get_Jenkins_hash(val);
             break;
         case 6:
-            hashes[0] = get_FNV1a_hash(val);
-            hashes[1] = get_Murmur_hash(val);
-            hashes[2] = get_CRC_hash(val);
+            hashes[0] = HASH0;
+            hashes[1] = HASH1;
+            hashes[2] = HASH2;
+            hashes[3] = HASH3;
             hashes[4] = get_Jenkins_hash(val);
             hashes[5] = get_Sip_hash(val);
         default:

@@ -63,6 +63,7 @@ $(function() {
 <code>#include &lt;limits.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;float.h&gt;</code><br />
+<code>#include &lt;assert.h&gt;</code><br />
 <code>#include &quot;<a class="el" href="mastercache_8h.html">mastercache.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="master__cache__integer_8h.html">master_cache_integer.h</a>&quot;</code><br />
 <code>#include &quot;<a class="el" href="caching__operations_8h.html">caching_operations.h</a>&quot;</code><br />
@@ -289,7 +290,7 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>(for internal use only!) </p><dl class="params"><dt>Parameters</dt><dd>
+<p>(for internal use only!) no check if divisor 0 </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">val1</td><td></td></tr>
     <tr><td class="paramname">val2</td><td></td></tr>
@@ -1228,7 +1229,7 @@ Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>1 if val1 &gt; val2, 0 if equals, -1 if val2 &gt; val2, 2 if NaN passed or comparing infinities with same sign </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if val1 &gt; val2, 0 if equals, -1 if val2 &gt; val2 </dd></dl>
 
 </div>
 </div>

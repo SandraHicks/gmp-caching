@@ -9,6 +9,7 @@
 #include "hashtable.h"
 #include "hashing.h"
 #include <stdlib.h>
+#include <assert.h>
 
 //Debug
 #include <stdio.h>
@@ -169,12 +170,9 @@ void delete_cache(lookup* cache){
  * @param val for writing the result
  */
 void get_mpz(lookup* cache, uint64_t id, mpz_t val){
-    //printf("get_mpz id %" PRIu64 "\n", id);
     id = id & ~SHIFT;
-    //printf("get_mpz neg%" PRIu64 "\n", id);
     if((id & NEG) > 0){
         id = id & ~NEG;
-        //printf("get_mpz %" PRIu64 "\n", id);
         get_cached_mpz(cache->lkup->cache, id, val);
         mpz_neg(val, val);
     }
@@ -247,17 +245,13 @@ uint64_t mpz_cached_int(const mpz_t number){
     if(cmp == 0){
         return (uint64_t)0;
     }
-    //printf("cmp: %d\n", cmp);
     int limbs = number->_mp_size;
-    //printf("limbs: %d\n", limbs);
     limbs = (limbs < 0) ? limbs*(-1) : limbs;
-    //printf("limbs: %d\n", limbs);
     if(limbs > 2)
         return SHIFT;
     
 #if (GMP_NAIL_BITS == 0)
     uint64_t data = number->_mp_d[0];
-    //printf("data: %" PRIu64 "\n", data);
     #if (GMP_LIMB_BITS < 62)
         //also get second limb
         data = data + (uint64_t)(number->_mp_d[1] << GMP_LIMB_BITS);
@@ -327,10 +321,10 @@ uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val){
     if(id >= 0)
         insert_element(cache->ht, (uint64_t)id, hashes);
     
-    if(id < 0){
-        //negative number returned: set to 0 as is is unsigned. 0 | SHIFT is the error code.
+    //negative number returned: set to 0 as is is unsigned. 0 | SHIFT is the error code.
+    if(id < 0)
         id = 0;
-    }
+    
     free(hashes);
     hashes = NULL;
     mpz_clear(temp);
@@ -349,10 +343,9 @@ uint64_t cache_insert_mpz(lookup* lu, const mpz_t val){
     mpz_init(temp);
     mpz_set(temp, val);
     //check for positive value
-    int isNeg = 0;
+    unsigned short isNeg = 0;
     if(val->_mp_size < 0){
         isNeg = 1;
-        mpz_neg(temp, temp);
     }
     
     //insert in cache if large enough
@@ -414,10 +407,9 @@ uint64_t cache_exists_mpz(lookup* lu, mpz_t val){
     mpz_init(temp);
     mpz_set(temp, val);
     
-    int isNeg = 0;
+    unsigned short isNeg = 0;
     if(temp->_mp_size < 0){
         isNeg = 1;
-        mpz_neg(temp, temp);
     }
     
     uint64_t id = cache_exists_mpz_raw(lu, val);
@@ -450,10 +442,8 @@ uint64_t cache_exists_mpz_binary_raw(lookup* cache, mpz_t op1, mpz_t op2, uint64
     mpz_init(t_op2);
     mpz_set(t_op1, op1);
     mpz_set(t_op2, op2);
-    if(op1->_mp_size < 0)
-        t_op1->_mp_size = t_op1->_mp_size * (-1);
-    if(op2->_mp_size < 0)
-        t_op2->_mp_size = t_op2->_mp_size * (-1);
+    t_op1->_mp_size = (t_op1->_mp_size > 0 ? t_op1->_mp_size : t_op1->_mp_size* (-1));
+    t_op2->_mp_size = (t_op2->_mp_size > 0 ? t_op2->_mp_size : t_op2->_mp_size* (-1));
     lookup_table_binary* lkuptable;
     switch(op){
         case SUB:
@@ -511,8 +501,7 @@ uint64_t cache_exists_mpz_binary_raw(lookup* cache, mpz_t op1, mpz_t op2, uint64
  * @return id for cached mpz_t if existent, SHIFT if not cached
  */
 uint64_t cache_exists_mpz_binary(lookup* cache, mpz_t op1, mpz_t op2, uint64_t* extra_info, int op){
-    uint64_t id = cache_exists_mpz_binary_raw(cache, op1, op2, extra_info, op);
-    return id | SHIFT;
+    return cache_exists_mpz_binary_raw(cache, op1, op2, extra_info, op) | SHIFT;
 }
 
 /**
@@ -553,7 +542,7 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
     
     lookup_table_binary* lkuptable;
     mpz_t result;
-    mpz_init(result);
+    
     //Case 1: a>=0, b>=0
     if(op1->_mp_size >= 0 && op2->_mp_size >= 0){
         //check if +a,+b is cached in addition table
@@ -566,6 +555,7 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
         }
         
         lkuptable = cache->add;
+        mpz_init(result);
         mpz_add(result, op1, op2);
     }
     //Case 2: a<0, b<0
@@ -578,6 +568,7 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
             return id | NEG | SHIFT;
         }
         lkuptable = cache->add;
+        mpz_init(result);
         mpz_add(result, op1, op2);
     }
     //Case 3: a>=0, b<0
@@ -594,10 +585,11 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
                 return id | NEG;
         }
         lkuptable = cache->sub;
+        mpz_init(result);
         mpz_add(result, op1, op2);
     }
     
-    int resNeg = 0;
+    unsigned short resNeg = 0;
     if(result->_mp_size < 0){
         resNeg = 1;
         mpz_neg(result, result);
@@ -643,11 +635,9 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
 uint64_t cached_mpz_sub(lookup* cache, mpz_t op1, mpz_t op2){
     //every subtraction is an addition
     
-    mpz_t op2_neg;
-    mpz_init(op2_neg);
-    mpz_neg(op2_neg, op2);
-    uint64_t id = cached_mpz_add(cache, op1, op2_neg);
-    mpz_clear(op2_neg);
+    mpz_neg(op2, op2);
+    uint64_t id = cached_mpz_add(cache, op1, op2);
+    mpz_neg(op2, op2);
     return id;
 }
 
@@ -685,11 +675,8 @@ uint64_t cached_mpz_mul(lookup* cache, mpz_t op1, mpz_t op2){
     mpz_init(result);
     
     mpz_mul(result, op1_in, op2_in);
-    //gmp_printf("op1: %Zd\n", op1_in);
-    //gmp_printf("op2: %Zd\n", op2_in);
-    //gmp_printf("result: %Zd\n", result);
     
-    int resNeg = 0;
+    unsigned short resNeg = 0;
     if(result->_mp_size < 0){
         resNeg = 1;
         mpz_neg(result, result);
@@ -732,11 +719,7 @@ uint64_t cached_mpz_mul(lookup* cache, mpz_t op1, mpz_t op2){
 uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
     //return 0 if operand2 == 0
     int cmp = mpz_cmpabs_ui(op2, 0);
-    if(cmp == 0){
-        uint64_t r_temp = 0;
-        rest = &r_temp;
-        return 0;
-    }
+    assert(cmp != 0);
     ////// cache division result
     mpz_t op1_in;
     mpz_t op2_in;
@@ -744,8 +727,6 @@ uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
     mpz_init(op2_in);
     mpz_set(op1_in, op1);
     mpz_set(op2_in, op2);
-    //gmp_printf("op1: %Zd\n", op1);
-    //gmp_printf("op2: %Zd\n", op2);
 
     //check if exists in cache
     uint64_t id = cache_exists_mpz_binary_raw(cache, op1_in, op2_in, rest, TDIV);
@@ -767,10 +748,7 @@ uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
     
     mpz_tdiv_qr(result_q, result_r, op1_in, op2_in);
     
-    //gmp_printf("cacheddiv result_q: %Zd\n", result_q);
-    //gmp_printf("cacheddiv result_R: %Zd\n", result_r);
-    
-    int resNeg = 0;
+    unsigned short resNeg = 0;
     if(result_q->_mp_size < 0){
         resNeg = 1;
         mpz_neg(result_q, result_q);
@@ -787,10 +765,6 @@ uint64_t cached_mpz_tdiv(lookup* cache, uint64_t* rest, mpz_t op1, mpz_t op2){
     uint64_t id_res_q = cache_insert_mpz_raw(cache, result_q);
     uint64_t id_res_r = cache_insert_mpz_raw(cache, result_r);
     
-    /*printf("cached div: %" PRIu64 "\n", id_op1);
-    printf("cached div: %" PRIu64 "\n", id_op2);
-    printf("cached div: %" PRIu64 "\n", id_res_q);
-    printf("cached div: %" PRIu64 "\n", id_res_r);*/
     insert_element_binary(cache->tdiv->ht, id_op1, id_op2, id_res_q, &id_res_r, hashes);
     
     //free hashes

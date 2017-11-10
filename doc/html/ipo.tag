@@ -3034,6 +3034,13 @@
     <includes id="mpz__caching_8h" name="mpz_caching.h" local="yes" imported="no">mpz_caching.h</includes>
     <includes id="mastercache_8h" name="mastercache.h" local="yes" imported="no">mastercache.h</includes>
     <member kind="function">
+      <type>int</type>
+      <name>is_double_castable</name>
+      <anchorfile>mpz__caching_8c.html</anchorfile>
+      <anchor>a0279f84f08bfef44602cd03652818806</anchor>
+      <arglist>(mpz_t m)</arglist>
+    </member>
+    <member kind="function">
       <type>void</type>
       <name>init_mpz_cache</name>
       <anchorfile>mpz__caching_8c.html</anchorfile>
@@ -5027,10 +5034,10 @@
     <name>Hashtable</name>
     <filename>structHashtable.html</filename>
     <member kind="variable">
-      <type>int *</type>
+      <type>unsigned int *</type>
       <name>counter</name>
       <anchorfile>structHashtable.html</anchorfile>
-      <anchor>a99f7c11aa20bbd066528843438a42958</anchor>
+      <anchor>a118c63cbeab3d7c1049ef828a8b193b9</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

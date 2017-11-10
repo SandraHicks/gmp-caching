@@ -66,6 +66,9 @@ $(function() {
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a0279f84f08bfef44602cd03652818806"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpz__caching_8c.html#a0279f84f08bfef44602cd03652818806">is_double_castable</a> (mpz_t m)</td></tr>
+<tr class="memdesc:a0279f84f08bfef44602cd03652818806"><td class="mdescLeft">&#160;</td><td class="mdescRight">test if an mpz_t can be cast into a double without loss of data  <a href="#a0279f84f08bfef44602cd03652818806">More...</a><br /></td></tr>
+<tr class="separator:a0279f84f08bfef44602cd03652818806"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af5387ca483d290f5da20649239c5fdef"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="mpz__caching_8c.html#af5387ca483d290f5da20649239c5fdef">init_mpz_cache</a> (<a class="el" href="structmpz__t__cache.html">mpz_t_cache</a> *cache, uint64_t size)</td></tr>
 <tr class="memdesc:af5387ca483d290f5da20649239c5fdef"><td class="mdescLeft">&#160;</td><td class="mdescRight">initialization of the cache  <a href="#af5387ca483d290f5da20649239c5fdef">More...</a><br /></td></tr>
 <tr class="separator:af5387ca483d290f5da20649239c5fdef"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -86,6 +89,31 @@ Functions</h2></td></tr>
 <tr class="separator:a1afc9ada65a26e6562e7eb6b24064f72"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
+<a id="a0279f84f08bfef44602cd03652818806"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0279f84f08bfef44602cd03652818806">&#9670;&nbsp;</a></span>is_double_castable()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int is_double_castable </td>
+          <td>(</td>
+          <td class="paramtype">mpz_t&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>mpz_t </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>1 if castable, 0 if not </dd></dl>
+
+</div>
+</div>
 <a id="af5387ca483d290f5da20649239c5fdef"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af5387ca483d290f5da20649239c5fdef">&#9670;&nbsp;</a></span>init_mpz_cache()</h2>
 

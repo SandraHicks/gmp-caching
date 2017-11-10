@@ -44,7 +44,7 @@ extern "C" {
      * @brief hash table
      */
     typedef struct Hashtable{
-        int* counter;           /**< array of counters of elements in each list*/
+        unsigned int* counter;           /**< array of counters of elements in each list*/
         cachedIntList* lists;   /**< array of lists*/
         uint64_t size;          /**< number of lists, size of hash table*/
     } Hashtable;

@@ -458,7 +458,7 @@ CachedRational& CachedRational::operator=(const int &i){
     else{
         this->cache = cache;
     }
-    this->value = cached_rational_set_cached(this->cache, (uint64_t)i, (uint64_t)0);
+    this->value = cached_rational_set_cached(this->cache, (uint64_t)i, (uint64_t)1);
     
     return *this;
 }

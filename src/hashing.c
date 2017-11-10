@@ -35,10 +35,10 @@ typedef uint64_t Fnv64_t;
 uint64_t get_FNV1a_hash(mpz_t myval){
     //check for negative sign for safety
     mp_limb_t* key = myval->_mp_d;
-    int size = myval->_mp_size;
+    unsigned long size = (myval->_mp_size > 0 ? myval->_mp_size : myval->_mp_size* (-1));
     Fnv64_t hash = FNV1_64_INIT;
     
-    int i = size;
+    unsigned long i = size;
     while(i--){
         mp_limb_t limb = key[i];
         hash ^= (Fnv64_t)limb;
@@ -87,7 +87,7 @@ uint64_t get_Sip_hash(mpz_t myval){
 uint64_t get_Murmur_hash(mpz_t myval){
     //get key and seed for hash
     mp_limb_t* key = myval->_mp_d;
-    int size = myval->_mp_size;
+    unsigned long size = (myval->_mp_size > 0 ? myval->_mp_size : myval->_mp_size* (-1));
     if(size < 0)
         size *= -1;
     uint64_t hash = 0;
@@ -99,11 +99,11 @@ uint64_t get_Murmur_hash(mpz_t myval){
     int32_t r2 = 13;
     int32_t m = 5;
     int32_t n = 0xe6546b64;
-    int i = size;
+    unsigned long i = size;
     while(i--){
         mp_limb_t limb = key[i];
-        int sizelong = sizeof(mp_limb_t);
-        int l =(sizelong/4);
+        unsigned int sizelong = sizeof(mp_limb_t);
+        unsigned int l =(sizelong/4);
         while(l--){
             uint32_t k = limb >> (l*32);
             k *= c1;
@@ -150,17 +150,17 @@ uint64_t get_CRC_hash(mpz_t myval){
     //uint64_t crc_polynom = 0x42F0E1EBA9EA3693;
     uint64_t crc_polynom_rev = 0xC96C5795D7870F42;
     uint64_t crc_result = 0;
-    long mp_size = (myval->_mp_size > 0 ? myval->_mp_size : myval->_mp_size* (-1));
+    unsigned long mp_size = (myval->_mp_size > 0 ? myval->_mp_size : myval->_mp_size* (-1));
     //long bits = mp_size * sizeof(mp_limb_t) * 8;
     mp_limb_t* data = myval->_mp_d;
     
     //XOR first 64 bits with polynom
     if(sizeof(mp_limb_t) <= 8){
-        int i = 0;
+        unsigned int i = 0;
         for(i=0;i<mp_size;i++){
             //begin with lsb
             crc_result ^= data[i];
-            int j = 0;
+            unsigned int j = 0;
             for(j=0;j<sizeof(mp_limb_t)*8;j++){
                 if(crc_result & 0x1){
                     crc_result = (crc_result >> 1) ^ crc_polynom_rev;
@@ -173,15 +173,15 @@ uint64_t get_CRC_hash(mpz_t myval){
     }
     else{
         //deal with other sizes > 8
-        int i = 0;
+        unsigned int i = 0;
         for(i=0;i<mp_size;i++){
             //begin with lsb
             //deal with every byte instead
-            int b = 0;
+            unsigned int b = 0;
             for(b=0;b<sizeof(mp_limb_t);b++){
                 uint8_t byte = (data[i] >> b);
                 crc_result ^= (uint64_t)byte;
-                int j = 0;
+                unsigned int j = 0;
                 for(j=0;j<8;j++){
                     if(crc_result & 0x1){
                         crc_result = (crc_result >> 1) ^ crc_polynom_rev;
@@ -208,7 +208,7 @@ uint64_t get_adler_hash(mpz_t myval){
     //long bits = mp_size * sizeof(mp_limb_t) * 8;
     mp_limb_t* data = myval->_mp_d;
     
-    int i = 0;
+    unsigned int i = 0;
     
     uint64_t s1 = 1;
     uint64_t s2 = 0;
@@ -216,14 +216,13 @@ uint64_t get_adler_hash(mpz_t myval){
     for(i=0;i<mp_size;i++){
             //begin with lsb
             //deal with every byte instead
-            int b = 0;
+            unsigned int b = 0;
             for(b=0;b<sizeof(mp_limb_t);b++){
                 uint8_t tval = (data[i] >> b);
                 s1 = (s1 + (uint64_t)tval) % 4294967295;
                 s2 = (s2 + s1) % 4294967295;
             }
         }
-    //printf("Hash: %" PRIu64 "\n", ((s2 << 32) | s1));
     return (s2 << 32) | s1;
 }
 

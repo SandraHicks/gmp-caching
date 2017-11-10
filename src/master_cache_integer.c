@@ -8,6 +8,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <float.h>
+#include <assert.h>
 
 #include "mastercache.h"
 #include "master_cache_integer.h"
@@ -70,18 +71,13 @@ void cached_int_clear_cache(MasterCache** mstr){
  * @param mpz
  */
 void get_mpz_from_id(const MasterCache* mstr, cachedInt id, mpz_t mpz){
-    if(id == NaN || id == PLUS_INFINITY || id == MINUS_INFINITY){
+    if(id == NaN || id == PLUS_INFINITY || id == MINUS_INFINITY)
         return;
-    }
-    //printf("get from id: %" PRIu64 " test %" PRIu64 "\n", id, (id & SHIFT));
-    if((id & SHIFT) >= 1){
-        //printf("get from cache\n");
+
+    if((id & SHIFT) >= 1)
         get_mpz(mstr->_integers->cache, id, mpz);
-    }
-    else{
-        //printf("convert\n");
+    else
         cached_int_mpz(id, mpz);
-    }
 }
 
 /**
@@ -92,10 +88,9 @@ void get_mpz_from_id(const MasterCache* mstr, cachedInt id, mpz_t mpz){
  */
 cachedInt cached_int_set(const MasterCache* mstr, const mpz_t number){
     cachedInt id = mpz_cached_int(number);
-    //printf("id: %" PRIu64 "\n", id);
+
     if((id==SHIFT) && (number->_mp_size!=0)){
-        id = cache_insert_mpz(mstr->_integers->cache, number);
-        return id;
+        return cache_insert_mpz(mstr->_integers->cache, number);;
     }
     if(number->_mp_size < 0)
         return id | NEG;
@@ -109,9 +104,9 @@ cachedInt cached_int_set(const MasterCache* mstr, const mpz_t number){
  * @param number mpz_t number to set
  */
 void cached_int_get(const MasterCache* mstr, cachedInt id, mpz_t number){
-    if(id == NaN || id == PLUS_INFINITY || id == MINUS_INFINITY){
+    if(id == NaN || id == PLUS_INFINITY || id == MINUS_INFINITY)
         return;
-    }
+    
     //convert cachedInt to mpz if it is no id
     if((id & SHIFT) == 0){
         mpz_init(number);
@@ -129,8 +124,6 @@ void cached_int_get(const MasterCache* mstr, cachedInt id, mpz_t number){
  * @return double the double representation of the mpz_t cached with id
  */
 double cached_int_get_d(const MasterCache* mstr, cachedInt id){
-    /*printf("get _ d id %" PRIu64 "\n", id);
-    printf("get _ d id %" PRIu64 "\n", id & ~SHIFT);*/
     //convert cachedInt to mpz if it is no id
     if(id == NaN || id == PLUS_INFINITY || id == MINUS_INFINITY){
         return 0.0;
@@ -158,10 +151,7 @@ double cached_int_get_d(const MasterCache* mstr, cachedInt id){
  * @return negated id
  */
 cachedInt cached_int_neg(const MasterCache* mstr, cachedInt val){
-    if((val & NEG) >= 1)
-        return val & ~NEG;
-    else
-        return val | NEG;
+    return ((val & NEG) >= 1) ? (val & ~NEG) : (val | NEG);
 }
 
 /**
@@ -171,10 +161,7 @@ cachedInt cached_int_neg(const MasterCache* mstr, cachedInt val){
  * @return absolute value
  */
 cachedInt cached_int_abs(const MasterCache* mstr, cachedInt val){
-    if((val & NEG) >= 1)
-        return val & ~NEG;
-    else
-        return val;
+    return ((val & NEG) >= 1) ? (val & ~NEG) : val;
 }
 
 /**
@@ -184,10 +171,7 @@ cachedInt cached_int_abs(const MasterCache* mstr, cachedInt val){
  * @return 1 if positive, 0 if negative
  */
 int cached_int_sgn(const MasterCache* mstr, cachedInt val){
-    if((val & NEG) >= 1)
-        return 0;
-    else
-        return 1;
+    return ((val & NEG) >= 1) ? 0 : 1;
 }
 /**
  * (internal use only!)
@@ -195,10 +179,7 @@ int cached_int_sgn(const MasterCache* mstr, cachedInt val){
  * @return 
  */
 cachedInt direct_abs(cachedInt val){
-    if((val & NEG) >= 1)
-        return val & ~NEG;
-    else
-        return val;
+    return ((val & NEG) >= 1) ? (val & ~NEG) : val;
 }
 
 /**
@@ -225,33 +206,22 @@ cachedInt cached_int_add(const MasterCache* mstr, cachedInt val1, cachedInt val2
     
     //check for infinities
     if(val1 == PLUS_INFINITY){
-        if(val2 == MINUS_INFINITY){
-            return SHIFT | NEG;
-        }
-        else{
-            return PLUS_INFINITY;
-        }
+        return (val2 == MINUS_INFINITY) ? (SHIFT | NEG) : PLUS_INFINITY;
     }
     if(val1 == MINUS_INFINITY){
-        if(val2 == PLUS_INFINITY){
-            return SHIFT | NEG;
-        }
-        else{
-            return MINUS_INFINITY;
-        }
+        return (val2 == PLUS_INFINITY) ? (SHIFT | NEG) : MINUS_INFINITY;
     }
     //if val1 and val2 small: return Result as number if result < maxResult
     //if result > maxResult: cache and return ID
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
         result = direct_add(val1, val2);
         if(result != SHIFT){
-            //printf("direct result: %" PRIu64 "\n", result);
             return result;
         }
         //in case of overflow go on to cached addition
     }
     
-  //else: directly cache add
+  //else: cache add
     mpz_t op1;
     mpz_t op2;
     mpz_init(op1);
@@ -259,7 +229,7 @@ cachedInt cached_int_add(const MasterCache* mstr, cachedInt val1, cachedInt val2
     get_mpz_from_id(mstr, val1, op1);
     get_mpz_from_id(mstr, val2, op2);
     result = cached_mpz_add(mstr->_integers->cache, op1, op2);
-    //printf("cached result: %" PRIu64 "\n", result);
+
     return result;
 }
 /**
@@ -269,33 +239,23 @@ cachedInt cached_int_add(const MasterCache* mstr, cachedInt val1, cachedInt val2
  * @return cachedInt result or SHIFT if overflow
  */
 cachedInt direct_add(cachedInt val1, cachedInt val2){
-    int val1neg=0;
+    unsigned short val1neg=0;
     if((val1 & NEG) >= 1){
         val1neg = 1;
         val1 = val1 & ~NEG;
     }
-    int val2neg=0;
+    unsigned short val2neg=0;
     if((val2 & NEG) >= 1){
         val2neg = 1;
         val2 = val2 & ~NEG;
     }
     //case 1: both positive.
     if(val1neg == 0 && val2neg == 0){
-        if(!additionOverflow(val1, val2)){
-            return val1 + val2;
-        }
-        else{
-            return SHIFT;
-        }
+        return (!additionOverflow(val1, val2)) ? (val1 + val2) : SHIFT;
     }
     //case 2: both negative
     else if(val1neg == 1 && val2neg == 1){
-        if(additionOverflow(val1, val2) < 1){
-            return (val1 + val2) | NEG;
-        }
-        else{
-            return SHIFT;
-        }
+        return (!additionOverflow(val1, val2)) ? ((val1 + val2) | NEG) : SHIFT;
     }
     //case 3: one pos, one neg
     else{
@@ -308,12 +268,7 @@ cachedInt direct_add(cachedInt val1, cachedInt val2){
         }
         
         //no overflow possible if one value positive and one negative
-        if(((int64_t)val1 - (int64_t)val2) < 0){
-            return (val2 - val1) | NEG;
-        }
-        else{
-            return val1 - val2;
-        } 
+        return (((int64_t)val1 - (int64_t)val2) < 0) ? ((val2 - val1) | NEG) : val1 - val2;
     }
 }
 /**
@@ -392,10 +347,9 @@ cachedInt cached_int_mul(const MasterCache* mstr, cachedInt val1, cachedInt val2
     mpz_init(op2);
     get_mpz_from_id(mstr, val1, op1);
     get_mpz_from_id(mstr, val2, op2);
-    //gmp_printf("mul op1: %Zd\n", op1);
-    //gmp_printf("mul op2: %Zd\n", op2);
+
     result = cached_mpz_mul(mstr->_integers->cache, op1, op2);
-    //printf("mul res: c=%"PRIu64"\n", result);
+
     return result;
 }
 /**
@@ -439,13 +393,7 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
         return NaN;
     }
     
-    
-    if(divisor == 0){
-        *rest = (uint64_t)0;
-        //printf("div: c=%"PRIu64" d=%"PRIu64"\n", divident, divisor);
-        printf("Error: ------------ NaN!--------------7\n");
-        return NaN;
-    }
+    assert(divisor != 0);
     
     if(divident == 0){
         *rest = (uint64_t)0;
@@ -492,66 +440,29 @@ cachedInt cached_int_tdiv(const MasterCache* mstr, cachedInt divident, cachedInt
     get_mpz_from_id(mstr, divident, op1);
     get_mpz_from_id(mstr, divisor, op2);
     
-    /*printf("cached division: --");
-    int64_t d;
-    if((divident & NEG) >= 1){
-        d = (divident & (~NEG)) * (-1);
-    }
-    else{
-        d = divident;
-    }
-    if((divident & SHIFT) >= 1){
-        printf(" %" PRId64 " (id: %" PRIu64 ") \n", d, divident & ~(SHIFT | NEG));
-    }
-    else{
-        printf(" %" PRId64 " \n", d);
-    }
-    if((divisor & NEG) >= 1){
-        d = (divisor & (~NEG)) * (-1);
-    }
-    else{
-        d = divisor;
-    }
-    if((divisor & SHIFT) >= 1){
-        printf(" %" PRId64 " (id: %" PRIu64 ") \n", d, divisor & ~(SHIFT | NEG));
-    }
-    else{
-        printf(" %" PRId64 " \n", d);
-    }
-    gmp_printf("cacheddiv op1: %Zd\n", op1);
-    gmp_printf("cacheddiv op2: %Zd\n", op2);*/
-    
     result = cached_mpz_tdiv(mstr->_integers->cache, rest, op1, op2);
    
-    //printf("div cached result: %" PRIu64 "\n", result);
     return result;
 }
 /**
- * (for internal use only!)
+ * (for internal use only!) no check if divisor 0
  * @param val1
  * @param val2
  * @return cachedInt result
  */
 cachedInt direct_div(cachedInt val1, cachedInt val2){
-    int val1neg=0;
+    unsigned short val1neg=0;
     if((val1 & NEG) >= 1){
         val1neg = 1;
         val1 = val1 & ~NEG;
     }
-    int val2neg=0;
+    unsigned short val2neg=0;
     if((val2 & NEG) >= 1){
         val2neg = 1;
         val2 = val2 & ~NEG;
     }
     
-    if(val2!=0){
-        if(val1neg != val2neg)
-            return (val1 / val2) | NEG;
-        else
-            return (val1 / val2);
-    }
-    else
-        return SHIFT;
+    return (val1neg != val2neg) ? ((val1 / val2) | NEG) : (val1 / val2);
 }
 
 /**
@@ -578,30 +489,14 @@ cachedInt direct_mod(cachedInt val1, cachedInt val2){
  * @return cachedInt returns caching id or result for mod
  */
 cachedInt cached_int_mod(const MasterCache* mstr, cachedInt number, cachedInt n){
-    if(number == NaN || n == NaN){
-        return NaN;
-    }
+    assert((n!=0)&& ((number != PLUS_INFINITY) && (number != MINUS_INFINITY)) && ((n != PLUS_INFINITY) && (n != MINUS_INFINITY)) && (number != NaN && n != NaN));
     
     if(number == 0){
         return 0;
     }
     
-    if(n == 0){
-        printf("Error: ------------ NaN!--------------5\n");
-        return NaN;
-    }
-    
-    uint64_t result;
-    //check for infinity
-    if(((number == PLUS_INFINITY) || (number == MINUS_INFINITY)) || ((n == PLUS_INFINITY) || (n == MINUS_INFINITY))){
-        printf("Error: ------------ NaN!--------------4\n");
-        return NaN;
-    }
-    
     if(((number & SHIFT) == 0) && ((n & SHIFT) == 0)){
-        result = direct_mod(number, n);
-        return result;
-        
+        return direct_mod(number, n);
         //as the integer division rest is always smaller equals the number, it cannot overflow
     }
     
@@ -613,9 +508,8 @@ cachedInt cached_int_mod(const MasterCache* mstr, cachedInt number, cachedInt n)
     
     get_mpz_from_id(mstr, number, op1);
     get_mpz_from_id(mstr, n, op2);
-    result = cached_mpz_mod(mstr->_integers->cache, op1, op2);
    
-    return result;
+    return cached_mpz_mod(mstr->_integers->cache, op1, op2);
 }
 
 
@@ -627,9 +521,7 @@ cachedInt cached_int_mod(const MasterCache* mstr, cachedInt number, cachedInt n)
  * @return cachedInt returns caching id or result for gcd
  */
 cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2){
-    if(val1 == NaN || val2 == NaN){
-        return NaN;
-    }
+    assert(((val1 != PLUS_INFINITY) && (val1 != MINUS_INFINITY)) && ((val2 != PLUS_INFINITY) && (val2 != MINUS_INFINITY)) && (val1 != NaN && val2 != NaN));
     
     if(val1 == 0){
         return val2 & ~NEG;
@@ -641,17 +533,8 @@ cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2
         return 0;
     }
     
-    uint64_t result;
-    
-    if(((val1 == PLUS_INFINITY) || (val1 == MINUS_INFINITY)) || ((val2 == PLUS_INFINITY) || (val2 == MINUS_INFINITY))){
-        printf("Error: ------------ NaN!--------------3\n");
-        return NaN;
-    }
-    
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
-        result = direct_gcd(val1, val2);
-        //printf("gcd result: %" PRIu64 "\n", result);
-        return result;
+        return direct_gcd(val1, val2);
         
         //as gcd is always smaller equals the operands, it cannot overflow in direct calculation
     }
@@ -661,13 +544,9 @@ cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2
     mpz_t op2;
     mpz_init(op1);
     mpz_init(op2);
-    //printf("gcd op1: %"PRIu64"\n", val1);
-    //printf("gcd op2: %"PRIu64"\n", val2);
     get_mpz_from_id(mstr, val1, op1);
     get_mpz_from_id(mstr, val2, op2);
-    result = cached_mpz_gcd(mstr->_integers->cache, op1, op2);
-    //printf("gcd cached result: %" PRIu64 "\n", result);
-    return result;
+    return cached_mpz_gcd(mstr->_integers->cache, op1, op2);
 }
 /**
  * (for internal use only!)
@@ -697,22 +576,14 @@ cachedInt direct_gcd(cachedInt val1, cachedInt val2){
  * @return result id
  */
 cachedInt cached_int_lcm(const MasterCache* mstr, cachedInt val1, cachedInt val2){
-    if(val1 == NaN || val2 == NaN){
-        return NaN;
-    }
+    assert(((val1 != PLUS_INFINITY) && (val1 != MINUS_INFINITY)) && ((val2 != PLUS_INFINITY) && (val2 != MINUS_INFINITY)) && (val1 != NaN && val2 != NaN));
     
     if(val1 == 0 || val2 == 0){
         return 0;
     }
     
-    uint64_t result;
-    
-    if(((val1 == PLUS_INFINITY) || (val1 == MINUS_INFINITY)) || ((val2 == PLUS_INFINITY) || (val2 == MINUS_INFINITY))){
-        printf("Error: ------------ NaN!--------------2\n");
-        return NaN;
-    }
-    
     if(((val1 & SHIFT) == 0) && ((val2 & SHIFT) == 0)){
+        uint64_t result;
         result = direct_lcm(val1, val2);
         if(result != SHIFT){
             return result;
@@ -727,9 +598,8 @@ cachedInt cached_int_lcm(const MasterCache* mstr, cachedInt val1, cachedInt val2
     mpz_init(op2);
     get_mpz_from_id(mstr, val1, op1);
     get_mpz_from_id(mstr, val2, op2);
-    result = cached_mpz_lcm(mstr->_integers->cache, op1, op2);
    
-    return result;
+    return cached_mpz_lcm(mstr->_integers->cache, op1, op2);
 }
 /**
  * (for internal use only!)
@@ -741,8 +611,7 @@ cachedInt direct_lcm(cachedInt val1, cachedInt val2){
     cachedInt mul = direct_mul(val1, val2);
     mul = direct_abs(mul);
     if(mul != SHIFT){
-        cachedInt gcd = direct_gcd(val1, val2);
-        cachedInt result = direct_div(mul, gcd);
+        cachedInt result = direct_div(mul, direct_gcd(val1, val2));
         return result;
     }
     else{
@@ -759,25 +628,10 @@ cachedInt direct_lcm(cachedInt val1, cachedInt val2){
  * @return int returns 0 if inverse does not exists, 1 if result is defined
  */
 int cached_int_invert(const MasterCache* mstr, cachedInt val1, cachedInt val2, cachedInt* result){
-    if(val1 == NaN || val2 == NaN){
-        *result = NaN;
-        printf("Error: ------------ NaN!--------------1\n");
-        return 0;
-    }
+    assert((val2 != 0) && ((val1 != PLUS_INFINITY) && (val1 != MINUS_INFINITY)) && ((val2 != PLUS_INFINITY) && (val2 != MINUS_INFINITY)) && val1 != NaN && val2 != NaN);
     
     if(val1 == 0){
         *result = 0;
-        return 0;
-    }
-    
-    if(val2 == 0){
-        *result = NaN;
-        printf("Error: ------------ NaN!--------------1\n");
-        return 0;
-    }
-    
-    if(((val1 == PLUS_INFINITY) || (val1 == MINUS_INFINITY)) || ((val2 == PLUS_INFINITY) || (val2 == MINUS_INFINITY))){
-        *result = NaN;
         return 0;
     }
     
@@ -785,17 +639,7 @@ int cached_int_invert(const MasterCache* mstr, cachedInt val1, cachedInt val2, c
         *result = direct_invert(val1, val2);
         //check for overflow
         if(*result != SHIFT)
-            if(*result != 0){
-                return 1;
-            }
-            else{
-                return 0;
-            }
-        else{
-            //there was an overflow when calculating the inverse
-        }
-        
-        
+            return (*result != 0) ? 1 : 0;
     }
     
     cachedInt gcd = cached_int_gcd(mstr, val1, val2);
@@ -867,10 +711,7 @@ void ext_euclid(cachedInt val1, cachedInt val2, cachedInt* d, cachedInt* s, cach
  * @return true if the cachedInt is an ID to the cache
  */
 int cached_int_isID(cachedInt val){
-    if((val & SHIFT) == 0)
-        return 0;
-    else
-        return 1;
+    return ((val & SHIFT) == 0) ? 0 : 1;
 }
 
 /**
@@ -878,13 +719,10 @@ int cached_int_isID(cachedInt val){
  * @param mstr MasterCache
  * @param val1
  * @param val2
- * @return 1 if val1 > val2, 0 if equals, -1 if val2 > val2, 2 if NaN passed or comparing infinities with same sign
+ * @return 1 if val1 > val2, 0 if equals, -1 if val2 > val2
  */
 int cached_int_cmp(const MasterCache* mstr, cachedInt val1, cachedInt val2){
-    if(val1 == NaN || val2 == NaN){
-        //printf("Error: ------------ NaN!--------------\n");
-        return 2;
-    }
+    assert(val1 != NaN && val2 != NaN);
     if(val1 == PLUS_INFINITY && val2 == MINUS_INFINITY){
         return 1;
     }
