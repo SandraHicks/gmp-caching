@@ -29,7 +29,7 @@ void init_hashtable(Hashtable* ht, uint64_t size){
     
     ht->counter = malloc(sizeof(unsigned int)*size);
     //init counter array with 0
-    unsigned int i = size;
+    size_t i = size;
     while(i--){
         ht->counter[i] = 0;
     }
@@ -43,33 +43,50 @@ void init_hashtable(Hashtable* ht, uint64_t size){
  * @param ht pointer to hash table
  */
 void delete_hashtable(Hashtable* ht){
-    unsigned int i = 0;
+    uint64_t i = 0;
     unsigned int usedCells = 0;
     uint64_t size = ht->size;
     unsigned int maxlength=0;
+    unsigned int maxindex;
+    
     for(i=0; i<ht->size; ++i){
         unsigned int templength=1;
         cachedIntList* curr_list = &(ht->lists[i]);
         cachedIntElement* curr = curr_list->head;
         while(curr != curr_list->tail){
             cachedIntElement* next = curr->next;
-            free(curr);
             curr = next;
             templength++;
         }
+        if(templength > maxlength){
+            maxlength=templength;
+            maxindex = i;
+        }
+    }
+    
+    for(i=0; i<ht->size; ++i){
+        cachedIntList* curr_list = &(ht->lists[i]);
+        cachedIntElement* curr = curr_list->head;
+        int j = 0;
+        while(curr != curr_list->tail){
+            if(i == maxindex){
+                
+            }
+            cachedIntElement* next = curr->next;
+            free(curr);
+            curr = next;
+            j++;
+        }
         if(ht->counter[i] > 0)
             usedCells++;
-
         free(curr_list->tail);
-        if(templength > maxlength)
-            maxlength=templength;
     }
     free(ht->counter);
-    free(ht->lists);
+    free((ht->lists));
     ht->counter = NULL;
     ht->lists = NULL;
     
-    printf("Collisions: %d Inserted: %d Collided Elements: %d, cache size: %" PRIu64 ", ht size: %" PRIu64 " maxlength = %d used cells; %d\n", collisions_counter, inserted, collisions_counter / NUMBER_HF, size * (uint64_t)(1/hashtable_RATIO), size, maxlength, usedCells);
+    printf("Collisions: %d Inserted: %d Collided Elements: %d, cache size: %" PRIu64 ", ht size: %" PRIu64 " maxlength = %d maxindex = %d used cells: %d\n", collisions_counter, inserted, collisions_counter / NUMBER_HF, size * (uint64_t)(1/hashtable_RATIO), size, maxlength,maxindex, usedCells);
 }
 
 /**
@@ -84,26 +101,16 @@ void insert_element(Hashtable* ht, uint64_t id, uint64_t* hashes){
     unsigned int number_hf = NUMBER_HF;
     h = malloc(sizeof(int64_t)*number_hf);
     
-    uint64_t uh_temp1 = hashes[0];
-    int64_t h_temp1 = (int64_t)uh_temp1;
-    h[0] = h_temp1;
-    
-    
     unsigned int i;
     for(i=0; i<number_hf; ++i){
-        uint64_t uh_temp = hashes[i];
-        int64_t h_temp = (int64_t)uh_temp;
-        if(h_temp > ht->size){
-            if(ht->size > 0)
-                h_temp = (int64_t)(h_temp % (int64_t)ht->size);
-        }
-        h[i] = h_temp;
+        uint64_t uh_temp = hashes[i] & (ht->size-1);
+        h[i] = (int64_t)uh_temp;
         
     }
     
     //check if any hash was doubled, set doubled to -1
     for(i=0; i<NUMBER_HF; ++i){
-        int j;
+        unsigned int j;
         for(j=0;j<NUMBER_HF; ++j){
             if(i!=j){
                 h[j] = (h[i] != h[j]) ? h[j]: -1;
@@ -156,14 +163,15 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
     unsigned int min=0;
     unsigned int i;
     for(i=0; i < NUMBER_HF; ++i){
-        if(ht->counter[(hashes[i] % ht->size)] < 1){
+        //counter is 0: return instant
+        if(ht->counter[(hashes[i] & (ht->size-1))] < 1){
             return SHIFT;
         }
-        if(ht->counter[(hashes[i] % ht->size)] 
-                < ht->counter[(hashes[min] % ht->size)]){
+        if(ht->counter[(hashes[i] & (ht->size-1))] 
+                < ht->counter[(hashes[min] & (ht->size-1))]){
             min = i;
         }
-        int index = (hashes[i] % ht->size);
+        int index = (hashes[i] & (ht->size-1));
         cachedIntList* curr_list = &(ht->lists[index]);
         statefulPointer[i] = curr_list->head;
         
@@ -175,12 +183,12 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
     
     
     //sequential search, later binary search
-    unsigned int index = (hashes[min] % ht->size);
+    unsigned int index = (hashes[min] & (ht->size-1));
     cachedIntList* curr_list = &(ht->lists[index]);
     cachedIntElement* curr_min = curr_list->head;
     while(curr_min){
         uint64_t curr_id = curr_min->id;
-        int globalfound = 0;
+        int globalfound = 1;
         int i;
         for(i=0;i<NUMBER_HF; ++i){
             //check all lists except for minimal sized one
@@ -209,23 +217,12 @@ uint64_t exists_element(Hashtable* ht, uint64_t* hashes, mpz_t element, mpz_t_ca
         if(globalfound == 1){
             mpz_t cached_val;
             mpz_init(cached_val);
-            if((curr_id & SHIFT) > 0){
-                get_cached_mpz(cache, (curr_id & ~SHIFT), cached_val);
-            }
-            else{
-                unsigned long l[4];
-                if(sizeof(long) < 8){
-                    //TODO
-                    l[0] = curr_id;
-                }
-                else{
-                    l[0] = curr_id;
-                }
-                mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, l);
-            }
+            get_cached_mpz(cache, (curr_id & ~SHIFT), cached_val);
+
             int cmp = mpz_cmpabs(cached_val, element);
-            if(cmp == 0)
+            if(cmp == 0){
                 return curr_id;
+            }
         }
         
         curr_min = curr_min->next;
@@ -330,7 +327,7 @@ void init_hashtable_binary(Hashtable_binary* ht, uint64_t size){
     cachedIntList_binary* l = malloc(sizeof(cachedIntList_binary)*(size));
     ht->lists = l;
     
-    ht->counter = malloc(sizeof(int)*size);
+    ht->counter = malloc(sizeof(unsigned int)*size);
     //init counter array with 0
     unsigned int i = size;
     while(i--){
@@ -374,25 +371,15 @@ void insert_element_binary(Hashtable_binary* ht, uint64_t id_op1, uint64_t id_op
     unsigned int number_hf = NUMBER_HF;
     h = malloc(sizeof(int64_t)*number_hf);
     
-    uint64_t uh_temp1 = hashes[0];
-    int64_t h_temp1 = (int64_t)uh_temp1;
-    h[0] = h_temp1;
-    
     unsigned int i;
     for(i=0; i<number_hf; ++i){
-        
-        uint64_t uh_temp = hashes[i];
-        int64_t h_temp = (int64_t)uh_temp;
-        if(h_temp > ht->size){
-            if(ht->size > 0)
-                h_temp = (int64_t)(h_temp % (int64_t)ht->size);
-        }
-        h[i] = h_temp;
+        uint64_t uh_temp = hashes[i] & (ht->size-1);
+        h[i] = (int64_t)uh_temp;
         
     }
     //check if any hash was doubled, set doubled to -1
     for(i=0; i<NUMBER_HF; ++i){
-        int j;
+        unsigned int j;
         for(j=0;j<NUMBER_HF; ++j){
             if(i!=j){
                 h[j] = (h[i] != h[j]) ? h[j]: -1;
@@ -449,14 +436,14 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
     unsigned int min=0;
     unsigned int i;
     for(i=0; i < NUMBER_HF; ++i){
-        if(ht->counter[(hashes[i] % ht->size)] < 1){
+        if(ht->counter[(hashes[i] & (ht->size-1))] < 1){
             return SHIFT;
         }
-        if(ht->counter[(hashes[i] % ht->size)] 
-                < ht->counter[(hashes[min] % ht->size)]){
+        if(ht->counter[(hashes[i] & (ht->size-1))] 
+                < ht->counter[(hashes[min] & (ht->size-1))]){
             min = i;
         }
-        int index = (hashes[i] % ht->size);
+        int index = (hashes[i] & (ht->size-1));
         cachedIntList_binary* curr_list = &(ht->lists[index]);
         statefulPointer[i] = curr_list->head;
         
@@ -467,7 +454,7 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
     //2. find elements of minimal list in other lists
     
     //sequential search, later binary search
-    unsigned int index = (hashes[min] % ht->size);
+    unsigned int index = (hashes[min] & (ht->size-1));
     cachedIntList_binary* curr_list = &(ht->lists[index]);
     cachedIntElement_binary* curr_min = curr_list->head;
     while(curr_min){
@@ -530,7 +517,7 @@ uint64_t exists_element_binary(Hashtable_binary* ht, uint64_t* hashes, mpz_t op1
                     l[0] = curr_min->op2;
                 }
                 mpz_import(cached_val, 1, 1, sizeof(int64_t), 0, 0, l);
-            }
+}
             int cmp2 = mpz_cmpabs(cached_val, op2);
             if(cmp1 == 0 && cmp2 == 0){
                 if(extra_info != NULL){

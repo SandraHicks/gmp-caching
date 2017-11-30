@@ -221,15 +221,25 @@ cachedInt cached_int_add(const MasterCache* mstr, cachedInt val1, cachedInt val2
         //in case of overflow go on to cached addition
     }
     
+    /*printf("iadd1: %" PRIu64 "\n",val1);
+    printf("iadd1-: %" PRIu64 "\n",(val1 & ~NEG));
+    printf("iadd1-s: %" PRIu64 "\n",((val1 & ~NEG) & ~SHIFT));
+    printf("iadd2: %" PRIu64 "\n",val2);
+    printf("iadd2-: %" PRIu64 "\n",(val2 & ~NEG));
+    printf("iadd2-s: %" PRIu64 "\n",((val2 & ~NEG) & ~SHIFT));*/
   //else: cache add
     mpz_t op1;
     mpz_t op2;
     mpz_init(op1);
     mpz_init(op2);
     get_mpz_from_id(mstr, val1, op1);
+    //gmp_printf("op1: %Zd\n", op1);
     get_mpz_from_id(mstr, val2, op2);
+    //gmp_printf("op2: %Zd\n", op2);
     result = cached_mpz_add(mstr->_integers->cache, op1, op2);
-
+//printf("iaddresult: %" PRIu64 "\n",result);
+//printf("iaddresult-: %" PRIu64 "\n",(result & ~NEG));
+//printf("iaddresult-s: %" PRIu64 "\n",((result & ~NEG) & ~SHIFT));
     return result;
 }
 /**
@@ -339,7 +349,11 @@ cachedInt cached_int_mul(const MasterCache* mstr, cachedInt val1, cachedInt val2
         //in case of overflow go on to cached multiplication
     }
     
-    
+    /*printf("mul1: %" PRIu64 "\n",val1);
+    printf("mul1-: %" PRIu64 "\n",(val1 & ~NEG));
+    printf("mul1-s: %" PRIu64 "\n",((val1 & ~NEG) & ~SHIFT));
+    printf("mul2: %" PRIu64 "\n",val2);
+    printf("mul2: %" PRIu64 "\n",val2);*/
   //else: directly cache mul
     mpz_t op1;
     mpz_t op2;
@@ -349,7 +363,7 @@ cachedInt cached_int_mul(const MasterCache* mstr, cachedInt val1, cachedInt val2
     get_mpz_from_id(mstr, val2, op2);
 
     result = cached_mpz_mul(mstr->_integers->cache, op1, op2);
-
+//printf("mulres: %" PRIu64 "\n",result);
     return result;
 }
 /**
@@ -522,6 +536,8 @@ cachedInt cached_int_mod(const MasterCache* mstr, cachedInt number, cachedInt n)
  */
 cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2){
     assert(((val1 != PLUS_INFINITY) && (val1 != MINUS_INFINITY)) && ((val2 != PLUS_INFINITY) && (val2 != MINUS_INFINITY)) && (val1 != NaN && val2 != NaN));
+    //printf("gcd1: %" PRIu64 "\n",val1);
+    //printf("gcd2: %" PRIu64 "\n",val2);
     
     if(val1 == 0){
         return val2 & ~NEG;
@@ -544,6 +560,8 @@ cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2
     mpz_t op2;
     mpz_init(op1);
     mpz_init(op2);
+    //printf("gcd1a: %" PRIu64 "\n",val1);
+    //printf("gcd2a: %" PRIu64 "\n",val2);
     get_mpz_from_id(mstr, val1, op1);
     get_mpz_from_id(mstr, val2, op2);
     return cached_mpz_gcd(mstr->_integers->cache, op1, op2);
@@ -554,7 +572,7 @@ cachedInt cached_int_gcd(const MasterCache* mstr, cachedInt val1, cachedInt val2
  * @param val2
  * @return cachedInt result
  */
-cachedInt direct_gcd(cachedInt val1, cachedInt val2){
+cachedInt direct_gcd_slow(cachedInt val1, cachedInt val2){
     if((val1 & NEG) >= 1){
         val1 = val1 & ~NEG;
     }
@@ -566,6 +584,11 @@ cachedInt direct_gcd(cachedInt val1, cachedInt val2){
         return val1;
     }
     return direct_gcd(val2, val1 % val2);
+}
+
+cachedInt direct_gcd(cachedInt val1, cachedInt val2){
+    while(val2) val2 ^= val1 ^= val2 ^= val1 %= val2;
+    return val1;
 }
 
 /**

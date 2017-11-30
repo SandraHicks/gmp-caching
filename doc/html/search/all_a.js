@@ -17,7 +17,7 @@ var searchData=
   ['mpz_5fcaching_2eh',['mpz_caching.h',['../mpz__caching_8h.html',1,'']]],
   ['mpz_5fswap',['mpz_swap',['../caching__operations_8c.html#a7ea00a65df3156e97a088f4609996b1f',1,'caching_operations.c']]],
   ['mpz_5ft_5fcache',['mpz_t_cache',['../structmpz__t__cache.html',1,'mpz_t_cache'],['../mpz__caching_8h.html#a084f99de7821a83cdca8d0f747cd6484',1,'mpz_t_cache():&#160;mpz_caching.h']]],
-  ['msb',['MSB',['../overflow__detection_8c.html#ab9ebfca4f389fbfd7518c73802739dfa',1,'overflow_detection.c']]],
+  ['msb',['MSB',['../overflow__detection_8c.html#ab9ebfca4f389fbfd7518c73802739dfa',1,'MSB(cachedInt val):&#160;overflow_detection.c'],['../overflow__detection_8h.html#ab9ebfca4f389fbfd7518c73802739dfa',1,'MSB(cachedInt val):&#160;overflow_detection.c']]],
   ['mul',['mul',['../structlookup.html#aab703d9a300ea104f80a39416e512041',1,'lookup::mul()'],['../caching__operations_8h.html#aa8f137f19095e0bdcf4f521e901f88bba086ab1f2f4dac104b6826ebe0eaba8fd',1,'MUL():&#160;caching_operations.h']]],
   ['multiplicationoverflow',['multiplicationOverflow',['../overflow__detection_8c.html#a3d152657eff6ecfd62713f7252beb0fe',1,'multiplicationOverflow(cachedInt op1, cachedInt op2):&#160;overflow_detection.c'],['../overflow__detection_8h.html#a3d152657eff6ecfd62713f7252beb0fe',1,'multiplicationOverflow(cachedInt op1, cachedInt op2):&#160;overflow_detection.c']]]
 ];

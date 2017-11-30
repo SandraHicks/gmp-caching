@@ -223,7 +223,8 @@ uint64_t get_adler_hash(mpz_t myval){
                 s2 = (s2 + s1) % 4294967295;
             }
         }
-    return (s2 << 32) | s1;
+    uint64_t shift = 1;
+    return ((s2 << 32) | s1) & ~((shift << 63) | (shift << 62));
 }
 
 /**

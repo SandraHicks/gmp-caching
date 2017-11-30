@@ -17,6 +17,8 @@ int additionOverflow(cachedInt op1, cachedInt op2);
 int multiplicationOverflow(cachedInt op1, cachedInt op2);
 int exponentiationOverflow(cachedInt base, cachedInt exp);
 
+uint32_t MSB(cachedInt val);
+
 #ifdef __cplusplus
 }
 #endif

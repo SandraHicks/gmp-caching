@@ -292,6 +292,12 @@ cachedRational cached_rational_add(const MasterCache* mstr, cachedRational val1,
         res.denominator = val1.denominator;
         return res;
     }
+    /*printf("add1: %" PRIu64 "\n",val1.counter);
+    printf("add2: %" PRIu64 "\n",val1.denominator);
+    printf("add3: %" PRIu64 "\n",val2.counter);
+    printf("add3-: %" PRIu64 "\n",(val2.counter & ~NEG));
+    printf("add3-s: %" PRIu64 "\n",((val2.counter & ~NEG) & ~SHIFT));
+    printf("add4: %" PRIu64 "\n",val2.denominator);*/
     
     cachedInt lcm = cached_int_lcm(mstr, val1.denominator, val2.denominator);
     cachedInt rest;
@@ -371,6 +377,9 @@ cachedRational cached_rational_reduce(const MasterCache* mstr, cachedRational va
         val.denominator = 1;
         return val;
     }
+    
+    //printf("reduce1: %" PRIu64 "\n",val.counter);
+    //printf("reduce2: %" PRIu64 "\n",val.denominator);
     
     //gcd of counter/denominator
     cachedInt gcd = cached_int_gcd(mstr, val.counter, val.denominator);

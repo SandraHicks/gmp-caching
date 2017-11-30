@@ -1533,7 +1533,6 @@ bool CachedRational::readString(const char* s){
 }
 
 std::string rationalToString(const CachedRational& r, const int precision){
-    //printf("rationalToString(): %" PRIu64 " / %" PRIu64 "\n", r.value.counter, r.value.denominator);
 #if defined(_WIN32) || defined(_WIN64) || defined(__APPLE__)
     std::stringstream sstream;
     sstream << r;
@@ -1543,8 +1542,6 @@ std::string rationalToString(const CachedRational& r, const int precision){
     cached_rational_get_str(r.cache, r.value, cstring, precision);
     std::string retString = std::string(cstring);
     
-    //printf(cstring);
-    //printf("\n");
     return retString;
 #endif
 }

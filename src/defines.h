@@ -25,12 +25,13 @@ extern "C" {
 #define hashtable_RATIO 0.05
 
 /*! number of hash functions */
-#define NUMBER_HF 3
+#define NUMBER_HF 4
 
+    
 #define HASH0 get_adler_hash(val)
-#define HASH1 get_CRC_hash(val)
-#define HASH2 get_Murmur_hash(val)
-#define HASH3 get_FNV1a_hash(val)
+#define HASH2 get_CRC_hash(val)
+#define HASH3 get_Murmur_hash(val)
+#define HASH1 get_FNV1a_hash(val)
 
 /*! macro to detect the bit in a cachedInt which defines if it is an id or a number, also used as an error code if returned as number */
 #define SHIFT ((uint64_t)1 << cachedInt_IsID)

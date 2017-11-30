@@ -87,7 +87,7 @@ extern "C" {
      * @brief hash table binary mapping
      */
     typedef struct Hashtable_binary{
-        int* counter;                   /**< array of counters of elements in each list*/
+        unsigned int* counter;                   /**< array of counters of elements in each list*/
         cachedIntList_binary* lists;    /**< array of lists*/
         uint64_t size;                  /**< number of lists, size of hash table*/
     } Hashtable_binary;

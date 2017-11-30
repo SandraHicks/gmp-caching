@@ -14,6 +14,7 @@ extern "C" {
 //debug
 #include <stdio.h>
 #include <inttypes.h>
+#include <assert.h>
     
 #define DOUBLE_BITS 1019
 
@@ -40,6 +41,7 @@ void init_mpz_cache(mpz_t_cache* cache, uint64_t size){
  */
 void delete_mpz_cache(mpz_t_cache* cache){
     unsigned int i = CACHE_START_ID;
+    printf("cache grown to: %" PRIu64 "\n", cache->next_id);
     for(i=CACHE_START_ID; i<cache->next_id; i++){
         cached_mpz_t* curr = &(cache->cache[i]);
         mpz_clear(curr->integer);
@@ -56,9 +58,10 @@ void delete_mpz_cache(mpz_t_cache* cache){
  * @return id of inserted element
  */
 int64_t insert_mpz(mpz_t_cache* cache, mpz_t val){
+    
     if(cache->next_id >= cache->size){
         printf("Cache is full! Size: %"PRIu64"\n", cache->size);
-        return -1;
+        assert(cache->next_id < cache->size);
     }
     
     double fp_rep;
@@ -96,6 +99,7 @@ void printEntry(mpz_t_cache* cache, uint64_t i){
  * @param val mpz_t to set for return
  */
 void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
+    assert(i < cache->next_id);
     cached_mpz_t* element = &cache->cache[i];
     if(val == NULL){
         mpz_init_set(val, element->integer);

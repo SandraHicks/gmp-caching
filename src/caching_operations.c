@@ -8,6 +8,7 @@
 #include "mpz_caching.h"
 #include "hashtable.h"
 #include "hashing.h"
+#include "overflow_detection.h"
 #include <stdlib.h>
 #include <assert.h>
 
@@ -27,6 +28,16 @@ uint64_t cache_exists_mpz_binary_raw(lookup* cache, mpz_t op1, mpz_t op2, uint64
  * @param cachesize size of the cache
  */
 void init_cache(lookup* cache, uint64_t cachesize){
+    
+    //get hashtable size as next power of 2:
+    uint64_t temp_size = (uint64_t)cachesize*hashtable_RATIO;
+    uint32_t msb = MSB(temp_size);
+    uint32_t i;
+    uint64_t size = 0;
+    for (i=0; i<=msb; i++){
+        size = size | (1 << i);
+    }
+    size = size + 1;
     
     lookup_table* table = malloc(sizeof(lookup_table));
     lookup_table_binary* table_binary_add = malloc(sizeof(lookup_table_binary));
@@ -55,7 +66,7 @@ void init_cache(lookup* cache, uint64_t cachesize){
     cache->lkup->cache = newcache;
     
     Hashtable* newtable = malloc(sizeof(Hashtable));
-    init_hashtable(newtable, (uint64_t)cachesize*hashtable_RATIO);
+    init_hashtable(newtable, size);
     cache->lkup->ht = newtable;
     
     //cache for mpz_t binary operations
@@ -64,56 +75,56 @@ void init_cache(lookup* cache, uint64_t cachesize){
     cache->add->cache = newcache;
     
     Hashtable_binary* newtable_bin_add = malloc(sizeof(Hashtable_binary));
-    init_hashtable_binary(newtable_bin_add, (uint64_t)cachesize*hashtable_RATIO);
+    init_hashtable_binary(newtable_bin_add, size);
     cache->add->ht = newtable_bin_add;
     
     //cache for subtraction
     cache->sub->cache = newcache;
 
     Hashtable_binary* newtable_bin_sub = malloc(sizeof(Hashtable_binary));
-    init_hashtable_binary(newtable_bin_sub, (uint64_t)cachesize*hashtable_RATIO);
+    init_hashtable_binary(newtable_bin_sub, size);
     cache->sub->ht = newtable_bin_sub;
     
     //cache for multiplication
     cache->mul->cache = newcache;
 
     Hashtable_binary* newtable_bin_mul = malloc(sizeof(Hashtable_binary));
-    init_hashtable_binary(newtable_bin_mul, (uint64_t)cachesize*hashtable_RATIO);
+    init_hashtable_binary(newtable_bin_mul, size);
     cache->mul->ht = newtable_bin_mul;
     
     //cache for division
     cache->tdiv->cache = newcache;
 
     Hashtable_binary* newtable_bin_tdiv = malloc(sizeof(Hashtable_binary));
-    init_hashtable_binary(newtable_bin_tdiv, (uint64_t)cachesize*hashtable_RATIO);
+    init_hashtable_binary(newtable_bin_tdiv, size);
     cache->tdiv->ht = newtable_bin_tdiv;
     
     //cache for mod
     cache->mod->cache = newcache;
 
     Hashtable_binary* newtable_bin_mod = malloc(sizeof(Hashtable_binary));
-    init_hashtable_binary(newtable_bin_mod, (uint64_t)cachesize*hashtable_RATIO);
+    init_hashtable_binary(newtable_bin_mod, size);
     cache->mod->ht = newtable_bin_mod;
     
     //cache for gcd
     cache->gcd->cache = newcache;
 
     Hashtable_binary* newtable_bin_gcd = malloc(sizeof(Hashtable_binary));
-    init_hashtable_binary(newtable_bin_gcd, (uint64_t)cachesize*hashtable_RATIO);
+    init_hashtable_binary(newtable_bin_gcd, size);
     cache->gcd->ht = newtable_bin_gcd;
     
     //cache for lcm
     cache->lcm->cache = newcache;
 
     Hashtable_binary* newtable_bin_lcm = malloc(sizeof(Hashtable_binary));
-    init_hashtable_binary(newtable_bin_lcm, (uint64_t)cachesize*hashtable_RATIO);
+    init_hashtable_binary(newtable_bin_lcm, size);
     cache->lcm->ht = newtable_bin_lcm;
     
     //cache for invers
     cache->inv->cache = newcache;
 
     Hashtable_binary* newtable_bin_inv = malloc(sizeof(Hashtable_binary));
-    init_hashtable_binary(newtable_bin_inv, (uint64_t)cachesize*hashtable_RATIO);
+    init_hashtable_binary(newtable_bin_inv, size);
     cache->inv->ht = newtable_bin_inv;
 }
 /**
@@ -121,47 +132,56 @@ void init_cache(lookup* cache, uint64_t cachesize){
  * @param cache lookup cache pointer
  */
 void delete_cache(lookup* cache){
-    //call delete for mpz_t cache
-    delete_mpz_cache(cache->lkup->cache);
-    free(cache->lkup->cache);
-    cache->lkup->cache = NULL;
-    cache->add->cache = NULL;
     
     //call delete for hashtables
     delete_hashtable(cache->lkup->ht);
     free(cache->lkup->ht);
     cache->lkup->ht = NULL;
+    
     delete_hashtable_binary(cache->add->ht);
     free(cache->add->ht);
     cache->add->ht = NULL;
+    cache->add->cache = NULL;
     
     delete_hashtable_binary(cache->sub->ht);
     free(cache->sub->ht);
     cache->sub->ht = NULL;
+    cache->sub->cache = NULL;
     
     delete_hashtable_binary(cache->mul->ht);
     free(cache->mul->ht);
     cache->mul->ht = NULL;
+    cache->mul->cache = NULL;
     
     delete_hashtable_binary(cache->tdiv->ht);
     free(cache->tdiv->ht);
     cache->tdiv->ht = NULL;
+    cache->tdiv->cache = NULL;
     
     delete_hashtable_binary(cache->mod->ht);
     free(cache->mod->ht);
     cache->mod->ht = NULL;
+    cache->mod->cache = NULL;
     
     delete_hashtable_binary(cache->gcd->ht);
     free(cache->gcd->ht);
     cache->gcd->ht = NULL;
+    cache->gcd->cache = NULL;
     
     delete_hashtable_binary(cache->lcm->ht);
     free(cache->lcm->ht);
     cache->lcm->ht = NULL;
+    cache->lcm->cache = NULL;
     
     delete_hashtable_binary(cache->inv->ht);
     free(cache->inv->ht);
     cache->inv->ht = NULL;
+    cache->inv->cache = NULL;
+    
+        //call delete for mpz_t cache
+    delete_mpz_cache(cache->lkup->cache);
+    free(cache->lkup->cache);
+    cache->lkup->cache = NULL;
 }
 /**
  * @brief function for master cache to set a mpz_t and get back an id
@@ -170,9 +190,12 @@ void delete_cache(lookup* cache){
  * @param val for writing the result
  */
 void get_mpz(lookup* cache, uint64_t id, mpz_t val){
+    //printf("get mpz: %" PRIu64 "\n",id);
     id = id & ~SHIFT;
+    //printf("2get mpz: %" PRIu64 "\n",id);
     if((id & NEG) > 0){
         id = id & ~NEG;
+        //printf("3get mpz: %" PRIu64 "\n",id);
         get_cached_mpz(cache->lkup->cache, id, val);
         mpz_neg(val, val);
     }
@@ -301,6 +324,7 @@ uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val){
     //check if mpz is too small for caching. in that case return direct value as non-id
     uint64_t direct = mpz_cached_int(temp);
     if(direct != SHIFT){
+        //printf("return directly\n");
         return direct;
     }
     
@@ -309,6 +333,7 @@ uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val){
     uint64_t check_id = cache_exists_mpz_raw(lu, temp);
     if(check_id != SHIFT){
         mpz_clear(temp);
+        //printf("return existing\n");
         return check_id | SHIFT;
     }
     
@@ -328,7 +353,7 @@ uint64_t cache_insert_mpz_raw(lookup* lu, mpz_t val){
     free(hashes);
     hashes = NULL;
     mpz_clear(temp);
-    
+    //printf("return new\n");
     return (uint64_t)id | SHIFT;
 }
 
@@ -550,7 +575,7 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
         if(id != SHIFT){
             mpz_clear(op1);
             mpz_clear(op2);
-            id |= SHIFT;
+            //id |= SHIFT;
             return id;
         }
         
@@ -561,11 +586,13 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
     //Case 2: a<0, b<0
     if(op1->_mp_size < 0 && op2->_mp_size < 0){
         //check if +a,+b is cached in addition table
+        //printf("add cached\n");
         uint64_t id = cache_exists_mpz_binary_raw(cache, op1, op2, NULL, ADD);
         if(id != SHIFT){
+            //printf("add cached exists\n");
             mpz_clear(op1);
             mpz_clear(op2);
-            return id | NEG | SHIFT;
+            return id | NEG;
         }
         lkuptable = cache->add;
         mpz_init(result);
@@ -602,7 +629,7 @@ uint64_t cached_mpz_add(lookup* cache, mpz_t op1_in, mpz_t op2_in){
     get_k_hashes_cpf(op1, op2, hashes);
     
     //insert
-    
+    //printf("cached add return\n");
     //add to cache addition
     uint64_t id_op1 = cache_insert_mpz_raw(cache, op1);
     uint64_t id_op2 = cache_insert_mpz_raw(cache, op2);

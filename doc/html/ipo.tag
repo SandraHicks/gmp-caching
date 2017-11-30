@@ -1448,6 +1448,7 @@
     <includes id="mpz__caching_8h" name="mpz_caching.h" local="yes" imported="no">mpz_caching.h</includes>
     <includes id="hashtable_8h" name="hashtable.h" local="yes" imported="no">hashtable.h</includes>
     <includes id="hashing_8h" name="hashing.h" local="yes" imported="no">hashing.h</includes>
+    <includes id="overflow__detection_8h" name="overflow_detection.h" local="yes" imported="no">overflow_detection.h</includes>
     <member kind="function">
       <type>uint64_t</type>
       <name>cache_insert_mpz_raw</name>
@@ -2298,13 +2299,6 @@
     </member>
     <member kind="function">
       <type>cachedInt</type>
-      <name>direct_gcd</name>
-      <anchorfile>master__cache__integer_8c.html</anchorfile>
-      <anchor>a663303ff03efc5249b8aa408ff5cce29</anchor>
-      <arglist>(cachedInt val1, cachedInt val2)</arglist>
-    </member>
-    <member kind="function">
-      <type>cachedInt</type>
       <name>direct_lcm</name>
       <anchorfile>master__cache__integer_8c.html</anchorfile>
       <anchor>ac189c1e54bc54e033333d7cd5371d46f</anchor>
@@ -2428,6 +2422,13 @@
       <anchorfile>master__cache__integer_8c.html</anchorfile>
       <anchor>a80b8d00486c8442cac6df8bb65af0c1f</anchor>
       <arglist>(const MasterCache *mstr, cachedInt val1, cachedInt val2)</arglist>
+    </member>
+    <member kind="function">
+      <type>cachedInt</type>
+      <name>direct_gcd_slow</name>
+      <anchorfile>master__cache__integer_8c.html</anchorfile>
+      <anchor>a93e61a734a53bb798a25a0a444fdfb38</anchor>
+      <arglist>(cachedInt val1, cachedInt val2)</arglist>
     </member>
     <member kind="function">
       <type>cachedInt</type>
@@ -3220,6 +3221,13 @@
       <anchorfile>overflow__detection_8h.html</anchorfile>
       <anchor>a3f5d390da9ae4425c7ba83964f3b0905</anchor>
       <arglist>(cachedInt base, cachedInt exp)</arglist>
+    </member>
+    <member kind="function">
+      <type>uint32_t</type>
+      <name>MSB</name>
+      <anchorfile>overflow__detection_8h.html</anchorfile>
+      <anchor>ab9ebfca4f389fbfd7518c73802739dfa</anchor>
+      <arglist>(cachedInt val)</arglist>
     </member>
   </compound>
   <compound kind="struct">
@@ -5059,10 +5067,10 @@
     <name>Hashtable_binary</name>
     <filename>structHashtable__binary.html</filename>
     <member kind="variable">
-      <type>int *</type>
+      <type>unsigned int *</type>
       <name>counter</name>
       <anchorfile>structHashtable__binary.html</anchorfile>
-      <anchor>a84f8baf046a4f7a75a405e8fd448bac8</anchor>
+      <anchor>a55dca7abe496ec9346d130334da74038</anchor>
       <arglist></arglist>
     </member>
     <member kind="variable">

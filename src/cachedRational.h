@@ -361,7 +361,6 @@ namespace gmpcaching{
       void copy_mpq(mpq_t& copy) const;
       
       
-      
       //*******************************************************//
       //String conversions
       ///read a cachedRational from a c-string

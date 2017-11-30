@@ -6,7 +6,9 @@ CMakeFiles/gmp-caching.dir/src/caching_operations.c.o: ../src/caching_operations
 CMakeFiles/gmp-caching.dir/src/caching_operations.c.o: ../src/defines.h
 CMakeFiles/gmp-caching.dir/src/caching_operations.c.o: ../src/hashing.h
 CMakeFiles/gmp-caching.dir/src/caching_operations.c.o: ../src/hashtable.h
+CMakeFiles/gmp-caching.dir/src/caching_operations.c.o: ../src/mastercache.h
 CMakeFiles/gmp-caching.dir/src/caching_operations.c.o: ../src/mpz_caching.h
+CMakeFiles/gmp-caching.dir/src/caching_operations.c.o: ../src/overflow_detection.h
 
 CMakeFiles/gmp-caching.dir/src/debug.c.o: ../src/debug.c
 CMakeFiles/gmp-caching.dir/src/debug.c.o: ../src/debug.h
