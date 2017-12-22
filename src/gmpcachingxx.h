@@ -48,7 +48,6 @@ namespace gmpcaching{
         static void delete_MasterCache(){
             cache_clear(globalcache);
             printf("Deleted global cache...\n");
-            printf("used cachedInts %d, cached %d, additions %d\n", CachedRational::global_cached_int_counter, CachedRational::global_cached, CachedRational::global_additions);
         }
         
     };

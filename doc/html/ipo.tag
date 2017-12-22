@@ -2716,13 +2716,6 @@
       <arglist>(const MasterCache *mstr, cachedRational val1, cachedRational val2)</arglist>
     </member>
     <member kind="function">
-      <type>void</type>
-      <name>cached_rational_reduce_inplace</name>
-      <anchorfile>master__cache__rational_8c.html</anchorfile>
-      <anchor>a5237eb113206855f781e587ea325f217</anchor>
-      <arglist>(const MasterCache *mstr, cachedRational *val)</arglist>
-    </member>
-    <member kind="function">
       <type>cachedRational</type>
       <name>cached_rational_reduce</name>
       <anchorfile>master__cache__rational_8c.html</anchorfile>
@@ -2897,13 +2890,6 @@
       <anchorfile>master__cache__rational_8h.html</anchorfile>
       <anchor>aa035f2b43e0b1c216a3f290c6057930c</anchor>
       <arglist>(const MasterCache *mstr, cachedRational val)</arglist>
-    </member>
-    <member kind="function">
-      <type>void</type>
-      <name>cached_rational_reduce_inplace</name>
-      <anchorfile>master__cache__rational_8h.html</anchorfile>
-      <anchor>a5237eb113206855f781e587ea325f217</anchor>
-      <arglist>(const MasterCache *mstr, cachedRational *val)</arglist>
     </member>
     <member kind="function">
       <type>cachedRational</type>
@@ -4445,24 +4431,24 @@
       <arglist>(const CachedRational &amp;r, const CachedRational &amp;s)</arglist>
     </member>
     <member kind="function">
-      <type>CachedRational</type>
+      <type>CachedRational &amp;</type>
       <name>reduce</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>aca08c76f09ad625c07fc27ab8dc9094e</anchor>
+      <anchor>a913b7726f74cfd1747425a6c3eeb6079</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>CachedRational</type>
+      <type>CachedRational &amp;</type>
       <name>invert</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>ab16f0c4580ba71dd33d2bf5c5817a6ff</anchor>
+      <anchor>a597622a93ab49b6dfa14b6b7600060ad</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">
-      <type>CachedRational</type>
+      <type>CachedRational &amp;</type>
       <name>neg</name>
       <anchorfile>classgmpcaching_1_1CachedRational.html</anchorfile>
-      <anchor>a3a724b3fe5a16c4a91fb2046cb347828</anchor>
+      <anchor>a909d5eb3efdd56e9165f419f0a3f9d87</anchor>
       <arglist>()</arglist>
     </member>
     <member kind="function">

@@ -252,13 +252,13 @@ namespace gmpcaching{
      * @brief Function to reduce the fraction of two cachedInt.
      * @return reduced rational
      */
-      CachedRational reduce();
-
+      CachedRational& reduce();
+      
       /**
        * @brief Function to invert a fraction.
        * @return inverted rational
        */
-      CachedRational invert();
+      CachedRational& invert();
       
       /**
        * Function to get the absolute value of a fraction.
@@ -270,7 +270,7 @@ namespace gmpcaching{
        * Function to get the negative value of a fraction.
        * @return negative rational
        */
-      CachedRational neg();
+      CachedRational& neg();
       /**
        * Function to get the negative value of a fraction.
        * @param r CachedRational to negate
@@ -359,6 +359,7 @@ namespace gmpcaching{
       
       void canonicalize();
       void copy_mpq(mpq_t& copy) const;
+      void set_num_den(mpz_t num, mpz_t den);
       
       
       //*******************************************************//

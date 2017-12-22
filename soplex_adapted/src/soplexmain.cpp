@@ -313,7 +313,6 @@ int main(int argc, char* argv[])
 		  cache_size += val * pow10[tenth];
 		  d_i--;
 		}
-		printf("cache size=%" PRIu64 "\n", cache_size);
 
 		//init cache
 		gmpcaching::GMPCaching::setGlobalCacheSize(cache_size);

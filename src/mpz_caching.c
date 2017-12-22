@@ -60,8 +60,71 @@ void delete_mpz_cache(mpz_t_cache* cache){
 int64_t insert_mpz(mpz_t_cache* cache, mpz_t val){
     
     if(cache->next_id >= cache->size){
-        printf("Cache is full! Size: %"PRIu64"\n", cache->size);
+        printf("----------Cache Status----------\n");
+        printf("100 percent\n");
+        printf("[====================>]\n");
+        printf("--------------------------------\n");
         assert(cache->next_id < cache->size);
+    }
+    else if(cache->next_id == (uint64_t)(cache->size*0.1)){
+        printf("----------Cache Status----------\n");
+        printf("10 percent\n");
+        printf("[==>                  ]\n");
+        printf("--------------------------------\n");
+    }
+    else if(cache->next_id == (uint64_t)(cache->size*0.2)){
+        printf("----------Cache Status----------\n");
+        printf("20 percent\n");
+        printf("[====>                ]\n");
+        printf("--------------------------------\n");
+    }
+    else if(cache->next_id == (uint64_t)(cache->size*0.3)){
+        printf("----------Cache Status----------\n");
+        printf("30 percent\n");
+        printf("[======>              ]\n");
+        printf("--------------------------------\n");
+    }
+    else if(cache->next_id == (uint64_t)(cache->size*0.4)){
+        printf("----------Cache Status----------\n");
+        printf("40 percent\n");
+        printf("[========>            ]\n");
+        printf("--------------------------------\n");
+    }
+    else if(cache->next_id == (uint64_t)(cache->size*0.5)) {
+        printf("----------Cache Status----------\n");
+        printf("50 percent\n");
+        printf("[==========>          ]\n");
+        printf("--------------------------------\n");
+    }
+    else if(cache->next_id == (uint64_t)(cache->size*0.6)) {
+        printf("----------Cache Status----------\n");
+        printf("50 percent\n");
+        printf("[============>        ]\n");
+        printf("--------------------------------\n");
+    }
+    else if(cache->next_id == (uint64_t)(cache->size*0.7)) {
+        printf("----------Cache Status----------\n");
+        printf("70 percent\n");
+        printf("[==============>      ]\n");
+        printf("--------------------------------\n");
+    }
+    else if(cache->next_id == (uint64_t)(cache->size*0.8)) {
+        printf("----------Cache Status----------\n");
+        printf("80 percent\n");
+        printf("[================>    ]\n");
+        printf("--------------------------------\n");
+    }
+    else if(cache->next_id == (uint64_t)(cache->size*0.8)) {
+        printf("----------Cache Status----------\n");
+        printf("90 percent\n");
+        printf("[==================>  ]\n");
+        printf("--------------------------------\n");
+    }
+    else if(cache->next_id == (uint64_t)(cache->size*0.8)) {
+        printf("----------Cache Status----------\n");
+        printf("95 percent -- CRITICAL\n");
+        printf("[===================> ]\n");
+        printf("--------------------------------\n");
     }
     
     double fp_rep;
@@ -99,6 +162,9 @@ void printEntry(mpz_t_cache* cache, uint64_t i){
  * @param val mpz_t to set for return
  */
 void get_cached_mpz(mpz_t_cache* cache, uint64_t i, mpz_t val){
+    if(i >= cache->next_id){
+        printf("id: %" PRId64 "\n", i);
+    }
     assert(i < cache->next_id);
     cached_mpz_t* element = &cache->cache[i];
     if(val == NULL){

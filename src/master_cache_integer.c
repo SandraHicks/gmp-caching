@@ -171,7 +171,10 @@ cachedInt cached_int_abs(const MasterCache* mstr, cachedInt val){
  * @return 1 if positive, 0 if negative
  */
 int cached_int_sgn(const MasterCache* mstr, cachedInt val){
-    return ((val & NEG) >= 1) ? 0 : 1;
+    if(val == 0)
+        return 0;
+    
+    return (((val & NEG) >= 1) ? 0 : 1);
 }
 /**
  * (internal use only!)
@@ -772,7 +775,7 @@ int cached_int_cmp(const MasterCache* mstr, cachedInt val1, cachedInt val2){
     }
     
     cachedInt diff = cached_int_sub(mstr, val1, val2);
-    if((diff & NEG) >= 1 && ((diff & ~NEG) != 0)){
+    if((diff & NEG) >= 1 && ((diff & ~NEG) != 0) && (diff!=0)){
         return -1;
     }
     else if((diff & ~NEG) == 0){

@@ -577,7 +577,7 @@ namespace soplex
 }
 #endif
 #else
-#define GMPCACHING_CACHESIZE 400
+
 #include <cachedRational.h>
 #include <gmpcachingxx.h>
 
@@ -585,6 +585,7 @@ namespace soplex
 {
    typedef gmpcaching::CachedRational Rational;
 }
-#endif //SOPLEX_WITH_CACHING
 
+#endif //SOPLEX_WITH_CACHING
 #endif // _RATIONAL_H_
+

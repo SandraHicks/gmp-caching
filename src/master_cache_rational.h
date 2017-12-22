@@ -41,7 +41,6 @@ void cached_rational_get_str(const MasterCache* mstr, cachedRational id, char* s
 
 cachedRational cached_rational_add(const MasterCache* mstr, cachedRational val1, cachedRational val2);
 cachedRational cached_rational_reduce(const MasterCache* mstr, cachedRational val);
-void cached_rational_reduce_inplace(const MasterCache* mstr, cachedRational* val);
 cachedRational cached_rational_sub(const MasterCache* mstr, cachedRational val1, cachedRational val2);
 cachedRational cached_rational_mul(const MasterCache* mstr, cachedRational val1, cachedRational val2);
 cachedRational cached_rational_div(const MasterCache* mstr, cachedRational val1, cachedRational val2);

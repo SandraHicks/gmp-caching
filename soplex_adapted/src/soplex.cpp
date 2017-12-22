@@ -3642,7 +3642,7 @@ namespace soplex
          _syncRationalSolution();
          for( int i = 0; i < numColsRational(); i++ )
 		#ifdef SOPLEX_WITH_CACHING
-		_solRational._primal[i].copy_mpq(&vector[i]);
+		_solRational._primal[i].copy_mpq(vector[i]);
 		#else
             mpq_set(vector[i], _solRational._primal[i].getMpqRef());
 		#endif
@@ -3663,7 +3663,7 @@ namespace soplex
          _syncRationalSolution();
          for( int i = 0; i < numRowsRational(); i++ )
 		#ifdef SOPLEX_WITH_CACHING
-		_solRational._slacks[i].copy_mpq(&vector[i]);
+		_solRational._slacks[i].copy_mpq(vector[i]);
 		#else
             mpq_set(vector[i], _solRational._slacks[i].getMpqRef());
 		#endif
@@ -3685,7 +3685,7 @@ namespace soplex
          _syncRationalSolution();
          for( int i = 0; i < numColsRational(); i++ )
 		#ifdef SOPLEX_WITH_CACHING
-		_solRational._primalRay[i].copy_mpq(&vector[i]);
+		_solRational._primalRay[i].copy_mpq(vector[i]);
 		#else
             mpq_set(vector[i], _solRational._primalRay[i].getMpqRef());
 		#endif
@@ -3707,7 +3707,7 @@ namespace soplex
          _syncRationalSolution();
          for( int i = 0; i < numRowsRational(); i++ )
 		#ifdef SOPLEX_WITH_CACHING
-		_solRational._dual[i].copy_mpq(&vector[i]);
+		_solRational._dual[i].copy_mpq(vector[i]);
 		#else
             mpq_set(vector[i], _solRational._dual[i].getMpqRef());
 		#endif
@@ -3729,7 +3729,7 @@ namespace soplex
          _syncRationalSolution();
          for( int i = 0; i < numColsRational(); i++ )
 		#ifdef SOPLEX_WITH_CACHING
-		_solRational._redCost[i].copy_mpq(&vector[i]);
+		_solRational._redCost[i].copy_mpq(vector[i]);
 		#else
             mpq_set(vector[i], _solRational._redCost[i].getMpqRef());
 		#endif
@@ -3751,7 +3751,7 @@ namespace soplex
          _syncRationalSolution();
          for( int i = 0; i < numRowsRational(); i++ )
 		#ifdef SOPLEX_WITH_CACHING
-		_solRational._dualFarkas[i].copy_mpq(&vector[i]);
+		_solRational._dualFarkas[i].copy_mpq(vector[i]);
 		#else
             mpq_set(vector[i], _solRational._dualFarkas[i].getMpqRef());
 		#endif

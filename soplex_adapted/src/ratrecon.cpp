@@ -77,6 +77,7 @@ namespace soplex
 	mpq_t temp_dbound;
 	mpq_init(temp_dbound);
 	denomBoundSquared.copy_mpq(temp_dbound);
+	mpq_canonicalize(temp_dbound);
 	mpz_set_q(Dbound, temp_dbound);
 	mpq_clear(temp_dbound);
 	#else
@@ -134,8 +135,8 @@ namespace soplex
                MSG_DEBUG( std::cout << "marker 1\n" );
 
 		#ifdef SOPLEX_WITH_CACHING
-		resvec[j].set_den(tn);
-		resvec[j].set_num(td);
+		resvec[j].set_num_den(tn, td);
+		
 		#else		
                mpq_set_num(resvec[j].getMpqRef_w(),tn);
                mpq_set_den(resvec[j].getMpqRef_w(),td);
@@ -204,16 +205,12 @@ namespace soplex
 
                /* Assign the values */
 		#ifdef SOPLEX_WITH_CACHING
-		resvec[j].set_den(p[1]);
-		resvec[j].set_num(q[1]);
-
-		resvec[j].canonicalize();
-
-		mpz_t den;
-		mpz_init(den);
-		resvec[j].get_den(den);
-		mpz_gcd(temp, gcd, den);
-		mpz_clear(den);
+		resvec[j].set_num_den(p[1], q[1]);
+		mpq_t den;
+		mpq_init(den);
+		resvec[j].copy_mpq(den);
+		mpz_gcd(temp, gcd, mpq_denref(den));
+		mpq_clear(den);
 		#else
                mpq_set_num(resvec[j].getMpqRef_w(), p[1]);
                mpq_set_den(resvec[j].getMpqRef_w(), q[1]);
@@ -270,11 +267,11 @@ namespace soplex
       {
          for( int i = 0; i < dim; i++ ){
 		#ifdef SOPLEX_WITH_CACHING
-		mpz_t den;
-		mpz_init(den);
-		input[i].get_den(den);
-		mpz_lcm(denom, denom, den);
-		mpz_clear(den);
+mpq_t temp;
+mpq_init(temp);
+input[i].copy_mpq(temp);
+mpz_lcm(denom, denom, mpq_denref(temp));
+mpq_clear(temp);
 		#else
             mpz_lcm(denom, denom, mpq_denref(input[i].getMpqRef()));
 		#endif
@@ -283,16 +280,13 @@ namespace soplex
          for( int i = 0; i < dim; i++ )
          {
 		#ifdef SOPLEX_WITH_CACHING
-		mpz_t den;
-		mpz_init(den);
-		input[i].get_den(den);
-		mpz_t num;
-		mpz_init(num);
-		input[i].get_num(num);
-		mpz_mul(xnum[i], denom, num);
-		mpz_divexact(xnum[i], xnum[i], den);
-		mpz_clear(den);
-		mpz_clear(num);
+mpq_t temp;
+mpq_init(temp);
+input[i].copy_mpq(temp);
+mpz_mul(xnum[i], denom, mpq_numref(temp));
+mpz_divexact(xnum[i], xnum[i], mpq_denref(temp));
+mpq_clear(temp);
+
 		#else
             mpz_mul(xnum[i], denom, mpq_numref(input[i].getMpqRef()));
             mpz_divexact(xnum[i], xnum[i], mpq_denref(input[i].getMpqRef()));
@@ -307,11 +301,11 @@ namespace soplex
             assert(indexSet->index(i) < input.dim());
 
 		#ifdef SOPLEX_WITH_CACHING
-		mpz_t den;
-		mpz_init(den);
-		input[indexSet->index(i)].get_den(den);
-		mpz_lcm(denom, denom, den);
-		mpz_clear(den);
+mpq_t temp;
+mpq_init(temp);
+input[i].copy_mpq(temp);
+mpz_lcm(denom, denom, mpq_denref(temp));
+mpq_clear(temp);
 		#else
             mpz_lcm(denom, denom, mpq_denref(input[indexSet->index(i)].getMpqRef()));
 		#endif
@@ -323,16 +317,12 @@ namespace soplex
             assert(k >= 0);
             assert(k < input.dim());
 		#ifdef SOPLEX_WITH_CACHING
-		mpz_t den;
-		mpz_init(den);
-		input[k].get_den(den);
-		mpz_t num;
-		mpz_init(num);
-		input[k].get_num(num);
-		mpz_mul(xnum[k], denom, num);
-		mpz_divexact(xnum[k], xnum[k], den);
-		mpz_clear(den);
-		mpz_clear(num);
+mpq_t temp;
+mpq_init(temp);
+input[k].copy_mpq(temp);
+mpz_mul(xnum[k], denom, mpq_numref(temp));
+mpz_divexact(xnum[k], xnum[k], mpq_denref(temp));
+mpq_clear(temp);
 		#else
             mpz_mul(xnum[k], denom, mpq_numref(input[k].getMpqRef()));
             mpz_divexact(xnum[k], xnum[k], mpq_denref(input[k].getMpqRef()));
